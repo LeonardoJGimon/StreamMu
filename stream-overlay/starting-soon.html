@@ -439,17 +439,62 @@
         </div>
 
         <!-- GADGET DE RANKING DINÁMICO -->
-        <div class="cycling-container"
-            style="height: 50px; overflow: hidden; display: flex; align-items: center; justify-content: center; font-family: 'Exocet', serif; font-size: 1.2rem; letter-spacing: 2px;">
-            <div id="gadget-label" style="color: var(--crimson); font-weight: 900; margin-right: 15px;">PREPARE FOR</div>
-
-            <div class="mask"
-                style="height: 40px; overflow: hidden; position: relative; border-left: 2px solid var(--gold); padding-left: 15px;">
-                <div id="gadget-value" style="line-height: 40px; color: #ffffff; transition: all 0.5s ease; transform: translateY(0); opacity: 1;">
-                    THE BATTLE
-                </div>
+        <div class="cycling-container">
+            <div id="gadget-label">PREPARE FOR</div>
+            <div class="mask">
+                <div id="gadget-value">THE BATTLE</div>
             </div>
         </div>
+
+        <style>
+            .cycling-container {
+                height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: 'Exocet', serif;
+                font-size: 1.2rem;
+                letter-spacing: 2px;
+                margin-top: 20px;
+                width: 100%;
+            }
+
+            #gadget-label {
+                color: var(--crimson);
+                font-weight: 900;
+                margin-right: 15px;
+                white-space: nowrap;
+            }
+
+            .mask {
+                height: 40px;
+                overflow: hidden;
+                position: relative;
+                border-left: 2px solid var(--gold);
+                padding-left: 15px;
+                min-width: 200px;
+                text-align: left;
+            }
+
+            #gadget-value {
+                line-height: 40px;
+                color: #ffffff;
+                transition: all 0.5s ease;
+                white-space: nowrap;
+            }
+
+            /* AJUSTE PARA VERTICAL */
+            @media (orientation: portrait) {
+                .cycling-container {
+                    font-size: 1rem;
+                    gap: 5px;
+                }
+                .mask {
+                    min-width: 150px;
+                    padding-left: 10px;
+                }
+            }
+        </style>
 
         <style>
             @keyframes cyclingAnim {

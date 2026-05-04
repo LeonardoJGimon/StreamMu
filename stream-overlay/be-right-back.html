@@ -190,7 +190,6 @@
             margin-top: auto;
         }
 
-        /* --- GADGET CICLICO --- */
         .cycling-container {
             margin-top: 20px;
             height: 50px;
@@ -200,12 +199,14 @@
             font-family: 'Exocet', serif;
             font-size: 1.2rem;
             letter-spacing: 2px;
+            width: 100%;
         }
 
         #gadget-label {
             color: var(--crimson);
             font-weight: 900;
             margin-right: 15px;
+            white-space: nowrap;
         }
 
         .mask {
@@ -223,6 +224,18 @@
             color: #ffffff;
             transition: all 0.5s ease;
             white-space: nowrap;
+        }
+
+        /* AJUSTE PARA VERTICAL */
+        @media (orientation: portrait) {
+            .cycling-container {
+                font-size: 1rem;
+                gap: 5px;
+            }
+            .mask {
+                min-width: 150px;
+                padding-left: 10px;
+            }
         }
 
         /* CLOCKS */

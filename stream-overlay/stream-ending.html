@@ -213,7 +213,21 @@
                 <span class="social-handle">Mu Neutro S6</span>
             </div>
         </div>
+        <!-- GADGET CICLICO -->
+        <div class="cycling-container">
+            <div id="gadget-label">NEW HERO</div>
+            <div class="mask">
+                <div id="gadget-value">LOADING...</div>
+            </div>
+        </div>
     </div>
+    <style>
+        .cycling-container { margin-top: 40px; height: 50px; display: flex; align-items: center; justify-content: center; font-family: 'Exocet', serif; font-size: 1.2rem; letter-spacing: 2px; width: 100%; }
+        #gadget-label { color: var(--crimson); font-weight: 900; margin-right: 15px; white-space: nowrap; }
+        .mask { height: 40px; overflow: hidden; position: relative; border-left: 2px solid var(--gold); padding-left: 15px; min-width: 200px; text-align: left; }
+        #gadget-value { line-height: 40px; color: #ffffff; transition: all 0.5s ease; white-space: nowrap; }
+        @media (orientation: portrait) { .cycling-container { font-size: 1rem; gap: 5px; margin-top: 20px; } .mask { min-width: 150px; padding-left: 10px; } }
+    </style>
 
     <script>
         // Efecto de partículas suaves de ceniza
@@ -241,6 +255,49 @@
             setTimeout(() => ash.remove(), duration);
         }
         setInterval(createAsh, 200);
+
+        // LÓGICA DE DATOS DINÁMICOS
+        let gadgetItems = [{ label: "THANKS FOR", value: "WATCHING" }];
+        let gadgetIndex = 0;
+
+        async function updateStats() {
+            try {
+                const res = await fetch('/api/stats');
+                if (!res.ok) return;
+                const data = await res.json();
+                
+                gadgetItems = [{ label: "THANKS FOR", value: "WATCHING" }];
+                if (data.recentCharacters && data.recentCharacters.length) {
+                    gadgetItems.push({ label: "NEW HERO", value: data.recentCharacters[0].name.toUpperCase() });
+                }
+                if (data.topStrengthCharacters && data.topStrengthCharacters.length) {
+                    gadgetItems.push({ label: "TOP PLAYER", value: data.topStrengthCharacters[0].name.toUpperCase() });
+                }
+                gadgetItems.push({ label: "VERSION", value: "SEASON 6 EP 3" });
+            } catch (e) { console.error(e); }
+        }
+
+        function rotateGadget() {
+            const labelEl = document.getElementById('gadget-label');
+            const valueEl = document.getElementById('gadget-value');
+            if (!labelEl || !valueEl || gadgetItems.length === 0) return;
+            
+            valueEl.style.opacity = "0";
+            valueEl.style.transform = "translateY(-20px)";
+
+            setTimeout(() => {
+                gadgetIndex = (gadgetIndex + 1) % gadgetItems.length;
+                const item = gadgetItems[gadgetIndex];
+                labelEl.innerText = item.label;
+                valueEl.innerText = item.value;
+                valueEl.style.opacity = "1";
+                valueEl.style.transform = "translateY(0)";
+            }, 500);
+        }
+
+        updateStats();
+        setInterval(updateStats, 30000);
+        setInterval(rotateGadget, 6000);
     </script>
     <script src="auto-refresh.js"></script>
     <audio id="bg-music" autoplay loop>
