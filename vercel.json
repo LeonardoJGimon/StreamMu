@@ -1,13 +1,13 @@
 {
   "cleanUrls": true,
-  "redirects": [
-    { "source": "/soon", "destination": "/stream-overlay/starting-soon.html", "permanent": true },
-    { "source": "/now", "destination": "/stream-overlay/starting-now.html", "permanent": true },
-    { "source": "/ranking", "destination": "/stream-overlay/ranking.html", "permanent": true },
-    { "source": "/creations", "destination": "/stream-overlay/latest-creations.html", "permanent": true },
-    { "source": "/linear", "destination": "/stream-overlay/latest-creations-linear.html", "permanent": true },
-    { "source": "/brb", "destination": "/stream-overlay/be-right-back.html", "permanent": true },
-    { "source": "/alerts", "destination": "/stream-overlay/alerts.html", "permanent": true },
-    { "source": "/end", "destination": "/stream-overlay/stream-ending.html", "permanent": true }
+  "rewrites": [
+    { "source": "/soon", "destination": "/stream-overlay/starting-soon.html" },
+    { "source": "/now", "destination": "/stream-overlay/starting-now.html" },
+    { "source": "/ranking", "destination": "/stream-overlay/ranking.html" },
+    { "source": "/creations", "destination": "/stream-overlay/latest-creations.html" },
+    { "source": "/linear", "destination": "/stream-overlay/latest-creations-linear.html" },
+    { "source": "/brb", "destination": "/stream-overlay/be-right-back.html" },
+    { "source": "/alerts", "destination": "/stream-overlay/alerts.html" },
+    { "source": "/end", "destination": "/stream-overlay/stream-ending.html" }
   ]
 }
