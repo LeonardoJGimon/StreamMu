@@ -16,7 +16,7 @@
 </head>
 <body>
     <div class="container">
-        <h1>🎥 Generador de Video Stinger (15s)</h1>
+        <h1>🎥 Generador de Video Stinger (6s)</h1>
         
         <div class="instructions">
             <strong>Instrucciones:</strong><br>
@@ -26,9 +26,9 @@
             4. El video se descargará automáticamente.
         </div>
 
-        <div id="timer">00</div>
+        <div id="timer">06</div>
         <div id="status">Esperando interacción...</div>
-        <button id="btn">EMPEZAR GRABACIÓN (15 SEG)</button>
+        <button id="btn">EMPEZAR GRABACIÓN (6 SEG)</button>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/recordrtc@5.6.2/RecordRTC.js"></script>
@@ -63,7 +63,7 @@
                 
                 setTimeout(() => { win.postMessage('START_STINGER', '*'); }, 1000);
 
-                let secondsLeft = 15;
+                let secondsLeft = 6;
                 timer.innerText = secondsLeft;
                 status.innerText = "🔴 GRABANDO...";
 
@@ -86,7 +86,7 @@
                         status.innerText = "✅ ¡Descarga completada!";
                         btn.disabled = false;
                     });
-                }, 15000);
+                }, 6000);
 
             } catch (err) {
                 status.innerText = "Error: " + err.message;
