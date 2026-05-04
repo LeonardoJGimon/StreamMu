@@ -1,0 +1,435 @@
+{
+    "featureCard": {
+        "custom1": {
+            "title": "Echipează-te pentru glorie",
+            "desc": "Nu începe de la zero, începe ca un adevărat războinic. Am pregătit un Pachet de Bun Venit exclusiv ca nimic să nu te oprească pe drumul spre Reset. Intră pe Mu Neutro, revendică-ți kitul și arată cine conduce clasamentul."
+        },
+        "custom2": {
+            "title": "Formăm Legende",
+            "desc": "Pe Mu Neutro nu ești niciodată singur. Alătură-te comunității noastre active, participă la evenimente zilnice și contează pe suportul nostru la fiecare pas. Aici, fiecare războinic contează."
+        },
+        "custom3": {
+            "title": "Progresul tău e în siguranță",
+            "desc": "Uită de frica de lag sau căderi. Avem infrastructură de ultimă generație pentru ca singura ta grijă să fie să ajungi la următorul Reset. Stabilitate reală pentru jucători reali."
+        }
+    },
+    "brand":  {
+                  "logo":  "Mu Neutro"
+              },
+    "page":  {
+                 "index":  {
+                               "title":  "Mu Neutro - Server Hardcore"
+                           },
+                 "server_info":  {
+                                     "title":  "Info Server - Mu Neutro"
+                                 },
+                 "terms":  {
+                               "title":  "Termeni \u0026 Politici - Mu Neutro"
+                           }
+             },
+    "nav":  {
+                "home":  "Acasă",
+                "server_info":  "Info Server",
+                "rankings":  "Clasamente",
+                "downloads":  "Descărcări",
+                "register":  "Înregistrare",
+                "dashboard":  "Panou"
+            },
+    "footer":  {
+                   "copyright":  "\u0026copy; 2025 - 2026 Mu Neutro Server. Toate drepturile rezervate.",
+                   "terms":  "Termeni \u0026 Politici",
+                   "follow_us":  "Urmărește-ne",
+                   "forged_by":  "REALIZAT DE \u003cspan class=\"footer-min__accent\"\u003eMu Neutro\u003c/span\u003e"
+               },
+    "common":  {
+                   "or":  "SAU",
+                   "enabled":  "Activ",
+                   "yes":  "Da",
+                   "no":  "Nu",
+                   "no_data":  "Nu există date",
+                   "loading":  "SE ÎNCARCĂ...",
+                   "not_set":  "Neconfigurat"
+               },
+    "features":  {
+                     "anti_hack":  {
+                                       "title":  "Anti-Hack",
+                                       "desc":  "Protecție premium. Joacă fără griji legate de trișori."
+                                   },
+                     "play_to_win":  {
+                                         "title":  "Joacă ca să câștigi",
+                                         "desc":  "Fă rost de monedă VIP direct în joc. Economia e a ta."
+                                     },
+                     "community":  {
+                                       "title":  "Comunitate",
+                                       "desc":  "Războaie active între bresle și evenimente GM zilnice."
+                                   }
+                 },
+    "team":  {
+                 "title":  "ECHIPA",
+                 "subtitle":  "Oamenii din spatele proiectului."
+             },
+    "hero":  {
+                 "description":  "Intră pe cel mai stabil server de Mu Online.\nFără Pay-to-Win. Doar strategie, grind și glorie.",
+                 "start_adventure":  "ÎNCEPE AVENTURA",
+                 "server_info":  "INFO SERVER",
+                 "download_launcher":  "DESCARCĂ LAUNCHER"
+             },
+    "stats":  {
+                  "online":  "ONLINE",
+                  "status":  "STATUS",
+                  "season":  "SEZON",
+                  "exp":  "EXP",
+                  "drop":  "DROP"
+              },
+    "home":  {
+                 "server_online":  "SERVER ONLINE",
+                 "status":  "STARE",
+                 "hero_desc":  "Cel mai epic și provocator server MuOnline. Alătură-te comunității noastre și luptă pentru glorie.",
+                 "register_now":  "ÎNREGISTREAZĂ-TE ACUM",
+                 "download_now":  "DESCARCĂ ACUM",
+                 "latest_news":  "ULTIMELE ȘTIRI",
+                 "latest_news_sub":  "Actualizări, evenimente și funcții noi din tărâm.",
+                 "hall_of_fame":  "HALL OF FAME",
+                 "story":  {
+                               "title":  "CRONICA",
+                               "desc":  "Descoperă istoria lumii noastre și drumul care i-a adus pe eroi împreună.",
+                               "cta":  "CITEȘTE POVESTEA"
+                           },
+                 "cards":  {
+                               "read_more":  "CITEȘTE MAI MULT",
+                               "economy":  {
+                                               "tag":  "ECONOMIE",
+                                               "title":  "ECONOMIE REALĂ (RMT)",
+                                               "desc":  "Joacă, farmează și fă trade într-o economie echilibrată, gândită pentru progres pe termen lung."
+                                           },
+                               "antihack":  {
+                                                "tag":  "SECURITATE",
+                                                "title":  "Anti-Hack",
+                                                "desc":  "Protecție premium. Joacă fără griji legate de trișori."
+                                            }
+                           },
+                 "news":  {
+                              "read_more":  "CITEȘTE"
+                          },
+                 "hof":  {
+                             "warrior":  "RĂZBOINIC",
+                             "mlvl":  "M.LVL",
+                             "view_ranking":  "VEZI CLASAMENTUL COMPLET"
+                         }
+             },
+    "downloads":  {
+                      "title":  "DESCĂRCĂRI",
+                      "central_prefix":  "CENTRAL DE",
+                      "central_word":  "DOWNLOADS",
+                      "subtitle":  "Descarcă clientul complet și începe să joci.",
+                      "recommended":  "RECOMANDAT",
+                      "client_title":  "CLIENT COMPLET",
+                      "client_desc":  "Instalează cea mai recentă versiune pentru cea mai bună experiență.",
+                      "download_direct":  "DESCARCĂ",
+                      "requirements":  "CERINȚE",
+                      "minimum":  "MINIM",
+                      "req":  {
+                                  "minimum_head":  "MINIM",
+                                  "recommended_head":  "RECOMANDAT",
+                                  "os":  "OS",
+                                  "cpu":  "CPU",
+                                  "ram":  "RAM",
+                                  "gpu":  "GPU",
+                                  "disk":  "DISK",
+                                  "os_min":  "Windows 10/11 (64-bit)",
+                                  "cpu_min":  "Intel i3",
+                                  "ram_min":  "4 GB",
+                                  "gpu_min":  "(Intel HD/UHD)",
+                                  "disk_min":  "0.5–1 GB",
+                                  "os_rec":  "Windows 10/11 (64-bit)",
+                                  "cpu_rec":  "Intel i5",
+                                  "ram_rec":  "8 GB",
+                                  "gpu_rec":  "orice",
+                                  "disk_rec":  "1–2 GB",
+                                  "dependency_title":  "Dependență importantă",
+                                  "dependency_text":  "Microsoft Visual C++ Redistributable 2015–2022 (x64)"
+                              },
+                      "size":  "MĂRIME",
+                      "updated":  "ACTUALIZAT",
+                      "version":  "VERSIUNE",
+                      "release":  "LANSARE"
+                  },
+    "news":  {
+                 "close":  "ÎNCHIDE ȘTIREA"
+             },
+    "days":  {
+                 "sunday":  "DUMINICĂ",
+                 "monday":  "LUNI",
+                 "tuesday":  "MARȚI",
+                 "wednesday":  "MIERCURI",
+                 "thursday":  "JOI",
+                 "friday":  "VINERI",
+                 "saturday":  "SÂMBĂTĂ"
+             },
+    "server":  {
+                   "enter_world":  "INTRĂ ÎN LUME",
+                   "coming_soon":  "ÎN CURÂND",
+                   "live_now":  "SERVER ONLINE ACUM!",
+                   "no_servers":  "Nu există servere",
+                   "status":  {
+                                  "online":  "Online",
+                                  "grand_opening":  "Marea Deschidere"
+                              }
+               },
+    "pagination":  {
+                       "prev":  "Înapoi",
+                       "next":  "Înainte"
+                   },
+    "time":  {
+                 "days":  "Zile",
+                 "hrs":  "Ore",
+                 "min":  "Min",
+                 "sec":  "Sec"
+             },
+    "events":  {
+                   "active_events":  "EVENIMENTE ACTIVE",
+                   "next_in":  "URMĂTORUL ÎN",
+                   "next_events":  "Evenimente VIITOARE",
+                   "upcoming":  "CALENDARUL EVENIMENTELOR",
+                   "upcoming_desc":  "Alăturați-vă acțiunii! Verificați evenimentele viitoare pe server.",
+                   "active":  "ACTIV",
+                   "live_event":  "EVENIMENT LIVE",
+                   "pvp_event":  "EVENIMENT PVP",
+                   "exp_boost":  "BONUS EXP",
+                   "slides":  {
+                                  "ice_wind_castle":  {
+                                                          "title":  "ICE WIND CASTLE",
+                                                          "subtitle":  "FORTĂREAȚA ÎNGHEȚATĂ",
+                                                          "desc":  "Înfruntă încercările castelului înghețat și gardienii săi necruțători.\nDoar cele mai puternice bresle pot supraviețui viscolului etern."
+                                                      },
+                                  "castle_siege":  {
+                                                       "title":  "CASTLE SIEGE",
+                                                       "subtitle":  "CASTLE SIEGE",
+                                                       "desc":  "Cucerește castelul și revendică gloria înainte să se încheie lupta.\nLuptă pentru tron și conduce-ți breasla spre victorie."
+                                                   },
+                                  "arka_war":  {
+                                                   "title":  "ARKA WAR",
+                                                   "subtitle":  "ARKA WAR",
+                                                   "desc":  "Concură în câmpul de luptă suprem și câștigă recompense puternice.\nUn război de strategie, echipă și dominație."
+                                               }
+                              }
+               },
+    "playtime":  {
+                     "title":  "RECOMPENSĂ \u003cspan class=\"title-gold\"\u003eTIMP ONLINE\u003c/span\u003e",
+                     "subtitle":  "Stai online în Mu Neutro și deblochează automat echipamente exclusive și puternice"
+                 },
+    "champions":  {
+                      "castle_siege":  "Castle Siege",
+                      "arka_war":  "Arka War",
+                      "throne_conquest":  "Throne Conquest",
+                      "gm":  "GM:"
+                  },
+    "auth":  {
+                 "login":  "Autentificare",
+                 "register":  "Înregistrare",
+                 "logout":  "Deconectare",
+                 "user":  "Utilizator",
+                 "need_account":  "Nu ai cont?",
+                 "have_account":  "Ai deja cont?",
+                 "human_verification":  "VERIFICARE UMANĂ",
+                 "enter_code":  "INTRODU CODUL",
+                 "finish_register":  "FINALIZEAZĂ ÎNREGISTRAREA",
+                 "secure":  "HTTPS PROTEJAT",
+                 "encrypted":  "DATE CRIPTATE",
+                 "terms_notice":  "Prin înregistrare accepți Termenii.",
+                 "invalid_code":  "Cod de verificare invalid",
+                 "username":  "NUME UTILIZATOR",
+                 "password":  "PAROLĂ",
+                 "confirm_password":  "CONFIRMĂ PAROLA",
+                 "email":  "EMAIL",
+                 "country":  "ȚARĂ",
+                 "referral_optional":  "COD (OPȚIONAL)",
+                 "username_placeholder":  "4-10 caractere",
+                 "password_placeholder":  "4-10 caractere",
+                 "confirm_password_placeholder":  "Repetă parola",
+                 "email_placeholder":  "you@example.com",
+                 "referral_placeholder":  "Cod referral"
+             },
+    "auth_modal":  {
+                       "login_title":  "BINE AI REVENIT",
+                       "register_title":  "CREEAZĂ CONT",
+                       "login_discord":  "\u003ci class=\"fab fa-discord\"\u003e\u003c/i\u003e LOGIN CU DISCORD",
+                       "register_discord":  "\u003ci class=\"fab fa-discord\"\u003e\u003c/i\u003e ÎNREGISTRARE CU DISCORD",
+                       "new_here":  "Ești nou?",
+                       "create_account":  "CREEAZĂ CONT",
+                       "have_account":  "Ai deja cont?",
+                       "back_to_login":  "ÎNAPOI LA LOGIN"
+                   },
+    "ranking":  {
+                    "title":  "CLASAMENT",
+                    "subtitle":  "Cei mai puternici războinici și bresle de pe server.",
+                    "event_winners":  "CÂȘTIGĂTORII EVENIMENTELOR",
+                    "top_players":  "TOP JUCĂTORI",
+                    "tabs":  {
+                                 "character":  "Personaj",
+                                 "pvp":  "PVP",
+                                 "hunt":  "Hunt",
+                                 "gens":  "Gens",
+                                 "guilds":  "Bresle"
+                             },
+                    "locked":  "CLASAMENTELE VOR FI DISPONIBILE LA \u003cspan class=\"ranking-locked-accent\"\u003eLANSAREA OFICIALĂ\u003c/span\u003e A JOCULUI."
+                },
+    "faq":  {
+                "title":  "ÎNTREBĂRI FRECVENTE",
+                "subtitle":  "Tot ce trebuie să știi despre Mu Neutro.",
+                "q1":  "Am creat cont pe site, dar jocul spune \"Cont invalid\".",
+                "a1":  "Contul web este doar pentru site și gestionarea contului. Creează un sub-cont în panou pentru a te conecta în joc.",
+                "q2":  "Pot deschide mai mult de un client de joc?",
+                "a2":  "Da, te poți conecta cu mai multe conturi simultan, până la limita permisă pe calculator.",
+                "q3":  "Serverul este free-to-play?",
+                "a3":  "Da, serverul este gratuit. Magazinul oferă iteme opționale de confort.",
+                "q4":  "Cum pot obține bonusuri sau recompense?",
+                "a4":  "Intră în comunitate, participă la evenimente și urmărește canalele noastre sociale pentru giveaway-uri.",
+                "q5":  "Pot completa quest-uri web pe mai multe conturi?",
+                "a5":  "Da. Poți crea mai multe conturi și completa quest-uri pe fiecare pentru a primi recompense."
+            },
+    "server_info":  {
+                        "title":  "Informații Server",
+                        "subtitle":  "Rate, feature-uri, reguli și tot ce ai nevoie înainte să începi.",
+                        "rates":  "Rate",
+                        "exp":  "EXP",
+                        "drop":  "Drop",
+                        "max_level":  "Nivel Maxim",
+                        "master_level":  "Master Level",
+                        "details":  "Detalii Server",
+                        "season":  "Season",
+                        "type":  "Tip",
+                        "reset":  "Reset",
+                        "anti_cheat":  "Anti-Cheat",
+                        "economy":  "Economie",
+                        "wcoins":  "WCoins",
+                        "wcoins_desc":  "În joc \u0026 Shop",
+                        "goblin_points":  "Goblin Points",
+                        "goblin_points_desc":  "Evenimente \u0026 Vot",
+                        "trading":  "Trading",
+                        "market":  "Market",
+                        "quick_rules":  "Reguli rapide",
+                        "rule1":  "Fără cheat, bots sau tool-uri third-party.",
+                        "rule2":  "Fără real-money trading între jucători.",
+                        "rule3":  "Respectă ceilalți jucători și staff-ul.",
+                        "rule4":  "Abuzul și exploit-urile duc la ban.",
+                        "back_home":  "Înapoi acasă"
+                    },
+    "dashboard":  {
+                      "overview":  "Prezentare",
+                      "vote_reward":  "Recompensă Vot",
+                      "streamers":  "Streamer-i",
+                      "welcome":  "Bine ai revenit, războinicule!",
+                      "server_time":  "Timp Server:",
+                      "server":  "Server:",
+                      "account":  "Cont",
+                      "country":  "Țară:",
+                      "twofa":  "2FA:",
+                      "details":  {
+                                      "server_type":  "Tip server",
+                                      "admin":  "Admin",
+                                      "discord":  "Discord",
+                                      "discord_id":  "ID Discord",
+                                      "vip_level":  "Nivel VIP",
+                                      "vip_expiration":  "Expirare VIP",
+                                      "title_discount":  "Reducere titlu",
+                                      "pc_points":  "Puncte PC",
+                                      "cash_updated":  "Cash actualizat"
+                                  },
+                      "wcoins":  "WCoins",
+                      "goblin_points":  "Goblin Points",
+                      "cash":  "Cash",
+                      "key_points":  "Puncte Key",
+                      "account_type":  "Tip cont",
+                      "vip_reward":  {
+                                         "title":  "Recompensă VIP",
+                                         "button":  "Revendică VIP",
+                                         "loading":  "Se încarcă recompensa...",
+                                         "details":  "Primești VIP {vip} pentru {days} zi(le).",
+                                         "hwid_required":  " Necesită HWID.",
+                                         "hwid_required_short":  "HWID este necesar.",
+                                         "not_configured":  "Recompensa VIP nu este configurată.",
+                                         "grand_opening_blocked":  "Indisponibil în timpul Grand Opening."
+                                     }
+                  },
+    "streamers":  {
+                      "loading_status":  "Se încarcă statusul...",
+                      "become_streamer":  "Devino Streamer",
+                      "apply_desc":  "Aplică pentru a deveni streamer oficial conectând canalele tale.",
+                      "youtube_channel_id_optional":  "ID canal YouTube (Opțional)",
+                      "twitch_username_optional":  "Username Twitch (Opțional)",
+                      "kick_username_optional":  "Username Kick (Opțional)",
+                      "request_approval":  "Cere aprobare",
+                      "application_pending":  "Aplicație în așteptare",
+                      "application_pending_desc":  "Aplicația ta este în review de către echipa noastră.",
+                      "stream_control":  "Control Stream",
+                      "select_platform":  "Selectează platforma și pornește tracking-ul.",
+                      "start_tracking":  "Pornește tracking",
+                      "current_status":  "Status curent:",
+                      "live":  "LIVE",
+                      "on":  "pe",
+                      "stop_tracking":  "Oprește tracking",
+                      "rewards":  "Recompense",
+                      "total_minutes":  "Minute totale",
+                      "claimable":  "Disponibil",
+                      "live_label":  "Live:",
+                      "claim_wcoins":  "Revendică WCoins",
+                      "channels":  "Canale"
+                  },
+    "affiliate":  {
+                      "program":  "Program afiliere",
+                      "you_earn":  "Tu câștigi",
+                      "viewer_gets":  "Viewer primește",
+                      "your_code":  "CODUL TĂU DE AFILIERE"
+                  },
+    "wallet":  {
+                   "title":  "Portofel \u0026 Plăți",
+                   "available":  "Disponibil",
+                   "pending":  "În așteptare",
+                   "total_earned":  "Total câștigat",
+                   "request_payout":  "Cere plată",
+                   "recent_history":  "Istoric recent",
+                   "date":  "Data",
+                   "amount":  "Sumă",
+                   "status":  "Status",
+                   "no_history":  "Fără istoric.",
+                   "method":  "Metodă",
+                   "amount_usd":  "Sumă (USD)",
+                   "min_25":  "Minim $25",
+                   "revolut_tag":  "Tag Revolut",
+                   "revtag_placeholder":  "@username",
+                   "bank_name":  "Numele băncii",
+                   "bank_name_placeholder":  "Nume bancă",
+                   "account_holder_name":  "Nume titular cont",
+                   "full_name_placeholder":  "Nume complet",
+                   "iban":  "IBAN",
+                   "swift":  "SWIFT / BIC",
+                   "bank_country":  "Țara băncii",
+                   "country_placeholder":  "Țară",
+                   "currency":  "Monedă",
+                   "submit_withdrawal":  "Trimite retragerea"
+               },
+    "promo":  {
+                  "title":  "Coduri promo",
+                  "desc":  "Generează coduri zilnice pentru viewerii tăi.",
+                  "generate":  "Generează coduri"
+              },
+    "terms":  {
+                  "title":  "Termeni \u0026 Politici",
+                  "subtitle":  "Reguli server, politică afiliere, termeni de utilizare, refund și confidențialitate.",
+                  "menu":  "Meniu",
+                  "no_sections":  "Nu există secțiuni.",
+                  "load_failed":  "Nu s-au putut încărca termenii."
+              },
+  "vip_journey": {
+    "title": "CUM SĂ OBȚII VIP",
+    "step1_title": "DESCĂRCAȚI LAUNCHER",
+    "step1_desc": "Obțineți Launcher-ul oficial din secțiunea noastră de descărcări.",
+    "step2_title": "AUTENTIFICARE / ÎNREGISTRARE",
+    "step2_desc": "Creați-vă contul pe site sau direct din Launcher.",
+    "step3_title": "DONAȚIE",
+    "step3_desc": "Intrați în Launcher și selectați Donații în panoul lateral.",
+    "step4_title": "CUMPĂRĂ",
+    "step4_desc": "Alegeți pachetul, finalizați plata și gata!"
+  }
+}

@@ -1,0 +1,209 @@
+{
+  "darkWizardInfo": {
+    "title": "Dark Wizard",
+    "image": "../../assets/icon/nowclass/DW.png",
+    "mainStat": "Energy",
+    "secondaryStat": "Agility",
+    "autoStat": "/autostat 100 10 30 5 55 0",
+    "strongAgainst": [
+      "Fairy Elf",
+      "Magic Gladiator",
+      "Summoner",
+      "Grow Lancer",
+      "Rune Wizard"
+    ],
+    "weakAgainst": [
+      "Slayer",
+      "Gun Crusher",
+      "Light Wizard",
+      "Lemuria",
+      "Alchemist"
+    ],
+    "equalTo": [
+      "Dark Knight",
+      "Dark Lord",
+      "Rage Fighter",
+      "Illusion Knight",
+      "Crusader",
+      "Dark Wizard"
+    ]
+  },
+  "darkKnightInfo": {
+    "title": "Dark Knight",
+    "image": "../../assets/icon/nowclass/DK.png",
+    "mainStat": "Strength",
+    "secondaryStat": "Agility",
+    "autoStat": "/autostat 100 45 40 5 10 0",
+    "strongAgainst": [
+      "Fairy Elf",
+      "Magic Gladiator",
+      "Summoner",
+      "Grow Lancer",
+      "Rune Wizard"
+    ],
+    "weakAgainst": [
+      "Slayer",
+      "Gun Crusher",
+      "Light Wizard",
+      "Lemuria",
+      "Alchemist"
+    ],
+    "equalTo": [
+      "Dark Wizard",
+      "Dark Lord",
+      "Rage Fighter",
+      "Illusion Knight",
+      "Crusader",
+      "Dark Knight"
+    ]
+  },
+  "fairyElfInfo": {
+    "title": "Fairy Elf",
+    "image": "../../assets/icon/nowclass/ELF.png",
+    "mainStat": "Agility",
+    "secondaryStat": "Strength",
+    "autoStat": "/autostat 100 45 40 5 10 0 (AGI) | /autostat 100 5 10 5 80 0 (ENE)",
+    "strongAgainst": [
+      "Slayer",
+      "Gun Crusher",
+      "Light Wizard",
+      "Lemuria",
+      "Alchemist"
+    ],
+    "weakAgainst": [
+      "Dark Wizard",
+      "Dark Knight",
+      "Dark Lord",
+      "Rage Fighter",
+      "Illusion Knight",
+      "Crusader"
+    ],
+    "equalTo": [
+      "Magic Gladiator",
+      "Summoner",
+      "Grow Lancer",
+      "Rune Wizard",
+      "Fairy Elf"
+    ]
+  },
+  "magicGladiatorInfo": {
+    "title": "Magic Gladiator",
+    "image": "../../assets/icon/nowclass/MG.png",
+    "mainStat": "Strength",
+    "secondaryStat": "Agility",
+    "altBuild": {
+      "mainStat": "Energy",
+      "secondaryStat": "Agility"
+    },
+    "autoStat": "/autostat 100 45 40 5 10 0 (STR) | /autostat 100 10 30 5 55 0 (ENE)",
+    "strongAgainst": [
+      "Slayer",
+      "Gun Crusher",
+      "Light Wizard",
+      "Lemuria",
+      "Alchemist"
+    ],
+    "weakAgainst": [
+      "Dark Wizard",
+      "Dark Knight",
+      "Dark Lord",
+      "Rage Fighter",
+      "Illusion Knight",
+      "Crusader"
+    ],
+    "equalTo": [
+      "Fairy Elf",
+      "Summoner",
+      "Grow Lancer",
+      "Rune Wizard",
+      "Magic Gladiator"
+    ]
+  },
+  "darkLordInfo": {
+    "title": "Dark Lord",
+    "image": "../../assets/icon/nowclass/DL.png",
+    "mainStat": "Strength",
+    "secondaryStat": "Command",
+    "autoStat": "/autostat 100 30 25 5 10 30",
+    "strongAgainst": [
+      "Fairy Elf",
+      "Magic Gladiator",
+      "Summoner",
+      "Grow Lancer",
+      "Rune Wizard"
+    ],
+    "weakAgainst": [
+      "Slayer",
+      "Gun Crusher",
+      "Light Wizard",
+      "Lemuria",
+      "Alchemist"
+    ],
+    "equalTo": [
+      "Dark Wizard",
+      "Dark Knight",
+      "Rage Fighter",
+      "Illusion Knight",
+      "Crusader",
+      "Dark Lord"
+    ]
+  },
+  "summonerInfo": {
+    "title": "Summoner",
+    "image": "../../assets/icon/nowclass/SUMM.png",
+    "mainStat": "Energy",
+    "secondaryStat": "Agility",
+    "autoStat": "/autostat 100 10 30 5 55 0",
+    "strongAgainst": [
+      "Slayer",
+      "Gun Crusher",
+      "Light Wizard",
+      "Lemuria",
+      "Alchemist"
+    ],
+    "weakAgainst": [
+      "Dark Wizard",
+      "Dark Knight",
+      "Dark Lord",
+      "Rage Fighter",
+      "Illusion Knight",
+      "Crusader"
+    ],
+    "equalTo": [
+      "Fairy Elf",
+      "Magic Gladiator",
+      "Grow Lancer",
+      "Rune Wizard",
+      "Summoner"
+    ]
+  },
+  "rageFighterInfo": {
+    "title": "Rage Fighter",
+    "image": "../../assets/icon/nowclass/RF.png",
+    "mainStat": "Strength",
+    "secondaryStat": "Vitality",
+    "autoStat": "/autostat 100 30 25 30 15 0",
+    "strongAgainst": [
+      "Fairy Elf",
+      "Magic Gladiator",
+      "Summoner",
+      "Grow Lancer",
+      "Rune Wizard"
+    ],
+    "weakAgainst": [
+      "Slayer",
+      "Gun Crusher",
+      "Light Wizard",
+      "Lemuria",
+      "Alchemist"
+    ],
+    "equalTo": [
+      "Dark Wizard",
+      "Dark Knight",
+      "Dark Lord",
+      "Illusion Knight",
+      "Crusader",
+      "Rage Fighter"
+    ]
+  }
+}

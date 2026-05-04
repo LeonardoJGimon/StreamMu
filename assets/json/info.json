@@ -1,0 +1,196 @@
+{
+  "serverName": "Mu Neutro Season 6",
+  "season": "6 Ep 3",
+  "discordGuildId": "1423328846509506592",
+  "discordInviteUrl": "https://discord.gg/WMvfF8TZr4",
+  "facebookUrl": "https://discord.gg/WMvfF8TZr4",
+  "youtubeUrl": "https://discord.gg/WMvfF8TZr4",
+  "twitchUrl": "https://discord.gg/WMvfF8TZr4",
+  "vkUrl": "",
+  "heroSlides": [
+    {
+      "id": "castle-siege",
+      "enabled": true,
+      "imageUrl": "https://cdn.streamelements.com/uploads/01kqqbqe2m9qbee3rq1kqj9s29.mp4",
+      "badgeI18n": "events.pvp_event",
+      "titleI18n": "events.slides.castle_siege.title",
+      "subtitleI18n": "events.slides.castle_siege.subtitle",
+      "descI18n": "events.slides.castle_siege.desc"
+    },
+    {
+      "id": "arka-war",
+      "enabled": true,
+      "imageUrl": "/assets/images/home/Arka%20War.png",
+      "badgeI18n": "home.latest_news",
+      "badgeText": "LATEST NEWS",
+      "titleText": "WEEKEND EVENTS",
+      "descText": "Fight for glory. Farm rewards. Become a legend."
+    },
+    {
+      "id": "icewind",
+      "enabled": true,
+      "imageUrl": "/assets/images/home/ICEWINDCASTLE.png",
+      "badgeI18n": "nav.rankings",
+      "badgeText": "RANKINGS",
+      "titleText": "TOP WARRIORS",
+      "descText": "Check who dominates the server right now."
+    }
+  ],
+  "events": [
+    {
+      "id": "promo-1",
+      "enabled": true,
+      "imageUrl": "/assets/images/home/promo.png",
+      "dismissHours": 24,
+      "expiresAt": "2026-04-30 23:59:59",
+      "title": "¡FORJA TU DESTINO CON ESTE PACK!",
+      "subtitle": "Empieza en grande con el mejor pack de bienvenida y únete a la batalla",
+      "lines": [
+        { "text": "RING OF PANDA", "icon": "/assets/images/iconos/1.png" },
+        { "text": "PET PANDA", "icon": "/assets/images/iconos/2.png" },
+        { "text": "Set Completo", "icon": "/assets/images/iconos/3.png" }
+      ],
+      "linkUrl": "/auth.html#register",
+      "ctaText": "REGISTER NOW",
+      "secondaryLinkUrl": "/benefits",
+      "secondaryCtaText": "READ BENEFITS",
+      "smallPrint": "Speed characters can be transferred after the event ends."
+    }
+  ],
+  "homeFeatureCards": [
+    {
+      "id": "custom-1",
+      "enabled": true,
+      "icon": "fas fa-gift",
+      "title": "Equípate para la gloria",
+      "desc": "No empieces desde cero, empieza como un guerrero de verdad. Hemos preparado un Pack de Bienvenida exclusivo para que nada te detenga en tu camino al Reset. Entra a Mu Neutro, reclama tu kit y demuestra quién manda en el ranking.",
+      "backgroundImage": "/assets/images/home/wallpaper.jpg"
+    },
+    {
+      "id": "custom-2",
+      "enabled": true,
+      "icon": "fas fa-users",
+      "title": "Formamos Leyendas",
+      "desc": "En Mu Neutro no caminas solo. Únete a nuestra comunidad activa, participa en eventos diarios y cuenta con un soporte dispuesto a ayudarte en cada paso de tu evolución. Aquí, cada guerrero cuenta.",
+      "backgroundImage": "/assets/images/home/wallpaper.jpg"
+    },
+    {
+      "id": "custom-3",
+      "enabled": true,
+      "icon": "fas fa-shield-alt",
+      "title": "Tu Progreso está Seguro",
+      "desc": "Olvida los miedos al lag o las caídas. Contamos con una infraestructura de última generación diseñada para que tu única preocupación sea alcanzar el próximo Reset. Estabilidad real para jugadores reales.",
+      "backgroundImage": "/assets/images/home/wallpaper.jpg"
+    }
+  ],
+  "upcomingEvents": [
+    {
+      "id": 0,
+      "title": "[Boss] Rey Skeleton",
+      "type": "boss",
+      "description": "Invasión del Skeleton King",
+      "map": "Lorencia / Noria",
+      "times": ["00:05", "04:05", "08:05", "12:05", "16:05", "20:05"],
+      "days": []
+    },
+    {
+      "id": 1,
+      "title": "[Boss] Mago Blanco",
+      "type": "boss",
+      "description": "Invasión del Mago Blanco y sus Orcos",
+      "map": "Lorencia / Devias / Noria",
+      "times": ["00:50", "04:50", "08:50", "12:50", "16:50", "20:50"],
+      "days": []
+    },
+    {
+      "id": 2,
+      "title": "[Boss] Kundun Kalima",
+      "type": "boss",
+      "description": "El despertar de Kundun en Kalima 7",
+      "map": "Kalima 7",
+      "times": ["18:30"],
+      "days": []
+    },
+    {
+      "id": 3,
+      "title": "[Boss] Erohim",
+      "type": "boss",
+      "description": "Erohim aterroriza Kanturu",
+      "map": "Kanturu",
+      "times": ["18:30"],
+      "days": []
+    },
+    {
+      "id": 4,
+      "title": "[Invasion] Dragon Rojo",
+      "type": "inv",
+      "description": "Ataque del Dragón Rojo",
+      "map": "Lorencia / Devias / Noria",
+      "times": ["00:15", "04:15", "08:15", "12:15", "16:15", "20:15"],
+      "days": []
+    },
+    {
+      "id": 5,
+      "title": "[Invasion] Conejos",
+      "type": "inv",
+      "description": "Invasión de Conejos de Oro",
+      "map": "Múltiples Mapas",
+      "times": ["03:15", "11:15", "19:15", "21:15"],
+      "days": []
+    },
+    {
+      "id": 6,
+      "title": "[Invasion] Verano",
+      "type": "inv",
+      "description": "Evento especial de Verano",
+      "map": "Múltiples Mapas",
+      "times": ["02:25", "08:25", "14:25", "20:25"],
+      "days": []
+    },
+    {
+      "id": 7,
+      "title": "[Invasion] Medusa",
+      "type": "inv",
+      "description": "Medusa emerge del Pantano",
+      "map": "Swamp of Calmness",
+      "times": ["05:30", "09:30"],
+      "days": []
+    },
+    {
+      "id": 9,
+      "title": "[Invasion] Dorada",
+      "type": "inv",
+      "description": "Invasión de monstruos dorados",
+      "map": "Múltiples Mapas",
+      "times": ["00:25", "04:25", "08:25", "12:25", "16:25", "20:25"],
+      "days": []
+    },
+    {
+      "id": 101,
+      "title": "Blood Castle",
+      "type": "event",
+      "description": "Recuperar el arma del Arcángel",
+      "map": "Church / Devias",
+      "times": ["00:00", "02:00", "04:00", "06:00", "08:00", "10:00", "12:00", "14:00", "16:00", "18:00", "20:00", "22:00"],
+      "days": []
+    },
+    {
+      "id": 102,
+      "title": "Chaos Castle",
+      "type": "event",
+      "description": "El último sobreviviente",
+      "map": "Chaos Castle",
+      "times": ["01:00", "03:00", "05:00", "07:00", "09:00", "11:00", "13:00", "15:00", "17:00", "19:00", "21:00", "23:00"],
+      "days": []
+    },
+    {
+      "id": 103,
+      "title": "Devil Square",
+      "type": "event",
+      "description": "Sobrevivir a las hordas",
+      "map": "Devil Square",
+      "times": ["00:30", "04:30", "08:30", "12:30", "16:30", "20:30"],
+      "days": []
+    }
+  ]
+}

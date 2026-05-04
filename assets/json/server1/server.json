@@ -1,0 +1,161 @@
+{
+  "generalInformation": {
+    "version": "Season 6 Ep 3",
+    "style": "Reset | Remix | TEST SERVER 2",
+    "rrInfo": [
+      { "label": "Grand Resets", "value": "NO" },
+      { "label": "Keep Stats", "value": "YES" },
+      { "label": "Reset Level:", "value": "(400lvl 5RR) /(6+600lvl)" },
+      { "label": "Chaos Machine rate:", "value": "60/40 %" },
+      { "label": "Cost per Reset", "value": "(No cost first 5RR)(6RR+100m)" }
+    ],
+    "pctDetails": [
+      { "label": "Points per level", "value": "4/5 to DL/MG" },
+      { "label": "Max Stats", "value": "65000" }
+    ],
+    "srvMaxRates": [
+      { "label": "Max EDR", "value": "80%" },
+      { "label": "Max CRIT", "value": "90%" },
+      { "label": "Max Damage Decrease", "value": "75%" },
+      { "label": "Max Reflect Damage", "value": "85%" }
+    ],
+    "xpRates": [
+      { "label": "Normal XP", "value": "200x" },
+      { "label": "Drop Rate", "value": "20x" }
+    ],
+    "dropRate": "50%",
+    "zenRate": "15%",
+    "maxConnections": "5 PC / 5 IP",
+    "offlevel": "24h/48h (PVP) 6h/12h (NON PVP)",
+    "srvCurrency": "WCoins",
+    "evoCmdAvailable": "Yes"
+  },
+  "vipSystemBenefits": {
+    "tiers": [
+      {
+        "name": "Bonze",
+        "cost": "5$",
+        "duration": "10 Days",
+        "benefits": [
+          "Offlevel 10h",
+          "5% more EXP",
+          "Event limit increased",
+          "5% more Chaos Machine rate",
+          "5% more Jewel application rate"
+        ]
+      },
+      {
+        "name": "Plata",
+        "cost": "10$",
+        "duration": "15 Days",
+        "benefits": [
+          "Offlevel 12h",
+          "Reset Level: 380",
+          "10% more EXP",
+          "Event limit increased",
+          "10% more Chaos Machine rate",
+          "10% more Jewel application rate"
+        ]
+      },
+      {
+        "name": "Gold",
+        "cost": "15$",
+        "duration": "21 Days",
+        "benefits": [
+          "Offlevel 12h",
+          "Reset Level: 360",
+          "10% more EXP",
+          "Event limit increased",
+          "10% more Chaos Machine rate",
+          "10% more Jewel application rate"
+        ]
+      }
+    ]
+  },
+  "commands": [
+    {
+      "command": "/reset",
+      "description": "Your character will reset, requires level 400"
+    },
+    {
+      "command": "/clearinv",
+      "description": "Clears your inventory, keeps zen/wcash/wgold and equipped items."
+    },
+    {
+      "command": "/post [msg]",
+      "description": "Global Message"
+    },
+    {
+      "command": "/str [pts]",
+      "description": "Strength"
+    },
+    {
+      "command": "/agi [pts]",
+      "description": "Agility"
+    },
+    {
+      "command": "/vit [pts]",
+      "description": "Vitality"
+    },
+    {
+      "command": "/ene [pts]",
+      "description": "Energy"
+    },
+    {
+      "command": "/cmd [pts]",
+      "description": "Command"
+    },
+    {
+      "command": "/pkclear",
+      "description": "Clear PK"
+    },
+    {
+      "command": "/marry",
+      "description": "Marriage"
+    },
+    {
+      "command": "/accept",
+      "description": "Accept Wedding"
+    },
+    {
+      "command": "/divorce",
+      "description": "Divorce"
+    },
+    {
+      "command": "/trackmarry",
+      "description": "Track Partner"
+    },
+    {
+      "command": "/war [guild]",
+      "description": "Guild War"
+    },
+    {
+      "command": "/store",
+      "description": "Personal Store"
+    },
+    {
+      "command": "/offstore",
+      "description": "Offline Store"
+    },
+    {
+      "command": "/pack",
+      "description": "Pack Jewels"
+    },
+    {
+      "command": "/unpack",
+      "description": "Unpack Jewels"
+    },
+    {
+      "command": "/treereset",
+      "description": "Reset Skill Tree"
+    }
+  ],
+  "howToGetRuud": [],
+  "azuraTrader": {},
+  "socketInfo": {},
+  "mossSettings": {},
+  "donationJourney": {},
+  "masterLevelGuide": [],
+  "huntPointSystem": {},
+  "jewelsSettings": {}
+}

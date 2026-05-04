@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AnyLauncher &bull; Setup</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="install.css">
+</head>
+<body>
+    <div class="bg-effects" aria-hidden="true">
+        <div class="bg-orb bg-orb--1"></div>
+        <div class="bg-orb bg-orb--2"></div>
+        <div class="bg-orb bg-orb--3"></div>
+        <div class="bg-grid"></div>
+        <div class="bg-noise"></div>
+    </div>
+
+    <div class="installer-container">
+        <aside class="sidebar">
+            <div class="sidebar__header">
+                <i class="fas fa-rocket logo-icon"></i>
+                <div class="logo-text">
+                    <h2>AnyLauncher</h2>
+                    <span>Installer</span>
+                </div>
+            </div>
+            <nav class="step-nav">
+                <div class="nav-indicator"></div>
+                <ul>
+                    <li id="nav-step1" class="step-nav__item" data-step="1">
+                        <i class="fas fa-database step-icon"></i>
+                        <div class="step-label">
+                            <span class="step-title">Database & Servers</span>
+                            <span class="step-desc">Configure connections</span>
+                        </div>
+                    </li>
+                    <li id="nav-step2" class="step-nav__item" data-step="2">
+                        <i class="fas fa-cogs step-icon"></i>
+                        <div class="step-label">
+                            <span class="step-title">General Settings</span>
+                            <span class="step-desc">Application & APIs</span>
+                        </div>
+                    </li>
+                    <li id="nav-step3" class="step-nav__item" data-step="3">
+                        <i class="fas fa-user-shield step-icon"></i>
+                        <div class="step-label">
+                            <span class="step-title">Admin Account</span>
+                            <span class="step-desc">Create root user</span>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar__footer">
+                <p>&copy; 2026 AnyLauncher. All rights reserved.</p>
+            </div>
+        </aside>
+
+        <main class="content">
+            <div id="alertBox-container"></div>
+            <form id="setupForm" novalidate>
+                <section id="step1" class="step">
+                    <div class="content__top-bar">
+                        <header class="content-header">
+                            <div class="content-kicker">Setup Wizard</div>
+                            <h1>Database & Servers</h1>
+                            <p>Connect to SQL, add your game servers, then validate everything in one click.</p>
+                        </header>
+                        <div id="license-box-step1" class="license-box"></div>
+                    </div>
+                    <div class="card">
+                        <div class="card__header">
+                            <h5>SQL Connections</h5>
+                            <button type="button" id="addDbConnectionBtn" class="btn btn--secondary btn--sm"><i class="fas fa-plus"></i> Add Connection</button>
+                        </div>
+                        <div class="card__body">
+                            <p class="form-text">Create one or more SQL connection profiles. Each game server uses the profile with the same key (example: <strong>server1</strong> uses <strong>dbConfig.server1</strong>).</p>
+                            <div id="dbConnectionsContainer"></div>
+                            <hr class="separator">
+                            <div class="form-group form-check-group">
+                                <input type="checkbox" id="useSharedAccountDB" class="form-check-input">
+                                <label for="useSharedAccountDB">Use Shared Account DB for all servers</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card__header">
+                            <h5>Game Servers</h5>
+                            <button type="button" id="addServerBtn" class="btn btn--secondary btn--sm"><i class="fas fa-plus"></i> Add Server</button>
+                        </div>
+                        <div class="card__body" id="serversContainer"></div>
+                    </div>
+
+                    <div class="step-actions">
+                        <button type="button" id="testDbAndServersBtn" class="btn btn--primary">Test & Continue <i class="fas fa-arrow-right"></i></button>
+                    </div>
+                </section>
+
+                <section id="step2" class="step">
+                    <div class="content__top-bar">
+                        <header class="content-header">
+                            <div class="content-kicker">Almost there</div>
+                            <h1>General & API Settings</h1>
+                            <p>Configure the application port and optional integrations. You can change these later in configuration.</p>
+                        </header>
+                        <div id="license-box-step2" class="license-box"></div>
+                    </div>
+                    <div class="card">
+                        <div class="card__body">
+                            <h6>Application</h6>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label>Application Port</label>
+                                    <input type="number" id="app_port" class="form-control" value="2082" required>
+                                </div>
+                                <div class="form-group">
+                                    <label>Frontend URL</label>
+                                    <input type="text" id="frontend_url" class="form-control" placeholder="https://example.com" required>
+                                </div>
+                            </div>
+                            <hr class="separator">
+                            <h6>Email Configuration</h6>
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label>Email Provider</label>
+                                    <select id="email_provider" class="form-select"><option value="none">None</option><option value="sendgrid">SendGrid</option><option value="smtp">SMTP</option><option value="mailjet">Mailjet</option></select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Sender Email</label>
+                                    <input type="email" id="email_sender" class="form-control" placeholder="noreply@example.com">
+                                </div>
+                                <div class="form-group">
+                                    <label>Sender Name</label>
+                                    <input type="text" id="email_senderName" class="form-control" placeholder="Your Project">
+                                </div>
+                            </div>
+                            <div id="sendgrid-settings" class="provider-settings">
+                                <div class="form-group">
+                                    <label>SendGrid API Key</label>
+                                    <input type="text" id="sendgrid_apiKey" class="form-control" placeholder="SG.xxxxxxxx">
+                                </div>
+                            </div>
+                            <div id="smtp-settings" class="provider-settings">
+                                <div class="form-grid">
+                                    <div class="form-group"><label>SMTP Host</label><input type="text" id="smtp_host" class="form-control"></div>
+                                    <div class="form-group"><label>SMTP Port</label><input type="number" id="smtp_port" class="form-control" value="587"></div>
+                                    <div class="form-group"><label>SMTP User</label><input type="text" id="smtp_user" class="form-control"></div>
+                                    <div class="form-group"><label>SMTP Password</label><input type="password" id="smtp_pass" class="form-control"></div>
+                                </div>
+                                <div class="form-group form-check-group"><input type="checkbox" id="smtp_secure" class="form-check-input"><label for="smtp_secure">Use SSL/TLS (Secure)</label></div>
+                            </div>
+                            <div id="mailjet-settings" class="provider-settings">
+                                <div class="form-grid">
+                                    <div class="form-group"><label>Mailjet Public Key</label><input type="text" id="mailjet_apiKeyPublic" class="form-control" placeholder="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"></div>
+                                    <div class="form-group"><label>Mailjet Private Key</label><input type="text" id="mailjet_apiKeyPrivate" class="form-control" placeholder="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"></div>
+                                </div>
+                            </div>
+                            <hr class="separator">
+                            <h6>Discord API</h6>
+                            <div class="form-grid">
+                                <div class="form-group"><label>Client ID</label><input type="text" id="discord_clientId" class="form-control"></div>
+                                <div class="form-group"><label>Client Secret</label><input type="text" id="discord_clientSecret" class="form-control"></div>
+                            </div>
+                            <div class="form-group"><label>Callback URL</label><input type="text" id="discord_callback" class="form-control" placeholder="http://yoursite.com/auth/discord/callback"></div>
+                        </div>
+                    </div>
+                    <div class="step-actions"><button type="button" id="confirmGeneralBtn" class="btn btn--primary">Save & Continue <i class="fas fa-arrow-right"></i></button></div>
+                </section>
+
+                <section id="step3" class="step">
+                    <div class="content__top-bar">
+                         <header class="content-header">
+                             <div class="content-kicker">Final step</div>
+                             <h1>Administrator Account</h1>
+                             <p>Create the first root administrator. This user will be inserted into <strong>Dash_AdminCP</strong> with level <strong>1</strong>.</p>
+                         </header>
+                         <div id="license-box-step3" class="license-box"></div>
+                    </div>
+                    <div class="card">
+                        <div class="card__body">
+                            <h6>Root User Details</h6>
+                            <div class="form-grid">
+                                <div class="form-group"><label>Admin Username</label><input type="text" id="admin_user" class="form-control" required></div>
+                                <div class="form-group"><label>Notes (Optional)</label><input type="text" id="admin_notes" class="form-control"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="step-actions"><button type="submit" class="btn btn--success"><i class="fas fa-check-circle"></i> Finish Installation</button></div>
+                </section>
+            </form>
+        </main>
+    </div>
+    <script src="install.js"></script>
+</body>
+</html>

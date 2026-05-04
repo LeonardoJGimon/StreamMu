@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mu Neutro - Goal Bar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @font-face {
+            font-family: 'Exocet';
+            src: url('../assets/images/font/ExocetImmortal-Medium.otf') format('opentype');
+            font-weight: 500;
+        }
+
+        @font-face {
+            font-family: 'Alegreya';
+            src: url('../assets/images/font/AlegreyaSans-Regular.otf') format('opentype');
+            font-weight: 400;
+        }
+
+        :root {
+            --crimson: #9d0a0e;
+            --crimson-bright: #ff1a1a;
+            --gold: #c0a375;
+            --stone-dark: #0f0a0a;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            background: transparent;
+            font-family: 'Alegreya', serif;
+            overflow: hidden;
+            width: 500px;
+        }
+
+        .goal-container {
+            position: relative;
+            background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
+            border: 2px solid #333;
+            padding: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9);
+            border-radius: 2px;
+        }
+
+        /* MARCO DE PIEDRA */
+        .goal-container::before {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border: 1px solid rgba(157, 10, 14, 0.5);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .goal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            padding: 0 5px;
+        }
+
+        .goal-title {
+            font-family: 'Exocet', serif;
+            font-size: 0.85rem;
+            color: var(--crimson);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-weight: 900;
+            filter: drop-shadow(0 0 5px rgba(157, 10, 14, 0.5));
+        }
+
+        .goal-count {
+            font-family: 'Exocet', serif;
+            font-size: 0.9rem;
+            color: #ffffff;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-shadow: 0 0 10px var(--crimson-bright);
+        }
+
+        /* BARRA DE PROGRESO "BLOOD" */
+        .progress-track {
+            height: 30px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid #444;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 0 10px #000;
+        }
+
+        .progress-fill {
+            height: 100%;
+            width: 75%;
+            background: linear-gradient(90deg, #4a0000, var(--crimson), var(--crimson-bright));
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.5);
+            position: relative;
+            transition: width 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        /* Efecto de burbujeo/líquido */
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.2),
+                transparent
+            );
+            animation: flow 3s infinite linear;
+        }
+
+        @keyframes flow {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(100%); }
+        }
+
+        /* Esquinas góticas */
+        .corner {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border: 3px solid var(--gold);
+            z-index: 10;
+        }
+        .tl { top: -6px; left: -6px; border-right: none; border-bottom: none; }
+        .br { bottom: -6px; right: -6px; border-left: none; border-top: none; }
+
+    </style>
+</head>
+<body>
+    <div class="goal-container">
+        <div class="corner tl"></div>
+        <div class="corner br"></div>
+        
+        <div class="goal-header">
+            <span class="goal-title">Legion Recruitment</span>
+            <span class="goal-count">75 / 100</span>
+        </div>
+
+        <div class="progress-track">
+            <div class="progress-fill" id="goal-progress"></div>
+        </div>
+    </div>
+
+    <script>
+        function setProgress(current, total) {
+            const percent = Math.min((current / total) * 100, 100);
+            document.getElementById('goal-progress').style.width = percent + '%';
+            document.querySelector('.goal-count').innerText = current + ' / ' + total;
+        }
+        
+        // Animación inicial demo
+        setTimeout(() => setProgress(82, 100), 1000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,334 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mu Neutro - Hall of Fame</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @font-face {
+            font-family: 'Exocet';
+            src: url('../assets/images/font/ExocetImmortal-Medium.otf') format('opentype');
+            font-weight: 500;
+        }
+
+        @font-face {
+            font-family: 'Alegreya';
+            src: url('../assets/images/font/AlegreyaSans-Regular.otf') format('opentype');
+            font-weight: 400;
+        }
+
+        :root {
+            --crimson: #9d0a0e;
+            --crimson-bright: #ff2e2e;
+            --gold: #c0a375;
+            --gold-bright: #ffd700;
+            --row-bg: rgba(15, 10, 10, 0.98);
+        }
+
+        body {
+            margin: 0;
+            padding: 15px;
+            background: transparent;
+            font-family: 'Alegreya', serif;
+            color: #ccc;
+            width: 100vw;
+            display: flex;
+            justify-content: flex-start;
+            overflow-x: hidden;
+        }
+
+        .outer-box {
+            position: relative;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(157, 10, 14, 0.4);
+            padding: 25px;
+            width: 100%;
+            max-width: 700px;
+            box-sizing: border-box;
+            box-shadow: 0 0 50px rgba(0,0,0,1);
+            backdrop-filter: blur(5px);
+        }
+
+        /* ORNAMENTOS GRANDES */
+        .outer-box::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            width: 50px;
+            height: 50px;
+            border-top: 5px solid var(--crimson-bright);
+            border-left: 5px solid var(--crimson-bright);
+            z-index: 2;
+            filter: drop-shadow(0 0 10px var(--crimson));
+        }
+
+        .outer-box::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            right: -6px;
+            width: 50px;
+            height: 50px;
+            border-bottom: 5px solid var(--crimson-bright);
+            border-right: 5px solid var(--crimson-bright);
+            z-index: 2;
+            filter: drop-shadow(0 0 10px var(--crimson));
+        }
+
+        .main-title {
+            font-family: 'Exocet', serif;
+            font-size: 1.3rem;
+            color: var(--gold);
+            letter-spacing: 6px;
+            margin-bottom: 25px;
+            text-align: left;
+            padding-left: 10px;
+            text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(192, 163, 117, 0.4);
+            border-left: 4px solid var(--crimson);
+        }
+
+        .header-row {
+            display: grid;
+            grid-template-columns: 80px 1fr 100px 80px 80px;
+            gap: 15px;
+            padding: 10px 15px;
+            font-family: 'Exocet', serif;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            color: #666;
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(157, 10, 14, 0.3);
+            margin-bottom: 10px;
+        }
+
+        .list-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .char-row {
+            display: grid;
+            grid-template-columns: 80px 1fr 100px 80px 80px;
+            gap: 15px;
+            align-items: center;
+            background: var(--row-bg);
+            padding: 12px 15px;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+            transition: transform 0.3s ease;
+        }
+
+        .char-row:hover {
+            transform: translateX(5px);
+            background: rgba(25, 15, 15, 0.98);
+        }
+
+        /* ORNAMENTOS DE FILA */
+        .char-row::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--crimson);
+            opacity: 0.5;
+        }
+
+        .avatar-container {
+            position: relative;
+            width: 60px;
+            height: 60px;
+            justify-self: center;
+        }
+
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 4px;
+            object-fit: cover;
+            border: 1px solid #222;
+            background: #000;
+        }
+
+        .rank-number {
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            width: 24px;
+            height: 24px;
+            background: #000;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            font-family: 'Exocet', serif;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 5;
+            box-shadow: 0 2px 4px #000;
+        }
+
+        .char-name {
+            font-family: 'Exocet', serif;
+            font-size: 1.4rem;
+            color: #ffffff;
+            letter-spacing: 1px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            text-shadow: 0 2px 10px rgba(0,0,0,1);
+        }
+
+        .medal-box {
+            text-align: center;
+            font-size: 1.8rem;
+        }
+
+        .val-box {
+            font-family: 'Exocet', serif;
+            font-size: 1.2rem;
+            text-align: center;
+            color: var(--gold);
+            text-shadow: 0 0 10px rgba(192, 163, 117, 0.3);
+        }
+
+        .val-box.lvl { color: #eee; }
+
+        .medal-1 { color: var(--gold-bright); filter: drop-shadow(0 0 10px rgba(255,215,0,0.6)); }
+        .medal-2 { color: #e0e0e0; filter: drop-shadow(0 0 8px rgba(255,255,255,0.3)); }
+        .medal-3 { color: #cd7f32; filter: drop-shadow(0 0 8px rgba(205,127,50,0.3)); }
+
+        .footer {
+            margin-top: 25px;
+            padding: 10px;
+            text-align: right;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .footer-tag {
+            font-family: 'Exocet', serif;
+            font-size: 0.7rem;
+            color: #444;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        @keyframes rowIn {
+            from { opacity: 0; transform: translateX(-20px); filter: blur(10px); }
+            to { opacity: 1; transform: translateX(0); filter: blur(0); }
+        }
+
+        @media (max-width: 600px) {
+            .outer-box { max-width: 100%; padding: 15px; }
+            .header-row, .char-row {
+                grid-template-columns: 70px 1fr 60px 60px;
+                gap: 10px;
+            }
+            .medal-box, .header-row div:nth-child(3) { display: none; }
+            .char-name { font-size: 1.1rem; }
+            .val-box { font-size: 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="outer-box">
+        <h1 class="main-title">HALL OF FAME</h1>
+        
+        <div class="container">
+            <div class="header-row">
+                <div style="text-align: center;">HERO</div>
+                <div>NAME</div>
+                <div style="text-align: center;">RANK</div>
+                <div style="text-align: center;">LVL</div>
+                <div style="text-align: center;">RR</div>
+            </div>
+
+            <div id="list" class="list-wrapper">
+                <!-- Data -->
+            </div>
+
+            <div class="footer">
+                <span class="footer-tag">Mu Neutro Season 6</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const charImages = {
+            0: 'DW.png', 1: 'SM.png', 2: 'GM.png', 3: 'SW.png',
+            16: 'DK.png', 17: 'BK.png', 18: 'BM.png', 19: 'DRK.png',
+            32: 'ELF.png', 33: 'ME.png', 34: 'HE.png', 35: 'NE.png',
+            48: 'MG.png', 50: 'DM.png', 54: 'MK.png',
+            64: 'DL.png', 66: 'LE.png', 70: 'EL.png',
+            80: 'SUM.png', 81: 'BS.png', 82: 'DSM.png', 83: 'DSK.png',
+            96: 'RF.png', 98: 'FM.png', 102: 'FB.png'
+        };
+
+        let lastDataString = '';
+
+        async function update() {
+            try {
+                // Intentar primero la API (Vercel/Nube) y si falla usar el JSON local
+                let res = await fetch('/api/stats').catch(() => null);
+                if (!res || !res.ok) {
+                    res = await fetch('../latest-stats.json?t=' + Date.now());
+                }
+
+                if (!res.ok) throw new Error('Network response was not ok');
+                const data = await res.json();
+                const chars = data.topStrengthCharacters || [];
+                
+                if (chars.length === 0) return;
+                
+                const currentDataString = JSON.stringify(chars);
+                if (currentDataString === lastDataString) return;
+
+                let newHtml = '';
+                chars.slice(0, 5).forEach((c, i) => {
+                    const imgName = charImages[c.classId] || 'DW.png';
+                    const imgPath = `../assets/images/characters/${imgName}`;
+
+                    let medalHtml = '';
+                    if (i === 0) medalHtml = '<i class="fas fa-medal medal-1"></i>';
+                    else if (i === 1) medalHtml = '<i class="fas fa-medal medal-2"></i>';
+                    else if (i === 2) medalHtml = '<i class="fas fa-medal medal-3"></i>';
+
+                    const level = c.level !== undefined ? c.level : (c.cLevel || 0);
+                    const resets = c.resets !== undefined ? c.resets : (c.ResetCount || 0);
+
+                    // Solo animamos si es la primera carga (lastDataString está vacío)
+                    const animationStyle = lastDataString === '' ? `animation: rowIn 0.8s ease-out forwards ${i * 0.1}s` : 'opacity: 1; transform: none; filter: none;';
+
+                    newHtml += `
+                        <div class="char-row" style="${animationStyle}">
+                            <div class="avatar-container">
+                                <img src="${imgPath}" class="avatar-img" onerror="this.src='../assets/images/characters/DW.png'">
+                                <div class="rank-number">${i + 1}</div>
+                            </div>
+                            <div class="char-name">${c.name}</div>
+                            <div class="medal-box">${medalHtml}</div>
+                            <div class="val-box lvl">${level}</div>
+                            <div class="val-box">${resets}</div>
+                        </div>
+                    `;
+                });
+
+                document.getElementById('list').innerHTML = newHtml;
+                lastDataString = currentDataString;
+            } catch (e) {
+                console.error("Fetch error:", e);
+            }
+        }
+
+        setInterval(update, 30000);
+        update();
+    </script>
+</body>
+</html>

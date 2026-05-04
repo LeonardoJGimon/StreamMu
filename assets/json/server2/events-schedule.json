@@ -1,0 +1,30 @@
+{
+  "serverType": "server1",
+  "path": "events-schedule.json (354b)",
+  "content": {
+    "timezone": "GMT+1",
+    "events": {
+      "ice_wind_castle": {
+           "schedule": [
+          {"day": 2, "time": "22:00"},
+          {"day": 4, "time": "15:00"},
+          {"day": 6, "time": "17:00"}
+        ],
+        "label": "ICE WIND CASTLE"
+      },
+      "arka_war": {
+        "label": "ARKA WAR",
+        "schedule": [
+          {"day": 1, "time": "13:00"},
+          {"day": 5, "time": "20:00"}
+        ]
+      },
+      "castle_siege": {
+        "schedule": [
+          {"day": 0, "time": "17:00"}
+        ],
+        "label": "CASTLE SIEGE"
+      }
+    }
+  }
+}

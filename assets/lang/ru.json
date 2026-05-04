@@ -1,0 +1,435 @@
+{
+    "featureCard": {
+        "custom1": {
+            "title": "Экипируйся для славы",
+            "desc": "Не начинай с нуля — начни как настоящий воин. Мы подготовили эксклюзивный Приветственный Пак, чтобы ничто не мешало тебе на пути к Ресету. Заходи в Mu Neutro, забирай свой набор и докажи, кто главный в рейтинге."
+        },
+        "custom2": {
+            "title": "Мы создаём легенды",
+            "desc": "В Mu Neutro ты не одинок. Присоединяйся к нашему активному сообществу, участвуй в ежедневных событиях и рассчитывай на поддержку на каждом шагу. Здесь важен каждый воин."
+        },
+        "custom3": {
+            "title": "Твой прогресс в безопасности",
+            "desc": "Забудь о страхе лагов и вылетов. У нас современная инфраструктура, чтобы твоя единственная забота была — дойти до следующего Ресета. Реальная стабильность для реальных игроков."
+        }
+    },
+    "brand":  {
+                  "logo":  "Mu Neutro"
+              },
+    "page":  {
+                 "index":  {
+                               "title":  "Mu Neutro - Hardcore Server"
+                           },
+                 "server_info":  {
+                                     "title":  "Информация о сервере - Mu Neutro"
+                                 },
+                 "terms":  {
+                               "title":  "Условия и политики - Mu Neutro"
+                           }
+             },
+    "nav":  {
+                "home":  "Главная",
+                "server_info":  "О сервере",
+                "rankings":  "Рейтинги",
+                "downloads":  "Загрузки",
+                "register":  "Регистрация",
+                "dashboard":  "Панель"
+            },
+    "footer":  {
+                   "copyright":  "\u0026copy; 2025 - 2026 Mu Neutro Server. Все права защищены.",
+                   "terms":  "Условия и политики",
+                   "follow_us":  "Подписывайтесь",
+                   "forged_by":  "FORGED BY \u003cspan class=\"footer-min__accent\"\u003eMu Neutro\u003c/span\u003e"
+               },
+    "common":  {
+                   "or":  "ИЛИ",
+                   "enabled":  "Включено",
+                   "yes":  "Да",
+                   "no":  "Нет",
+                   "no_data":  "Нет данных",
+                   "loading":  "ЗАГРУЗКА...",
+                   "not_set":  "Не задано"
+               },
+    "features":  {
+                     "anti_hack":  {
+                                       "title":  "Анти-чит",
+                                       "desc":  "Премиальная защита. Играйте без читеров."
+                                   },
+                     "play_to_win":  {
+                                         "title":  "Играй и побеждай",
+                                         "desc":  "Фармите VIP валюту прямо в игре. Экономика в ваших руках."
+                                     },
+                     "community":  {
+                                       "title":  "Сообщество",
+                                       "desc":  "Активные войны гильдий и ежедневные ивенты от GM."
+                                   }
+                 },
+    "team":  {
+                 "title":  "КОМАНДА",
+                 "subtitle":  "Люди, стоящие за проектом."
+             },
+    "hero":  {
+                 "description":  "Присоединяйтесь к самому стабильному серверу Mu Online.\nБез Pay-to-Win. Только стратегия, гринд и слава.",
+                 "start_adventure":  "НАЧАТЬ",
+                 "server_info":  "ИНФО СЕРВЕРА",
+                 "download_launcher":  "СКАЧАТЬ ЛАУНЧЕР"
+             },
+    "stats":  {
+                  "online":  "ONLINE",
+                  "status":  "СТАТУС",
+                  "season":  "СЕЗОН",
+                  "exp":  "EXP",
+                  "drop":  "DROP"
+              },
+    "home":  {
+                 "server_online":  "СЕРВЕР ОНЛАЙН",
+                 "status":  "СТАТУС",
+                 "hero_desc":  "Самый эпичный и сложный сервер MuOnline. Присоединяйтесь к нашему сообществу и сражайтесь за славу.",
+                 "register_now":  "РЕГИСТРАЦИЯ",
+                 "download_now":  "СКАЧАТЬ",
+                 "latest_news":  "ПОСЛЕДНИЕ НОВОСТИ",
+                 "latest_news_sub":  "Обновления, события и новые возможности мира.",
+                 "hall_of_fame":  "ЗАЛ СЛАВЫ",
+                 "story":  {
+                               "title":  "ЛЕТОПИСЬ",
+                               "desc":  "Узнайте историю нашего мира и путь, который объединил героев.",
+                               "cta":  "ЧИТАТЬ ИСТОРИЮ"
+                           },
+                 "cards":  {
+                               "read_more":  "ПОДРОБНЕЕ",
+                               "economy":  {
+                                               "tag":  "ЭКОНОМИКА",
+                                               "title":  "РЕАЛЬНАЯ ЭКОНОМИКА (RMT)",
+                                               "desc":  "Играйте, фармите и торгуйте в сбалансированной экономике для долгосрочного прогресса."
+                                           },
+                               "antihack":  {
+                                                "tag":  "БЕЗОПАСНОСТЬ",
+                                                "title":  "Anti-Hack",
+                                                "desc":  "Премиальная защита. Играйте, не беспокоясь о читерах."
+                                            }
+                           },
+                 "news":  {
+                              "read_more":  "ЧИТАТЬ"
+                          },
+                 "hof":  {
+                             "warrior":  "ВОИН",
+                             "mlvl":  "M.LVL",
+                             "view_ranking":  "ПОЛНЫЙ РЕЙТИНГ"
+                         }
+             },
+    "downloads":  {
+                      "title":  "ЗАГРУЗКИ",
+                      "central_prefix":  "CENTRAL DE",
+                      "central_word":  "DOWNLOADS",
+                      "subtitle":  "Скачайте полный клиент и начните играть.",
+                      "recommended":  "РЕКОМЕНДУЕТСЯ",
+                      "client_title":  "ПОЛНЫЙ КЛИЕНТ",
+                      "client_desc":  "Установите последнюю версию для лучшего опыта.",
+                      "download_direct":  "СКАЧАТЬ (НАПРЯМУЮ)",
+                      "requirements":  "ТРЕБОВАНИЯ",
+                      "minimum":  "МИНИМУМ",
+                      "req":  {
+                                  "minimum_head":  "МИНИМУМ (Launcher)",
+                                  "recommended_head":  "РЕКОМЕНДУЕМОЕ (Launcher)",
+                                  "os":  "OS",
+                                  "cpu":  "CPU",
+                                  "ram":  "RAM",
+                                  "gpu":  "GPU",
+                                  "disk":  "ДИСК",
+                                  "os_min":  "Windows 10/11 (64-bit)",
+                                  "cpu_min":  "Intel i3",
+                                  "ram_min":  "4 GB",
+                                  "gpu_min":  "Интегрированная (Intel HD/UHD) или базовая дискретная",
+                                  "disk_min":  "0.5–1 GB свободно",
+                                  "os_rec":  "Windows 10/11 (64-bit)",
+                                  "cpu_rec":  "Intel i5",
+                                  "ram_rec":  "8 GB",
+                                  "gpu_rec":  "Любая",
+                                  "disk_rec":  "1–2 GB свободно",
+                                  "dependency_title":  "Важная зависимость",
+                                  "dependency_text":  "Microsoft Visual C++ Redistributable 2015–2022 (x64)"
+                              },
+                      "size":  "РАЗМЕР",
+                      "updated":  "ОБНОВЛЕНО",
+                      "version":  "ВЕРСИЯ",
+                      "release":  "РЕЛИЗ"
+                  },
+    "news":  {
+                 "close":  "ЗАКРЫТЬ НОВОСТЬ"
+             },
+    "days":  {
+                 "sunday":  "ВОСКРЕСЕНЬЕ",
+                 "monday":  "ПОНЕДЕЛЬНИК",
+                 "tuesday":  "ВТОРНИК",
+                 "wednesday":  "СРЕДА",
+                 "thursday":  "ЧЕТВЕРГ",
+                 "friday":  "ПЯТНИЦА",
+                 "saturday":  "СУББОТА"
+             },
+    "server":  {
+                   "enter_world":  "ВОЙТИ В МИР",
+                   "coming_soon":  "СКОРО",
+                   "live_now":  "СЕРВЕР УЖЕ ОНЛАЙН!",
+                   "no_servers":  "Нет серверов",
+                   "status":  {
+                                  "online":  "Онлайн",
+                                  "grand_opening":  "Grand Opening"
+                              }
+               },
+    "pagination":  {
+                       "prev":  "Назад",
+                       "next":  "Вперед"
+                   },
+    "time":  {
+                 "days":  "Дни",
+                 "hrs":  "Часы",
+                 "min":  "Мин",
+                 "sec":  "Сек"
+             },
+    "events":  {
+                   "active_events":  "АКТИВНЫЕ ИВЕНТЫ",
+                   "next_in":  "СЛЕДУЮЩЕЕ ЧЕРЕЗ",
+                   "next_events":  "ПРЕДСТОЯЩИЕ СОБЫТИЯ",
+                   "upcoming":  "РАСПИСАНИЕ СОБЫТИЙ",
+                   "upcoming_desc":  "Присоединяйтесь к действию! Проверьте предстоящие события на сервере.",
+                   "active":  "АКТИВНО",
+                   "live_event":  "ИВЕНТ В ПРЯМОМ ЭФИРЕ",
+                   "pvp_event":  "PVP ИВЕНТ",
+                   "exp_boost":  "БОНУС EXP",
+                   "slides":  {
+                                  "ice_wind_castle":  {
+                                                          "title":  "ICE WIND CASTLE",
+                                                          "subtitle":  "ЛЕДЯНАЯ КРЕПОСТЬ",
+                                                          "desc":  "Пройдите испытания замка льда и его беспощадных стражей.\nТолько сильнейшие гильдии выдержат вечную метель."
+                                                      },
+                                  "castle_siege":  {
+                                                       "title":  "CASTLE SIEGE",
+                                                       "subtitle":  "CASTLE SIEGE",
+                                                       "desc":  "Захватите замок и добудьте славу до конца битвы.\nСражайтесь за трон и ведите гильдию к победе."
+                                                   },
+                                  "arka_war":  {
+                                                   "title":  "ARKA WAR",
+                                                   "subtitle":  "ARKA WAR",
+                                                   "desc":  "Сражайтесь на величайшей арене и получайте мощные награды.\nВойна стратегии, командной игры и доминирования."
+                                               }
+                              }
+               },
+    "playtime":  {
+                     "title":  "НАГРАДА \u003cspan class=\"title-gold\"\u003eЗА ОНЛАЙН\u003c/span\u003e",
+                     "subtitle":  "Оставайтесь онлайн в Mu Neutro и автоматически получайте мощные эксклюзивные предметы"
+                 },
+    "champions":  {
+                      "castle_siege":  "Castle Siege",
+                      "arka_war":  "Arka War",
+                      "throne_conquest":  "Throne Conquest",
+                      "gm":  "GM:"
+                  },
+    "auth":  {
+                 "login":  "Войти",
+                 "register":  "Регистрация",
+                 "logout":  "Выйти",
+                 "user":  "Пользователь",
+                 "need_account":  "Нужен аккаунт?",
+                 "have_account":  "Уже есть аккаунт?",
+                 "human_verification":  "ПРОВЕРКА ЧЕЛОВЕКА",
+                 "enter_code":  "ВВЕДИТЕ КОД",
+                 "finish_register":  "ЗАВЕРШИТЬ РЕГИСТРАЦИЮ",
+                 "secure":  "HTTPS ЗАЩИЩЕНО",
+                 "encrypted":  "ДАННЫЕ ЗАШИФРОВАНЫ",
+                 "terms_notice":  "Регистрируясь, вы соглашаетесь с Условиями.",
+                 "invalid_code":  "Неверный код проверки",
+                 "username":  "ЛОГИН",
+                 "password":  "ПАРОЛЬ",
+                 "confirm_password":  "ПОВТОР ПАРОЛЯ",
+                 "email":  "E-MAIL",
+                 "country":  "СТРАНА",
+                 "referral_optional":  "РЕФЕРАЛ (ОПЦИОНАЛЬНО)",
+                 "username_placeholder":  "4-10 символов",
+                 "password_placeholder":  "4-10 символов",
+                 "confirm_password_placeholder":  "Повторите пароль",
+                 "email_placeholder":  "you@example.com",
+                 "referral_placeholder":  "Реферальный код"
+             },
+    "auth_modal":  {
+                       "login_title":  "С ВОЗВРАЩЕНИЕМ",
+                       "register_title":  "СОЗДАТЬ АККАУНТ",
+                       "login_discord":  "\u003ci class=\"fab fa-discord\"\u003e\u003c/i\u003e ВОЙТИ ЧЕРЕЗ DISCORD",
+                       "register_discord":  "\u003ci class=\"fab fa-discord\"\u003e\u003c/i\u003e РЕГИСТРАЦИЯ ЧЕРЕЗ DISCORD",
+                       "new_here":  "Впервые здесь?",
+                       "create_account":  "СОЗДАТЬ АККАУНТ",
+                       "have_account":  "Уже есть аккаунт?",
+                       "back_to_login":  "НАЗАД К ВХОДУ"
+                   },
+    "ranking":  {
+                    "title":  "РЕЙТИНГ",
+                    "subtitle":  "Самые сильные воины и гильдии на сервере.",
+                    "event_winners":  "ПОБЕДИТЕЛИ СОБЫТИЙ",
+                    "top_players":  "ТОП ИГРОКИ",
+                    "tabs":  {
+                                 "character":  "Персонажи",
+                                 "pvp":  "PVP",
+                                 "hunt":  "Охота",
+                                 "gens":  "Gens",
+                                 "guilds":  "Гильдии"
+                             },
+                    "locked":  "РЕЙТИНГИ СТАНУТ ДОСТУПНЫ ПОСЛЕ \u003cspan class=\"ranking-locked-accent\"\u003eОФИЦИАЛЬНОГО ЗАПУСКА\u003c/span\u003e ИГРЫ."
+                },
+    "faq":  {
+                "title":  "ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ",
+                "subtitle":  "Всё, что вам нужно знать о Mu Neutro.",
+                "q1":  "Я создал аккаунт на сайте, но игра пишет \"Invalid Account\".",
+                "a1":  "Веб-аккаунт используется только для сайта и управления аккаунтом. Создайте суб-аккаунт в панели, чтобы войти в игру.",
+                "q2":  "Можно ли открыть больше одного клиента игры?",
+                "a2":  "Да, вы можете входить в несколько аккаунтов одновременно, в пределах лимита на один компьютер.",
+                "q3":  "Сервер бесплатный?",
+                "a3":  "Да, сервер бесплатный. Магазин предлагает только необязательные удобства.",
+                "q4":  "Как получить бонусы или награды?",
+                "a4":  "Присоединяйтесь к сообществу, участвуйте в событиях и следите за нашими соцсетями для розыгрышей.",
+                "q5":  "Можно ли выполнять веб-квесты на нескольких аккаунтах?",
+                "a5":  "Да. Вы можете создать несколько аккаунтов и выполнять квесты на каждом, чтобы получать награды."
+            },
+    "server_info":  {
+                        "title":  "Информация о сервере",
+                        "subtitle":  "Рейты, функции, правила и всё, что нужно перед стартом.",
+                        "rates":  "Рейты",
+                        "exp":  "EXP",
+                        "drop":  "Дроп",
+                        "max_level":  "Макс. уровень",
+                        "master_level":  "Мастер уровень",
+                        "details":  "Детали сервера",
+                        "season":  "Season",
+                        "type":  "Тип",
+                        "reset":  "Reset",
+                        "anti_cheat":  "Анти-чит",
+                        "economy":  "Экономика",
+                        "wcoins":  "WCoins",
+                        "wcoins_desc":  "В игре и в магазине",
+                        "goblin_points":  "Goblin Points",
+                        "goblin_points_desc":  "Ивенты и голосование",
+                        "trading":  "Торговля",
+                        "market":  "Маркет",
+                        "quick_rules":  "Короткие правила",
+                        "rule1":  "Запрещены читы, боты и сторонние программы.",
+                        "rule2":  "Запрещена торговля за реальные деньги между игроками.",
+                        "rule3":  "Уважайте игроков и администрацию.",
+                        "rule4":  "Абьюз и эксплойты приводят к бану.",
+                        "back_home":  "Назад"
+                    },
+    "dashboard":  {
+                      "overview":  "Обзор",
+                      "vote_reward":  "Награда за голосование",
+                      "streamers":  "Стримеры",
+                      "welcome":  "С возвращением, воин!",
+                      "server_time":  "Время сервера:",
+                      "server":  "Сервер:",
+                      "account":  "Аккаунт",
+                      "country":  "Страна:",
+                      "twofa":  "2FA:",
+                      "details":  {
+                                      "server_type":  "Тип сервера",
+                                      "admin":  "Админ",
+                                      "discord":  "Discord",
+                                      "discord_id":  "Discord ID",
+                                      "vip_level":  "Уровень VIP",
+                                      "vip_expiration":  "Окончание VIP",
+                                      "title_discount":  "Скидка на титул",
+                                      "pc_points":  "PC Points",
+                                      "cash_updated":  "Cash обновлён"
+                                  },
+                      "wcoins":  "WCoins",
+                      "goblin_points":  "Goblin Points",
+                      "cash":  "Cash",
+                      "key_points":  "Key Points",
+                      "account_type":  "Тип аккаунта",
+                      "vip_reward":  {
+                                         "title":  "VIP награда",
+                                         "button":  "Получить VIP",
+                                         "loading":  "Загрузка награды...",
+                                         "details":  "Вы получите VIP {vip} на {days} дн.(-я).",
+                                         "hwid_required":  " Требуется HWID.",
+                                         "hwid_required_short":  "Требуется HWID.",
+                                         "not_configured":  "VIP награда не настроена.",
+                                         "grand_opening_blocked":  "Недоступно во время Grand Opening."
+                                     }
+                  },
+    "streamers":  {
+                      "loading_status":  "Загрузка статуса...",
+                      "become_streamer":  "Станьте стримером",
+                      "apply_desc":  "Подайте заявку на статус официального стримера, привязав каналы.",
+                      "youtube_channel_id_optional":  "YouTube Channel ID (опционально)",
+                      "twitch_username_optional":  "Twitch Username (опционально)",
+                      "kick_username_optional":  "Kick Username (опционально)",
+                      "request_approval":  "Запросить одобрение",
+                      "application_pending":  "Заявка на рассмотрении",
+                      "application_pending_desc":  "Ваша заявка рассматривается нашей командой.",
+                      "stream_control":  "Управление стримом",
+                      "select_platform":  "Выберите платформу и начните отслеживание.",
+                      "start_tracking":  "Начать отслеживание",
+                      "current_status":  "Текущий статус:",
+                      "live":  "В ЭФИРЕ",
+                      "on":  "на",
+                      "stop_tracking":  "Остановить отслеживание",
+                      "rewards":  "Награды",
+                      "total_minutes":  "Всего минут",
+                      "claimable":  "Доступно",
+                      "live_label":  "Эфир:",
+                      "claim_wcoins":  "Забрать WCoins",
+                      "channels":  "Каналы"
+                  },
+    "affiliate":  {
+                      "program":  "Партнёрская программа",
+                      "you_earn":  "Вы получаете",
+                      "viewer_gets":  "Зритель получает",
+                      "your_code":  "ВАШ ПАРТНЁРСКИЙ КОД"
+                  },
+    "wallet":  {
+                   "title":  "Кошелёк и выплаты",
+                   "available":  "Доступно",
+                   "pending":  "В ожидании",
+                   "total_earned":  "Всего заработано",
+                   "request_payout":  "Запросить выплату",
+                   "recent_history":  "Недавняя история",
+                   "date":  "Дата",
+                   "amount":  "Сумма",
+                   "status":  "Статус",
+                   "no_history":  "Нет истории.",
+                   "method":  "Метод",
+                   "amount_usd":  "Сумма (USD)",
+                   "min_25":  "Мин $25",
+                   "revolut_tag":  "Revolut Tag",
+                   "revtag_placeholder":  "@username",
+                   "bank_name":  "Название банка",
+                   "bank_name_placeholder":  "Название банка",
+                   "account_holder_name":  "Имя владельца",
+                   "full_name_placeholder":  "Полное имя",
+                   "iban":  "IBAN",
+                   "swift":  "SWIFT / BIC",
+                   "bank_country":  "Страна банка",
+                   "country_placeholder":  "Страна",
+                   "currency":  "Валюта",
+                   "submit_withdrawal":  "Отправить вывод"
+               },
+    "vip_journey":  {
+                  "title":  "КАК ПОЛУЧИТЬ VIP",
+                  "step1_title":  "СКАЧАЙТЕ ЛАУНЧЕР",
+                  "step1_desc":  "Получите официальный лаунчер из нашего раздела загрузок.",
+                  "step2_title":  "ОТКРОЙТЕ И ВОЙДИТЕ",
+                  "step2_desc":  "Создайте аккаунт на сайте или прямо из лаунчера.",
+                  "step3_title":  "ДОНАТ",
+                  "step3_desc":  "Зайдите в лаунчер и выберите Донаты в боковой панели.",
+                  "step4_title":  "ПОКУПКА",
+                  "step4_desc":  "Выберите пакет, завершите оплату и готово!"
+              },
+    "promo":  {
+                  "title":  "Промо-коды",
+                  "desc":  "Генерируйте ежедневные коды для ваших зрителей.",
+                  "generate":  "Сгенерировать коды"
+              },
+    "terms":  {
+                  "title":  "Условия и политики",
+                  "subtitle":  "Правила сервера, партнёрская политика, условия, возвраты и приватность.",
+                  "menu":  "Меню",
+                  "no_sections":  "Нет разделов.",
+                  "load_failed":  "Не удалось загрузить условия."
+              }
+}

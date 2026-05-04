@@ -1,0 +1,68 @@
+.server-info-main { padding-top: 90px; }
+
+.page-hero { padding: 60px 0 30px; }
+.page-title { font-family: var(--font-head); font-size: 3rem; text-align: center; text-shadow: 0 0 26px rgba(255, 122, 24, 0.22); }
+.page-subtitle { text-align: center; color: var(--color-text-muted); margin-top: 10px; }
+
+.info-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; padding: 30px 20px 0; }
+.info-card { background: rgba(0,0,0,0.50); border: 1px solid rgba(255,255,255,0.10); border-radius: 18px; padding: 22px; backdrop-filter: blur(14px); box-shadow: 0 18px 55px rgba(0,0,0,0.55); }
+.info-card h2 { font-family: var(--font-head); font-size: 1.2rem; margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+.info-card h2 i { color: var(--color-accent); }
+.full-row {grid-column: 1 / -1;}
+
+.kv { display: grid; gap: 10px; width: 100%; }
+.kv-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; border-radius: 14px; background: rgba(0,0,0,0.28); border: 1px solid rgba(255,255,255,0.08); width: 100%; }
+.kv-row span { color: var(--color-text-muted); font-size: 0.9rem; }
+.kv-row strong { color: #fff; }
+
+.rules { list-style: none; padding-left: 0; display: grid; gap: 10px; }
+.rules li { padding: 10px 12px; border-radius: 14px; background: rgba(0,0,0,0.28); border: 1px solid rgba(255,255,255,0.08); }
+
+.cta-row { display: flex; justify-content: center; gap: 15px; padding: 40px 20px 70px; }
+
+@media (min-width: 1920px) {
+  .page-title { font-size: 3.4rem; }
+  .page-subtitle { font-size: 1.05rem; }
+  .info-grid {
+    max-width: 1480px;
+    margin: 0 auto;
+    padding-left: 0;
+    padding-right: 0;
+    gap: 24px;
+  }
+  .cta-row { padding-left: 0; padding-right: 0; }
+}
+
+@media (min-width: 2560px) {
+  .page-title { font-size: 3.7rem; }
+  .page-subtitle { font-size: 1.1rem; max-width: 1100px; margin-left: auto; margin-right: auto; }
+  .info-grid {
+    max-width: 1720px;
+    gap: 28px;
+  }
+}
+
+@media (min-width: 3440px) {
+  .page-title { font-size: 3.95rem; }
+  .page-subtitle { font-size: 1.15rem; max-width: 1260px; }
+  .info-grid {
+    max-width: 2000px;
+    gap: 32px;
+  }
+}
+
+@media (min-width: 3840px) {
+  .page-title { font-size: 4.2rem; }
+  .page-subtitle { font-size: 1.2rem; max-width: 1400px; }
+  .info-grid {
+    max-width: 2200px;
+    gap: 36px;
+  }
+}
+
+@media (max-width: 900px) {
+  .info-grid { grid-template-columns: 1fr; }
+  .page-title { font-size: 2.2rem; }
+  .cta-row { flex-direction: column; align-items: center; }
+  .cta-row .btn { width: 100%; max-width: 420px; text-align: center; }
+}

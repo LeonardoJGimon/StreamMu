@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Server Info - Mu Neutro</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/server-info.css">
+    <!-- Modern UI Enhancements -->
+    <link rel="stylesheet" href="/assets/css/glassmorphism.css">
+    <link rel="stylesheet" href="/assets/css/animations.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Google Fonts -->
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Security & Performance -->
+    <script defer disable-devtool-auto src="assets/js/js.js" type="text/javascript"></script>
+</head>
+<body class="page-server-info">
+
+    <div id="notification-area"></div>
+
+    <div id="header-placeholder"></div>
+
+    <main class="server-info-main">
+        <section class="page-hero">
+            <div class="container">
+                <h1 class="page-title" data-i18n="server_info.title">Server Information</h1>
+                <p class="page-subtitle" data-i18n="server_info.subtitle">Rates, features, rules, and everything you need before you start.</p>
+            </div>
+        </section>
+
+        <section class="container info-grid">
+            <div class="info-card">
+                <h2><i class="fas fa-hat-wizard"></i> <span>Classes</span></h2>
+                <p style="color: var(--color-text-muted); margin: 0 0 14px;">Class builds, strengths/weaknesses, and autostat commands.</p>
+                <a class="btn btn-gold" href="/info/server-classes">Open Classes</a>
+            </div>
+
+            <div class="info-card">
+                <h2><i class="fas fa-list-check"></i> <span>Full Server Info</span></h2>
+                <p style="color: var(--color-text-muted); margin: 0 0 14px;">All rates, systems, and features in one place.</p>
+                <a class="btn btn-gold" href="/info/server-details">Open Details</a>
+            </div>
+
+            <div class="info-card">
+                <h2><i class="fas fa-calendar-days"></i> <span>Events</span></h2>
+                <p style="color: var(--color-text-muted); margin: 0 0 14px;">Farm events, PvP events, invasions, bosses and reset rewards.</p>
+                <a class="btn btn-gold" href="/info/server-events">Open Events</a>
+            </div>
+<!-- 
+            <div class="info-card">
+                <h2><i class="fas fa-id-card"></i> <span>Chaos Cards</span></h2>
+                <p style="color: var(--color-text-muted); margin: 0 0 14px;">Possible rewards from Chaos Cards (Mini/Gold/Rare).</p>
+                <a class="btn btn-gold" href="/info/server-chaos-cards">Open Chaos Cards</a>
+            </div>
+
+            <div class="info-card">
+                <h2><i class="fas fa-store"></i> <span>Moss Special</span></h2>
+                <p style="color: var(--color-text-muted); margin: 0 0 14px;">Special rewards from Moss.</p>
+                <a class="btn btn-gold" href="/info/server-moss-special">Open Moss Special</a>
+            </div>
+
+            <div class="info-card">
+                <h2><i class="fas fa-coins"></i> <span>Delgado Lucky Coin</span></h2>
+                <p style="color: var(--color-text-muted); margin: 0 0 14px;">Rewards from Delgado Lucky Coin.</p>
+                <a class="btn btn-gold" href="/info/server-delgado-lucky-coins">Open Lucky Coin</a>
+            </div>
+
+            <div class="info-card">
+                <h2><i class="fas fa-dragon"></i> <span>Bosses Rewards</span></h2>
+                <p style="color: var(--color-text-muted); margin: 0 0 14px;">Possible rewards from bosses.</p>
+                <a class="btn btn-gold" href="/info/boss-rewards">Open Bosses Rewards</a>
+            </div> -->
+
+            <div class="info-card">
+                <h2><i class="fas fa-bolt"></i> <span>Invasion Rewards</span></h2>
+                <p style="color: var(--color-text-muted); margin: 0 0 14px;">Possible rewards from invasions.</p>
+                <a class="btn btn-gold" href="/info/invasion-rewards">Open Invasion Rewards</a>
+            </div>
+            <div class="info-card full-row">
+                <h2><i class="fas fa-scroll"></i> <span data-i18n="server_info.quick_rules">Quick Rules</span></h2>
+                <ul class="rules">
+                    <li data-i18n="server_info.rule1">No cheats, bots, or third-party tools.</li>
+                    <li data-i18n="server_info.rule2">No real-money trading between players.</li>
+                    <li data-i18n="server_info.rule3">Respect other players and staff.</li>
+                    <li data-i18n="server_info.rule4">Abuse and exploits lead to bans.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="container cta-row">
+            <a class="btn btn-transparent" href="/#servers" data-i18n="server_info.back_home">Back to Home</a>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script defer src="/assets/js/constants.js"></script>
+    <script defer src="/assets/js/countries.js"></script>
+    <script defer src="/assets/js/layout.js"></script>
+    <script defer src="/assets/js/main.js"></script>
+</body>
+</html>

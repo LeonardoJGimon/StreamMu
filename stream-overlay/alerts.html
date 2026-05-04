@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mu Neutro - Alerts</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @font-face {
+            font-family: 'Exocet';
+            src: url('../assets/images/font/ExocetImmortal-Medium.otf') format('opentype');
+            font-weight: 500;
+        }
+
+        @font-face {
+            font-family: 'Alegreya';
+            src: url('../assets/images/font/AlegreyaSans-Regular.otf') format('opentype');
+            font-weight: 400;
+        }
+
+        :root {
+            --crimson: #9d0a0e;
+            --crimson-glow: #ff0000;
+            --gold: #c0a375;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: transparent;
+            font-family: 'Alegreya', serif;
+            overflow: hidden;
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .alert-container {
+            display: none; /* Se activa por JS */
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            animation: alertPopup 5s ease-in-out forwards;
+        }
+
+        .alert-image {
+            width: 150px;
+            height: 150px;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 15px var(--crimson-glow));
+            animation: pulse 2s infinite;
+        }
+
+        .alert-title {
+            font-family: 'Exocet', serif;
+            font-size: 1.5rem;
+            color: var(--crimson);
+            letter-spacing: 5px;
+            text-shadow: 0 0 10px rgba(0,0,0,1);
+            margin-bottom: 5px;
+        }
+
+        .alert-name {
+            font-size: 2.5rem;
+            color: #ffffff;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 20px var(--crimson-glow), 0 5px 10px rgba(0,0,0,1);
+        }
+
+        .alert-subtext {
+            font-size: 1.1rem;
+            color: var(--gold);
+            font-weight: 700;
+            margin-top: 10px;
+            letter-spacing: 1px;
+        }
+
+        @keyframes alertPopup {
+            0% { opacity: 0; transform: scale(0.5) translateY(50px); }
+            10% { opacity: 1; transform: scale(1.1) translateY(0); }
+            15% { transform: scale(1); }
+            85% { opacity: 1; transform: scale(1); }
+            100% { opacity: 0; transform: scale(0.8) translateY(-50px); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); filter: drop-shadow(0 0 10px var(--crimson-glow)); }
+            50% { transform: scale(1.05); filter: drop-shadow(0 0 25px var(--crimson-glow)); }
+            100% { transform: scale(1); filter: drop-shadow(0 0 10px var(--crimson-glow)); }
+        }
+    </style>
+</head>
+<body>
+    <!-- Ejemplo de alerta de seguidor -->
+    <div class="alert-container" id="alert-box">
+        <img src="/assets/images/logo/logosimple.png" class="alert-image" alt="Mu Logo">
+        <div class="alert-title" id="alert-title">NEW FOLLOWER</div>
+        <div class="alert-name" id="alert-name">PLAYER_NAME</div>
+        <div class="alert-subtext" id="alert-subtext">Welcome to Mu Neutro!</div>
+    </div>
+
+    <script>
+        function triggerAlert(type, name, message) {
+            const box = document.getElementById('alert-box');
+            document.getElementById('alert-title').innerText = type;
+            document.getElementById('alert-name').innerText = name;
+            document.getElementById('alert-subtext').innerText = message || '';
+            
+            box.style.display = 'flex';
+            
+            // Reiniciar animación
+            box.style.animation = 'none';
+            box.offsetHeight; /* trigger reflow */
+            box.style.animation = null;
+
+            setTimeout(() => {
+                box.style.display = 'none';
+            }, 5000);
+        }
+
+        // Demo para que lo veas al abrir
+        setTimeout(() => {
+            triggerAlert('NEW SUBSCRIBER', 'Leonardo_Dev', 'Joined the Legion!');
+        }, 1000);
+    </script>
+</body>
+</html>

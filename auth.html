@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="nav.register">Register</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Modern UI Enhancements -->
+    <link rel="stylesheet" href="assets/css/glassmorphism.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Work+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Security & Performance -->
+    <script disable-devtool-auto src="assets/js/js.js" type="text/javascript"></script>
+</head>
+<body class="page-auth page-auth--combined">
+
+    <div id="notification-area"></div>
+
+    <div id="header-placeholder"></div>
+
+    <main class="page-shell">
+        <section class="page-hero">
+            <div class="page-hero__inner container">
+                <a class="page-back" href="/" aria-label="Back"><i class="fas fa-chevron-left"></i></a>
+                <div class="page-hero__text" style="text-align: center;">
+                    <h1 class="page-hero__title" id="auth-page-title" data-i18n="auth_modal.register_title">CREATE ACCOUNT</h1>
+                </div>
+                <div class="page-hero__right"></div>
+            </div>
+        </section>
+
+        <section class="auth-page">
+            <div class="container">
+                <div class="auth-panel">
+                    <div class="auth-tabs">
+                        <a class="auth-tab" href="#login" id="auth-tab-login"><i class="fas fa-right-to-bracket"></i><span data-i18n="auth.login">LOGIN</span></a>
+                        <a class="auth-tab" href="#register" id="auth-tab-register"><i class="fas fa-user-plus"></i><span data-i18n="auth.register">REGISTER</span></a>
+                    </div>
+
+                    <div class="auth-grid" id="auth-grid">
+                        <div class="auth-left">
+                            <form id="loginForm" class="auth-single" hidden>
+                                <div class="input-group">
+                                    <label data-i18n="auth.username">USERNAME</label>
+                                    <div class="input-icon">
+                                        <i class="fas fa-user"></i>
+                                        <input id="login-username" type="text" required minlength="4" maxlength="10" data-i18n-placeholder="auth.username_placeholder" placeholder="4-10 characters">
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label data-i18n="auth.password">PASSWORD</label>
+                                    <div class="input-icon">
+                                        <i class="fas fa-lock"></i>
+                                        <input id="login-password" type="password" required minlength="4" maxlength="10" data-i18n-placeholder="auth.password_placeholder" placeholder="4-10 characters">
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn-ribbon">
+                                    <i class="fas fa-right-to-bracket"></i>
+                                    <span data-i18n="auth.login">LOGIN</span>
+                                </button>
+                                <div class="auth-links">
+                                    <a href="#register" data-i18n="auth.need_account">Need an account?</a>
+                                </div>
+                            </form>
+
+                            <form id="registerFormPage" class="auth-single" hidden>
+                                <div class="input-group">
+                                    <label data-i18n="auth.username">USERNAME</label>
+                                    <div class="input-icon">
+                                        <i class="fas fa-user"></i>
+                                        <input id="register-username" type="text" required minlength="4" maxlength="10" data-i18n-placeholder="auth.username_placeholder" placeholder="4-10 characters">
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label data-i18n="auth.email">EMAIL</label>
+                                    <div class="input-icon">
+                                        <i class="fas fa-envelope"></i>
+                                        <input id="register-email" type="email" required data-i18n-placeholder="auth.email_placeholder" placeholder="you@example.com">
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label data-i18n="auth.password">PASSWORD</label>
+                                    <div class="input-icon">
+                                        <i class="fas fa-lock"></i>
+                                        <input id="register-password" type="password" required minlength="4" maxlength="10" data-i18n-placeholder="auth.password_placeholder" placeholder="4-10 characters">
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label data-i18n="auth.confirm_password">CONFIRM PASSWORD</label>
+                                    <div class="input-icon">
+                                        <i class="fas fa-shield"></i>
+                                        <input id="register-confirm-password" type="password" required minlength="4" maxlength="10" data-i18n-placeholder="auth.confirm_password_placeholder" placeholder="Repeat password">
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label data-i18n="auth.referral_optional">REFERRAL (OPTIONAL)</label>
+                                    <div class="input-icon">
+                                        <i class="fas fa-ticket"></i>
+                                        <input id="register-referral" type="text" data-i18n-placeholder="auth.referral_placeholder" placeholder="Referral code">
+                                    </div>
+                                </div>
+                                <div class="input-group">
+                                    <label data-i18n="auth.country">COUNTRY</label>
+                                    <select id="register-country" required class="is-hidden" hidden></select>
+                                    <div id="register-country-dd" class="dd dd--modal" aria-label="Country">
+                                        <button id="register-country-dd-btn" class="dd-btn dd-btn--modal" type="button" aria-haspopup="listbox" aria-expanded="false">
+                                            <span id="register-country-dd-label" class="dd-label">Select...</span>
+                                            <span class="dd-chevron" aria-hidden="true"><i class="fas fa-chevron-down"></i></span>
+                                        </button>
+                                        <div id="register-country-dd-panel" class="dd-panel dd-panel--modal" role="listbox" tabindex="-1" hidden>
+                                            <div class="dd-search">
+                                                <i class="fas fa-search" aria-hidden="true"></i>
+                                                <input id="register-country-search" type="text" placeholder="Search..." autocomplete="off">
+                                            </div>
+                                            <div id="register-country-dd-list" class="dd-list"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+
+                        <div class="auth-right">
+                            <div class="human-verify">
+                                <div class="human-verify__head" data-i18n="auth.human_verification">HUMAN VERIFICATION <span class="human-verify__timer" id="auth-captcha-timer" style="color: rgba(255, 255, 255, 0.7); font-size: 0.65rem; margin-left: 8px;"></span></div>
+                                <div class="human-verify__code" aria-label="Captcha">
+                                    <span class="human-verify__value" id="auth-captcha-value">-</span>
+                                    <button class="human-verify__refresh" id="auth-captcha-refresh" type="button" aria-label="Refresh"><i class="fas fa-rotate"></i></button>
+                                </div>
+                                <div class="input-group">
+                                    <label data-i18n="auth.enter_code">ENTER THE CODE</label>
+                                    <input id="auth-captcha-input" type="text" placeholder="5 characters" autocomplete="off" maxlength="8" />
+                                </div>
+                                <button type="button" class="btn-ribbon" id="auth-right-submit">
+                                    <span data-i18n="auth.finish_register">FINISH REGISTER</span>
+                                </button>
+                                <div class="auth-links">
+                                    <a href="#login" data-i18n="auth.have_account">Already have an account?</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <div id="fixed-socials" class="socials socials--fixed"></div>
+
+    <script src="assets/js/constants.js"></script>
+    <script src="assets/js/countries.js"></script>
+    <script src="assets/js/layout.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerFormPage');
+            const titleEl = document.getElementById('auth-page-title');
+            const tabLogin = document.getElementById('auth-tab-login');
+            const tabRegister = document.getElementById('auth-tab-register');
+            const rightSubmit = document.getElementById('auth-right-submit');
+
+            const setMode = (mode) => {
+                const m = (mode === 'login') ? 'login' : 'register';
+                if (loginForm) loginForm.hidden = (m !== 'login');
+                if (registerForm) registerForm.hidden = (m !== 'register');
+                if (tabLogin) tabLogin.classList.toggle('active', m === 'login');
+                if (tabRegister) tabRegister.classList.toggle('active', m === 'register');
+                if (titleEl) titleEl.setAttribute('data-i18n', m === 'login' ? 'auth_modal.login_title' : 'auth_modal.register_title');
+                if (titleEl) titleEl.textContent = m === 'login' ? 'WELCOME BACK' : 'CREATE ACCOUNT';
+                if (rightSubmit) rightSubmit.hidden = (m === 'login');
+
+                try { if (typeof window.applyTranslations === 'function') window.applyTranslations(document); } catch (e) {}
+            };
+
+            const fromHash = () => {
+                const h = (window.location.hash || '').toLowerCase();
+                if (h === '#login') return 'login';
+                return 'register';
+            };
+
+            setMode(fromHash());
+            window.addEventListener('hashchange', () => setMode(fromHash()));
+
+            if (rightSubmit) {
+                rightSubmit.addEventListener('click', () => {
+                    if (registerForm && typeof registerForm.requestSubmit === 'function') registerForm.requestSubmit();
+                });
+            }
+
+            // Submit handlers are bound in assets/js/main.js
+        });
+    </script>
+</body>
+</html>

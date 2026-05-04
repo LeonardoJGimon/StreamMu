@@ -1,0 +1,183 @@
+SETUP MODE (fara database.json) - API CONTRACT
+
+Context
+- Aplicatia intra in setup mode cand NU exista fisierul: <cwd>/database.json
+- In setup mode, orice URL care NU incepe cu /Setup sau /installation este redirect catre /Setup/
+- Modulele normale (inclusiv admin-server) nu sunt garantate ca sunt accesibile in setup.
+- InstallationModule expune InstallationController DOAR in setup mode.
+
+Detectie (client-side)
+1) In browser, daca esti pe /Setup/ deja esti in setup UI.
+2) Optional: poti verifica daca esti in setup mode printr-un call:
+   GET /installation/license-info
+   - daca raspunde 200 => esti in setup mode
+   - daca raspunde 400 "Application is not in setup mode." => nu esti in setup mode
+
+Endpoints disponibile in setup mode
+
+A) GET /installation/license-info
+Scop:
+- Afiseaza informatii despre licenta, ca sa stii daca setup-ul are voie sa continue.
+
+Request:
+- fara body
+
+Response (200):
+{
+  "active": true|false,
+  "expires": "...",
+  "error"?: "..."   // doar daca nu poate citi licenta
+}
+
+Erori:
+- 400 daca aplicatia NU este in setup mode
+
+
+B) POST /installation/test-db
+Scop:
+- Testeaza conexiunea SQL si verifica existenta bazelor de date cerute (accountDB/characterDB/rankingDB/eventsDB) pentru serverele configurate.
+
+Request body (exemplu):
+{
+  "dbConfig": {
+    "shared": {
+      "server": "127.0.0.1",
+      "port": 1433,
+      "user": "sa",
+      "password": "pass",
+      "options": {
+        "trustServerCertificate": true
+      }
+    },
+    "conn2": {
+      "server": "127.0.0.1",
+      "port": 1433,
+      "user": "sa",
+      "password": "pass"
+    }
+  },
+  "servers": {
+    "server1": {
+      "enabled": true,
+      "connectionRef": "shared",
+      "accountDB": "MuOnline",
+      "characterDB": "MuOnline",
+      "rankingDB": "Ranking",
+      "eventsDB": "Events",
+      "dashDB": "DashDB"
+    },
+    "server2": {
+      "enabled": false,
+      "connectionRef": "shared"
+    }
+  }
+}
+
+Observatii importante:
+- `servers` poate fi luat direct din UI.
+- `dbConfig` poate fi:
+  - un obiect direct cu {server/host, user, password} (legacy)
+  - sau {shared: {...}} (recomandat)
+  - sau ref-uri per server prin `connectionRef`
+- Serviciul normalizeaza portul (default 1433) si accepta `server` sau `host`.
+
+Response (200):
+{
+  "success": true,
+  "message": "Connection successful and all databases verified."
+}
+
+Erori:
+- 400 cu mesaj explicit (ex: lipseste config, DB nu exista, nu se poate conecta)
+
+
+C) POST /installation/setup
+Scop:
+- Finalizeaza setup-ul: scrie `database.json`, initializeaza tabelul Dash_AdminCP (daca nu exista) si insereaza adminul initial.
+- Dupa succes, serverul face restart (process.exit(1) dupa ~1s).
+
+Request body (exemplu):
+{
+  "servers": {
+    "server1": {
+      "enabled": true,
+      "connectionRef": "shared",
+      "accountDB": "MuOnline",
+      "characterDB": "MuOnline",
+      "rankingDB": "Ranking",
+      "eventsDB": "Events",
+      "dashDB": "DashDB"
+    }
+  },
+  "dbConfig": {
+    "shared": {
+      "server": "127.0.0.1",
+      "port": 1433,
+      "user": "sa",
+      "password": "pass"
+    }
+  },
+  "admin": {
+    "username": "admin",
+    "notes": "Initial setup"
+  },
+
+  "jwtSecret": "(optional)",
+  "SESSION_SECRET": "(optional)",
+  "ADMIN_SERVER_KEY": "(optional)",
+
+  "ftp_settings": {}
+}
+
+Ce face serverul in finalizeSetup():
+- Valideaza ca `servers` exista si are cel putin 1 server.
+- Daca lipseste, genereaza automat:
+  - `jwtSecret`
+  - `SESSION_SECRET`
+  - `ADMIN_SERVER_KEY`
+- Scrie fisierul: <cwd>/database.json
+- Alege primul server "enabled" (fallback server1) si foloseste accountDB de acolo.
+- Conecteaza la SQL si ruleaza:
+  - CREATE TABLE Dash_AdminCP daca nu exista
+  - INSERT admin initial (Level=1) daca nu exista deja
+
+Response (200):
+{
+  "message": "Installation was successful. The application will now restart."
+}
+
+Erori:
+- 400 cu mesaj explicit
+- Daca esueaza, sterge `database.json` (unlink) ca sa ramai in setup mode.
+
+
+D) GET /Setup/* (static)
+- UI-ul de setup este servit din folderul public/Setup.
+- In setup mode, orice ruta nepermisa e redirectata catre /Setup/.
+
+
+Despre /admin-server in setup mode
+- In setup mode, /admin-server nu ar trebui folosit pentru setup deoarece redirect-ul din main.ts permite doar /Setup si /installation.
+- Totusi, daca tot ajungi sa chemi /admin-server/config/database-json:
+  - `AdminServerService.readDatabaseJson()` acum intoarce template daca fisierul lipseste:
+    {
+      file: 'database.json',
+      restartRequired: true,
+      content: { servers: {}, dbConfig: {} },
+      missing: true
+    }
+  - `AdminServerService.updateDatabaseJson(content)` acum poate crea fisierul daca lipseste.
+
+Recomandarea pentru client-side
+Flux minim recomandat:
+1) GET /installation/license-info
+2) UI: colecteaza dbConfig + servers + admin
+3) POST /installation/test-db
+4) Daca ok: POST /installation/setup
+5) Asteapta restart, apoi refresh (nu mai esti in setup mode).
+
+Note
+- In setup mode, redirect-ul poate transforma request-uri fetch catre alte rute in raspuns HTML (pagina /Setup/). In client-side, trateaza acest caz:
+  - verifica `response.redirected`
+  - verifica `Content-Type` (text/html)
+  - daca primesti HTML in loc de JSON, inseamna ca ai apelat o ruta nepermisa in setup.

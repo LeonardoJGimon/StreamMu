@@ -1,0 +1,19 @@
+{
+  "bossRewards": [
+    {
+      "name": "Bosses Rewards",
+      "drops": [
+        "WC",
+        "Ruud",
+        "Boss Star",
+        "Lucky Coin",
+        "Socket Items",
+        "Ancient Items",
+        "Jewel of Soul",
+        "Jewel of Guardian",
+        "Elixir Jar",
+        "Gemstone"
+      ]
+    }
+  ]
+}

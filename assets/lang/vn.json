@@ -1,0 +1,435 @@
+{
+    "featureCard": {
+        "custom1": {
+            "title": "Trang bị cho vinh quang",
+            "desc": "Đừng bắt đầu từ con số 0—hãy bắt đầu như một chiến binh thực thụ. Chúng tôi đã chuẩn bị một Gói Chào Mừng độc quyền để bạn không bị cản trở trên hành trình Reset. Vào Mu Neutro, nhận kit và chứng minh ai là người thống trị BXH."
+        },
+        "custom2": {
+            "title": "Chúng tôi tạo nên huyền thoại",
+            "desc": "Ở Mu Neutro, bạn không đơn độc. Tham gia cộng đồng sôi động, tham dự sự kiện hàng ngày và nhận hỗ trợ tận tình ở mọi bước tiến. Ở đây, mỗi chiến binh đều quan trọng."
+        },
+        "custom3": {
+            "title": "Tiến trình của bạn an toàn",
+            "desc": "Quên nỗi lo lag hay mất kết nối. Chúng tôi có hạ tầng hiện đại để bạn chỉ cần tập trung đạt Reset tiếp theo. Ổn định thực sự cho game thủ thực thụ."
+        }
+    },
+    "brand":  {
+                  "logo":  "Mu Neutro"
+              },
+    "page":  {
+                 "index":  {
+                               "title":  "Mu Neutro - Hardcore Server"
+                           },
+                 "server_info":  {
+                                     "title":  "Thông tin máy chủ - Mu Neutro"
+                                 },
+                 "terms":  {
+                               "title":  "Điều khoản \u0026 Chính sách - Mu Neutro"
+                           }
+             },
+    "nav":  {
+                "home":  "Trang chủ",
+                "server_info":  "Thông tin máy chủ",
+                "rankings":  "Xếp hạng",
+                "downloads":  "Tải về",
+                "register":  "Đăng ký",
+                "dashboard":  "Bảng điều khiển"
+            },
+    "footer":  {
+                   "copyright":  "\u0026copy; 2025 - 2026 Mu Neutro Server. Đã đăng ký bản quyền.",
+                   "terms":  "Điều khoản \u0026 Chính sách",
+                   "follow_us":  "Theo dõi",
+                   "forged_by":  "FORGED BY \u003cspan class=\"footer-min__accent\"\u003eMu Neutro\u003c/span\u003e"
+               },
+    "common":  {
+                   "or":  "HOẶC",
+                   "enabled":  "Bật",
+                   "yes":  "Có",
+                   "no":  "Không",
+                   "no_data":  "Không có dữ liệu",
+                   "loading":  "ĐANG TẢI...",
+                   "not_set":  "Chưa đặt"
+               },
+    "features":  {
+                     "anti_hack":  {
+                                       "title":  "Chống hack",
+                                       "desc":  "Bảo vệ cao cấp. Chơi không lo gian lận."
+                                   },
+                     "play_to_win":  {
+                                         "title":  "Chơi để thắng",
+                                         "desc":  "Cày tiền VIP trực tiếp trong game. Nền kinh tế là của bạn."
+                                     },
+                     "community":  {
+                                       "title":  "Cộng đồng",
+                                       "desc":  "War guild sôi động và sự kiện GM hằng ngày."
+                                   }
+                 },
+    "team":  {
+                 "title":  "ĐỘI NGŨ",
+                 "subtitle":  "Những người đứng sau dự án."
+             },
+    "hero":  {
+                 "description":  "Tham gia máy chủ Mu Online ổn định nhất.\nKhông Pay-to-Win. Chỉ chiến thuật, cày cuốc và vinh quang.",
+                 "start_adventure":  "BẮT ĐẦU",
+                 "server_info":  "THÔNG TIN",
+                 "download_launcher":  "TẢI LAUNCHER"
+             },
+    "stats":  {
+                  "online":  "ONLINE",
+                  "status":  "TRẠNG THÁI",
+                  "season":  "SEASON",
+                  "exp":  "EXP",
+                  "drop":  "DROP"
+              },
+    "home":  {
+                 "server_online":  "MÁY CHỦ ĐANG ONLINE",
+                 "status":  "TRẠNG THÁI",
+                 "hero_desc":  "Máy chủ MuOnline hoành tráng và thử thách nhất. Hãy tham gia cộng đồng và chiến đấu vì vinh quang.",
+                 "register_now":  "ĐĂNG KÝ NGAY",
+                 "download_now":  "TẢI NGAY",
+                 "latest_news":  "TIN MỚI NHẤT",
+                 "latest_news_sub":  "Cập nhật, sự kiện và tính năng mới từ thế giới game.",
+                 "hall_of_fame":  "HALL OF FAME",
+                 "story":  {
+                               "title":  "BIÊN NIÊN",
+                               "desc":  "Khám phá lịch sử thế giới của chúng ta và hành trình đưa các anh hùng đến với nhau.",
+                               "cta":  "ĐỌC CÂU CHUYỆN"
+                           },
+                 "cards":  {
+                               "read_more":  "XEM THÊM",
+                               "economy":  {
+                                               "tag":  "KINH TẾ",
+                                               "title":  "KINH TẾ THỰC (RMT)",
+                                               "desc":  "Chơi, farm và giao dịch với nền kinh tế cân bằng cho tiến trình lâu dài."
+                                           },
+                               "antihack":  {
+                                                "tag":  "BẢO MẬT",
+                                                "title":  "Anti-Hack",
+                                                "desc":  "Bảo vệ cao cấp. Chơi mà không lo hacker/cheater."
+                                            }
+                           },
+                 "news":  {
+                              "read_more":  "ĐỌC"
+                          },
+                 "hof":  {
+                             "warrior":  "CHIẾN BINH",
+                             "mlvl":  "M.LVL",
+                             "view_ranking":  "XEM BẢNG XẾP HẠNG ĐẦY ĐỦ"
+                         }
+             },
+    "downloads":  {
+                      "title":  "TẢI VỀ",
+                      "central_prefix":  "CENTRAL DE",
+                      "central_word":  "DOWNLOADS",
+                      "subtitle":  "Tải client đầy đủ và bắt đầu chơi.",
+                      "recommended":  "KHUYẾN NGHỊ",
+                      "client_title":  "CLIENT ĐẦY ĐỦ",
+                      "client_desc":  "Cài đặt phiên bản mới nhất để có trải nghiệm tốt nhất.",
+                      "download_direct":  "TẢI (TRỰC TIẾP)",
+                      "requirements":  "YÊU CẦU",
+                      "minimum":  "TỐI THIỂU",
+                      "req":  {
+                                  "minimum_head":  "TỐI THIỂU (Launcher)",
+                                  "recommended_head":  "KHUYẾN NGHỊ (Launcher)",
+                                  "os":  "OS",
+                                  "cpu":  "CPU",
+                                  "ram":  "RAM",
+                                  "gpu":  "GPU",
+                                  "disk":  "Ổ ĐĨA",
+                                  "os_min":  "Windows 10/11 (64-bit)",
+                                  "cpu_min":  "Intel i3",
+                                  "ram_min":  "4 GB",
+                                  "gpu_min":  "Tích hợp (Intel HD/UHD) hoặc card rời cơ bản",
+                                  "disk_min":  "Trống 0.5–1 GB",
+                                  "os_rec":  "Windows 10/11 (64-bit)",
+                                  "cpu_rec":  "Intel i5",
+                                  "ram_rec":  "8 GB",
+                                  "gpu_rec":  "Bất kỳ",
+                                  "disk_rec":  "Trống 1–2 GB",
+                                  "dependency_title":  "Phụ thuộc quan trọng",
+                                  "dependency_text":  "Microsoft Visual C++ Redistributable 2015–2022 (x64)"
+                              },
+                      "size":  "DUNG LƯỢNG",
+                      "updated":  "CẬP NHẬT",
+                      "version":  "PHIÊN BẢN",
+                      "release":  "PHÁT HÀNH"
+                  },
+    "news":  {
+                 "close":  "ĐÓNG TIN"
+             },
+    "days":  {
+                 "sunday":  "CHỦ NHẬT",
+                 "monday":  "THỨ HAI",
+                 "tuesday":  "THỨ BA",
+                 "wednesday":  "THỨ TƯ",
+                 "thursday":  "THỨ NĂM",
+                 "friday":  "THỨ SÁU",
+                 "saturday":  "THỨ BẢY"
+             },
+    "server":  {
+                   "enter_world":  "VÀO GAME",
+                   "coming_soon":  "SẮP RA MẮT",
+                   "live_now":  "MÁY CHỦ ĐANG HOẠT ĐỘNG!",
+                   "no_servers":  "Không có máy chủ",
+                   "status":  {
+                                  "online":  "Online",
+                                  "grand_opening":  "Grand Opening"
+                              }
+               },
+    "pagination":  {
+                       "prev":  "Trước",
+                       "next":  "Sau"
+                   },
+    "time":  {
+                 "days":  "Ngày",
+                 "hrs":  "Giờ",
+                 "min":  "Phút",
+                 "sec":  "Giây"
+             },
+    "events":  {
+                   "active_events":  "SỰ KIỆN ĐANG DIỄN RA",
+                   "next_in":  "TIẾP THEO SAU",
+                   "next_events":  "CÁC SỰ KIỆN SẮP TỚI",
+                   "upcoming":  "LỊCH SỰ KIỆN",
+                   "upcoming_desc":  "Tham gia hành động! Kiểm tra các sự kiện sắp tới trên máy chủ.",
+                   "active":  "HOẠT ĐỘNG",
+                   "live_event":  "SỰ KIỆN LIVE",
+                   "pvp_event":  "SỰ KIỆN PVP",
+                   "exp_boost":  "TĂNG EXP",
+                   "slides":  {
+                                  "ice_wind_castle":  {
+                                                          "title":  "ICE WIND CASTLE",
+                                                          "subtitle":  "PHÁO ĐÀI BĂNG GIÁ",
+                                                          "desc":  "Đối mặt thử thách của lâu đài băng và những kẻ canh giữ tàn nhẫn.\nChỉ những guild mạnh nhất mới sống sót qua bão tuyết vĩnh cửu."
+                                                      },
+                                  "castle_siege":  {
+                                                       "title":  "CASTLE SIEGE",
+                                                       "subtitle":  "CASTLE SIEGE",
+                                                       "desc":  "Chiếm lâu đài và giành vinh quang trước khi trận chiến kết thúc.\nChiến đấu vì ngai vàng và dẫn dắt guild đến chiến thắng."
+                                                   },
+                                  "arka_war":  {
+                                                   "title":  "ARKA WAR",
+                                                   "subtitle":  "ARKA WAR",
+                                                   "desc":  "Thi đấu trên chiến trường đỉnh cao và nhận phần thưởng mạnh mẽ.\nCuộc chiến của chiến thuật, teamwork và thống trị."
+                                               }
+                              }
+               },
+    "playtime":  {
+                     "title":  "PHẦN THƯỞNG \u003cspan class=\"title-gold\"\u003eTHỜI GIAN ONLINE\u003c/span\u003e",
+                     "subtitle":  "Ở online trong Mu Neutro và tự động mở khóa trang bị độc quyền, mạnh mẽ"
+                 },
+    "champions":  {
+                      "castle_siege":  "Castle Siege",
+                      "arka_war":  "Arka War",
+                      "throne_conquest":  "Throne Conquest",
+                      "gm":  "GM:"
+                  },
+    "auth":  {
+                 "login":  "Đăng nhập",
+                 "register":  "Đăng ký",
+                 "logout":  "Đăng xuất",
+                 "user":  "Người dùng",
+                 "need_account":  "Cần tạo tài khoản?",
+                 "have_account":  "Đã có tài khoản?",
+                 "human_verification":  "XÁC MINH CON NGƯỜI",
+                 "enter_code":  "NHẬP MÃ",
+                 "finish_register":  "HOÀN TẤT ĐĂNG KÝ",
+                 "secure":  "HTTPS BẢO VỆ",
+                 "encrypted":  "DỮ LIỆU MÃ HÓA",
+                 "terms_notice":  "Khi đăng ký bạn đồng ý với Điều khoản.",
+                 "invalid_code":  "Mã xác minh không hợp lệ",
+                 "username":  "TÊN ĐĂNG NHẬP",
+                 "password":  "MẬT KHẨU",
+                 "confirm_password":  "XÁC NHẬN MẬT KHẨU",
+                 "email":  "EMAIL",
+                 "country":  "QUỐC GIA",
+                 "referral_optional":  "REFERRAL (TÙY CHỌN)",
+                 "username_placeholder":  "4-10 ký tự",
+                 "password_placeholder":  "4-10 ký tự",
+                 "confirm_password_placeholder":  "Nhập lại mật khẩu",
+                 "email_placeholder":  "you@example.com",
+                 "referral_placeholder":  "Mã referral"
+             },
+    "auth_modal":  {
+                       "login_title":  "CHÀO MỪNG TRỞ LẠI",
+                       "register_title":  "TẠO TÀI KHOẢN",
+                       "login_discord":  "\u003ci class=\"fab fa-discord\"\u003e\u003c/i\u003e ĐĂNG NHẬP BẰNG DISCORD",
+                       "register_discord":  "\u003ci class=\"fab fa-discord\"\u003e\u003c/i\u003e ĐĂNG KÝ BẰNG DISCORD",
+                       "new_here":  "Mới ở đây?",
+                       "create_account":  "TẠO TÀI KHOẢN",
+                       "have_account":  "Đã có tài khoản?",
+                       "back_to_login":  "QUAY LẠI"
+                   },
+    "ranking":  {
+                    "title":  "XẾP HẠNG",
+                    "subtitle":  "Những chiến binh và guild mạnh nhất trên máy chủ.",
+                    "event_winners":  "NGƯỜI THẮNG SỰ KIỆN",
+                    "top_players":  "TOP NGƯỜI CHƠI",
+                    "tabs":  {
+                                 "character":  "Nhân vật",
+                                 "pvp":  "PVP",
+                                 "hunt":  "Săn",
+                                 "gens":  "Gens",
+                                 "guilds":  "Guild"
+                             },
+                    "locked":  "BẢNG XẾP HẠNG SẼ MỞ KHI \u003cspan class=\"ranking-locked-accent\"\u003eRA MẮT CHÍNH THỨC\u003c/span\u003e."
+                },
+    "faq":  {
+                "title":  "CÂU HỎI THƯỜNG GẶP",
+                "subtitle":  "Mọi thứ bạn cần biết về Mu Neutro.",
+                "q1":  "Tôi đã tạo tài khoản trên website nhưng game báo \"Invalid Account\".",
+                "a1":  "Tài khoản web chỉ dùng cho website và quản lý tài khoản. Hãy tạo tài khoản phụ trong dashboard để đăng nhập game.",
+                "q2":  "Tôi có thể mở nhiều hơn một client game không?",
+                "a2":  "Có, bạn có thể đăng nhập nhiều tài khoản cùng lúc, trong giới hạn cho phép trên mỗi máy tính.",
+                "q3":  "Server có miễn phí để chơi không?",
+                "a3":  "Có, server miễn phí để chơi. Cửa hàng chỉ có các vật phẩm tiện ích tùy chọn.",
+                "q4":  "Làm sao để nhận quà hoặc phần thưởng?",
+                "a4":  "Tham gia cộng đồng, tham dự sự kiện và theo dõi các kênh mạng xã hội của chúng tôi để nhận giveaway.",
+                "q5":  "Tôi có thể làm nhiệm vụ web trên nhiều tài khoản không?",
+                "a5":  "Có. Bạn có thể tạo nhiều tài khoản và hoàn thành nhiệm vụ trên từng tài khoản để nhận phần thưởng."
+            },
+    "server_info":  {
+                        "title":  "Thông tin máy chủ",
+                        "subtitle":  "Rates, tính năng, luật và mọi thứ bạn cần trước khi chơi.",
+                        "rates":  "Rates",
+                        "exp":  "EXP",
+                        "drop":  "Drop",
+                        "max_level":  "Cấp tối đa",
+                        "master_level":  "Cấp Master",
+                        "details":  "Chi tiết máy chủ",
+                        "season":  "Season",
+                        "type":  "Loại",
+                        "reset":  "Reset",
+                        "anti_cheat":  "Anti-Cheat",
+                        "economy":  "Kinh tế",
+                        "wcoins":  "WCoins",
+                        "wcoins_desc":  "Trong game \u0026 Shop",
+                        "goblin_points":  "Goblin Points",
+                        "goblin_points_desc":  "Sự kiện \u0026 Vote",
+                        "trading":  "Giao dịch",
+                        "market":  "Chợ",
+                        "quick_rules":  "Luật nhanh",
+                        "rule1":  "Không hack, bot hoặc phần mềm thứ ba.",
+                        "rule2":  "Không RMT giữa người chơi.",
+                        "rule3":  "Tôn trọng người chơi và GM.",
+                        "rule4":  "Lạm dụng/bug sẽ bị ban.",
+                        "back_home":  "Quay lại"
+                    },
+    "dashboard":  {
+                      "overview":  "Tổng quan",
+                      "vote_reward":  "Thưởng Vote",
+                      "streamers":  "Streamers",
+                      "welcome":  "Chào mừng trở lại, chiến binh!",
+                      "server_time":  "Giờ máy chủ:",
+                      "server":  "Máy chủ:",
+                      "account":  "Tài khoản",
+                      "country":  "Quốc gia:",
+                      "twofa":  "2FA:",
+                      "details":  {
+                                      "server_type":  "Loại máy chủ",
+                                      "admin":  "Admin",
+                                      "discord":  "Discord",
+                                      "discord_id":  "Discord ID",
+                                      "vip_level":  "Cấp VIP",
+                                      "vip_expiration":  "Hết hạn VIP",
+                                      "title_discount":  "Giảm giá danh hiệu",
+                                      "pc_points":  "PC Points",
+                                      "cash_updated":  "Cash cập nhật"
+                                  },
+                      "wcoins":  "WCoins",
+                      "goblin_points":  "Goblin Points",
+                      "cash":  "Cash",
+                      "key_points":  "Key Points",
+                      "account_type":  "Loại tài khoản",
+                      "vip_reward":  {
+                                         "title":  "Thưởng VIP",
+                                         "button":  "Nhận VIP",
+                                         "loading":  "Đang tải phần thưởng...",
+                                         "details":  "Bạn sẽ nhận VIP {vip} trong {days} ngày.",
+                                         "hwid_required":  " Cần HWID.",
+                                         "hwid_required_short":  "Cần HWID.",
+                                         "not_configured":  "Chưa cấu hình thưởng VIP.",
+                                         "grand_opening_blocked":  "Không khả dụng trong Grand Opening."
+                                     }
+                  },
+    "streamers":  {
+                      "loading_status":  "Đang tải trạng thái...",
+                      "become_streamer":  "Trở thành Streamer",
+                      "apply_desc":  "Đăng ký làm streamer chính thức bằng cách liên kết kênh.",
+                      "youtube_channel_id_optional":  "YouTube Channel ID (Tùy chọn)",
+                      "twitch_username_optional":  "Twitch Username (Tùy chọn)",
+                      "kick_username_optional":  "Kick Username (Tùy chọn)",
+                      "request_approval":  "Gửi yêu cầu",
+                      "application_pending":  "Đang chờ duyệt",
+                      "application_pending_desc":  "Yêu cầu của bạn đang được xem xét.",
+                      "stream_control":  "Điều khiển Stream",
+                      "select_platform":  "Chọn nền tảng và bắt đầu theo dõi.",
+                      "start_tracking":  "Bắt đầu",
+                      "current_status":  "Trạng thái hiện tại:",
+                      "live":  "LIVE",
+                      "on":  "trên",
+                      "stop_tracking":  "Dừng",
+                      "rewards":  "Phần thưởng",
+                      "total_minutes":  "Tổng phút",
+                      "claimable":  "Có thể nhận",
+                      "live_label":  "Live:",
+                      "claim_wcoins":  "Nhận WCoins",
+                      "channels":  "Kênh"
+                  },
+    "affiliate":  {
+                      "program":  "Chương trình Affiliate",
+                      "you_earn":  "Bạn nhận",
+                      "viewer_gets":  "Viewer nhận",
+                      "your_code":  "MÃ AFFILIATE CỦA BẠN"
+                  },
+    "wallet":  {
+                   "title":  "Ví \u0026 Thanh toán",
+                   "available":  "Có sẵn",
+                   "pending":  "Chờ",
+                   "total_earned":  "Tổng kiếm được",
+                   "request_payout":  "Yêu cầu thanh toán",
+                   "recent_history":  "Lịch sử gần đây",
+                   "date":  "Ngày",
+                   "amount":  "Số tiền",
+                   "status":  "Trạng thái",
+                   "no_history":  "Không có lịch sử.",
+                   "method":  "Phương thức",
+                   "amount_usd":  "Số tiền (USD)",
+                   "min_25":  "Tối thiểu $25",
+                   "revolut_tag":  "Revolut Tag",
+                   "revtag_placeholder":  "@username",
+                   "bank_name":  "Tên ngân hàng",
+                   "bank_name_placeholder":  "Tên ngân hàng",
+                   "account_holder_name":  "Tên chủ tài khoản",
+                   "full_name_placeholder":  "Họ tên",
+                   "iban":  "IBAN",
+                   "swift":  "SWIFT / BIC",
+                   "bank_country":  "Quốc gia ngân hàng",
+                   "country_placeholder":  "Quốc gia",
+                   "currency":  "Tiền tệ",
+                   "submit_withdrawal":  "Gửi rút tiền"
+               },
+    "vip_journey":  {
+                  "title":  "Cách nhận VIP",
+                  "step1_title":  "Tải Launcher",
+                  "step1_desc":  "Nhận Launcher chính thức từ phần tải xuống của chúng tôi.",
+                  "step2_title":  "Mở và Đăng nhập",
+                  "step2_desc":  "Tạo tài khoản trên trang web hoặc trực tiếp từ Launcher.",
+                  "step3_title":  "Quyên góp",
+                  "step3_desc":  "Vào Launcher và chọn Donates trong bảng bên.",
+                  "step4_title":  "Mua",
+                  "step4_desc":  "Chọn gói của bạn, hoàn tất thanh toán và xong!"
+              },
+    "promo":  {
+                  "title":  "Mã khuyến mãi",
+                  "desc":  "Tạo mã hằng ngày cho viewer của bạn.",
+                  "generate":  "Tạo mã"
+              },
+    "terms":  {
+                  "title":  "Điều khoản \u0026 Chính sách",
+                  "subtitle":  "Luật server, chính sách affiliate, điều khoản dịch vụ, hoàn tiền và quyền riêng tư.",
+                  "menu":  "Menu",
+                  "no_sections":  "Không có mục.",
+                  "load_failed":  "Không tải được điều khoản."
+              }
+}

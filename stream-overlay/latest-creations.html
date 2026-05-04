@@ -1,0 +1,280 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mu Neutro - Últimas Creaciones</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @font-face {
+            font-family: 'Exocet';
+            src: url('../assets/images/font/ExocetImmortal-Medium.otf') format('opentype');
+            font-weight: 500;
+        }
+
+        @font-face {
+            font-family: 'Alegreya';
+            src: url('../assets/images/font/AlegreyaSans-Regular.otf') format('opentype');
+            font-weight: 400;
+        }
+
+        :root {
+            --crimson: #9d0a0e;
+            --crimson-bright: #ff2e2e;
+            --gold: #c0a375;
+            --row-bg: rgba(15, 10, 10, 0.95);
+        }
+
+        body {
+            margin: 0;
+            padding: 10px;
+            background: transparent;
+            font-family: 'Alegreya', serif;
+            color: #ccc;
+            width: 100vw;
+            display: flex;
+            justify-content: flex-start;
+            overflow-x: hidden;
+        }
+
+        .outer-box {
+            position: relative;
+            background: rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(157, 10, 14, 0.4);
+            padding: 20px;
+            width: 100%;
+            max-width: 600px; /* Un poco más angosto para creaciones */
+            box-sizing: border-box;
+            box-shadow: 0 0 30px rgba(0,0,0,0.8);
+        }
+
+        .outer-box::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            width: 40px;
+            height: 40px;
+            border-top: 4px solid var(--crimson-bright);
+            border-left: 4px solid var(--crimson-bright);
+            z-index: 2;
+        }
+
+        .outer-box::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            right: -5px;
+            width: 40px;
+            height: 40px;
+            border-bottom: 4px solid var(--crimson-bright);
+            border-right: 4px solid var(--crimson-bright);
+            z-index: 2;
+        }
+
+        .main-title {
+            font-family: 'Exocet', serif;
+            font-size: 1.1rem;
+            color: #888;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+            text-align: left;
+            padding-left: 10px;
+            text-transform: uppercase;
+        }
+
+        .header-row {
+            display: grid;
+            grid-template-columns: 90px 1fr 140px;
+            gap: 15px;
+            padding: 10px;
+            font-family: 'Exocet', serif;
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            color: #555;
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .list-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .char-row {
+            display: grid;
+            grid-template-columns: 90px 1fr 140px;
+            gap: 15px;
+            align-items: center;
+            background: var(--row-bg);
+            padding: 10px;
+            position: relative;
+            border: 1px solid rgba(157, 10, 14, 0.2);
+        }
+
+        .char-row::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            width: 12px;
+            height: 12px;
+            border-top: 2px solid var(--crimson);
+            border-left: 2px solid var(--crimson);
+        }
+
+        .char-row::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            right: -1px;
+            width: 12px;
+            height: 12px;
+            border-bottom: 2px solid var(--crimson);
+            border-right: 2px solid var(--crimson);
+        }
+
+        .avatar-container {
+            position: relative;
+            width: 70px;
+            height: 70px;
+            justify-self: center;
+        }
+
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 8px;
+            object-fit: cover;
+            border: 1px solid #333;
+            background: #000;
+        }
+
+        .char-name {
+            font-family: 'Exocet', serif;
+            font-size: 1.3rem;
+            color: #eee;
+            letter-spacing: 1px;
+            padding-left: 10px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .time-ago {
+            font-family: 'Alegreya', serif;
+            font-size: 1rem;
+            text-align: right;
+            color: var(--gold);
+            padding-right: 15px;
+            font-style: italic;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @media (max-width: 500px) {
+            .char-name { font-size: 1.1rem; }
+            .time-ago { font-size: 0.8rem; }
+            .avatar-container { width: 50px; height: 50px; }
+            .outer-box { max-width: 400px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="outer-box">
+        <h1 class="main-title">ÚLTIMOS GUERREROS CREADOS</h1>
+        
+        <div class="container">
+            <div class="header-row">
+                <div style="text-align: center;">HÉROE</div>
+                <div>NOMBRE</div>
+                <div style="text-align: right;">CREADO HACE</div>
+            </div>
+
+            <div id="list" class="list-wrapper">
+                <!-- Data -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const charImages = {
+            0: 'DW.png', 1: 'SM.png', 2: 'GM.png', 3: 'SW.png',
+            16: 'DK.png', 17: 'BK.png', 18: 'BM.png', 19: 'DRK.png',
+            32: 'ELF.png', 33: 'ME.png', 34: 'HE.png', 35: 'NE.png',
+            48: 'MG.png', 50: 'DM.png', 54: 'MK.png',
+            64: 'DL.png', 66: 'LE.png', 70: 'EL.png',
+            80: 'SUM.png', 81: 'BS.png', 82: 'DSM.png', 83: 'DSK.png',
+            96: 'RF.png', 98: 'FM.png', 102: 'FB.png'
+        };
+
+        function formatTimeAgo(dateString, referenceDate) {
+            const date = new Date(dateString);
+            const now = referenceDate ? new Date(referenceDate) : new Date();
+            const diffInSeconds = Math.floor((now - date) / 1000);
+
+            if (diffInSeconds < 0) return `hace unos instantes`;
+            if (diffInSeconds < 60) return `hace ${diffInSeconds}s`;
+            
+            const diffInMinutes = Math.floor(diffInSeconds / 60);
+            if (diffInMinutes < 60) return `hace ${diffInMinutes}m`;
+            
+            const diffInHours = Math.floor(diffInMinutes / 60);
+            if (diffInHours < 24) return `hace ${diffInHours}h`;
+            
+            const diffInDays = Math.floor(diffInHours / 24);
+            return `hace ${diffInDays}d`;
+        }
+
+        let lastData = [];
+
+        async function update() {
+            try {
+                // Intentar primero la API (Vercel/Nube) y si falla usar el JSON local
+                let res = await fetch('/api/stats').catch(() => null);
+                if (!res || !res.ok) {
+                    res = await fetch('../latest-stats.json?t=' + Date.now());
+                }
+
+                if (!res.ok) throw new Error('Network response was not ok');
+                const data = await res.json();
+                const chars = data.recentCharacters || [];
+                const serverTime = data.timestamp; // Usar el timestamp del servidor como referencia
+                
+                if (chars.length === 0) return;
+                
+                let newHtml = '';
+                chars.slice(0, 5).forEach((c, i) => {
+                    const imgName = charImages[c.classId] || 'DW.png';
+                    const imgPath = `../assets/images/characters/${imgName}`;
+                    const timeAgo = formatTimeAgo(c.date, serverTime);
+
+                    newHtml += `
+                        <div class="char-row" style="${lastData.length === 0 ? `animation: slideIn 0.5s ease forwards ${i * 0.1}s` : ''}">
+                            <div class="avatar-container">
+                                <img src="${imgPath}" class="avatar-img" onerror="this.src='../assets/images/characters/DW.png'">
+                            </div>
+                            <div class="char-name">${c.name}</div>
+                            <div class="time-ago">${timeAgo}</div>
+                        </div>
+                    `;
+                });
+
+                document.getElementById('list').innerHTML = newHtml;
+                lastData = chars;
+            } catch (e) {
+                console.error("Fetch error:", e);
+            }
+        }
+
+        setInterval(update, 30000); // 30s es suficiente para actualizar el tiempo
+        update();
+    </script>
+</body>
+</html>

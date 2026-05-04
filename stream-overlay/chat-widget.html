@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mu Neutro - Chat Widget</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @font-face {
+            font-family: 'Exocet';
+            src: url('../assets/images/font/ExocetImmortal-Medium.otf') format('opentype');
+            font-weight: 500;
+        }
+
+        @font-face {
+            font-family: 'Alegreya';
+            src: url('../assets/images/font/AlegreyaSans-Regular.otf') format('opentype');
+            font-weight: 400;
+        }
+
+        :root {
+            --crimson: #9d0a0e;
+            --gold: #c0a375;
+            --chat-bg: rgba(10, 5, 5, 0.7);
+        }
+
+        body, html {
+            margin: 0; padding: 0;
+            width: 100vw; height: 100vh;
+            background: transparent;
+            font-family: 'Alegreya', serif;
+            overflow: hidden;
+        }
+
+        .chat-container {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            width: 350px;
+            max-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            justify-content: flex-end;
+            mask-image: linear-gradient(to top, black 85%, transparent 100%);
+        }
+
+        .message-row {
+            background: var(--chat-bg);
+            border-left: 3px solid var(--crimson);
+            padding: 10px 15px;
+            border-radius: 0 4px 4px 0;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
+            animation: messageIn 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
+            backdrop-filter: blur(4px);
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 4px;
+        }
+
+        .username {
+            font-family: 'Exocet', serif;
+            font-size: 0.85rem;
+            color: var(--gold);
+            letter-spacing: 1px;
+            text-shadow: 0 1px 3px #000;
+        }
+
+        .user-badge {
+            font-size: 0.7rem;
+            color: var(--crimson);
+        }
+
+        .message-text {
+            color: #eee;
+            font-size: 1.1rem;
+            line-height: 1.3;
+            word-wrap: break-word;
+        }
+
+        @keyframes messageIn {
+            from { opacity: 0; transform: translateX(-20px) scale(0.9); }
+            to { opacity: 1; transform: translateX(0) scale(1); }
+        }
+
+        /* Test Controls (Ocultos en producción) */
+        #test-btn {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            opacity: 0;
+        }
+        #test-btn:hover { opacity: 1; }
+
+    </style>
+</head>
+<body>
+
+    <div class="chat-container" id="chat">
+        <!-- Messages will appear here -->
+    </div>
+
+    <button id="test-btn" onclick="addTestMessage()">TEST CHAT</button>
+
+    <script>
+        const chat = document.getElementById('chat');
+        const usernames = ["Kaelthas", "Lilith", "Deckard", "Tyrael", "Diablo", "Imperius"];
+        const messages = [
+            "Prepare for battle!",
+            "The Legion grows stronger.",
+            "Mu Neutro is the best server.",
+            "Check out the new ranking!",
+            "GL & HF everyone!",
+            "Stay awhile and listen..."
+        ];
+
+        function addMessage(user, text, badge = "fa-shield-halved") {
+            const row = document.createElement('div');
+            row.className = 'message-row';
+            
+            row.innerHTML = `
+                <div class="user-info">
+                    <i class="fas ${badge} user-badge"></i>
+                    <span class="username">${user}</span>
+                </div>
+                <div class="message-text">${text}</div>
+            `;
+            
+            chat.appendChild(row);
+
+            // Mantener solo los últimos 10 mensajes
+            if (chat.childNodes.length > 10) {
+                chat.removeChild(chat.firstChild);
+            }
+
+            // Auto-scroll (ya lo hace el flex-direction: column y justify-content: flex-end)
+        }
+
+        function addTestMessage() {
+            const u = usernames[Math.floor(Math.random() * usernames.length)];
+            const m = messages[Math.floor(Math.random() * messages.length)];
+            addMessage(u, m);
+        }
+
+        // Simular chat inicial
+        setTimeout(addTestMessage, 1000);
+        setTimeout(addTestMessage, 2500);
+
+        // Integración con servicios externos (ejemplo Streamlabs/Streamelements)
+        // Se puede conectar aquí un WebSocket.
+    </script>
+</body>
+</html>

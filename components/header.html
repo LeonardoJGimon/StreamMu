@@ -1,0 +1,105 @@
+<header id="main-header">
+    <div class="container header-container" style="position: relative;">
+        <!-- Centro de Mando: Look Final Refinado (TODO EN ROJO SANGRE) -->
+        <div class="header-left-side" style="display: flex; align-items: center; gap: 30px; flex: 1;">
+            <a class="logo" href="/">
+                <img class="logo-img" src="/assets/images/logo/logosimple.png" alt="Mu Neutro Logo" style="height:64px;width:auto;display:block;" />
+            </a>
+
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="/" class="nav-home"><i class="fas fa-home"></i><span data-i18n="nav.home">Home</span></a></li>
+                    <li><a href="/ranking" class="nav-rankings"><i class="fas fa-trophy"></i><span data-i18n="nav.rankings">Rankings</span></a></li>
+                    <li><a href="/downloads" class="nav-downloads"><i class="fas fa-download"></i><span data-i18n="nav.downloads">Downloads</span></a></li>
+                    <li class="nav-dd">
+                        <button class="nav-dd-btn nav-server-info" type="button" aria-haspopup="menu" aria-expanded="false">
+                            <i class="fas fa-scroll"></i><span data-i18n="nav.server_info">Server Info</span>
+                            <span class="nav-dd-chevron" aria-hidden="true"><i class="fas fa-chevron-down"></i></span>
+                        </button>
+                        <div class="nav-dd-menu" role="menu" aria-label="Server Info">
+                            <a role="menuitem" href="/info/server-details">Server Details</a>
+                            <div class="nav-dd-sep"></div>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Centro de Mando: Refactorizado para ser parte del flujo -->
+        <div class="header-time-module" id="final-clocks-container" style="display: flex; gap: 20px; font-family: 'Alegreya', serif; z-index: 10; align-items: center; background: rgba(0,0,0,0.4); padding: 5px 20px; white-space: nowrap; border: 1px solid rgba(138, 3, 3, 0.2); border-top: none; border-bottom: 2px solid rgba(138, 3, 3, 0.8); box-shadow: 0 10px 30px rgba(0,0,0,0.5); border-radius: 0 0 10px 10px; margin-top: -12px;">
+            
+            <!-- Reloj Servidor -->
+            <div class="header-clock-block" style="display: flex; flex-direction: column; align-items: center; gap: 0px; min-width: 80px;">
+                <span style="font-family: 'Exocet', serif; font-size: 0.55rem; color: #ff0000; letter-spacing: 1.5px; font-weight: 900;">SERVIDOR</span>
+                <div style="display: flex; align-items: center; gap: 5px;">
+                    <i class="fas fa-server" style="color: #c0a375; font-size: 0.75rem;"></i>
+                    <span id="server-time-display" style="color: #ffffff; font-weight: 700; font-size: 0.95rem; font-variant-numeric: tabular-nums;">--:--:--</span>
+                </div>
+            </div>
+
+            <div style="width: 1px; height: 30px; background: rgba(138, 3, 3, 0.5);"></div>
+
+            <!-- CONTADOR OPENING -->
+            <div class="header-opening-block" id="header-opening-module" style="display: flex; flex-direction: column; align-items: center; min-width: 180px;">
+                <span style="font-family: 'Exocet', serif; font-size: 0.6rem; color: #ff0000; letter-spacing: 2px; font-weight: 900;">GRAND OPENING</span>
+                <div style="font-family: 'Exocet', serif; font-size: 1.3rem; color: #ffffff; font-weight: 900; letter-spacing: 1px; display: flex; gap: 8px; margin-top: -2px;">
+                    <span id="countdown-days">00</span><small style="font-size: 0.5rem; color: #ff0000;">D</small>
+                    <span id="countdown-hours">00</span><small style="font-size: 0.5rem; color: #ff0000;">H</small>
+                    <span id="countdown-mins">00</span><small style="font-size: 0.5rem; color: #ff0000;">M</small>
+                    <span id="countdown-secs">00</span><small style="font-size: 0.5rem; color: #ff0000;">S</small>
+                </div>
+            </div>
+
+            <div style="width: 1px; height: 30px; background: rgba(138, 3, 3, 0.5);"></div>
+
+            <!-- Reloj Local -->
+            <div class="header-clock-block" style="display: flex; flex-direction: column; align-items: center; gap: 0px; min-width: 80px;">
+                <span style="font-family: 'Exocet', serif; font-size: 0.55rem; color: #ff0000; letter-spacing: 1.5px; font-weight: 900;">LOCAL</span>
+                <div style="display: flex; align-items: center; gap: 5px;">
+                    <i class="fas fa-desktop" style="color: #c0a375; font-size: 0.75rem;"></i>
+                    <span id="local-time-display" style="color: #ffffff; font-weight: 700; font-size: 0.95rem; font-variant-numeric: tabular-nums;">--:--:--</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="header-actions" id="header-selectors-group" style="display: flex; align-items: center; gap: 12px; margin-left: auto;">
+            <!-- Start Adventure Button -->
+            <a href="#" class="btn-diablo-premium btn-sm" style="padding: 10px 20px; font-size: 0.72rem; margin: 0;" onclick="startAdventure(); return false;">
+                <span data-i18n="hero.start_adventure">START ADVENTURE</span>
+                <i class="fas fa-bolt"></i>
+            </a>
+
+            <!-- Auth Controls (Login/Register) -->
+            <div id="header-auth-controls" style="margin: 0; display: flex; align-items: center;"></div>
+
+            <!-- Server Selector -->
+            <div id="header-server-dd" class="dd dd--header" aria-label="Server">
+                <button id="header-server-dd-btn" class="dd-btn dd-btn--server" type="button" aria-haspopup="listbox" aria-expanded="false">
+                    <span id="header-server-dd-label" class="dd-label" style="color: #ffffff !important; font-weight: 800; text-shadow: 0 0 10px rgba(255,255,255,0.3);">Loading...</span>
+                    <span class="dd-chevron" aria-hidden="true" style="color: rgba(255,255,255,0.6);"><i class="fas fa-chevron-down"></i></span>
+                </button>
+                <div id="header-server-dd-panel" class="dd-panel dd-panel--server" role="listbox" tabindex="-1" hidden></div>
+            </div>
+
+            <div id="header-lang-dd" class="dd dd--lang-only" aria-label="Language">
+                <button id="header-lang-dd-btn" class="dd-btn dd-btn--clean" type="button" aria-haspopup="listbox" aria-expanded="false">
+                    <img id="header-lang-curr-flag" src="https://flagcdn.com/w40/es.png" class="lang-flag-main" style="filter: drop-shadow(0 0 5px rgba(255,255,255,0.2));">
+                </button>
+                <div id="header-lang-dd-panel" class="dd-panel dd-panel--flags" role="listbox" tabindex="-1" hidden>
+                    <div class="dd-opt" role="option" data-lang="en"><img src="https://flagcdn.com/w40/us.png" class="lang-flag"></div>
+                    <div class="dd-opt" role="option" data-lang="ro"><img src="https://flagcdn.com/w40/ro.png" class="lang-flag"></div>
+                    <div class="dd-opt" role="option" data-lang="es"><img src="https://flagcdn.com/w40/es.png" class="lang-flag"></div>
+                    <div class="dd-opt" role="option" data-lang="pt"><img src="https://flagcdn.com/w40/br.png" class="lang-flag"></div>
+                    <div class="dd-opt" role="option" data-lang="ru"><img src="https://flagcdn.com/w40/ru.png" class="lang-flag"></div>
+                    <div class="dd-opt" role="option" data-lang="vn"><img src="https://flagcdn.com/w40/vn.png" class="lang-flag"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mobile-toggle" id="mobile-menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+    </div>
+</header>
+
+<div id="mobile-menu" class="mobile-menu"></div>

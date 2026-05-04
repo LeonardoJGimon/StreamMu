@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="page.index.title">Mu Neutro</title>
+    <link rel="preload" as="video" href="https://cdn.streamelements.com/uploads/01kqqbqe2m9qbee3rq1kqj9s29.mp4" type="video/mp4" importance="high">
+    
+
+    <link rel="stylesheet" href="assets/css/style.css?v=3">
+    <!-- Modern UI Enhancements -->
+    <link rel="stylesheet" href="assets/css/glassmorphism.css?v=1.1">
+    <link rel="stylesheet" href="assets/css/animations.css?v=1.1">
+    <link rel="stylesheet" href="assets/css/events.css?v=1.1">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Aboreto&family=Marcellus&family=Work+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Security & Performance -->
+    <script defer disable-devtool-auto src="assets/js/js.js" type="text/javascript"></script>
+</head>
+ <body class="page-home">
+    <!-- Efectos cinematográficos eliminados a petición -->
+    <div class="diablo-vignette"></div>
+
+    <div id="notification-area"></div>
+
+    <div id="header-placeholder"></div>
+
+    <main>
+        <section class="home-hero origin-hero">
+            <div class="origin-hero__bg" aria-hidden="true">
+            </div>
+            <div class="hero-overlay"></div>
+            <div class="origin-hero__inner">
+                
+                <!-- Imagen de fondo (Druida) -->
+                <img class="origin-hero__video" src="assets/images/newimg/di-masthead-bg_desktop_druid_2600x1600-2.png" 
+                     alt="Druid Background" style="object-fit: cover; width: 100%; height: 100%; position: absolute; inset: 0; z-index: -1;">
+
+                <div class="origin-hero__content">
+                    <!-- Logo -->
+                    <img class="origin-hero__server-logo" src="https://i.imgur.com/eQpu3kn.png" 
+                         onerror="this.onerror=null;this.src='assets/images/home/logo.png';" 
+                         alt="Logo">
+                    
+                    <!-- Mensaje Épico -->
+                    <h1 class="hero-epic-message">
+                        CONVIÉRTETE EN<br>
+                        DRUIDA Y MATA CON LA<br>
+                        IRA DE LA NATURALEZA
+                    </h1>
+
+                    <!-- Botones en Paralelo y Simétricos -->
+                    <div class="origin-hero__cta" style="display: flex; flex-direction: row; gap: 30px; justify-content: center; width: 100%; margin-top: 40px;">
+                        <a href="/auth.html#register" class="btn-diablo-premium" style="min-width: 240px;">
+                            <span data-i18n="home.register_now">REGISTER NOW</span> 
+                            <i class="fas fa-arrow-up-right-from-square"></i>
+                        </a>
+                        <a href="/downloads" class="btn-diablo-premium btn-diablo-premium-gold" style="min-width: 240px;">
+                            <span data-i18n="home.download_now">DOWNLOAD NOW</span> 
+                            <i class="fas fa-download"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="origin-hero__character">
+                    <div class="character-art-wrapper">
+                         <img src="" alt="" class="character-art" id="hero-char-img">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="home-status-strip" aria-label="Server status">
+            <div class="container">
+                <div class="home-status-strip__head">
+                    <span class="home-status-strip__eyebrow" data-i18n="home.server_online">SERVER ONLINE</span>
+                    <h3 class="home-status-strip__title" data-i18n="home.status">STATUS</h3>
+                </div>
+                <section class="home-stats home-stats--strip">
+                    <div id="servers" class="home-stats__grid home-stats__grid--strip" aria-label="Server stats"></div>
+                </section>
+            </div>
+        </section>
+
+        <section class="home-news origin-section">
+            <div class="container">
+                <div class="origin-section__head" style="margin-bottom: 50px;">
+                    <h2 class="origin-section__title">NOTICIAS Y HALL OF FAME</h2>
+                    <p class="origin-section__sub">Mantente al día con las noticias y el salón de la fama</p>
+                </div>
+                
+                <div class="home-news__grid">
+                    <div class="home-news__col">
+                        <div class="home-news__list" id="home-news-list"></div>
+                    </div>
+    
+                    <div class="home-news__col">
+                        <div class="home-fame" id="home-fame-list"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- UPCOMING EVENTS SECTION -->
+        <section class="upcoming-events upcoming-events--fullwidth" id="upcoming-events-section">
+            <div class="origin-section__head" style="max-width: 1200px; margin: 0 auto 40px; padding: 0 20px;">
+                <span class="origin-section__eyebrow" data-i18n="events.next_events">PRÓXIMOS EVENTOS</span>
+                <h2 class="origin-section__title" data-i18n="events.upcoming">CRONOGRAMA DE EVENTOS</h2>
+                <p class="origin-section__sub" data-i18n="events.upcoming_desc">¡Únete a la acción! Consulta los próximos eventos en el servidor.</p>
+            </div>
+            
+            <div class="upcoming-events__grid-wrapper" style="width: 100%; padding: 0 40px;">
+                <div class="upcoming-events__grid" id="upcoming-events-grid">
+                    <!-- Populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <section class="home-story origin-section">
+            <div class="container">
+                <div class="origin-section__head">
+                    <span class="origin-section__eyebrow" data-i18n="playtime.title">PLAYER TIME REWARD</span>
+                    <h2 class="origin-section__title" data-i18n="playtime.title">PLAYER TIME REWARD</h2>
+                    <p class="origin-section__sub" data-i18n="playtime.subtitle">Stay online in Mu Neutro and unlock exclusive powerful equipment automatically</p>
+                </div>
+                <section class="playtime-section" id="playtime-section" hidden>
+                    <div class="playtime-grid" id="playtime-grid"></div>
+                </section>
+            </div>
+        </section>
+
+        <section class="features container origin-section" id="launcher-features-cards"></section>
+
+        <div id="newsModal" class="news-modal" hidden>
+            <div class="news-modal__backdrop" data-action="close"></div>
+            <div class="news-modal__panel" role="dialog" aria-modal="true" aria-label="News">
+                <div class="news-modal__top">
+                    <div class="news-modal__tag" id="news-modal-tag">NEWS</div>
+                    <div class="news-modal__date" id="news-modal-date">-</div>
+                </div>
+                <h3 class="news-modal__title" id="news-modal-title">-</h3>
+                <div class="news-modal__content" id="news-modal-content"></div>
+                <div class="news-modal__actions">
+                    <button class="news-modal__btn" type="button" data-action="close" data-i18n="news.close">CLOSE NEWS</button>
+                </div>
+            </div>
+        </div>
+            <div class="container">
+                <div class="origin-section__head">
+                    <span class="origin-section__eyebrow" data-i18n="classes.eyebrow">CONTINENTE DE MU</span>
+                    <h2 class="origin-section__title" data-i18n="classes.title">CLASES DE PERSONAJES</h2>
+                    <p class="origin-section__sub" data-i18n="classes.subtitle">Conoce los poderes y habilidades de cada guerrero del continente de Mu Neutro.</p>
+                </div>
+            </div>
+        <section id="classes-showcase" class="classes-showcase">
+            <div class="container classes-container-etereal">
+                <!-- Selector Flotante -->
+                <div class="classes-sidebar-float">
+                    <button class="nav-arrow nav-up"><i class="fas fa-chevron-up"></i></button>
+                    <div class="classes-sidebar-icons" id="classes-sidebar">
+                        <!-- Rendered by JS -->
+                    </div>
+                    <button class="nav-arrow nav-down"><i class="fas fa-chevron-down"></i></button>
+                </div>
+
+                <!-- Lado Izquierdo: Personaje -->
+                <div class="class-left">
+                    <div class="class-render-area">
+                        <img id="class-render-img" class="class-render-img" src="" alt="Character Render">
+                    </div>
+                </div>
+                
+                <!-- Lado Derecho: Contenido -->
+                <div class="class-right">
+                    <div class="class-title-area">
+                        <img id="class-title-img" class="class-title-img" src="" alt="Class Title">
+                    </div>
+                    
+                    <div class="class-lore-block" id="class-lore-block">
+                        <p id="class-description" class="class-description"></p>
+                        <div class="class-created-stat" id="class-created-text"></div>
+                    </div>
+                    
+                    <div class="class-skills-block">
+                        <h3 class="etereal-title">Habilidades</h3>
+                        <div class="skills-grid" id="class-skills-list">
+                            <!-- Rendered by JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ranking" class="ranking-section">
+            <div class="container">
+                <div class="origin-section__head">
+                    <span class="origin-section__eyebrow" data-i18n="ranking.title">RANKINGS</span>
+                    <h2 class="origin-section__title" data-i18n="ranking.title">RANKINGS</h2>
+                    <p class="origin-section__sub" data-i18n="ranking.subtitle">The strongest warriors and guilds on the server.</p>
+                </div>
+
+                <div class="origin-subhead" data-i18n="ranking.event_winners">LA TRINIDAD DEL PODER</div>
+                <div class="champions-grid">
+                    <div class="champion-card">
+                        <div class="champion-bg" style="background-image:url('assets/images/home/trinity_resets.png')"></div>
+                        <div class="champion-overlay"></div>
+                        <div class="sweep-effect"></div>
+                        <div class="card-icon"><i class="fas fa-crown"></i></div>
+                        <div class="card-info">
+                            <span class="event-name" data-i18n="champions.castle_siege">EL REY DEL RESET</span>
+                            <h3 class="guild-name">-</h3>
+                            <span class="guild-master"><i class="fas fa-star"></i> <span>-</span></span>
+                        </div>
+                    </div>
+                    <div class="champion-card">
+                        <div class="champion-bg" style="background-image:url('assets/images/home/trinity_pvp.png')"></div>
+                        <div class="champion-overlay"></div>
+                        <div class="sweep-effect"></div>
+                        <div class="card-icon"><i class="fas fa-swords"></i></div>
+                        <div class="card-info">
+                            <span class="event-name" data-i18n="champions.arka_war">MAESTRO DEL PVP</span>
+                            <h3 class="guild-name">-</h3>
+                            <span class="guild-master pvp-stats-row">
+                                <span class="stat-item"><i class="fas fa-skull"></i> <span class="val-kills">-</span></span>
+                                <span class="stat-item"><i class="fas fa-heart-broken"></i> <span class="val-deaths">-</span></span>
+                                <span class="stat-item"><i class="fas fa-divide"></i> <span class="val-kd">-</span></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="champion-card">
+                        <div class="champion-bg" style="background-image:url('assets/images/home/trinity_guild.png')"></div>
+                        <div class="champion-overlay"></div>
+                        <div class="sweep-effect"></div>
+                        <div class="card-icon"><i class="fas fa-shield-alt"></i></div>
+                        <div class="card-info">
+                            <span class="event-name" data-i18n="champions.throne_conquest">LÍDER DE LEYENDAS</span>
+                            <h3 class="guild-name">-</h3>
+                            <span class="guild-master"><i class="fas fa-crown"></i> <span data-i18n="champions.gm">LÍDER:</span> -</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="origin-subhead" data-i18n="ranking.top_players">TOP PLAYERS</div>
+                <div class="ranking-tabs">
+                    <button class="tab-btn active" data-tab="character"><i class="fas fa-user"></i><span data-i18n="ranking.tabs.character">Character</span></button>
+                    <button class="tab-btn" data-tab="pvp"><i class="fas fa-fist-raised"></i> <span data-i18n="ranking.tabs.pvp">PVP</span></button>
+                    <button class="tab-btn" data-tab="hunt"><i class="fas fa-skull"></i> <span data-i18n="ranking.tabs.hunt">Hunt</span></button>
+                    <button class="tab-btn" data-tab="gens"><i class="fas fa-shield-virus"></i> <span data-i18n="ranking.tabs.gens">Gens</span></button>
+                    <button class="tab-btn" data-tab="guilds"><i class="fas fa-users"></i> <span data-i18n="ranking.tabs.guilds">Guilds</span></button>
+                </div>
+
+                <div class="ranking-table-wrapper">
+                    <table class="ranking-table ranking-table-v2">
+                        <thead>
+                            <tr>
+                                <th class="th-rank">RANK</th>
+                                <th class="th-name">NAME</th>
+                                <th class="th-class">CLASS</th>
+                                <th class="th-lv">LV</th>
+                                <th class="th-resets">RESETS</th>
+                                <th class="th-guild">GUILD</th>
+                                <th class="th-gens">GENS</th>
+                                <th class="th-country">COUNTRY</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ranking-body"></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section class="faq-section origin-section">
+            <div class="container">
+                <div class="origin-section__head">
+                    <span class="origin-section__eyebrow" data-i18n="faq.title">FREQUENTLY ASKED QUESTIONS</span>
+                    <h2 class="origin-section__title" data-i18n="faq.title">FREQUENTLY ASKED QUESTIONS</h2>
+                    <p class="origin-section__sub" data-i18n="faq.subtitle">Everything you need to know about Mu Neutro.</p>
+                </div>
+
+                <div class="faq-grid">
+                    <details class="faq-item" open>
+                        <summary data-i18n="faq.q1">I created an account on the website, but the game says "Invalid Account."</summary>
+                        <p data-i18n="faq.a1">The web account is for website and account management only. Create a sub-account in your dashboard to log into the game.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary data-i18n="faq.q2">Can I open more than one game client?</summary>
+                        <p data-i18n="faq.a2">Yes, you can log into multiple accounts at the same time, up to the allowed limit per computer.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary data-i18n="faq.q3">Is the server free to play?</summary>
+                        <p data-i18n="faq.a3">Yes, the server is free to play. The store offers optional items for convenience.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary data-i18n="faq.q4">How can I get freebies or rewards?</summary>
+                        <p data-i18n="faq.a4">Join our community, participate in events, and follow our social channels for giveaways.</p>
+                    </details>
+                    <details class="faq-item">
+                        <summary data-i18n="faq.q5">Can I complete web quests on multiple accounts?</summary>
+                        <p data-i18n="faq.a5">Yes. You can create multiple accounts and complete quests on each to receive rewards.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+        <section class="features container" hidden>
+            <div class="feature-card">
+                <div class="feature-bg" style="background-image:url('assets/images/home/noria.png')"></div>
+                <div class="feature-overlay"></div>
+                <i class="fas fa-shield-alt"></i>
+                <h3 data-i18n="features.anti_hack.title">Anti-Hack</h3>
+                <p data-i18n="features.anti_hack.desc">Premium protection. Play without worrying about cheaters.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-bg" style="background-image:url('assets/images/home/noria.png')"></div>
+                <div class="feature-overlay"></div>
+                <i class="fas fa-gem"></i>
+                <h3 data-i18n="features.play_to_win.title">Play to Win</h3>
+                <p data-i18n="features.play_to_win.desc">Farm VIP currency directly in-game. The economy is yours.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-bg" style="background-image:url('assets/images/home/noria.png')"></div>
+                <div class="feature-overlay"></div>
+                <i class="fas fa-users"></i>
+                <h3 data-i18n="features.community.title">Community</h3>
+                <p data-i18n="features.community.desc">Active guild wars and daily GM events.</p>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <div id="fixed-socials" class="socials socials--fixed"></div>
+
+    <script defer src="assets/js/constants.js"></script>
+    <script defer src="assets/js/countries.js"></script>
+    <script src="assets/js/layout.js?v=1.1"></script>
+    <script src="assets/js/main.js?v=3"></script>
+    <script defer src="assets/js/ranking.js"></script>
+</body>
+</html>

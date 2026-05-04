@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="/">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title data-i18n="nav.rankings">Rankings - Mu Neutro</title>
+    <meta name="theme-color" content="#05070a">
+    <meta name="description" content="Consulta los rankings en tiempo real de personajes, guilds y PVP en Mu Neutro.">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="apple-touch-icon" href="/assets/images/home/logo.png">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Modern UI Enhancements -->
+    <link rel="stylesheet" href="assets/css/glassmorphism.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script defer disable-devtool-auto src="assets/js/js.js" type="text/javascript"></script>
+</head>
+<body class="page-ranking">
+
+    <div id="notification-area"></div>
+
+    <div id="header-placeholder"></div>
+
+    <main class="page-shell">
+        <section class="page-hero">
+            <div class="page-hero__inner container" style="display: flex; align-items: center; justify-content: center; position: relative;">
+                <a class="page-back" href="/" aria-label="Back" style="position: absolute; left: 0;"><i class="fas fa-chevron-left"></i></a>
+                <div class="page-hero__text" style="text-align: center;">
+                    <h1 class="page-hero__title" data-i18n="ranking.title" style="display: inline-block; text-align: center;">RANKING</h1>
+                </div>
+                <div class="page-hero__right" data-i18n="ranking.subtitle" style="position: absolute; right: 0;">The strongest warriors and guilds on the server.</div>
+            </div>
+        </section>
+
+        <section id="ranking" class="ranking-section ranking-section--page">
+            <div class="container">
+                <div class="ranking-tabs">
+                    <button class="tab-btn active" data-tab="character"><i class="fas fa-user"></i><span data-i18n="ranking.tabs.character">Character</span></button>
+                    <button class="tab-btn" data-tab="pvp"><i class="fas fa-fist-raised"></i> <span data-i18n="ranking.tabs.pvp">PVP</span></button>
+                    <button class="tab-btn" data-tab="hunt"><i class="fas fa-skull"></i> <span data-i18n="ranking.tabs.hunt">Hunt</span></button>
+                    <button class="tab-btn" data-tab="gens"><i class="fas fa-shield-virus"></i> <span data-i18n="ranking.tabs.gens">Gens</span></button>
+                    <button class="tab-btn" data-tab="guilds"><i class="fas fa-users"></i> <span data-i18n="ranking.tabs.guilds">Guilds</span></button>
+                </div>
+
+                <div class="ranking-table-wrapper ranking-table-wrapper--page">
+                    <table class="ranking-table ranking-table-v2">
+                        <thead>
+                            <tr id="ranking-headers">
+                                <th class="th-rank">RANK</th>
+                                <th class="th-name">NAME</th>
+                                <th class="th-class">CLASS</th>
+                                <th class="th-lv">LV</th>
+                                <th class="th-resets">RR</th>
+                                <th class="th-guild">GUILD</th>
+                                <th class="th-gens">GENS</th>
+                                <th class="th-country">COUNTRY</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ranking-body"></tbody>
+                    </table>
+                </div>
+
+                <div id="ranking-pagination" class="ranking-pagination"></div>
+            </div>
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <div id="fixed-socials" class="socials socials--fixed"></div>
+
+    <script defer src="assets/js/constants.js"></script>
+    <script defer src="assets/js/countries.js"></script>
+    <script defer src="assets/js/layout.js"></script>
+    <script defer src="assets/js/main.js"></script>
+    <script defer src="assets/js/ranking.js"></script>
+</body>
+</html>

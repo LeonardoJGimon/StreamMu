@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mu Neutro - Stinger Transition</title>
+    <style>
+        @font-face {
+            font-family: 'Exocet';
+            src: url('../assets/images/font/ExocetImmortal-Medium.otf') format('opentype');
+            font-weight: 500;
+        }
+
+        :root {
+            --crimson: #9d0a0e;
+            --gold: #c0a375;
+        }
+
+        body, html {
+            margin: 0; padding: 0;
+            width: 100vw; height: 100vh;
+            background: transparent;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* LAS PUERTAS DE PIEDRA */
+        .door {
+            position: absolute;
+            top: 0;
+            width: 50vw;
+            height: 100vh;
+            background: #0a0505 url('https://www.transparenttextures.com/patterns/dark-matter.png');
+            border: 2px solid var(--crimson);
+            box-sizing: border-box;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            transition: all 0.5s cubic-bezier(0.7, 0, 0.3, 1);
+        }
+
+        .door-left {
+            left: -50vw;
+            justify-content: flex-end;
+            border-right: 4px solid var(--gold);
+            box-shadow: 20px 0 50px rgba(0,0,0,0.9);
+        }
+
+        .door-right {
+            right: -50vw;
+            justify-content: flex-start;
+            border-left: 4px solid var(--gold);
+            box-shadow: -20px 0 50px rgba(0,0,0,0.9);
+        }
+
+        /* ORNAMENTOS EN LAS PUERTAS */
+        .ornament {
+            width: 100px;
+            height: 200px;
+            border: 2px solid var(--crimson);
+            margin: 0 20px;
+            opacity: 0.3;
+            filter: grayscale(1);
+        }
+
+        /* LOGO CENTRAL */
+        .stinger-logo {
+            position: absolute;
+            width: 400px;
+            z-index: 20;
+            opacity: 0;
+            transform: scale(0.5) rotate(-10deg);
+            filter: drop-shadow(0 0 30px var(--crimson));
+        }
+
+        /* EFECTO DE IMPACTO */
+        .flash {
+            position: absolute;
+            inset: 0;
+            background: white;
+            z-index: 30;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* ANIMACIÓN ACTIVE */
+        body.animating .door-left { left: 0; }
+        body.animating .door-right { right: 0; }
+        
+        body.animating .stinger-logo {
+            animation: logoImpact 1.2s forwards;
+            animation-delay: 0.4s;
+        }
+
+        body.animating .flash {
+            animation: flashImpact 0.5s forwards;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes logoImpact {
+            0% { opacity: 0; transform: scale(2) rotate(-10deg); filter: blur(20px); }
+            30% { opacity: 1; transform: scale(1) rotate(0deg); filter: blur(0); }
+            70% { opacity: 1; transform: scale(1.1); filter: drop-shadow(0 0 50px var(--crimson)); }
+            100% { opacity: 0; transform: scale(0.8); filter: blur(10px); }
+        }
+
+        @keyframes flashImpact {
+            0% { opacity: 0; }
+            10% { opacity: 0.8; }
+            100% { opacity: 0; }
+        }
+    </style>
+</head>
+<body onclick="playStinger()">
+
+    <div class="door door-left">
+        <div class="ornament"></div>
+    </div>
+    
+    <img src="../assets/images/logo/logosimple.png" class="stinger-logo" id="logo">
+    
+    <div class="door door-right">
+        <div class="ornament"></div>
+    </div>
+
+    <div class="flash"></div>
+
+    <script>
+        let isAnimating = false;
+
+        function playStinger() {
+            if (isAnimating) return;
+            isAnimating = true;
+
+            document.body.classList.add('animating');
+            
+            // Duración total de la animación de las puertas y el logo
+            setTimeout(() => {
+                document.body.classList.remove('animating');
+                isAnimating = false;
+            }, 2500);
+        }
+
+        // Auto-ejecución al cargar (para OBS "Refresh on active")
+        window.onload = () => {
+            setTimeout(playStinger, 200);
+        };
+    </script>
+</body>
+</html>

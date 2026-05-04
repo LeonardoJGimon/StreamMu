@@ -1,0 +1,437 @@
+{
+    "featureCard": {
+        "custom1": {
+            "title": "Equípate para la gloria",
+            "desc": "No empieces desde cero, empieza como un guerrero de verdad. Hemos preparado un Pack de Bienvenida exclusivo para que nada te detenga en tu camino al Reset. Entra a Mu Neutro, reclama tu kit y demuestra quién manda en el ranking."
+        },
+        "custom2": {
+            "title": "Formamos Leyendas",
+            "desc": "En Mu Neutro no caminas solo. Únete a nuestra comunidad activa, participa en eventos diarios y cuenta con un soporte dispuesto a ayudarte en cada paso de tu evolución. Aquí, cada guerrero cuenta."
+        },
+        "custom3": {
+            "title": "Tu Progreso está Seguro",
+            "desc": "Olvida los miedos al lag o las caídas. Contamos con una infraestructura de última generación diseñada para que tu única preocupación sea alcanzar el próximo Reset. Estabilidad real para jugadores reales."
+        }
+    },
+    "brand": {
+        "logo": "MU \u003cspan\u003eNEUTRO\u003c/span\u003e"
+    },
+    "page": {
+        "index": {
+            "title": "Mu Neutro - Servidor Hardcore"
+        },
+        "server_info": {
+            "title": "Info del Servidor - Mu Neutro"
+        },
+        "terms": {
+            "title": "Términos y Políticas - Mu Neutro"
+        }
+    },
+    "nav": {
+        "home": "Inicio",
+        "server_info": "Info del Servidor",
+        "rankings": "Clasificación",
+        "downloads": "Descargas",
+        "register": "Registro",
+        "dashboard": "Panel"
+    },
+    "footer": {
+        "copyright": "\u0026copy; 2025 - 2026 Mu Neutro Server. Todos los derechos reservados.",
+        "terms": "Términos y Políticas",
+        "follow_us": "Síguenos",
+        "forged_by": "FORJADO POR \u003cspan class=\"footer-min__accent\"\u003eMu Neutro\u003c/span\u003e"
+    },
+    "common": {
+        "or": "O",
+        "enabled": "Habilitado",
+        "yes": "Sí",
+        "no": "No",
+        "no_data": "Sin datos",
+        "loading": "CARGANDO...",
+        "not_set": "No configurado"
+    },
+    "features": {
+        "anti_hack": {
+            "title": "Antihack",
+            "desc": "Protección premium. Juega sin preocuparte por tramposos."
+        },
+        "play_to_win": {
+            "title": "Juega para ganar",
+            "desc": "Farmea moneda VIP directamente en el juego. La economía es tuya."
+        },
+        "community": {
+            "title": "Comunidad",
+            "desc": "Guerras de gremios activas y eventos GM diarios."
+        }
+    },
+    "team": {
+        "title": "EQUIPO",
+        "subtitle": "Personas detrás del proyecto."
+    },
+    "hero": {
+        "description": "Únete al servidor Mu Online más estable.\nSin Pay-to-Win. Solo estrategia, farmeo y gloria.",
+        "start_adventure": "COMENZAR AVENTURA",
+        "server_info": "INFO DEL SERVIDOR",
+        "download_launcher": "DESCARGAR LAUNCHER"
+    },
+    "stats": {
+        "online": "EN LÍNEA",
+        "status": "ESTADO",
+        "season": "TEMPORADA",
+        "exp": "EXP",
+        "drop": "BOTÍN"
+    },
+    "home": {
+        "server_online": "SERVIDOR EN LÍNEA",
+        "hero_badge": "SERVIDOR CLÁSICO SEASON 6 EP 3",
+        "status": "ESTADO",
+        "hero_desc": "El servidor MuOnline más épico y desafiante. Únete a nuestra comunidad y lucha por la gloria.",
+        "register_now": "REGÍSTRATE AHORA",
+        "download_now": "DESCARGAR AHORA",
+        "latest_news": "ÚLTIMAS NOTICIAS",
+        "latest_news_sub": "Actualizaciones, eventos y nuevas funciones del reino.",
+        "hall_of_fame": "SALÓN DE LA FAMA",
+        "story": {
+            "title": "LA CRÓNICA",
+            "desc": "Descubre la historia de nuestro mundo y el camino que reunió a los héroes.",
+            "cta": "LEER LA HISTORIA"
+        },
+        "cards": {
+            "read_more": "LEER MÁS",
+            "economy": {
+                "tag": "ECONOMÍA",
+                "title": "ECONOMÍA REAL (RMT)",
+                "desc": "Juega, farmea y comercia con una economía equilibrada, diseñada para el progreso a largo plazo."
+            },
+            "antihack": {
+                "tag": "SEGURIDAD",
+                "title": "Antihack",
+                "desc": "Protección premium. Juega sin preocuparte por tramposos."
+            }
+        },
+        "news": {
+            "read_more": "LEER"
+        },
+        "hof": {
+            "warrior": "GUERRERO",
+            "mlvl": "NIV. MAESTRO",
+            "view_ranking": "VER RANKING COMPLETO",
+            "rr": "REINICIOS"
+        }
+    },
+    "downloads": {
+        "title": "DESCARGAS",
+        "central_prefix": "CENTRAL DE",
+        "central_word": "DESCARGAS",
+        "subtitle": "Descarga el cliente completo y empieza a jugar.",
+        "recommended": "RECOMENDADO",
+        "client_title": "CLIENTE COMPLETO",
+        "client_desc": "Instala la última versión para la mejor experiencia.",
+        "download_direct": "DESCARGAR",
+        "requirements": "REQUISITOS",
+        "minimum": "MÍNIMO",
+        "req": {
+            "minimum_head": "MÍNIMO",
+            "recommended_head": "RECOMENDADO",
+            "os": "OS",
+            "cpu": "CPU",
+            "ram": "RAM",
+            "gpu": "GPU",
+            "disk": "DISCO",
+            "os_min": "Windows 10/11 (64-bit)",
+            "cpu_min": "Intel i3",
+            "ram_min": "4 GB",
+            "gpu_min": "(Intel HD/UHD)",
+            "disk_min": "0.5–1 GB",
+            "os_rec": "Windows 10/11 (64-bit)",
+            "cpu_rec": "Intel i5",
+            "ram_rec": "8 GB",
+            "gpu_rec": "Cualquiera",
+            "disk_rec": "1–2 GB",
+            "dependency_title": "Dependencia importante",
+            "dependency_text": "Microsoft Visual C++ Redistributable 2015–2022 (x64)"
+        },
+        "size": "TAMAÑO",
+        "updated": "ACTUALIZADO",
+        "version": "VERSIÓN",
+        "release": "PUBLICACIÓN"
+    },
+    "news": {
+        "close": "CERRAR NOTICIA"
+    },
+    "days": {
+        "sunday": "DOMINGO",
+        "monday": "LUNES",
+        "tuesday": "MARTES",
+        "wednesday": "MIÉRCOLES",
+        "thursday": "JUEVES",
+        "friday": "VIERNES",
+        "saturday": "SÁBADO"
+    },
+    "server": {
+        "enter_world": "ENTRAR AL MUNDO",
+        "coming_soon": "PRÓXIMAMENTE",
+        "live_now": "¡SERVIDOR EN VIVO AHORA!",
+        "no_servers": "No hay servidores",
+        "status": {
+            "online": "En línea",
+            "grand_opening": "Gran Apertura"
+        }
+    },
+    "pagination": {
+        "prev": "Anterior",
+        "next": "Siguiente"
+    },
+    "time": {
+        "days": "Días",
+        "hrs": "Hrs",
+        "min": "Min",
+        "sec": "Seg"
+    },
+    "events": {
+        "active_events": "EVENTOS ACTIVOS",
+        "next_in": "PRÓXIMO EN",
+        "next_events": "PRÓXIMOS EVENTOS",
+        "upcoming": "CRONOGRAMA DE EVENTOS",
+        "upcoming_desc": "¡Únete a la acción! Consulta los próximos eventos en el servidor.",
+        "active": "ACTIVO",
+        "live_event": "EVENTO EN VIVO",
+        "pvp_event": "EVENTO PVP",
+        "exp_boost": "BONUS EXP",
+        "slides": {
+            "ice_wind_castle": {
+                "title": "ICE WIND CASTLE",
+                "subtitle": "FORTALEZA HELADA",
+                "desc": "Enfrenta las pruebas del castillo congelado y sus guardianes implacables.\nSolo los gremios más fuertes pueden sobrevivir a la ventisca eterna."
+            },
+            "castle_siege": {
+                "title": "CASTLE SIEGE",
+                "subtitle": "CASTLE SIEGE",
+                "desc": "Conquista el castillo y reclama la gloria antes de que termine la batalla.\nLucha por el trono y guía a tu gremio hacia la victoria."
+            },
+            "arka_war": {
+                "title": "ARKA WAR",
+                "subtitle": "ARKA WAR",
+                "desc": "Compite en el campo de batalla definitivo y gana poderosas recompensas.\nUna guerra de estrategia, trabajo en equipo y dominación."
+            }
+        }
+    },
+    "playtime": {
+        "title": "RECOMPENSA \u003cspan class=\"title-gold\"\u003eTIEMPO ONLINE\u003c/span\u003e",
+        "subtitle": "Mantente en línea en Mu Neutro y desbloquea automáticamente equipo exclusivo y poderoso"
+    },
+    "champions": {
+        "castle_siege": "EL REY DEL RESET",
+        "arka_war": "MAESTRO DEL PVP",
+        "throne_conquest": "LÍDER DE LEYENDAS",
+        "gm": "LÍDER:"
+    },
+    "auth": {
+        "login": "Iniciar sesión",
+        "register": "Registro",
+        "logout": "Cerrar sesión",
+        "user": "Usuario",
+        "need_account": "¿Necesitas una cuenta?",
+        "have_account": "¿Ya tienes una cuenta?",
+        "human_verification": "VERIFICACIÓN HUMANA",
+        "enter_code": "INGRESA EL CÓDIGO",
+        "finish_register": "FINALIZAR REGISTRO",
+        "secure": "HTTPS PROTEGIDO",
+        "encrypted": "DATOS ENCRIPTADOS",
+        "terms_notice": "Al registrarte aceptas los Términos.",
+        "invalid_code": "Código de verificación inválido",
+        "username": "USUARIO",
+        "password": "CONTRASEÑA",
+        "confirm_password": "CONFIRMAR CONTRASEÑA",
+        "email": "EMAIL",
+        "country": "PAÍS",
+        "referral_optional": "REFERIDO (OPCIONAL)",
+        "username_placeholder": "4-10 caracteres",
+        "password_placeholder": "4-10 caracteres",
+        "confirm_password_placeholder": "Repetir contraseña",
+        "email_placeholder": "you@example.com",
+        "referral_placeholder": "Código de referido"
+    },
+    "auth_modal": {
+        "login_title": "BIENVENIDO DE NUEVO",
+        "register_title": "CREAR CUENTA",
+        "login_discord": "\u003ci class=\"fab fa-discord\"\u003e\u003c/i\u003e INICIAR CON DISCORD",
+        "register_discord": "\u003ci class=\"fab fa-discord\"\u003e\u003c/i\u003e REGISTRAR CON DISCORD",
+        "new_here": "¿Nuevo aquí?",
+        "create_account": "CREAR CUENTA",
+        "have_account": "¿Ya tienes cuenta?",
+        "back_to_login": "VOLVER A LOGIN"
+    },
+    "ranking": {
+        "title": "CLASIFICACIÓN",
+        "subtitle": "Los guerreros y gremios más fuertes del servidor.",
+        "event_winners": "LA TRINIDAD DEL PODER",
+        "top_players": "MEJORES JUGADORES",
+        "tabs": {
+            "character": "Personaje",
+            "pvp": "PVP",
+            "hunt": "Caza",
+            "gens": "Gens",
+            "guilds": "Gremios"
+        },
+        "locked": "LAS CLASIFICACIONES ESTARÁN DISPONIBLES CON EL \u003cspan class=\"ranking-locked-accent\"\u003eLANZAMIENTO OFICIAL\u003c/span\u003e DEL JUEGO."
+    },
+    "faq": {
+        "title": "PREGUNTAS FRECUENTES",
+        "subtitle": "Todo lo que necesitas saber sobre Mu Neutro.",
+        "q1": "Creé una cuenta en la web, pero el juego dice \"Cuenta inválida\".",
+        "a1": "La cuenta web es solo para el sitio y la gestión de cuenta. Crea una subcuenta en tu panel para iniciar sesión en el juego.",
+        "q2": "¿Puedo abrir más de un cliente del juego?",
+        "a2": "Sí, puedes iniciar sesión con varias cuentas al mismo tiempo, hasta el límite permitido por computadora.",
+        "q3": "¿El servidor es gratis para jugar?",
+        "a3": "Sí, el servidor es gratuito. La tienda ofrece artículos opcionales de conveniencia.",
+        "q4": "¿Cómo obtengo regalos o recompensas?",
+        "a4": "Únete a la comunidad, participa en eventos y sigue nuestros canales sociales para sorteos.",
+        "q5": "¿Puedo completar misiones web con varias cuentas?",
+        "a5": "Sí. Puedes crear varias cuentas y completar misiones en cada una para recibir recompensas."
+    },
+    "server_info": {
+        "title": "Información del Servidor",
+        "subtitle": "Tasas, características, reglas y todo lo que necesitas antes de empezar.",
+        "rates": "Tasas",
+        "exp": "EXP",
+        "drop": "Botín",
+        "max_level": "Nivel Máximo",
+        "master_level": "Nivel Maestro",
+        "details": "Detalles del Servidor",
+        "season": "Temporada",
+        "type": "Tipo",
+        "reset": "Reinicios",
+        "anti_cheat": "Antitrampas",
+        "economy": "Economía",
+        "wcoins": "WCoins",
+        "wcoins_desc": "En juego \u0026 Tienda",
+        "goblin_points": "Goblin Points",
+        "goblin_points_desc": "Eventos \u0026 Votos",
+        "trading": "Comercio",
+        "market": "Mercado",
+        "quick_rules": "Reglas rápidas",
+        "rule1": "Sin cheats, bots ni herramientas de terceros.",
+        "rule2": "Sin comercio con dinero real entre jugadores.",
+        "rule3": "Respeta a otros jugadores y al staff.",
+        "rule4": "Abusos y exploits llevan a baneo.",
+        "back_home": "Volver al inicio"
+    },
+    "dashboard": {
+        "overview": "Resumen",
+        "vote_reward": "Recompensa de Voto",
+        "streamers": "Creadores",
+        "welcome": "¡Bienvenido de vuelta, guerrero!",
+        "server_time": "Hora del servidor:",
+        "server": "Servidor:",
+        "account": "Cuenta",
+        "country": "País:",
+        "twofa": "2FA:",
+        "details": {
+            "server_type": "Tipo de servidor",
+            "admin": "Admin",
+            "discord": "Discord",
+            "discord_id": "ID de Discord",
+            "vip_level": "Nivel VIP",
+            "vip_expiration": "Expiración VIP",
+            "title_discount": "Descuento de título",
+            "pc_points": "Puntos PC",
+            "cash_updated": "Cash actualizado"
+        },
+        "wcoins": "WCoins",
+        "goblin_points": "Goblin Points",
+        "cash": "Saldo",
+        "key_points": "Puntos Clave",
+        "account_type": "Tipo de cuenta",
+        "vip_reward": {
+            "title": "Recompensa VIP",
+            "button": "Reclamar VIP",
+            "loading": "Cargando recompensa...",
+            "details": "Recibirás VIP {vip} por {days} día(s).",
+            "hwid_required": " Se requiere HWID.",
+            "hwid_required_short": "Se requiere HWID.",
+            "not_configured": "La recompensa VIP no está configurada.",
+            "grand_opening_blocked": "No disponible durante la Gran Apertura."
+        }
+    },
+    "streamers": {
+        "loading_status": "Cargando estado...",
+        "become_streamer": "Conviértete en Creador",
+        "apply_desc": "Solicita ser creador oficial vinculando tus canales.",
+        "youtube_channel_id_optional": "ID del canal de YouTube (Opcional)",
+        "twitch_username_optional": "Usuario de Twitch (Opcional)",
+        "kick_username_optional": "Usuario de Kick (Opcional)",
+        "request_approval": "Solicitar aprobación",
+        "application_pending": "Solicitud pendiente",
+        "application_pending_desc": "Tu solicitud está siendo revisada por nuestro equipo.",
+        "stream_control": "Control de transmisión",
+        "select_platform": "Selecciona tu plataforma y comienza el seguimiento.",
+        "start_tracking": "Iniciar seguimiento",
+        "current_status": "Estado actual:",
+        "live": "EN VIVO",
+        "on": "en",
+        "stop_tracking": "Detener seguimiento",
+        "rewards": "Recompensas",
+        "total_minutes": "Minutos totales",
+        "claimable": "Canjeable",
+        "live_label": "En vivo:",
+        "claim_wcoins": "Reclamar WCoins",
+        "channels": "Canales"
+    },
+    "affiliate": {
+        "program": "Programa de Afiliados",
+        "you_earn": "Tú ganas",
+        "viewer_gets": "El espectador obtiene",
+        "your_code": "TU CÓDIGO DE AFILIADO"
+    },
+    "wallet": {
+        "title": "Billetera y pagos",
+        "available": "Disponible",
+        "pending": "Pendiente",
+        "total_earned": "Total ganado",
+        "request_payout": "Solicitar pago",
+        "recent_history": "Historial reciente",
+        "date": "Fecha",
+        "amount": "Monto",
+        "status": "Estado",
+        "no_history": "Sin historial.",
+        "method": "Método",
+        "amount_usd": "Monto (USD)",
+        "min_25": "Mín $25",
+        "revolut_tag": "Tag de Revolut",
+        "revtag_placeholder": "@username",
+        "bank_name": "Nombre del banco",
+        "bank_name_placeholder": "Nombre del banco",
+        "account_holder_name": "Nombre del titular",
+        "full_name_placeholder": "Nombre completo",
+        "iban": "IBAN",
+        "swift": "SWIFT / BIC",
+        "bank_country": "País del banco",
+        "country_placeholder": "País",
+        "currency": "Moneda",
+        "submit_withdrawal": "Enviar retiro"
+    },
+    "vip_journey": {
+        "title": "CÓMO ADQUIRIR TU VIP",
+        "step1_title": "DESCARGA EL LAUNCHER",
+        "step1_desc": "Obtén el Launcher Oficial desde nuestra sección de descargas.",
+        "step2_title": "ABRE E INICIA SESIÓN",
+        "step2_desc": "Crea tu cuenta en la web o directamente desde el Launcher.",
+        "step3_title": "DONACIÓN",
+        "step3_desc": "Entra al Launcher y selecciona Donaciones en el panel lateral.",
+        "step4_title": "COMPRA",
+        "step4_desc": "Elige tu paquete, completa el pago y ¡listo!"
+    },
+    "promo": {
+        "title": "Códigos promo",
+        "desc": "Genera códigos diarios para tus espectadores.",
+        "generate": "Generar códigos"
+    },
+    "terms": {
+        "title": "Términos y Políticas",
+        "subtitle": "Reglas del servidor, programa de afiliados, términos de servicio, reembolsos y privacidad.",
+        "menu": "Menú",
+        "no_sections": "No hay secciones.",
+        "load_failed": "No se pudieron cargar los términos."
+    }
+}

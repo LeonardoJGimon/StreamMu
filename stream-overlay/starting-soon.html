@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mu Neutro - Starting Soon</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @font-face {
+            font-family: 'Exocet';
+            src: url('../assets/images/font/ExocetImmortal-Medium.otf') format('opentype');
+            font-weight: 500;
+        }
+
+        @font-face {
+            font-family: 'Alegreya';
+            src: url('../assets/images/font/AlegreyaSans-Regular.otf') format('opentype');
+            font-weight: 400;
+        }
+
+        :root {
+            --crimson: #9d0a0e;
+            --crimson-glow: rgba(157, 10, 14, 0.8);
+            --gold: #c0a375;
+        }
+
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #000 url('https://i.imgur.com/HQroNDd.png') no-repeat right center;
+            background-size: cover;
+            font-family: 'Alegreya', serif;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        /* FILTRO OSCURO PARA EL FONDO */
+        body::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.65);
+            z-index: 0;
+        }
+
+        /* FONDO DE NEBLINA ROJA */
+        .fog-container {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(157, 10, 14, 0.25) 0%, transparent 70%);
+            z-index: 1;
+        }
+
+        /* CONTENIDO PRINCIPAL */
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            width: 100%;
+            gap: 0;
+        }
+
+        .main-logo {
+            width: 250px;
+            max-width: 80vw;
+            filter: drop-shadow(0 0 30px var(--crimson-glow));
+            animation: pulseLogo 4s infinite ease-in-out;
+            transition: width 0.3s ease;
+        }
+
+        .title {
+            font-family: 'Exocet', serif;
+            font-size: 5rem;
+            letter-spacing: 15px;
+            margin: 5px 0;
+            position: relative;
+            text-align: center;
+            background: linear-gradient(
+                90deg, 
+                var(--crimson) 0%, 
+                #ffffff 45%, 
+                #ffffff 55%, 
+                var(--crimson) 100%
+            );
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 20px rgba(157, 10, 14, 0.5));
+            animation: 
+                fadeInTitle 2s ease-out forwards,
+                shimmerLoop 4s linear infinite,
+                glowPulse 3s infinite ease-in-out;
+            transition: font-size 0.3s ease;
+        }
+
+        /* RESPONSIVE: VERTICAL (1080x1920 - TikTok/Reels) */
+        @media (orientation: portrait) {
+            body {
+                background-position: 80% center !important;
+            }
+
+            .main-logo {
+                width: 280px; /* Un pelín más grande */
+                margin-bottom: 0px;
+            }
+
+            .title {
+                font-size: 3.5rem; /* Un poco más grande ahora que está compacto */
+                letter-spacing: 4px;
+                line-height: 1;
+            }
+
+            .timer-container {
+                font-size: 3.8rem !important;
+                margin: 10px 0 !important; /* Compactado al máximo */
+            }
+
+            .clock-footer {
+                top: 20px !important;
+                bottom: auto !important;
+                left: 50% !important;
+                right: auto !important;
+                transform: translateX(-50%) !important;
+                width: fit-content !important;
+                padding: 8px 20px !important;
+                gap: 15px !important;
+            }
+
+            .clock-item .time {
+                font-size: 1.1rem !important;
+            }
+
+            .clock-item .label {
+                font-size: 0.55rem !important;
+                letter-spacing: 1px !important;
+            }
+            
+            /* Ajuste para los estandartes en vertical - TODO EN UNA LÍNEA */
+            .status-grid {
+                grid-template-columns: repeat(5, 1fr) !important;
+                gap: 5px !important;
+                width: 100% !important;
+                padding: 0 5px !important;
+            }
+
+            .status-banner {
+                padding: 10px 2px 20px 2px !important;
+            }
+
+            .status-icon {
+                font-size: 1.2rem !important;
+            }
+
+            .status-value {
+                font-size: 0.75rem !important;
+            }
+
+            .status-label {
+                font-size: 0.45rem !important;
+                letter-spacing: 0px !important;
+            }
+        }
+
+        /* --- ESTILOS DE ESTADO DEL SERVIDOR (ESTANDARTES) --- */
+        .server-status-container {
+            margin-top: 5px; /* Casi pegado al cronómetro */
+            text-align: center;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .status-header {
+            margin-bottom: 0px; /* Sin espacio */
+        }
+
+        .status-title {
+            font-family: 'Exocet', serif;
+            font-size: 1.5rem; /* Un poco más pequeño */
+            color: var(--crimson);
+            text-shadow: 0 0 15px rgba(255, 46, 46, 0.6);
+            letter-spacing: 3px;
+            margin: 0;
+        }
+
+        .status-subtitle {
+            font-size: 0.7rem;
+            color: #aaa;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 2px;
+        }
+
+        .online-dot {
+            width: 8px;
+            height: 8px;
+            background: #2ecc71;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #2ecc71;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.4; }
+            100% { opacity: 1; }
+        }
+
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            padding: 0 20px;
+        }
+
+        .status-banner {
+            position: relative;
+            background: linear-gradient(180deg, #1a0505 0%, #000000 100%);
+            border-top: 2px solid var(--crimson);
+            padding: 10px 10px 25px 10px; /* Más bajo y compacto */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 50% 100%, 0% 85%);
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        .status-banner:hover {
+            transform: translateY(-5px);
+        }
+
+        .status-icon {
+            font-size: 1.8rem;
+            color: var(--crimson);
+            filter: drop-shadow(0 0 8px rgba(255, 46, 46, 0.8));
+            margin-bottom: 5px;
+        }
+
+        .status-value {
+            font-family: 'Exocet', serif;
+            font-size: 1.1rem;
+            color: #ffffff;
+            font-weight: 900;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        .status-label {
+            font-size: 0.65rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: auto;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-weight: 700;
+            opacity: 0;
+            animation: fadeInSub 2s ease-out 1s forwards;
+        }
+
+        /* ANIMACIONES */
+        @keyframes pulseLogo {
+
+            0%,
+            100% {
+                transform: scale(1);
+                filter: drop-shadow(0 0 30px var(--crimson-glow));
+            }
+
+            50% {
+                transform: scale(1.05);
+                filter: drop-shadow(0 0 50px var(--crimson-glow));
+            }
+        }
+
+        @keyframes fadeInTitle {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes shimmerLoop {
+            0% {
+                background-position: 200% center;
+            }
+
+            100% {
+                background-position: -200% center;
+            }
+        }
+
+        @keyframes glowPulse {
+
+            0%,
+            100% {
+                filter: drop-shadow(0 0 15px rgba(157, 10, 14, 0.4));
+            }
+
+            50% {
+                filter: drop-shadow(0 0 35px rgba(255, 0, 0, 0.8));
+            }
+        }
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fog-container"></div>
+
+    <div class="content">
+        <img src="../assets/images/logo/logosimple.png" class="main-logo" alt="Mu Logo">
+        <h1 class="title">STARTING SOON</h1>
+        
+        <div id="timer" class="timer-container">
+            <span id="mins" class="digit-box">00</span>
+            <span class="separator">:</span>
+            <span id="secs" class="digit-box">00</span>
+            <span id="ms" class="ms-box">00</span>
+        </div>
+
+        <style>
+            .timer-container {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: 'Exocet', serif;
+                font-size: 3.5rem;
+                color: #ffffff;
+                margin: 5px 0; /* Margen mínimo */
+                text-shadow: 0 0 20px rgba(255, 255, 255, 0.4);
+                font-weight: 900;
+            }
+
+            .digit-box {
+                display: inline-block;
+                width: 1.35em; /* Ajuste fino para que no choquen pero estén cerca */
+                text-align: center;
+            }
+
+            .separator {
+                display: inline-block;
+                width: auto;
+                margin: 0 4px; /* Separación mínima y elegante */
+                text-align: center;
+                color: #ffffff;
+            }
+
+            .ms-box {
+                display: inline-block;
+                width: 1.8em;
+                font-size: 0.6em;
+                opacity: 0.8;
+                margin-left: 5px;
+                text-align: left;
+            }
+            .cycling-container {
+                margin-top: 10px;
+            }
+        </style>
+
+        <!-- PANEL DE ESTADO DEL SERVIDOR -->
+        <div class="server-status-container">
+            <div class="status-header">
+                <h2 class="status-title">ESTADO</h2>
+                <div class="status-subtitle">
+                    <span class="online-dot"></span>
+                    SERVIDOR EN LÍNEA
+                </div>
+            </div>
+
+            <div class="status-grid">
+                <!-- Usuarios Online -->
+                <div class="status-banner">
+                    <div class="status-icon"><i class="fas fa-users"></i></div>
+                    <div class="status-value" id="stat-online">0</div>
+                    <div class="status-label">EN LÍNEA</div>
+                </div>
+
+                <!-- Estado del Servidor -->
+                <div class="status-banner">
+                    <div class="status-icon"><i class="fas fa-signal"></i></div>
+                    <div class="status-value">OPEN</div>
+                    <div class="status-label">ESTADO</div>
+                </div>
+
+                <!-- Temporada -->
+                <div class="status-banner">
+                    <div class="status-icon"><i class="fas fa-crown"></i></div>
+                    <div class="status-value">S6 EP3</div>
+                    <div class="status-label">SEASON</div>
+                </div>
+
+                <!-- Experiencia -->
+                <div class="status-banner">
+                    <div class="status-icon"><i class="fas fa-bolt"></i></div>
+                    <div class="status-value">200X</div>
+                    <div class="status-label">EXP</div>
+                </div>
+
+                <!-- Drop / Botín -->
+                <div class="status-banner">
+                    <div class="status-icon"><i class="fas fa-percent"></i></div>
+                    <div class="status-value">20X</div>
+                    <div class="status-label">BOTÍN</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GADGET DE RANKING DINÁMICO -->
+        <div class="cycling-container"
+            style="height: 50px; overflow: hidden; display: flex; align-items: center; justify-content: center; font-family: 'Exocet', serif; font-size: 1.2rem; letter-spacing: 2px;">
+            <div id="gadget-label" style="color: var(--crimson); font-weight: 900; margin-right: 15px;">PREPARE FOR</div>
+
+            <div class="mask"
+                style="height: 40px; overflow: hidden; position: relative; border-left: 2px solid var(--gold); padding-left: 15px;">
+                <div id="gadget-value" style="line-height: 40px; color: #ffffff; transition: all 0.5s ease; transform: translateY(0); opacity: 1;">
+                    THE BATTLE
+                </div>
+            </div>
+        </div>
+
+        <style>
+            @keyframes cyclingAnim {
+
+                0%,
+                20% {
+                    transform: translateY(0);
+                }
+
+                25%,
+                45% {
+                    transform: translateY(-40px);
+                }
+
+                50%,
+                70% {
+                    transform: translateY(-80px);
+                }
+
+                75%,
+                95% {
+                    transform: translateY(-120px);
+                }
+
+                100% {
+                    transform: translateY(0);
+                }
+            }
+        </style>
+    </div>
+
+    <!-- Generador de partículas de ceniza -->
+    <div class="clock-footer">
+        <div class="clock-item">
+            <span class="label"><i class="fas fa-server"></i> SERVER TIME</span>
+            <span id="server-time" class="time">00:00:00</span>
+        </div>
+        <div class="clock-divider"></div>
+        <div class="clock-item">
+            <span class="label"><i class="fas fa-user-clock"></i> LOCAL TIME</span>
+            <span id="local-time" class="time">00:00:00</span>
+        </div>
+    </div>
+
+    <style>
+        .clock-footer {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(10, 5, 5, 0.85);
+            padding: 8px 20px;
+            border: 1px solid var(--crimson);
+            border-radius: 4px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.8);
+            z-index: 20;
+        }
+
+        .clock-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .clock-item .label {
+            font-size: 0.55rem;
+            color: var(--crimson);
+            letter-spacing: 2px;
+            font-weight: 900;
+            margin-bottom: 2px;
+        }
+
+        .clock-item .time {
+            font-family: 'Alegreya', serif;
+            font-size: 1rem;
+            color: var(--gold);
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(192, 163, 117, 0.3);
+        }
+
+        .clock-divider {
+            width: 1px;
+            height: 20px;
+            background: var(--crimson);
+            opacity: 0.4;
+        }
+    </style>
+
+    <script>
+        function updateClocks() {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('es-ES', { hour12: false });
+            
+            document.getElementById('local-time').innerText = timeStr;
+            document.getElementById('server-time').innerText = timeStr;
+        }
+        
+        setInterval(updateClocks, 1000);
+        updateClocks();
+
+        // LÓGICA DEL CONTADOR CON MILISEGUNDOS (ESTABLE)
+        let totalTime = 120 * 1000; 
+        let startTime = Date.now();
+        const minsElement = document.getElementById('mins');
+        const secsElement = document.getElementById('secs');
+        const msElement = document.getElementById('ms');
+        const timerContainer = document.getElementById('timer');
+
+        function updateTimer() {
+            let elapsed = Date.now() - startTime;
+            let timeLeft = totalTime - elapsed;
+
+            if (timeLeft <= 0) {
+                timerContainer.innerHTML = "STARTING NOW!";
+                timerContainer.style.fontSize = "2.5rem";
+                timerContainer.style.color = "#ffffff";
+                timerContainer.style.textShadow = "0 0 20px rgba(255, 255, 255, 0.6)";
+                clearInterval(timerInterval);
+                return;
+            }
+
+            let minutes = Math.floor(timeLeft / 60000);
+            let seconds = Math.floor((timeLeft % 60000) / 1000);
+            let ms = Math.floor((timeLeft % 1000) / 10);
+
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+            ms = ms < 10 ? '0' + ms : ms;
+            
+            if (minsElement) minsElement.innerText = minutes;
+            if (secsElement) secsElement.innerText = seconds;
+            if (msElement) msElement.innerText = ":" + ms;
+        }
+
+        // LÓGICA DE ESTADO DEL SERVIDOR (REAL-TIME)
+        async function updateServerStats() {
+            try {
+                const response = await fetch('/auth/online-count?serverType=server1');
+                if (response.ok) {
+                    const data = await response.json();
+                    const onlineEl = document.getElementById('stat-online');
+                    if (onlineEl) {
+                        const newCount = data.onlineCount || 0;
+                        
+                        // Si el valor cambia o se refresca, añadimos un efecto visual
+                        onlineEl.style.transition = "all 0.3s ease";
+                        onlineEl.style.color = "var(--crimson)";
+                        onlineEl.style.textShadow = "0 0 15px var(--crimson)";
+                        
+                        setTimeout(() => {
+                            onlineEl.innerText = newCount;
+                            setTimeout(() => {
+                                onlineEl.style.color = "#ffffff";
+                                onlineEl.style.textShadow = "none";
+                            }, 500);
+                        }, 300);
+                    }
+                }
+            } catch (error) {
+                console.error("Error fetching online count:", error);
+            }
+        }
+
+        // GADGETS DINÁMICOS (RANKINGS & MÁS)
+        let gadgetItems = [
+            { label: "PREPARE FOR", value: "THE BATTLE" },
+            { label: "SERVER STATUS", value: "ONLINE" }
+        ];
+        let gadgetIndex = 0;
+
+        async function updateGadgetData() {
+            try {
+                const [players, guilds, pvp, latest] = await Promise.all([
+                    fetch('/top-ranking-characters?serverType=server1').then(r => r.json()),
+                    fetch('/top-ranking-guilds?serverType=server1').then(r => r.json()),
+                    fetch('/top-ranking-pvp?serverType=server1').then(r => r.json()),
+                    fetch('../latest-stats.json?t=' + Date.now()).then(r => r.ok ? r.json() : null).catch(() => null)
+                ]);
+
+                gadgetItems = [
+                    { label: "PREPARE FOR", value: "THE BATTLE" }
+                ];
+
+                if (players && players.length) {
+                    gadgetItems.push({ label: "TOP PLAYER", value: `${players[0].Name} (${players[0].RESETS} RR)` });
+                }
+                if (guilds && guilds.length) {
+                    gadgetItems.push({ label: "TOP CLAN", value: guilds[0].G_Name });
+                }
+                if (pvp && pvp.length) {
+                    gadgetItems.push({ label: "TOP KILLER", value: pvp[0].Name });
+                }
+                
+                if (latest) {
+                    if (latest.latestUser) {
+                        gadgetItems.push({ label: "NEW USER", value: latest.latestUser.toUpperCase() });
+                    }
+                    if (latest.latestCharacter && latest.latestCharacter.name) {
+                        gadgetItems.push({ label: "NEW HERO", value: latest.latestCharacter.name.toUpperCase() });
+                    }
+                }
+
+                gadgetItems.push({ label: "VERSION", value: "SEASON 6 EP 3" });
+
+            } catch (e) {
+                console.error("Error updating gadgets:", e);
+            }
+        }
+
+        function rotateGadget() {
+            const labelEl = document.getElementById('gadget-label');
+            const valueEl = document.getElementById('gadget-value');
+            if (!labelEl || !valueEl) return;
+
+            // Animación de salida
+            valueEl.style.transform = "translateY(-40px)";
+            valueEl.style.opacity = "0";
+
+            setTimeout(() => {
+                gadgetIndex = (gadgetIndex + 1) % gadgetItems.length;
+                const item = gadgetItems[gadgetIndex];
+                
+                labelEl.innerText = item.label;
+                valueEl.innerText = item.value;
+
+                // Animación de entrada
+                valueEl.style.transform = "translateY(40px)";
+                valueEl.style.transition = "none";
+                
+                setTimeout(() => {
+                    valueEl.style.transition = "all 0.5s ease";
+                    valueEl.style.transform = "translateY(0)";
+                    valueEl.style.opacity = "1";
+                }, 50);
+            }, 500);
+        }
+
+        // Cargar datos cada 2 minutos
+        setInterval(updateGadgetData, 120000);
+        updateGadgetData();
+
+        // Rotar texto cada 5 segundos
+        setInterval(rotateGadget, 5000);
+
+        setInterval(updateServerStats, 30000);
+        updateServerStats();
+
+        const timerInterval = setInterval(updateTimer, 10);
+        updateTimer();
+    </script>
+</body>
+</html>

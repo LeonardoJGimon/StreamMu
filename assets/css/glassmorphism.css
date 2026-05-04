@@ -1,0 +1,220 @@
+/* ==========================================
+   ULTRA-PREMIUM GLASSMORPHISM & NEON AESTHETICS (2026)
+   Hermosos efectos de vidrio esmerilado, luces neón, y sombras profundas.
+   ========================================== */
+
+/* ========== NOISE TEXTURE (MATE EFFECT) ========== */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.03;
+    /* Basic CSS noise for premium matte finish */
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* ========== ULTRA GLASS PALETTE ========== */
+
+/* Panel base para tarjetas épicas */
+.glass,
+.champion-card,
+.event-card,
+.home-news__col,
+.home-status-strip,
+.hero-kpi,
+.promo-modal__panel,
+.news-modal__panel,
+.auth-panel,
+.dh-card,
+.overview-card,
+.modal-content,
+.ranking-table-wrapper,
+.download-card,
+.req-card,
+.info-card {
+    background: linear-gradient(145deg, rgba(10, 5, 5, 0.9) 0%, rgba(0, 0, 0, 0.95) 100%);
+    backdrop-filter: blur(24px) saturate(160%);
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
+    /* Diablo IV: Red/Stone internal lighting */
+    border-top: 1px solid rgba(157, 10, 14, 0.4);
+    border-left: 1px solid rgba(157, 10, 14, 0.2);
+    border-right: 1px solid rgba(0, 0, 0, 0.4);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    border-radius: 4px; /* Diablo IV likes sharper edges */
+    box-shadow: 
+        0 25px 50px -12px rgba(0, 0, 0, 0.9),
+        inset 0 1px 1px rgba(157, 10, 14, 0.2);
+    transition: all 400ms cubic-bezier(0.175, 0.885, 0.32, 1);
+    transform: translateZ(0); /* Hardware accel */
+}
+
+/* Efecto Magnético (Hover en paneles) */
+.champion-card:hover,
+.event-card:hover,
+.home-news__col:hover,
+.home-status-strip:hover,
+.dh-card:hover,
+.overview-card:hover,
+.glass:hover {
+    background: linear-gradient(145deg, rgba(20, 8, 8, 0.95) 0%, rgba(5, 0, 0, 1) 100%);
+    border-top: 1px solid rgba(217, 20, 28, 0.8);
+    border-left: 1px solid rgba(217, 20, 28, 0.4);
+    box-shadow: 
+        0 30px 60px -10px rgba(0, 0, 0, 1), 
+        0 0 40px -10px rgba(157, 10, 14, 0.4),
+        inset 0 1px 2px rgba(217, 20, 28, 0.5);
+    transform: translateY(-8px) scale(1.02);
+}
+
+/* Modales Superiores */
+.promo-modal__panel, .news-modal__panel {
+    background: linear-gradient(145deg, rgba(15, 13, 10, 0.8) 0%, rgba(5, 5, 5, 0.95) 100%);
+    backdrop-filter: blur(30px);
+    border-top: 1px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 0 50px 100px rgba(0,0,0,0.8), 0 0 60px rgba(215, 166, 81, 0.15);
+}
+
+/* ========== STATUS DOTS & NEON GLOWS ========== */
+
+.online-dot {
+    display: inline-block;
+    width: 10px; height: 10px;
+    border-radius: 50%;
+}
+
+.online-dot.is-online {
+    background-color: #00ff88;
+}
+
+
+
+.online-dot.is-offline {
+    background-color: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    animation: none;
+}
+
+
+
+/* H1 y H2 Epic Texts (Diablo IV Crimson/White) */
+h1, h2, .origin-hero__title, .origin-section__title {
+    background: linear-gradient(to bottom, #ffffff 0%, #9d0a0e 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0px 4px 20px rgba(157, 10, 14, 0.6);
+}
+
+/* ========== BUTTONS REDESIGN ========== */
+
+.btn {
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.btn-gold {
+    background: linear-gradient(180deg, rgba(235, 186, 101, 0.95) 0%, rgba(180, 126, 33, 0.85) 100%);
+    color: #fff !important;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid rgba(255,255,255,0.5);
+    border-bottom: 1px solid rgba(0,0,0,0.5);
+    box-shadow: 
+        0 10px 20px rgba(215, 166, 81, 0.3),
+        inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.btn-gold::after {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+    transform: rotate(45deg) translateY(-100%);
+    transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.btn-gold:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+        0 15px 30px rgba(215, 166, 81, 0.5),
+        0 0 20px rgba(215, 166, 81, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.btn-gold:hover::after {
+    transform: rotate(45deg) translateY(100%);
+}
+
+.btn-outline {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.btn-outline:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 0 6px 20px rgba(255,255,255,0.1), 0 0 15px rgba(255,255,255,0.05);
+}
+
+/* ========== HEADER GLASSMORPHISM ========== */
+
+.main-header {
+    background: rgba(5, 7, 10, 0.5);
+    backdrop-filter: blur(20px) saturate(130%);
+    -webkit-backdrop-filter: blur(20px) saturate(130%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* ========== INPUT FIELDS (FROSTED) ========== */
+
+input[type="text"], input[type="email"], input[type="password"], textarea, select {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(0,0,0,0.3);
+    color: rgba(255, 255, 255, 0.95);
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.5);
+    transition: all 0.3s ease;
+}
+
+input:focus-visible, textarea:focus-visible, select:focus-visible {
+    background: rgba(0, 0, 0, 0.5);
+    border-color: rgba(215, 166, 81, 0.6);
+    box-shadow: 
+        0 0 15px rgba(215, 166, 81, 0.2),
+        inset 0 2px 5px rgba(0,0,0,0.5);
+    outline: none;
+}
+
+/* ========== BROWSER FALLBACK ========== */
+@supports not (backdrop-filter: blur(1px)) {
+    .glass, .promo-modal__panel {
+        background: rgba(15, 15, 18, 0.95);
+    }
+}
+
+/* ========== DROPDOWN & MOBILE MENU UPGRADED ========== */
+.dd-panel, .nav-dd-menu, .mobile-menu-inner {
+    background: linear-gradient(145deg, rgba(20, 22, 30, 0.8) 0%, rgba(5, 7, 12, 0.95) 100%);
+    backdrop-filter: blur(24px) saturate(150%);
+    -webkit-backdrop-filter: blur(24px) saturate(150%);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    border-left: 1px solid rgba(255, 255, 255, 0.05);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+}
+
+.dd-opt:hover, .nav-dd-menu a:hover {
+    background: rgba(215, 166, 81, 0.15);
+    border-radius: 8px;
+    box-shadow: inset 0 0 10px rgba(215, 166, 81, 0.1);
+}

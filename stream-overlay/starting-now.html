@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mu Neutro - Starting Now</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @font-face {
+            font-family: 'Exocet';
+            src: url('../assets/images/font/ExocetImmortal-Medium.otf') format('opentype');
+            font-weight: 500;
+        }
+
+        @font-face {
+            font-family: 'Alegreya';
+            src: url('../assets/images/font/AlegreyaSans-Regular.otf') format('opentype');
+            font-weight: 400;
+        }
+
+        :root {
+            --crimson: #9d0a0e;
+            --crimson-glow: rgba(157, 10, 14, 0.8);
+            --gold: #c0a375;
+        }
+
+        body, html {
+            margin: 0; padding: 0;
+            width: 100vw; height: 100vh;
+            background: #000 url('https://i.imgur.com/HQroNDd.png') no-repeat center center;
+            background-size: cover;
+            font-family: 'Alegreya', serif;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 0;
+        }
+
+        .fog-container {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(157, 10, 14, 0.3) 0%, transparent 80%);
+            z-index: 1;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 10;
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+            gap: 5px;
+        }
+
+        .main-logo {
+            width: 200px;
+            filter: drop-shadow(0 0 30px var(--crimson-glow));
+            animation: pulseLogo 4s infinite ease-in-out;
+            margin-bottom: 10px;
+        }
+
+        .title {
+            font-family: 'Exocet', serif;
+            font-size: 3.5rem;
+            letter-spacing: 6px;
+            margin: 0;
+            background: linear-gradient(90deg, var(--crimson) 0%, #fff 45%, #fff 55%, var(--crimson) 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 15px rgba(157, 10, 14, 0.6));
+            animation: shimmerLoop 3s linear infinite;
+        }
+
+        .subtitle {
+            font-family: 'Exocet', serif;
+            font-size: 1.2rem;
+            color: var(--gold);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        /* COMPACT BANNERS */
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            width: 90%;
+        }
+
+        .status-banner {
+            background: linear-gradient(180deg, #1a0505 0%, #000000 100%);
+            border-top: 1px solid var(--crimson);
+            padding: 8px 5px 15px 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 50% 100%, 0% 85%);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        .status-icon { font-size: 1.2rem; color: var(--crimson); margin-bottom: 2px; }
+        .status-value { font-family: 'Exocet', serif; font-size: 0.8rem; color: #fff; }
+        .status-label { font-size: 0.5rem; color: #555; text-transform: uppercase; }
+
+        /* MINI GADGET */
+        .gadget {
+            margin-top: 20px;
+            font-family: 'Exocet', serif;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .gadget-label { color: var(--crimson); }
+        .gadget-divider { width: 1px; height: 15px; background: var(--gold); }
+
+        /* CLOCKS TOP */
+        .clock-header {
+            position: absolute;
+            top: 20px;
+            display: flex;
+            gap: 15px;
+            background: rgba(10, 5, 5, 0.8);
+            padding: 5px 15px;
+            border: 1px solid var(--crimson);
+            border-radius: 4px;
+            z-index: 20;
+        }
+        .clock-item { display: flex; flex-direction: column; align-items: center; }
+        .clock-item .label { font-size: 0.45rem; color: var(--crimson); letter-spacing: 1px; font-weight: 900; }
+        .clock-item .time { font-family: 'Alegreya', serif; font-size: 0.9rem; color: var(--gold); font-weight: 700; }
+
+        @keyframes pulseLogo {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 30px var(--crimson-glow)); }
+            50% { transform: scale(1.05); filter: drop-shadow(0 0 40px var(--crimson-glow)); }
+        }
+
+        @keyframes shimmerLoop {
+            0% { background-position: 200% center; }
+            100% { background-position: -200% center; }
+        }
+
+        /* FORCE PORTRAIT BEHAVIOR (Smaller/Compact) */
+        @media (min-aspect-ratio: 1/1) {
+            .content { transform: scale(1.2); }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="fog-container"></div>
+
+    <div class="clock-header">
+        <div class="clock-item">
+            <span class="label">SERVER</span>
+            <span id="server-time" class="time">00:00:00</span>
+        </div>
+        <div class="clock-item">
+            <span class="label">LOCAL</span>
+            <span id="local-time" class="time">00:00:00</span>
+        </div>
+    </div>
+
+    <div class="content">
+        <img src="../assets/images/logo/logosimple.png" class="main-logo" alt="Mu Logo">
+        <h1 class="title">STARTING NOW!</h1>
+        <div class="subtitle">The Battle Begins</div>
+
+        <div class="status-grid">
+            <div class="status-banner">
+                <div class="status-icon"><i class="fas fa-users"></i></div>
+                <div class="status-value" id="stat-online">0</div>
+                <div class="status-label">ONLINE</div>
+            </div>
+            <div class="status-banner">
+                <div class="status-icon"><i class="fas fa-crown"></i></div>
+                <div class="status-value">S6 EP3</div>
+                <div class="status-label">SEASON</div>
+            </div>
+            <div class="status-banner">
+                <div class="status-icon"><i class="fas fa-bolt"></i></div>
+                <div class="status-value">200X</div>
+                <div class="status-label">EXP</div>
+            </div>
+        </div>
+
+        <div class="gadget">
+            <span class="gadget-label">NEW HERO</span>
+            <div class="gadget-divider"></div>
+            <span id="new-hero">PIPO</span>
+        </div>
+    </div>
+
+    <script>
+        function updateClocks() {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('es-ES', { hour12: false });
+            document.getElementById('local-time').innerText = timeStr;
+            document.getElementById('server-time').innerText = timeStr;
+        }
+        setInterval(updateClocks, 1000);
+        updateClocks();
+
+        async function updateStats() {
+            try {
+                const res = await fetch('../latest-stats.json?t=' + Date.now());
+                if (!res.ok) throw new Error('Network response was not ok');
+                const data = await res.json();
+                document.getElementById('stat-online').innerText = data.onlineCount || (data.recentUsers?.length || 0);
+                if (data.latestCharacter) {
+                    document.getElementById('new-hero').innerText = data.latestCharacter.name.toUpperCase();
+                }
+            } catch (e) {}
+        }
+        setInterval(updateStats, 30000);
+        updateStats();
+    </script>
+</body>
+</html>

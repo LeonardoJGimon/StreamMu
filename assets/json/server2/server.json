@@ -1,0 +1,2465 @@
+{
+  "generalInformation": {
+    "baseInfo": [
+      {
+        "label": "Version",
+        "value": "Season 21 Part 1-2"
+      },
+      {
+        "label": "Style",
+        "value": "Reset | Forge Era"
+      },
+      {
+        "label": "Drop Rate",
+        "value": "50%"
+      },
+      {
+        "label": "Zen Rate",
+        "value": "15%"
+      },
+      {
+        "label": "Max Connections",
+        "value": "5 PC / 5 IP"
+      },
+      {
+        "label": "Offline Leveling",
+        "value": "24h/48h (PVP) 6h/12h (NON PVP)"
+      },
+      {
+        "label": "Server Currency",
+        "value": "WCoins"
+      },
+      {
+        "label": "Evo Command Available (/evo)",
+        "value": "Yes"
+      },
+      {
+        "label": "Gift Command",
+        "value": "/startergift"
+      }
+    ],
+    "rrInfo": [
+      {
+        "label": "Grand Resets",
+        "value": "Yes"
+      },
+      {
+        "label": "Keep Stats",
+        "value": "Yes"
+      },
+      {
+        "label": "Auto Reset",
+        "value": "Yes - (/reset auto)"
+      },
+      {
+        "label": "Auto Reset in Off level?",
+        "value": "Yes"
+      },
+      {
+        "label": "Auto Reset cost",
+        "value": "250-350 GP"
+      },
+      {
+        "label": "Reward per Reset",
+        "value": "1k GP & 1k Ruud"
+      },
+      {
+        "label": "Resets Required for GR",
+        "value": "100"
+      }
+    ],
+    "grInfo": [
+      {
+        "label": "WC",
+        "value": "2500"
+      },
+      {
+        "label": "Ruud",
+        "value": "250 000"
+      },
+      {
+        "label": "GR Essence",
+        "value": "1"
+      },
+      {
+        "label": "Hunt Points",
+        "value": "5000"
+      }
+    ],
+    "pctDetails": [
+      {
+        "label": "Points per level",
+        "value": "5/7"
+      },
+      {
+        "label": "Points per Master Level",
+        "value": "1"
+      },
+      {
+        "label": "Points per Majestic Level",
+        "value": "1"
+      },
+      {
+        "label": "Max Stats",
+        "value": "32767"
+      }
+    ],
+    "srvMaxRates": [
+      {
+        "label": "Max EDR",
+        "value": "90%"
+      },
+      {
+        "label": "Max CRIT",
+        "value": "90%"
+      },
+      {
+        "label": "Max Damage Decrease",
+        "value": "70%"
+      },
+      {
+        "label": "Max Reflect Damage",
+        "value": "50%"
+      }
+    ],
+    "xpRates": [
+      {
+        "label": "Normal XP",
+        "value": "50x Dynamic"
+      },
+      {
+        "label": "Master XP",
+        "value": "150x"
+      },
+      {
+        "label": "Majestic XP",
+        "value": "3500x"
+      }
+    ]
+  },
+  "exclusiveFeatures": [
+    {
+      "text": "Expanded Ruud Shop: new progression items and materials available for Ruud.",
+      "hot": true
+    },
+    {
+      "text": "High Bosses reward 4 items per kill (excluding Ruud and WCoins).",
+      "hot": true
+    },
+    {
+      "text": "Triple-Boss Invasions: each boss wave spawns 3 bosses.",
+      "hot": true
+    },
+    {
+      "text": "Four new Essences: Ruud, PvP, Boss and GR — used to craft special and high-tier items.",
+      "hot": true
+    },
+    {
+      "text": "Ruud Sets Bonus: +5% Damage Decrease and +7% Max HP when full set is equipped.",
+      "hot": true
+    },
+    {
+      "text": "Custom EXP Buff Items: Up to 130% Normal EXP achievable (excluding VIP and Season Pass bonuses).",
+      "hot": true
+    },
+    {
+      "text": "Trader Crafting: craft powerful items using boss drops, Ruud, and GR materials.",
+      "hot": true
+    },
+    {
+      "text": "Custom Jewels: 8 unique jewels with upgrade paths and special effects.",
+      "hot": true
+    },
+    {
+      "text": "Custom Socket System with improved socket set bonus scaling.",
+      "hot": true
+    },
+    {
+      "text": "Hotspots: every map has at least 3 high-density farming areas.",
+      "hot": true
+    },
+    {
+      "text": "Global Attack Speed cap increased to 1150 for all classes.",
+      "hot": false
+    },
+    {
+      "text": "Errtel Radiance rebalanced: cooldowns aligned across all radiance options.",
+      "hot": false
+    },
+    {
+      "text": "Auto-Reset works during Off level.",
+      "hot": false
+    },
+    {
+      "text": "Daily Login Rewards.",
+      "hot": false
+    }
+  ],
+  "serverSettings": [
+    "Starter Gift: 36H Panda Pet + Rings, Lucky Ticket x1, Class Weapon",
+    "Moss Special Section: 75 Boss Star + 50 Jewel of Guardian",
+    "Lucky Event: 25 Lucky Coins / spin",
+    "No-RNG Gear: all equipment buyable with Ruud",
+    "Auto-Reset Enabled",
+    "30+ Unique Bosses",
+    "35+ Unique Invasions",
+    "15+ Surprise Invasions",
+    "Elite Zone: extra Elite respawns on selected maps",
+    "Reworked Artifacts, Harmony & Earrings for endgame scaling",
+    "Arca War: 3x/week (boosted rewards + entry requirements)",
+    "Last Man Standing: 4x/day (boosted rewards)",
+    "Ice Wind Valley: 3x/week"
+  ],
+  "chaosGoblinSettings": {
+    "maxTOL": "10%",
+    "tolWithTOCA": "Yes",
+    "lkItemBonus": "15%",
+    "masteryUpgradeEvent": "Yes",
+    "rates": [
+      {
+        "label": "Mix 10",
+        "value": "45% + LK Bonus"
+      },
+      {
+        "label": "Mix 11",
+        "value": "45% + LK Bonus"
+      },
+      {
+        "label": "Mix 12",
+        "value": "40% + LK Bonus"
+      },
+      {
+        "label": "Mix 13",
+        "value": "40% + LK Bonus"
+      },
+      {
+        "label": "Mix 14",
+        "value": "35% + LK Bonus"
+      },
+      {
+        "label": "Mix 15",
+        "value": "35% + LK Bonus"
+      }
+    ],
+    "wingsRates": [
+      {
+        "label": "Level 2 Max Rate",
+        "value": "90%"
+      },
+      {
+        "label": "Level 2.5 Max Rate",
+        "value": "80%"
+      },
+      {
+        "label": "Level 3 Max Rate",
+        "value": "80%"
+      },
+      {
+        "label": "Level 4 Max Rate",
+        "value": "80%"
+      },
+      {
+        "label": "Level 5 Max Rate",
+        "value": "80%"
+      },
+      {
+        "label": "Wings Core Mix Rate",
+        "value": "80%"
+      }
+    ],
+    "otherRates": [
+      {
+        "label": "Socket Weapon Mix Rate",
+        "value": "75%"
+      },
+      {
+        "label": "Fragment of Horn",
+        "value": "100%"
+      },
+      {
+        "label": "Broken Horn",
+        "value": "75%"
+      },
+      {
+        "label": "Horn of Fenrir",
+        "value": "60%"
+      }
+    ],
+    "errtelRates": {
+      "normal": {
+        "rank1": {
+          "name": "Rank 1",
+          "rates": [
+            {
+              "level": 1,
+              "rate": "100%"
+            },
+            {
+              "level": 2,
+              "rate": "100%"
+            },
+            {
+              "level": 3,
+              "rate": "100%"
+            },
+            {
+              "level": 4,
+              "rate": "100%"
+            },
+            {
+              "level": 5,
+              "rate": "100%"
+            },
+            {
+              "level": 6,
+              "rate": "100%"
+            },
+            {
+              "level": 7,
+              "rate": "100%"
+            },
+            {
+              "level": 8,
+              "rate": "100%"
+            },
+            {
+              "level": 9,
+              "rate": "100%"
+            },
+            {
+              "level": 10,
+              "rate": "100%"
+            }
+          ]
+        },
+        "rank2": {
+          "name": "Rank 2",
+          "rates": [
+            {
+              "level": 1,
+              "rate": "100%"
+            },
+            {
+              "level": 2,
+              "rate": "100%"
+            },
+            {
+              "level": 3,
+              "rate": "100%"
+            },
+            {
+              "level": 4,
+              "rate": "100%"
+            },
+            {
+              "level": 5,
+              "rate": "100%"
+            },
+            {
+              "level": 6,
+              "rate": "100%"
+            },
+            {
+              "level": 7,
+              "rate": "100%"
+            },
+            {
+              "level": 8,
+              "rate": "100%"
+            },
+            {
+              "level": 9,
+              "rate": "100%"
+            },
+            {
+              "level": 10,
+              "rate": "100%"
+            }
+          ]
+        },
+        "rank3": {
+          "name": "Rank 3",
+          "rates": [
+            {
+              "level": 1,
+              "rate": "100%"
+            },
+            {
+              "level": 2,
+              "rate": "100%"
+            },
+            {
+              "level": 3,
+              "rate": "100%"
+            },
+            {
+              "level": 4,
+              "rate": "100%"
+            },
+            {
+              "level": 5,
+              "rate": "100%"
+            },
+            {
+              "level": 6,
+              "rate": "100%"
+            },
+            {
+              "level": 7,
+              "rate": "100%"
+            },
+            {
+              "level": 8,
+              "rate": "100%"
+            },
+            {
+              "level": 9,
+              "rate": "100%"
+            },
+            {
+              "level": 10,
+              "rate": "100%"
+            }
+          ]
+        },
+        "rank4": {
+          "name": "Rank 4",
+          "rates": [
+            {
+              "level": 1,
+              "rate": "100%"
+            },
+            {
+              "level": 2,
+              "rate": "100%"
+            },
+            {
+              "level": 3,
+              "rate": "100%"
+            },
+            {
+              "level": 4,
+              "rate": "100%"
+            },
+            {
+              "level": 5,
+              "rate": "95%"
+            },
+            {
+              "level": 6,
+              "rate": "90%"
+            },
+            {
+              "level": 7,
+              "rate": "85%"
+            },
+            {
+              "level": 8,
+              "rate": "80%"
+            },
+            {
+              "level": 9,
+              "rate": "75%"
+            },
+            {
+              "level": 10,
+              "rate": "70%"
+            }
+          ]
+        },
+        "rank5": {
+          "name": "Rank 5",
+          "rates": [
+            {
+              "level": 1,
+              "rate": "100%"
+            },
+            {
+              "level": 2,
+              "rate": "100%"
+            },
+            {
+              "level": 3,
+              "rate": "95%"
+            },
+            {
+              "level": 4,
+              "rate": "90%"
+            },
+            {
+              "level": 5,
+              "rate": "90%"
+            },
+            {
+              "level": 6,
+              "rate": "85%"
+            },
+            {
+              "level": 7,
+              "rate": "80%"
+            },
+            {
+              "level": 8,
+              "rate": "75%"
+            },
+            {
+              "level": 9,
+              "rate": "70%"
+            },
+            {
+              "level": 10,
+              "rate": "65%"
+            }
+          ]
+        }
+      },
+      "mastery": {
+        "rank1": {
+          "name": "Rank 1",
+          "rates": [
+            {
+              "level": 1,
+              "rate": "100%"
+            },
+            {
+              "level": 2,
+              "rate": "95%"
+            },
+            {
+              "level": 3,
+              "rate": "90%"
+            },
+            {
+              "level": 4,
+              "rate": "85%"
+            },
+            {
+              "level": 5,
+              "rate": "85%"
+            },
+            {
+              "level": 6,
+              "rate": "80%"
+            },
+            {
+              "level": 7,
+              "rate": "70%"
+            },
+            {
+              "level": 8,
+              "rate": "60%"
+            },
+            {
+              "level": 9,
+              "rate": "57%"
+            },
+            {
+              "level": 10,
+              "rate": "55%"
+            }
+          ]
+        },
+        "rank2": {
+          "name": "Rank 2",
+          "rates": [
+            {
+              "level": 1,
+              "rate": "100%"
+            },
+            {
+              "level": 2,
+              "rate": "95%"
+            },
+            {
+              "level": 3,
+              "rate": "90%"
+            },
+            {
+              "level": 4,
+              "rate": "85%"
+            },
+            {
+              "level": 5,
+              "rate": "85%"
+            },
+            {
+              "level": 6,
+              "rate": "80%"
+            },
+            {
+              "level": 7,
+              "rate": "70%"
+            },
+            {
+              "level": 8,
+              "rate": "60%"
+            },
+            {
+              "level": 9,
+              "rate": "57%"
+            },
+            {
+              "level": 10,
+              "rate": "55%"
+            }
+          ]
+        },
+        "rank3": {
+          "name": "Rank 3",
+          "rates": [
+            {
+              "level": 1,
+              "rate": "100%"
+            },
+            {
+              "level": 2,
+              "rate": "95%"
+            },
+            {
+              "level": 3,
+              "rate": "90%"
+            },
+            {
+              "level": 4,
+              "rate": "85%"
+            },
+            {
+              "level": 5,
+              "rate": "85%"
+            },
+            {
+              "level": 6,
+              "rate": "80%"
+            },
+            {
+              "level": 7,
+              "rate": "70%"
+            },
+            {
+              "level": 8,
+              "rate": "60%"
+            },
+            {
+              "level": 9,
+              "rate": "57%"
+            },
+            {
+              "level": 10,
+              "rate": "55%"
+            }
+          ]
+        },
+        "rank4": {
+          "name": "Rank 4",
+          "rates": [
+            {
+              "level": 1,
+              "rate": "95%"
+            },
+            {
+              "level": 2,
+              "rate": "90%"
+            },
+            {
+              "level": 3,
+              "rate": "85%"
+            },
+            {
+              "level": 4,
+              "rate": "80%"
+            },
+            {
+              "level": 5,
+              "rate": "75%"
+            },
+            {
+              "level": 6,
+              "rate": "70%"
+            },
+            {
+              "level": 7,
+              "rate": "65%"
+            },
+            {
+              "level": 8,
+              "rate": "50%"
+            },
+            {
+              "level": 9,
+              "rate": "45%"
+            },
+            {
+              "level": 10,
+              "rate": "40%"
+            }
+          ]
+        },
+        "rank5": {
+          "name": "Rank 5",
+          "rates": [
+            {
+              "level": 1,
+              "rate": "90%"
+            },
+            {
+              "level": 2,
+              "rate": "85%"
+            },
+            {
+              "level": 3,
+              "rate": "80%"
+            },
+            {
+              "level": 4,
+              "rate": "75%"
+            },
+            {
+              "level": 5,
+              "rate": "70%"
+            },
+            {
+              "level": 6,
+              "rate": "65%"
+            },
+            {
+              "level": 7,
+              "rate": "60%"
+            },
+            {
+              "level": 8,
+              "rate": "50%"
+            },
+            {
+              "level": 9,
+              "rate": "45%"
+            },
+            {
+              "level": 10,
+              "rate": "40%"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "vipSystemBenefits": {
+    "tiers": [
+      {
+        "name": "Bronze",
+        "cost": "5000 WC (X-Shop)",
+        "duration": "7 Days",
+        "benefits": [
+          "Auto Reset function",
+          "Auto-Reset in Off level",
+          "Off level 48h (PVP) 12h (NON PVP)"
+        ]
+      },
+      {
+        "name": "Platinum",
+        "cost": "15€",
+        "duration": "14 Days",
+        "benefits": [
+          "Auto Reset function",
+          "Auto-Reset in Off level",
+          "Off level 48h (PVP) 12h (NON PVP)",
+          "15% Increase XP",
+          "Min Monsters Level for ML & MAJ: 135/160",
+          "Event Limit Increase: CC 3, BC/DS 5, Imperial 7, DP 6, IL 2, Boss Battle 2",
+          "Chaos Machine 100% for all Items -/+ Lk",
+          "HP Bonus 10%",
+          "SD Bonus 15%",
+          "PvP Attack Dmg Bonus 5%",
+          "Bonus From Hunting Sources [Ruud & GP] 10% | [WCoins] 5%"
+        ]
+      }
+    ]
+  },
+  "jewelsSettings": {
+    "jwlRates": [
+      {
+        "label": "Jewel of Soul",
+        "value": "75%"
+      },
+      {
+        "label": "Jewel of Life",
+        "value": "75%"
+      },
+      {
+        "label": "Harmony from Gemstone",
+        "value": "80%"
+      },
+      {
+        "label": "Dark Bless ",
+        "value": "75%"
+      },
+      {
+        "label": "Dark Soul",
+        "value": "60%"
+      },
+      {
+        "label": "Dark Life ",
+        "value": "75%"
+      },
+      {
+        "label": "Jewel of Luck",
+        "value": "75%"
+      },
+      {
+        "label": "Jewel of Kundun",
+        "value": "100%"
+      },
+      {
+        "label": "Jewel of Wisdom",
+        "value": "85%"
+      }
+    ],
+    "jwlExplanations": [
+      {
+        "name": "Jewel of Ascension",
+        "description": "It is a special jewel that can be used to upgrade an item to the next level up to +12.",
+        "info": [
+          "Upgrades the item up to +12 and has 100% success rate.",
+          "Can be used on most of the items, including weapons, armors, wings, pendants, rings and pentagrams.",
+          "Upgrading an item with a Jewel of Ascension will not change its excellent options or ancient options.",
+          "The item must be at least +9 to be upgraded with a Jewel of Ascension."
+        ]
+      },
+      {
+        "name": "Jewel of Supreme Ascension",
+        "description": "Increases item level up to +14.",
+        "info": [
+          "Usable on Weapons, Armors, Shields, Wings, Pentagrams, Rings and Necklaces.",
+          "Cannot be used on items below +13.",
+          "Success Rate: 100%"
+        ]
+      },
+      {
+        "name": "Jewel of Final Ascension",
+        "description": "Increases item level up to +15.",
+        "info": [
+          "Usable on Weapons, Armors, Shields, Wings, Pentagrams, Rings and Necklaces.",
+          "Cannot be used on items below +14.",
+          "Success Rate: 100%"
+        ]
+      },
+      {
+        "name": "Jewel of Accessory Ascension",
+        "description": "Increases the level of Rings, Pendants and Necklaces from +0 up to +9.",
+        "info": [
+          "Usable only on jewelry items.",
+          "On failure, item level is decreased by 1.",
+          "Success Rate: 85%"
+        ]
+      },
+      {
+        "name": "Jewel of Augmentation",
+        "description": "Adds one random Excellent option to jewelry items.",
+        "info": [
+          "Usable only on Pendants, Necklaces and Rings.",
+          "Can be applied multiple times to accumulate Excellent options.",
+          "Requires an Excellent item with at least 1 Excellent option.",
+          "Success Rate: 100%"
+        ]
+      },
+      {
+        "name": "Jewel of Refinement",
+        "description": "Upgrades a Ring or Pendant into a stronger type.",
+        "info": [
+          "Item must be +15 and have at least 4 Excellent options.",
+          "Resulting item will be +0 with 2 random Excellent options.",
+          "Rings and Pendants are converted to higher tier variants.",
+          "Success Rate: 70%",
+          "To create Socket Necklaces, use NPC Trader recipes."
+        ]
+      },
+      {
+        "name": "Jewel of Ancient Perfection",
+        "description": "Adds one random Excellent option to Ancient Set items.",
+        "info": [
+          "Can be used on Ancient +15 items.",
+          "Works on Legendary Sets as well.",
+          "Can be applied multiple times to accumulate Excellent options.",
+          "If item already has 5 Excellent options, they will be rerolled.",
+          "Success Rate: 100%"
+        ]
+      },
+      {
+        "name": "Jewel of Socket Ascension",
+        "description": "Upgrades an Imperial item into a similar Socket item with 5 sockets.",
+        "info": [
+          "Resulting item will be a Socket version with 5 sockets.",
+          "If you are Crusader class, Templar Set will be created.",
+          "Requires an Ancient + Excellent Imperial item.",
+          "Item must be +13 or higher with at least 3 Excellent options.",
+          "Success Rate: 100%"
+        ]
+      }
+    ]
+  },
+  "mossSettings": {
+    "tiers": [
+      {
+        "name": "Common Tier",
+        "currency1": "Miracle Coin",
+        "currency2": "",
+        "cost1": "10",
+        "cost2": "0",
+        "potentialBigReward": [
+          "Jewels (No Soul/Harmony/Guardian)",
+          "Wings LvL 1",
+          "Pentagrams Low",
+          "TOCA / TOL"
+        ]
+      },
+      {
+        "name": "Ancient Tier",
+        "currency1": "Miracle Coin",
+        "currency2": "",
+        "cost1": "25",
+        "cost2": "0",
+        "potentialBigReward": [
+          "Hyon",
+          "Anubis",
+          "Gaion",
+          "Other top tier ancient sets for all classes"
+        ]
+      },
+      {
+        "name": "Rare Tier",
+        "currency1": "Miracle Coin",
+        "currency2": "",
+        "cost1": "50",
+        "cost2": "0",
+        "potentialBigReward": [
+          "Ancient Hero Soul",
+          "Ruud Box 10k",
+          "Dark Jwls",
+          "Normal Fenrir",
+          "Second Wing Box",
+          "Jewels of Soul / Harmony"
+        ]
+      },
+      {
+        "name": "Epic Tier",
+        "currency1": "Miracle Coin",
+        "currency2": "",
+        "cost1": "150",
+        "cost2": "0",
+        "potentialBigReward": [
+          "Pentagrams LvL 300 (Lyra,Harp, Lemuria)",
+          "Rage Earrings",
+          "Blessed Divne Weapons",
+          "Jewels of Soul / Harmony / Guardian"
+        ]
+      },
+      {
+        "name": "Legendary Tier",
+        "currency1": "Miracle Coin",
+        "currency2": "",
+        "cost1": "250",
+        "cost2": "0",
+        "potentialBigReward": [
+          "Third wing box",
+          "Wings of Power",
+          "Golden Fenrir",
+          "Uriel Feathers",
+          "Tier 2/3/4 Earring Upgrade",
+          "1000 x Box of Ability Crystal or Shining Stones"
+        ]
+      },
+      {
+        "name": "Special Tier",
+        "currency1": "Boss Star",
+        "currency2": "Jewel of Guardian",
+        "cost1": "75",
+        "cost2": "50",
+        "potentialBigReward": [
+          "Rank 5 Errtel",
+          "Random Seed LvL 20",
+          "Random Artifact LvL 10",
+          "Rare Guardians",
+          "All Tier Earrings (4-8)",
+          "5th Wing Relic",
+          "4th and 5th Wing Box"
+        ]
+      }
+    ],
+    "howToGetCurrency": [
+      "Miracle Coins: Golden invasions",
+      "Boss Star: Bosses, Events (BC/DS/CC/Battle Boss), Every 100RR",
+      "Jewel of Guardian: Kalima Bosses,Maya, Events (BC/DS,CC), Elites Monsters"
+    ]
+  },
+  "socketInfo": {
+    "elementOptions": [
+      {
+        "items": "Weapons & Staffs",
+        "elements": [
+          "Fire",
+          "Lightning",
+          "Ice"
+        ],
+        "bonuses": [
+          {
+            "bonus": "Increase Attack Damage by 15%",
+            "rate": "100%"
+          },
+          {
+            "bonus": "Attack / Wizardry Damage by 15%",
+            "rate": "100%"
+          }
+        ]
+      },
+      {
+        "items": "Weapons & Staffs",
+        "elements": [
+          "Lightning",
+          "Ice",
+          "Fire"
+        ],
+        "bonuses": [
+          {
+            "bonus": "Increase Skill Damage by 15%",
+            "rate": "100%"
+          }
+        ]
+      },
+      {
+        "items": "Armors & Shield",
+        "elements": [
+          "Water",
+          "Earth",
+          "Wind"
+        ],
+        "bonuses": [
+          {
+            "bonus": "Increase Defence by 15%",
+            "rate": "100%"
+          }
+        ]
+      },
+      {
+        "items": "Armors & Shield",
+        "elements": [
+          "Earth",
+          "Wind",
+          "Water"
+        ],
+        "bonuses": [
+          {
+            "bonus": "Increase MAX Life by 20%",
+            "rate": "100%"
+          }
+        ]
+      }
+    ],
+    "socketPackageOptions": [
+      {
+        "items": "Socketed Set & Weapon",
+        "combination": [
+          "Fire(1)",
+          "Water(3)",
+          "Ice(1)",
+          "Wind(2)",
+          "Lightning(1)",
+          "Earth(3)"
+        ],
+        "option": "Double damage rate increase +50 %",
+        "rate": "100%"
+      },
+      {
+        "items": "Socketed Set & Weapon",
+        "combination": [
+          "Fire(2)",
+          "Water(5)",
+          "Ice(1)",
+          "Wind(3)",
+          "Lightning(2)",
+          "Earth(5)"
+        ],
+        "option": "Opponent defensibility ignorance attack 20 %",
+        "rate": "100%"
+      }
+    ]
+  },
+  "commands": [
+    {
+      "command": "/reset",
+      "description": "Will reset your character"
+    },
+    {
+      "command": "/reset auto",
+      "description": "Requires VIP, automatically resets your character. Not working in Battle or Event Maps"
+    },
+    {
+      "command": "/autostat",
+      "description": "/autostat 100 20 20 20 20 20 - Will run the command when you have at least 100 spare points and add it as 20% Str,Agi,Vit,Ene,Cmd"
+    },
+    {
+      "command": "/evo",
+      "description": "Run it 3 times to get max evolution."
+    },
+    {
+      "command": "/startergift",
+      "description": "One time command. Check Gremory Case then Inventory (V)"
+    },
+    {
+      "command": "/antilag",
+      "description": "Will Display you Keyboard combination about the Antilag Settings."
+    },
+    {
+      "command": "/eventinfo",
+      "description": "Will display info about Events and Bosses"
+    },
+    {
+      "command": "/buyzen",
+      "description": "Will Reward you with 50kk Zen"
+    },
+    {
+      "command": "/npc",
+      "description": "Will Open the NPC"
+    },
+    {
+      "command": "/store",
+      "description": "Will Open your Store"
+    },
+    {
+      "command": "/regicewind",
+      "description": "Allows to register to Ice Wind Valley event"
+    },
+    {
+      "command": "/scramble",
+      "description": "A command for scramble event allowing to provide an answer, usage: /scramble <answer>"
+    },
+    {
+      "command": "/clearbag",
+      "description": "Allows to clear inventory from all items, keep equipped items, inventory, money and ruud."
+    },
+    {
+      "command": "/hideicon",
+      "description": "Allows to hide icons above characters coming from custom ranks plugin"
+    },
+    {
+      "command": "/pkclear",
+      "description": "Clear PK"
+    },
+    {
+      "command": "/re on|off",
+      "description": "Toggles all incoming interactions for your character, such as party invites, trade requests, and guild invitations."
+    },
+    {
+      "command": "/ware 1 | 2 | 3 ... up to 10",
+      "description": "Switches between multiple account warehouses, allowing access to up to 10 separate storage vaults."
+    }
+  ],
+  "howToGetRuud": [
+    "World Monster Drop: Ruud Coin (Sell to NPC)",
+    "Every Reset",
+    "Every Grand Reset",
+    "Every Boss",
+    "Any Invasion",
+    "Doppler Ganger: Each monster 75% between 1-100",
+    "Imperial Guardian: Statues",
+    "BC & DS: Horses with 35% chance",
+    "MU Pass: Gold & Premium",
+    "Heart of Love, Medals, Box of Heaven / Luck",
+    "Chaos Castle",
+    "Last Man Standing",
+    "Arca War",
+    "Ice Wind Valley",
+    "Castle Siege"
+  ],
+  "howToGetWCoins": [
+    "World Monster Drop: WCoins x 5 (Sell to NPC)",
+    "Every single GR",
+    "PvP Events: ICW, Castle Siege, Arca, CC, Last Man Standing",
+    "Acheron Guardian Event",
+    "Cry wolf Event Elf Altar / Top Hero List / Dark Elf",
+    "Raffle Hit Order, Lotto, Raffle",
+    "Scramble Words Event",
+    "Boss Battle bonus box",
+    "Invasions",
+    "All Bosses"
+  ],
+  "howToGetGP": [
+    "BC & DS: Final Rewards",
+    "Minigames",
+    "Santa Cursed Goblin",
+    "Imperial Guardian Statues",
+    "Doppler Ganger Monsters",
+    "Invasions",
+    "Elite Monsters"
+  ],
+  "donationJourney": {
+    "carryAcross": "Legacy rewards re-unlock every new DB",
+    "currentDbRewards": "Current rewards require new donations each DB.",
+    "currentTrack": {
+      "target": 400,
+      "currency": "EUR",
+      "label": "Current DB Track",
+      "stages": [
+        {
+          "amount": 10,
+          "reward": "100 000 GP"
+        },
+        {
+          "amount": 20,
+          "reward": "50 000 Ruud"
+        },
+        {
+          "amount": 35,
+          "reward": "3rd Wing Relic"
+        },
+        {
+          "amount": 50,
+          "reward": "100 000 Ruud"
+        },
+        {
+          "amount": 75,
+          "reward": "Soul Anvil"
+        },
+        {
+          "amount": 90,
+          "reward": "2 Seed LvL 20 (1x DD / 1x Agi)"
+        },
+        {
+          "amount": 100,
+          "reward": "Pentagram Emblem"
+        },
+        {
+          "amount": 115,
+          "reward": "2× Errtel Emblem"
+        },
+        {
+          "amount": 135,
+          "reward": "Verdant Left"
+        },
+        {
+          "amount": 150,
+          "reward": "2× Errtel Emblem"
+        },
+        {
+          "amount": 175,
+          "reward": "Verdant Right"
+        },
+        {
+          "amount": 200,
+          "reward": "Apocalypse Anvil"
+        },
+        {
+          "amount": 235,
+          "reward": "5th Wing Relic"
+        },
+        {
+          "amount": 250,
+          "reward": "750 000 Ruud"
+        },
+        {
+          "amount": 275,
+          "reward": "3 Seed LvL 20 (1x DD / 1x REF / 1x Agi)"
+        },
+        {
+          "amount": 300,
+          "reward": "Leviathan Rare"
+        },
+        {
+          "amount": 325,
+          "reward": "1 000 000 Ruud"
+        },
+        {
+          "amount": 350,
+          "reward": "5th Wings Box"
+        },
+        {
+          "amount": 375,
+          "reward": "Templar Anvil"
+        },
+        {
+          "amount": 400,
+          "reward": "Templar Anvil"
+        }
+      ]
+    },
+    "legacyTrack": {
+      "target": 1500,
+      "currency": "EUR",
+      "label": "Legacy Track",
+      "stages": [
+        {
+          "amount": 100,
+          "reward": "Unlimited Platinum VIP"
+        },
+        {
+          "amount": 250,
+          "reward": "Voucher 4th Wings"
+        },
+        {
+          "amount": 500,
+          "reward": "Anvil Apocalypse"
+        },
+        {
+          "amount": 750,
+          "reward": "Frost Earring R"
+        },
+        {
+          "amount": 1000,
+          "reward": "Frost Earring L"
+        },
+        {
+          "amount": 1250,
+          "reward": "50 000 WCoins"
+        },
+        {
+          "amount": 1500,
+          "reward": "Taurus Rare"
+        }
+      ]
+    }
+  },
+  "azuraTrader": {
+    "name": "Trade NPC",
+    "location": "Lorencia",
+    "coordinates": "141 135",
+    "howToUse": "Press D, select Trade then Right Click on the NPC",
+    "definition": "Azura Trader allows you to exchange event items, medals and boxes for core progression materials. All exchanges use fixed rates and involve no RNG.",
+    "categories": [
+      {
+        "title": "Star of Sacred Birth",
+        "recipes": [
+          {
+            "id": "stars_life",
+            "output": {
+              "name": "Jewel of Life",
+              "count": 1,
+              "stackAmount": 10
+            },
+            "inputs": [
+              {
+                "name": "Star of Sacred Birth",
+                "requirement": {
+                  "stacks": 1,
+                  "stackAmount": 40
+                }
+              }
+            ],
+            "notes": "Requires exactly 1 stack of 40."
+          },
+          {
+            "id": "stars_bless",
+            "output": {
+              "name": "Jewel of Bless",
+              "count": 1,
+              "stackAmount": 10
+            },
+            "inputs": [
+              {
+                "name": "Star of Sacred Birth",
+                "requirement": {
+                  "stacks": 1,
+                  "stackAmount": 50
+                }
+              }
+            ],
+            "notes": "Requires exactly 1 stack of 50."
+          },
+          {
+            "id": "stars_creation",
+            "output": {
+              "name": "Jewel of Creation",
+              "count": 1,
+              "stackAmount": 10
+            },
+            "inputs": [
+              {
+                "name": "Star of Sacred Birth",
+                "requirement": {
+                  "stacks": 1,
+                  "stackAmount": 60
+                }
+              }
+            ],
+            "notes": "Requires exactly 1 stack of 60."
+          },
+          {
+            "id": "stars_soul",
+            "output": {
+              "name": "Jewel of Soul",
+              "count": 1,
+              "stackAmount": 10
+            },
+            "inputs": [
+              {
+                "name": "Star of Sacred Birth",
+                "requirement": {
+                  "stacks": 1,
+                  "stackAmount": 80
+                }
+              }
+            ],
+            "notes": "Requires exactly 1 stack of 80."
+          },
+          {
+            "id": "stars_harmony",
+            "output": {
+              "name": "Jewel of Harmony",
+              "count": 1,
+              "stackAmount": 10
+            },
+            "inputs": [
+              {
+                "name": "Star of Sacred Birth",
+                "requirement": {
+                  "stacks": 1,
+                  "stackAmount": 100
+                }
+              }
+            ],
+            "notes": "Requires exactly 1 stack of 100."
+          }
+        ]
+      },
+      {
+        "title": "Firecracker",
+        "recipes": [
+          {
+            "id": "fire_life",
+            "output": {
+              "name": "Jewel of Life",
+              "count": 1,
+              "stackAmount": 15
+            },
+            "inputs": [
+              {
+                "name": "Firecracker",
+                "requirement": {
+                  "stacks": 1,
+                  "stackAmount": 41
+                }
+              }
+            ],
+            "notes": "Requires exactly 1 stack of 41."
+          },
+          {
+            "id": "fire_bless",
+            "output": {
+              "name": "Jewel of Bless",
+              "count": 1,
+              "stackAmount": 15
+            },
+            "inputs": [
+              {
+                "name": "Firecracker",
+                "requirement": {
+                  "stacks": 1,
+                  "stackAmount": 51
+                }
+              }
+            ],
+            "notes": "Requires exactly 1 stack of 51."
+          },
+          {
+            "id": "fire_creation",
+            "output": {
+              "name": "Jewel of Creation",
+              "count": 1,
+              "stackAmount": 15
+            },
+            "inputs": [
+              {
+                "name": "Firecracker",
+                "requirement": {
+                  "stacks": 1,
+                  "stackAmount": 61
+                }
+              }
+            ],
+            "notes": "Requires exactly 1 stack of 61."
+          },
+          {
+            "id": "fire_soul",
+            "output": {
+              "name": "Jewel of Soul",
+              "count": 1,
+              "stackAmount": 15
+            },
+            "inputs": [
+              {
+                "name": "Firecracker",
+                "requirement": {
+                  "stacks": 1,
+                  "stackAmount": 81
+                }
+              }
+            ],
+            "notes": "Requires exactly 1 stack of 81."
+          },
+          {
+            "id": "fire_harmony",
+            "output": {
+              "name": "Jewel of Harmony",
+              "count": 1,
+              "stackAmount": 15
+            },
+            "inputs": [
+              {
+                "name": "Firecracker",
+                "requirement": {
+                  "stacks": 1,
+                  "stackAmount": 105
+                }
+              }
+            ],
+            "notes": "Requires exactly 1 stack of 105."
+          }
+        ]
+      },
+      {
+        "title": "Heart of Love",
+        "recipes": [
+          {
+            "id": "heart_life",
+            "output": {
+              "name": "Jewel of Life",
+              "count": 1,
+              "stackAmount": 20
+            },
+            "inputs": [
+              {
+                "name": "Heart of Love",
+                "requirement": {
+                  "stacks": 1,
+                  "stackAmount": 42
+                }
+              }
+            ],
+            "notes": "Requires exactly 1 stack of 42."
+          },
+          {
+            "id": "heart_bless",
+            "output": {
+              "name": "Jewel of Bless",
+              "count": 1,
+              "stackAmount": 20
+            },
+            "inputs": [
+              {
+                "name": "Heart of Love",
+                "requirement": {
+                  "stacks": 1,
+                  "stackAmount": 52
+                }
+              }
+            ],
+            "notes": "Requires exactly 1 stack of 52."
+          },
+          {
+            "id": "heart_creation",
+            "output": {
+              "name": "Jewel of Creation",
+              "count": 1,
+              "stackAmount": 20
+            },
+            "inputs": [
+              {
+                "name": "Heart of Love",
+                "requirement": {
+                  "stacks": 1,
+                  "stackAmount": 62
+                }
+              }
+            ],
+            "notes": "Requires exactly 1 stack of 62."
+          },
+          {
+            "id": "heart_soul",
+            "output": {
+              "name": "Jewel of Soul",
+              "count": 1,
+              "stackAmount": 20
+            },
+            "inputs": [
+              {
+                "name": "Heart of Love",
+                "requirement": {
+                  "stacks": 1,
+                  "stackAmount": 82
+                }
+              }
+            ],
+            "notes": "Requires exactly 1 stack of 82."
+          },
+          {
+            "id": "heart_harmony",
+            "output": {
+              "name": "Jewel of Harmony",
+              "count": 1,
+              "stackAmount": 20
+            },
+            "inputs": [
+              {
+                "name": "Heart of Love",
+                "requirement": {
+                  "stacks": 1,
+                  "stackAmount": 110
+                }
+              }
+            ],
+            "notes": "Requires exactly 1 stack of 110."
+          },
+          {
+            "id": "heart_guardian",
+            "output": {
+              "name": "Jewel of Guardian",
+              "count": 1,
+              "stackAmount": 5
+            },
+            "inputs": [
+              {
+                "name": "Heart of Love",
+                "requirement": {
+                  "stacks": 1,
+                  "stackAmount": 115
+                }
+              }
+            ],
+            "notes": "Requires exactly 1 stack of 115."
+          },
+          {
+            "id": "heart_dark_bless",
+            "output": {
+              "name": "Jewel of Dark Bless",
+              "count": 1,
+              "stackAmount": 5
+            },
+            "inputs": [
+              {
+                "name": "Heart of Love",
+                "requirement": {
+                  "stacks": 1,
+                  "stackAmount": 55
+                }
+              }
+            ],
+            "notes": "Requires exactly 1 stack of 55."
+          },
+          {
+            "id": "heart_dark_life",
+            "output": {
+              "name": "Jewel of Dark Life",
+              "count": 1,
+              "stackAmount": 5
+            },
+            "inputs": [
+              {
+                "name": "Heart of Love",
+                "requirement": {
+                  "stacks": 1,
+                  "stackAmount": 54
+                }
+              }
+            ],
+            "notes": "Requires exactly 1 stack of 54."
+          }
+        ]
+      },
+      {
+        "title": "Silver Medal",
+        "recipes": [
+          {
+            "id": "silver_life",
+            "output": {
+              "name": "Jewel of Life",
+              "count": 1,
+              "stackAmount": 25
+            },
+            "inputs": [
+              {
+                "name": "Silver Medal",
+                "requirement": {
+                  "stacks": 1,
+                  "stackAmount": 48
+                }
+              }
+            ],
+            "notes": "Requires exactly 1 stack of 48."
+          },
+          {
+            "id": "silver_bless",
+            "output": {
+              "name": "Jewel of Bless",
+              "count": 1,
+              "stackAmount": 25
+            },
+            "inputs": [
+              {
+                "name": "Silver Medal",
+                "requirement": {
+                  "stacks": 1,
+                  "stackAmount": 58
+                }
+              }
+            ],
+            "notes": "Requires exactly 1 stack of 58."
+          },
+          {
+            "id": "silver_creation",
+            "output": {
+              "name": "Jewel of Creation",
+              "count": 1,
+              "stackAmount": 25
+            },
+            "inputs": [
+              {
+                "name": "Silver Medal",
+                "requirement": {
+                  "stacks": 1,
+                  "stackAmount": 68
+                }
+              }
+            ],
+            "notes": "Requires exactly 1 stack of 68."
+          },
+          {
+            "id": "silver_soul",
+            "output": {
+              "name": "Jewel of Soul",
+              "count": 1,
+              "stackAmount": 25
+            },
+            "inputs": [
+              {
+                "name": "Silver Medal",
+                "requirement": {
+                  "stacks": 1,
+                  "stackAmount": 88
+                }
+              }
+            ],
+            "notes": "Requires exactly 1 stack of 88."
+          }
+        ]
+      },
+      {
+        "title": "Gold Medal",
+        "recipes": [
+          {
+            "id": "gold_life",
+            "output": {
+              "name": "Jewel of Life",
+              "count": 1,
+              "stackAmount": 40
+            },
+            "inputs": [
+              {
+                "name": "Gold Medal",
+                "requirement": {
+                  "stacks": 1,
+                  "stackAmount": 69
+                }
+              }
+            ],
+            "notes": "Requires exactly 1 stack of 69."
+          },
+          {
+            "id": "gold_bless",
+            "output": {
+              "name": "Jewel of Bless",
+              "count": 1,
+              "stackAmount": 40
+            },
+            "inputs": [
+              {
+                "name": "Gold Medal",
+                "requirement": {
+                  "stacks": 1,
+                  "stackAmount": 89
+                }
+              }
+            ],
+            "notes": "Requires exactly 1 stack of 89."
+          },
+          {
+            "id": "gold_creation",
+            "output": {
+              "name": "Jewel of Creation",
+              "count": 1,
+              "stackAmount": 40
+            },
+            "inputs": [
+              {
+                "name": "Gold Medal",
+                "requirement": {
+                  "stacks": 1,
+                  "stackAmount": 99
+                }
+              }
+            ],
+            "notes": "Requires exactly 1 stack of 99."
+          },
+          {
+            "id": "gold_soul",
+            "output": {
+              "name": "Jewel of Soul",
+              "count": 1,
+              "stackAmount": 40
+            },
+            "inputs": [
+              {
+                "name": "Gold Medal",
+                "requirement": {
+                  "stacks": 1,
+                  "stackAmount": 109
+                }
+              }
+            ],
+            "notes": "Requires exactly 1 stack of 109."
+          }
+        ]
+      },
+      {
+        "title": "Box of Heaven",
+        "recipes": [
+          {
+            "id": "heaven_life",
+            "output": {
+              "name": "Jewel of Life",
+              "count": 1,
+              "stackAmount": 75
+            },
+            "inputs": [
+              {
+                "name": "Box of Heaven",
+                "requirement": {
+                  "stacks": 1,
+                  "stackAmount": 150
+                }
+              }
+            ],
+            "notes": "Requires exactly 1 stack of 150."
+          },
+          {
+            "id": "heaven_bless",
+            "output": {
+              "name": "Jewel of Bless",
+              "count": 1,
+              "stackAmount": 75
+            },
+            "inputs": [
+              {
+                "name": "Box of Heaven",
+                "requirement": {
+                  "stacks": 1,
+                  "stackAmount": 160
+                }
+              }
+            ],
+            "notes": "Requires exactly 1 stack of 160."
+          },
+          {
+            "id": "heaven_creation",
+            "output": {
+              "name": "Jewel of Creation",
+              "count": 1,
+              "stackAmount": 75
+            },
+            "inputs": [
+              {
+                "name": "Box of Heaven",
+                "requirement": {
+                  "stacks": 1,
+                  "stackAmount": 175
+                }
+              }
+            ],
+            "notes": "Requires exactly 1 stack of 175."
+          },
+          {
+            "id": "heaven_soul",
+            "output": {
+              "name": "Jewel of Soul",
+              "count": 1,
+              "stackAmount": 75
+            },
+            "inputs": [
+              {
+                "name": "Box of Heaven",
+                "requirement": {
+                  "stacks": 1,
+                  "stackAmount": 200
+                }
+              }
+            ],
+            "notes": "Requires exactly 1 stack of 200."
+          },
+          {
+            "id": "heaven_dark_soul",
+            "output": {
+              "name": "Jewel of Dark Soul",
+              "count": 1,
+              "stackAmount": 35
+            },
+            "inputs": [
+              {
+                "name": "Box of Heaven",
+                "requirement": {
+                  "stacks": 1,
+                  "stackAmount": 225
+                }
+              }
+            ],
+            "notes": "Requires exactly 1 stack of 225."
+          },
+          {
+            "id": "heaven_harmony",
+            "output": {
+              "name": "Jewel of Harmony",
+              "count": 1,
+              "stackAmount": 65
+            },
+            "inputs": [
+              {
+                "name": "Box of Heaven",
+                "requirement": {
+                  "stacks": 1,
+                  "stackAmount": 250
+                }
+              }
+            ],
+            "notes": "Requires exactly 1 stack of 250."
+          },
+          {
+            "id": "heaven_ascension",
+            "output": {
+              "name": "Jewel of Ascension",
+              "count": 1,
+              "stackAmount": 10
+            },
+            "inputs": [
+              {
+                "name": "Box of Heaven",
+                "requirement": {
+                  "stacks": 2,
+                  "stackAmount": 150
+                }
+              }
+            ],
+            "notes": "Requires exactly 2 stacks of 150."
+          },
+          {
+            "id": "heaven_supreme_ascension",
+            "output": {
+              "name": "Jewel of Supreme Ascension",
+              "count": 1,
+              "stackAmount": 7
+            },
+            "inputs": [
+              {
+                "name": "Box of Heaven",
+                "requirement": {
+                  "stacks": 7,
+                  "stackAmount": 50
+                }
+              }
+            ],
+            "notes": "Requires exactly 7 stacks of 50. Other stack splits will not work."
+          },
+          {
+            "id": "heaven_accesories_ascension",
+            "output": {
+              "name": "Jewel of Accessories Ascension",
+              "count": 1,
+              "stackAmount": 10
+            },
+            "inputs": [
+              {
+                "name": "Box of Heaven",
+                "requirement": {
+                  "stacks": 1,
+                  "stackAmount": 240
+                }
+              }
+            ],
+            "notes": "Requires exactly 1 stack of 240."
+          }
+        ]
+      },
+      {
+        "title": "Chaos Cards",
+        "recipes": [
+          {
+            "id": "cc_1",
+            "output": {
+              "name": "Chaos Card Mini",
+              "count": 1
+            },
+            "inputs": [
+              {
+                "name": "Chaos Card (World Drop)",
+                "count": 10
+              }
+            ]
+          },
+          {
+            "id": "cc_2",
+            "output": {
+              "name": "Chaos Card Gold",
+              "count": 1
+            },
+            "inputs": [
+              {
+                "name": "Chaos Card Mini",
+                "count": 7
+              }
+            ]
+          },
+          {
+            "id": "cc_3",
+            "output": {
+              "name": "Chaos Card Rare",
+              "count": 1
+            },
+            "inputs": [
+              {
+                "name": "Chaos Card Gold",
+                "count": 5
+              }
+            ]
+          },
+          {
+            "id": "cc_1b",
+            "output": {
+              "name": "Chaos Card Mini",
+              "count": 3
+            },
+            "inputs": [
+              {
+                "name": "Chaos Card (World Drop)",
+                "count": 30
+              }
+            ]
+          },
+          {
+            "id": "cc_2b",
+            "output": {
+              "name": "Chaos Card Gold",
+              "count": 3
+            },
+            "inputs": [
+              {
+                "name": "Chaos Card Mini",
+                "count": 27
+              }
+            ]
+          },
+          {
+            "id": "cc_3b",
+            "output": {
+              "name": "Chaos Card Rare",
+              "count": 3
+            },
+            "inputs": [
+              {
+                "name": "Chaos Card Gold",
+                "count": 15
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Full Options Frost Earrings",
+        "recipes": [
+          {
+            "id": "fo_frost_earring_10",
+            "output": {
+              "name": "FO Earring +10",
+              "count": 1
+            },
+            "inputs": [
+              {
+                "name": "Frost Earring (L or R)",
+                "count": 1,
+                "constraints": {
+                  "minLevel": 13,
+                  "minExcellentOptions": 1
+                }
+              },
+              {
+                "name": "Ruud Essence",
+                "count": 10
+              },
+              {
+                "name": "Boss Essence",
+                "count": 50
+              },
+              {
+                "name": "GR Essence",
+                "count": 3
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Jewel of Socket Ascension",
+        "recipes": [
+          {
+            "id": "jwl_socket_ascension",
+            "output": {
+              "name": "Jewel of Socket Ascension",
+              "count": 1
+            },
+            "inputs": [
+              {
+                "name": "PvP Essence",
+                "count": 50
+              },
+              {
+                "name": "Jewel Of Bless",
+                "count": 100
+              },
+              {
+                "name": "Jewel Of Soul",
+                "count": 100
+              },
+              {
+                "name": "Jewel of Creation",
+                "count": 100
+              },
+              {
+                "name": "Jewel of Harmony",
+                "count": 30
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Wings for your Class",
+        "recipes": [
+          {
+            "id": "fifth_wings_box",
+            "output": {
+              "name": "Fifth Wings Box",
+              "count": 1
+            },
+            "inputs": [
+              {
+                "name": "Any Wing Lvl 5",
+                "count": 1,
+                "constraints": {
+                  "minLevel": 15,
+                  "minExcellentOptions": 0
+                }
+              },
+              {
+                "name": "Ruud Essence",
+                "count": 12
+              },
+              {
+                "name": "GR Essence",
+                "count": 5
+              },
+              {
+                "name": "Boss Essence",
+                "count": 75
+              },
+              {
+                "name": "PvP Essence",
+                "count": 75
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "masterLevelGuide": [
+    {
+      "playerType": "Normal Player",
+      "xpType": "Master XP",
+      "minMapToLevel": "Kanturu Remain (Persona)"
+    },
+    {
+      "playerType": "Normal Player",
+      "xpType": "Majestic XP",
+      "minMapToLevel": "Nixie Lake (Vasuki)"
+    },
+    {
+      "playerType": "Platinum VIP Player",
+      "xpType": "Master XP",
+      "minMapToLevel": "Karutan 1 (Bone Scorpion)"
+    },
+    {
+      "playerType": "Platinum VIP Player",
+      "xpType": "Majestic XP",
+      "minMapToLevel": "Ubaid (Ubaid Fairy)"
+    }
+  ],
+  "huntPointSystem": {
+    "general": {
+      "activeOnNonPvpServers": "No",
+      "activeEveryXMonsters": 20,
+      "buffsIncreasePercentage": "0.1%",
+      "dailyMonsterLimitsVIP": [
+        {
+          "vipType": "No VIP",
+          "monstersLimit": 2000000
+        },
+        {
+          "vipType": "Bronze VIP",
+          "monstersLimit": 2000000
+        },
+        {
+          "vipType": "Platinum VIP",
+          "monstersLimit": 2500000
+        }
+      ],
+      "weeklyMonsterLimit": 2500000
+    },
+    "huntMaps": [
+      {
+        "id": 10,
+        "name": "Icarus"
+      },
+      {
+        "id": 33,
+        "name": "Aida"
+      },
+      {
+        "id": 37,
+        "name": "Kanturu"
+      },
+      {
+        "id": 57,
+        "name": "Raklion"
+      },
+      {
+        "id": 81,
+        "name": "Karutan 2"
+      },
+      {
+        "id": 110,
+        "name": "Nars"
+      },
+      {
+        "id": 112,
+        "name": "Ferea"
+      },
+      {
+        "id": 113,
+        "name": "Nixie Lake"
+      },
+      {
+        "id": 122,
+        "name": "Swamp of Darkness"
+      },
+      {
+        "id": 134,
+        "name": "Ashy Aida"
+      },
+      {
+        "id": 140,
+        "name": "Bloody Tarkan"
+      },
+      {
+        "id": 141,
+        "name": "Tormenta Island"
+      },
+      {
+        "id": 142,
+        "name": "Twisted Karutan"
+      },
+      {
+        "id": 143,
+        "name": "Kardamahal Underground Temple"
+      },
+      {
+        "id": 144,
+        "name": "Swamp of Destruction"
+      },
+      {
+        "id": 145,
+        "name": "Aquila's Temple"
+      }
+    ],
+    "buffSettings": [
+      {
+        "id": 0,
+        "name": "Defense",
+        "isPercent": true,
+        "maxValue": 25,
+        "requirements": {
+          "minMasterLevel": 400,
+          "minReset": 5,
+          "minGr": 1
+        }
+      },
+      {
+        "id": 1,
+        "name": "Mana",
+        "isPercent": true,
+        "maxValue": 100,
+        "requirements": {
+          "minMasterLevel": 200,
+          "minReset": 0,
+          "minGr": 1
+        }
+      },
+      {
+        "id": 2,
+        "name": "HP",
+        "isPercent": true,
+        "maxValue": 50,
+        "requirements": {
+          "minMasterLevel": 1300,
+          "minReset": 70,
+          "minGr": 10
+        }
+      },
+      {
+        "id": 3,
+        "name": "HP Recovery",
+        "isPercent": true,
+        "maxValue": 20,
+        "requirements": {
+          "minMasterLevel": 1325,
+          "minReset": 75,
+          "minGr": 11
+        }
+      },
+      {
+        "id": 4,
+        "name": "Damage",
+        "isPercent": true,
+        "maxValue": 20,
+        "requirements": {
+          "minMasterLevel": 1275,
+          "minReset": 65,
+          "minGr": 9
+        }
+      },
+      {
+        "id": 5,
+        "name": "Wizardry",
+        "isPercent": true,
+        "maxValue": 20,
+        "requirements": {
+          "minMasterLevel": 0,
+          "minReset": 65,
+          "minGr": 9
+        }
+      },
+      {
+        "id": 6,
+        "name": "Critical Damage",
+        "isPercent": true,
+        "maxValue": 35,
+        "requirements": {
+          "minMasterLevel": 600,
+          "minReset": 10,
+          "minGr": 1
+        }
+      },
+      {
+        "id": 7,
+        "name": "Excellent Damage",
+        "isPercent": true,
+        "maxValue": 35,
+        "requirements": {
+          "minMasterLevel": 800,
+          "minReset": 10,
+          "minGr": 1
+        }
+      },
+      {
+        "id": 8,
+        "name": "Elemental Damage",
+        "isPercent": true,
+        "maxValue": 25,
+        "requirements": {
+          "minMasterLevel": 1100,
+          "minReset": 20,
+          "minGr": 3
+        }
+      },
+      {
+        "id": 9,
+        "name": "Elemental Defense",
+        "isPercent": true,
+        "maxValue": 25,
+        "requirements": {
+          "minMasterLevel": 1000,
+          "minReset": 15,
+          "minGr": 2
+        }
+      },
+      {
+        "id": 10,
+        "name": "Damage Absorption",
+        "isPercent": true,
+        "maxValue": 20,
+        "requirements": {
+          "minMasterLevel": 1150,
+          "minReset": 20,
+          "minGr": 4
+        }
+      },
+      {
+        "id": 11,
+        "name": "Damage Reflect",
+        "isPercent": true,
+        "maxValue": 15,
+        "requirements": {
+          "minMasterLevel": 1175,
+          "minReset": 40,
+          "minGr": 5
+        }
+      },
+      {
+        "id": 12,
+        "name": "Max SD",
+        "isPercent": true,
+        "maxValue": 50,
+        "requirements": {
+          "minMasterLevel": 1250,
+          "minReset": 60,
+          "minGr": 8
+        }
+      },
+      {
+        "id": 13,
+        "name": "Ignore Defense",
+        "isPercent": true,
+        "maxValue": 20,
+        "requirements": {
+          "minMasterLevel": 1200,
+          "minReset": 50,
+          "minGr": 6
+        }
+      },
+      {
+        "id": 14,
+        "name": "Double DMG",
+        "isPercent": true,
+        "maxValue": 20,
+        "requirements": {
+          "minMasterLevel": 1225,
+          "minReset": 55,
+          "minGr": 7
+        }
+      },
+      {
+        "id": 15,
+        "name": "Triple DMG",
+        "isPercent": true,
+        "maxValue": 20,
+        "requirements": {
+          "minMasterLevel": 1350,
+          "minReset": 80,
+          "minGr": 12
+        }
+      }
+    ]
+  }
+}

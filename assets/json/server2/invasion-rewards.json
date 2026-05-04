@@ -1,0 +1,20 @@
+{
+  "invasionRewards": [
+    {
+      "name": "Invasion Rewards",
+      "drops": [
+        "Ruud",
+        "WC",
+        "Miracle Coin",
+        "Titan's Anger",
+        "Socket Items",
+        "Rings/Pendants",
+        "Talisman of Ascension",
+        "Jewel of Soul",
+        "Jewel of Guardian",
+        "Gemstone",
+        "GPoints"
+      ]
+    }
+  ]
+}

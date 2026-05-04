@@ -1,0 +1,225 @@
+@font-face {
+    font-family: 'Exocet';
+    src: url('../assets/images/font/ExocetImmortal-Medium.otf') format('opentype');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Alegreya';
+    src: url('../assets/images/font/AlegreyaSans-Regular.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+:root {
+    --crimson: #9d0a0e;
+    --crimson-glow: rgba(157, 10, 14, 0.6);
+    --dark-bg: rgba(8, 5, 5, 0.9);
+    --stone-text: rgba(255, 255, 255, 0.8);
+    --gold: #c0a375;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 1920px;
+    height: 1080px;
+    background: transparent; /* Importante para OBS */
+    overflow: hidden;
+    font-family: 'Alegreya', serif;
+    color: white;
+}
+
+.overlay-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* REUSABLE ORNAMENTS (L-SHAPE) */
+.corner-ornament {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border: 3px solid var(--crimson);
+    z-index: 10;
+    filter: drop-shadow(0 0 5px var(--crimson-glow));
+}
+
+.corner-ornament.tl {
+    top: -3px;
+    left: -3px;
+    border-right: none;
+    border-bottom: none;
+}
+
+.corner-ornament.br {
+    bottom: -3px;
+    right: -3px;
+    border-left: none;
+    border-top: none;
+}
+
+.corner-ornament.bl {
+    bottom: -3px;
+    left: -3px;
+    border-right: none;
+    border-top: none;
+}
+
+/* CAM FRAME */
+.cam-frame {
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    width: 400px;
+    height: 250px;
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+}
+
+.cam-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: rgba(255, 255, 255, 0.2);
+    font-size: 2rem;
+    gap: 10px;
+}
+
+.cam-label {
+    position: absolute;
+    bottom: -45px;
+    left: 0;
+    width: 100%;
+    background: var(--dark-bg);
+    border: 1px solid var(--crimson);
+    padding: 5px 15px;
+    display: flex;
+    flex-direction: column;
+    clip-path: polygon(0 0, 100% 0, 95% 100%, 5% 100%);
+}
+
+.cam-label .eyebrow {
+    font-size: 0.6rem;
+    color: var(--crimson);
+    letter-spacing: 3px;
+    font-weight: 900;
+}
+
+.cam-label .username {
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* CHAT BOX */
+.chat-box {
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+    width: 350px;
+    height: 500px;
+    background: rgba(10, 5, 5, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(157, 10, 14, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-header {
+    background: linear-gradient(90deg, var(--crimson), transparent);
+    padding: 10px 15px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.chat-messages {
+    flex: 1;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow: hidden;
+}
+
+.message {
+    font-size: 0.95rem;
+    line-height: 1.4;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.message .user {
+    color: var(--gold);
+    font-weight: 700;
+    margin-right: 5px;
+}
+
+.message .user.sub {
+    color: #ff4444;
+    text-shadow: 0 0 5px rgba(255, 0, 0, 0.5);
+}
+
+/* EVENT BAR */
+.event-bar {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(10, 5, 5, 0.95);
+    border: 1px solid var(--crimson);
+    border-top: none;
+    padding: 10px 40px;
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    border-radius: 0 0 15px 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8);
+}
+
+.event-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+}
+
+.event-item i {
+    color: var(--crimson);
+}
+
+.event-item .label {
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 700;
+}
+
+.event-item .value {
+    color: white;
+    font-weight: 700;
+    text-shadow: 0 0 10px var(--crimson-glow);
+}
+
+.event-bar .divider {
+    width: 1px;
+    height: 20px;
+    background: rgba(157, 10, 14, 0.4);
+}
+
+/* ANIMATIONS */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateX(-10px); }
+    to { opacity: 1; transform: translateX(0); }
+}

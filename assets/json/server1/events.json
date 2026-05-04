@@ -1,0 +1,147 @@
+{
+    "farmEvents": [
+        {
+            "name": "Blood Castle",
+            "drops": ["GP", "Ruud", "Boss Star", "Lucky Coin", "Jwl Of Soul", "Jwl Of Harmony", "Gemstone", "Spider Artifact Box"]
+        },
+        {
+            "name": "Chaos Castle",
+            "drops": ["WC", "Ruud", "Boss Star", "Lucky Coin", "Jwl Of Soul", "Jwl Of Harmony", "Jwl of Excess", "Spider Artifact Box"]
+        },
+        {
+            "name": "Devil Square",
+            "drops": ["GP", "Ruud", "Boss Star", "Lucky Coin", "Jwl Of Soul", "Jwl Of Harmony", "Gemstone", "Spider Artifact Box"]
+        },
+        {
+            "name": "Illusion Temple",
+            "drops": ["WC", "Blessed Weapons", "Rings", "Pentagrams", "Ertel/Pentagram Emblems", "Horn of Fenrir", "Pure Wing Core", "Boss Star", "Talisman of Ascension", "Wing Relics", "Elixir Jar"]
+        },
+        {
+            "name": "Doppelganger",
+            "drops": ["WC", "Ruud", "Jwl Of Soul", "Jwl Of Harmony", "Complex Potions", "Miracle Coin", "Seed Capsule"]
+        },
+        {
+            "name": "CryWolf Fortress",
+            "drops": ["WC", "Ruud", "Jwl of Soul", "Jwl Of Guardian", "Miracle Coin", "Seed Capsule", "Socket Items", "Jwl of Excess"]
+        },
+        {
+            "name": "Acheron Guardian",
+            "drops": ["WC", "Ruud", "Jwl of Soul", "Boss Star"]
+        },
+        {
+            "name": "Loren Deep",
+            "drops": ["Ruud", "Guardian Enhanced Stone", "Elite Guardian Enhanced", "Artifact Enchantment Stone", "Jwl of Soul"]
+        }
+    ],
+    "pvpEvents": [
+        {
+            "name": "Last Man Standing",
+            "winner": ["150 WC", "Jwl of Soul", "Boss Star", "Jwl of Kundun"],
+            "loser": ["50 WC", "Jwl of Soul", "Boss Star", "Jwl of Kundun"]
+        },
+        {
+            "name": "Arca Battle",
+            "winner": ["10,000 WC", "200,000 Ruud", "5x Elixir Jar", "3x Jwl of Wisdom"],
+            "loser": ["5,000 WC", "100,000 Ruud", "2x Elixir Jar", "1x Jwl of Wisdom"]
+        },
+        {
+            "name": "Ice Wind Valley",
+            "note": "Exclusive Farming Map",
+            "winner": ["3,500 WC (GM)", "2,500 WC (Shared)", "500,000 Ruud", "Elixir Jar", "Jwl of Wisdom"],
+            "loser": ["1,500 WC (Shared)"]
+        },
+        {
+            "name": "Castle Siege",
+            "note": "Exclusive Farming Map",
+            "winner": ["10,000 WC", "Fenrirs", "Necklaces", "Rings", "Ancient Holy Angel Weapons", "Ancient SilverHeart Weapons", "Ancient Manticore Weapons"],
+            "loser": ["5,000 WC", "Necklaces", "Rings", "Ancient Holy Angel Weapons", "Ancient SilverHeart Weapons", "Ancient Manticore Weapons"]
+        }
+    ],
+    "invasions": [
+        { "name": "Red Dragon", "drops": ["Ruud"] },
+        { "name": "Ferea (Cursed Gnome)", "drops": ["Ruud"] },
+        { "name": "Devias (Ice Queen)", "drops": ["Ruud"] },
+        { "name": "Dungeon (Gorgon)", "drops": ["Ruud"] },
+        { "name": "Tarkan (Zaikan)", "drops": ["Ruud", "Titan's Anger"] },
+        { "name": "Atlas (Hydra)", "drops": ["GPoints", "Ruud", "Jwl of Soul", "Rings/Pendants"] },
+        { "name": "DeathKing", "drops": ["Ruud"] },
+        { "name": "Lost Tower (Balrog)", "drops": ["GPoints", "Ruud"] },
+        { "name": "Icarus (Cursed Sylphid)", "drops": ["Ruud", "Titan's Anger"] },
+        { "name": "Golden Invasion", "drops": ["WC", "Ruud", "Miracle Coin"] },
+        { "name": "Super Golden Invasion I & II", "drops": ["WC", "Talisman of Ascension (I II III)", "Jwl of Soul", "Gemstone", "Jwl of Guardian", "Miracle Coin"] },
+        { "name": "Raklion & Swamp", "drops": ["WC", "Talisman of Ascension (I II III)", "Jwl of Soul", "Gemstone", "Jwl of Guardian", "Miracle Coin"] },
+        { "name": "Debenter", "drops": ["Ruud"] },
+        { "name": "Nars", "drops": ["Ruud"] },
+        { "name": "Vulcanus", "drops": ["Ruud"] },
+        { "name": "Swamp of Darkness", "drops": ["Ruud"] },
+        { "name": "Nixie", "drops": ["Ruud"] },
+        { "name": "Uruk", "drops": ["Ruud"] },
+        { "name": "Deep Dungeon 5", "drops": ["Ruud"] },
+        { "name": "Old Kethotum", "drops": ["Ruud"] },
+        { "name": "Kubera", "drops": ["Ruud"] },
+        { "name": "Abyss of Atlas 3", "drops": ["Ruud"] },
+        { "name": "Scorched Canyon", "drops": ["Ruud"] },
+        { "name": "Red Smoke Icarus", "drops": ["Ruud"] },
+        { "name": "Arenil Temple", "drops": ["Ruud"] },
+        { "name": "Ashy Aida", "drops": ["Ruud"] },
+        { "name": "Blaze Kethotum", "drops": ["Ruud"] },
+        { "name": "Kanturu Undergrounds", "drops": ["Ruud"] },
+        { "name": "Volcano Ignis", "drops": ["Ruud"] },
+        { "name": "Bloody Tarkan", "drops": ["Ruud"] },
+        { "name": "Tormenta Island", "drops": ["Ruud"] },
+        { "name": "Twisted Karutan", "drops": ["Ruud"] },
+        { "name": "Kardamahal", "drops": ["Ruud"] },
+        { "name": "Swamp of Destruction", "drops": ["Ruud"] },
+        { "name": "Aquilas Temple", "drops": ["Ruud"] }
+    ],
+    "bosses": [
+        { "name": "Nightmare Boss", "drops": ["WC", "Socket Items"] },
+        { "name": "Selupan", "drops": ["WC", "Socket Items"] },
+        { "name": "Lord Silvester", "drops": ["WC", "Socket Items"] },
+        { "name": "Core Magrify", "drops": ["WC", "Ancient Blood Angel Items"] },
+        { "name": "Medusa Boss", "drops": ["WC", "Socket Items"] },
+        { "name": "Kundun (Kalima 7)", "drops": ["WC", "Ruud", "Jwl of Soul", "Jwl of Guardian", "Elixir Jar", "Gemstone", "Spider Artifact Box"] },
+        { "name": "Illusion Kundun (Kalima 6)", "drops": ["WC", "Ruud", "Jwl of Soul", "Jwl of Guardian", "Elixir Jar", "Gemstone", "Spider Artifact Box"] },
+        { "name": "Lord Of Ferea", "drops": ["WC", "Ancient Holy Angel Items"] },
+        { "name": "Nix", "drops": ["WC", "Ancient SilverHeart Items"] },
+        { "name": "God of Darkness", "drops": ["WC", "Ancient Apocalypse Items"] },
+        { "name": "Deep Dungeon Gorgon", "drops": ["WC", "Boss Star", "Ruud"] },
+        { "name": "Kubera Boss", "drops": ["WC", "Boss Star", "Ruud"] },
+        { "name": "Abyss of Atlas 3 Boss", "drops": ["WC", "Boss Star", "Ruud"] },
+        { "name": "Scorched Canyon Boss", "drops": ["WC", "Boss Star", "Ruud"] },
+        { "name": "Red Smoke Icarus Boss", "drops": ["WC", "Boss Star", "Ruud"] },
+        { "name": "Ashy Aida Boss", "drops": ["WC", "Boss Star", "Lucky Coin", "Ruud"] },
+        { "name": "Blaze Kethotum Boss", "drops": ["WC", "Boss Star", "Lucky Coin", "Ruud"] },
+        { "name": "Kanturu Undergrounds Boss", "drops": ["WC", "Boss Star", "Lucky Coin", "Ruud"] },
+        { "name": "Volcano Ignis Boss", "drops": ["WC", "Boss Star", "Lucky Coin", "Ruud"] },
+        { "name": "Bloody Tarkan Boss", "drops": ["WC", "Boss Star", "Lucky Coin", "Ruud"] },
+        { "name": "Tormenta Island Boss", "drops": ["WC", "Boss Star", "Lucky Coin", "Ruud"] },
+        { "name": "Twisted Karutan Boss", "drops": ["WC", "Boss Star", "Lucky Coin", "Ruud"] },
+        { "name": "Kardamahal Boss", "drops": ["WC", "Boss Star", "Lucky Coin", "Ruud"] },
+        { "name": "Swamp of Destruction Boss", "drops": ["WC", "Boss Star", "Lucky Coin", "Ruud"] },
+        { "name": "Aquilas Temple Boss", "drops": ["WC", "Boss Star", "Lucky Coin", "Ruud"] }
+    ],
+    "resetRewards": {
+        "base": [
+            { "label": "Per Reset", "reward": "1,000 Ruud" },
+            { "label": "Per Reset", "reward": "10 WC" }
+        ],
+        "milestones": [
+            { "reset": 25, "reward": "Ghost Horse" },
+            { "reset": 50, "reward": "Rage Earring (L)" },
+            { "reset": 75, "reward": "Rage Earring (R)" }
+        ],
+        "periodic": [
+            { "interval": "Every 100 Resets", "reward": "Boss Stars & Lucky Coins" },
+            { "interval": "Every 500 Resets", "reward": "1,000 WC & 200k Ruud" }
+        ],
+        "special": [
+            { "reset": 1000, "reward": "Ice Dragon Normal + 1000 WC" },
+            { "reset": 2500, "reward": "Pierce Lion Normal + 1000 WC" },
+            { "reset": 4000, "reward": "Shining Tail Normal + 1000 WC" },
+            { "reset": 6000, "reward": "Ur Normal + 1000 WC" },
+            { "reset": 9000, "reward": "Leviathan Normal + 1000 WC" },
+            { "reset": 12000, "reward": "Tauros Normal + 1000 WC" }
+        ]
+    }
+}

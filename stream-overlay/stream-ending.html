@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mu Neutro - Stream Ending</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @font-face {
+            font-family: 'Exocet';
+            src: url('../assets/images/font/ExocetImmortal-Medium.otf') format('opentype');
+            font-weight: 500;
+        }
+
+        @font-face {
+            font-family: 'Alegreya';
+            src: url('../assets/images/font/AlegreyaSans-Regular.otf') format('opentype');
+            font-weight: 400;
+        }
+
+        :root {
+            --crimson: #9d0a0e;
+            --crimson-glow: rgba(157, 10, 14, 0.8);
+            --gold: #c0a375;
+        }
+
+        body, html {
+            margin: 0; padding: 0;
+            width: 100vw; height: 100vh;
+            background: #000 url('https://i.imgur.com/HQroNDd.png') no-repeat right center;
+            background-size: cover;
+            font-family: 'Alegreya', serif;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 0;
+        }
+
+        .fog-container {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(157, 10, 14, 0.25) 0%, transparent 80%);
+            z-index: 1;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 10;
+            text-align: center;
+        }
+
+        .main-logo {
+            width: 250px;
+            max-width: 80vw;
+            filter: drop-shadow(0 0 30px var(--crimson-glow));
+            animation: pulseLogo 4s infinite ease-in-out;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .title {
+            font-family: 'Exocet', serif;
+            font-size: 4rem;
+            letter-spacing: 10px;
+            margin: 0;
+            background: linear-gradient(90deg, var(--crimson) 0%, #fff 45%, #fff 55%, var(--crimson) 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 20px rgba(157, 10, 14, 0.5));
+            animation: shimmerLoop 6s linear infinite, glowPulse 3s infinite ease-in-out;
+            transition: font-size 0.3s ease;
+        }
+
+        /* RESPONSIVE: VERTICAL (TikTok/Reels/Shorts) */
+        @media (orientation: portrait) {
+            .main-logo {
+                width: 180px;
+            }
+            .title {
+                font-size: 2.8rem;
+                letter-spacing: 4px;
+                line-height: 1.1;
+            }
+            .thanks-msg {
+                font-size: 1.2rem !important;
+                margin-bottom: 30px !important;
+                letter-spacing: 2px !important;
+            }
+            .socials-grid {
+                grid-template-columns: 1fr !important;
+                gap: 15px !important;
+                width: 80% !important;
+            }
+            .social-item {
+                padding: 10px !important;
+                min-width: unset !important;
+            }
+        }
+
+        .thanks-msg {
+            font-family: 'Alegreya', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin: 10px 0 50px 0;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 700;
+        }
+
+        /* SOCIALS GRID */
+        .socials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .social-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            padding: 20px;
+            background: rgba(10, 5, 5, 0.6);
+            border: 1px solid rgba(157, 10, 14, 0.3);
+            border-radius: 4px;
+            min-width: 150px;
+            transition: all 0.3s ease;
+        }
+
+        .social-item:hover {
+            border-color: var(--crimson);
+            transform: translateY(-5px);
+            background: rgba(20, 10, 10, 0.8);
+        }
+
+        .social-icon {
+            font-size: 2rem;
+            color: var(--crimson);
+            filter: drop-shadow(0 0 10px var(--crimson));
+        }
+
+        .social-name {
+            font-family: 'Exocet', serif;
+            font-size: 0.6rem;
+            letter-spacing: 2px;
+            color: var(--gold);
+        }
+
+        .social-handle {
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        @keyframes pulseLogo {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 30px var(--crimson-glow)); }
+            50% { transform: scale(1.05); filter: drop-shadow(0 0 50px var(--crimson-glow)); }
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { filter: drop-shadow(0 0 15px rgba(157, 10, 14, 0.4)); }
+            50% { filter: drop-shadow(0 0 35px rgba(255, 0, 0, 0.8)); }
+        }
+
+        @keyframes shimmerLoop {
+            0% { background-position: 200% center; }
+            100% { background-position: -200% center; }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="fog-container"></div>
+
+    <div class="content">
+        <img src="../assets/images/logo/logosimple.png" class="main-logo" alt="Mu Logo">
+        <h1 class="title">STREAM ENDING</h1>
+        <p class="thanks-msg">Thank you for joining the Legion</p>
+
+        <div class="socials-grid">
+            <div class="social-item">
+                <i class="fab fa-discord social-icon"></i>
+                <span class="social-name">Discord</span>
+                <span class="social-handle">MuNeutro_Oficial</span>
+            </div>
+            <div class="social-item">
+                <i class="fab fa-instagram social-icon"></i>
+                <span class="social-name">Instagram</span>
+                <span class="social-handle">@MuNeutro</span>
+            </div>
+            <div class="social-item">
+                <i class="fab fa-facebook social-icon"></i>
+                <span class="social-name">Facebook</span>
+                <span class="social-handle">Mu Neutro S6</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Efecto de partículas suaves de ceniza
+        function createAsh() {
+            const ash = document.createElement('div');
+            ash.style.position = 'absolute';
+            ash.style.width = '2px';
+            ash.style.height = '2px';
+            ash.style.background = 'rgba(255,255,255,0.2)';
+            ash.style.left = Math.random() * 100 + 'vw';
+            ash.style.top = '110vh';
+            ash.style.zIndex = '5';
+            ash.style.borderRadius = '50%';
+            
+            const duration = 5000 + Math.random() * 5000;
+            const xMove = (Math.random() - 0.5) * 200;
+            
+            ash.animate([
+                { transform: `translateY(0) translateX(0)`, opacity: 0 },
+                { transform: `translateY(-50vh) translateX(${xMove/2}px)`, opacity: 0.8, offset: 0.2 },
+                { transform: `translateY(-120vh) translateX(${xMove}px)`, opacity: 0 }
+            ], { duration: duration, easing: 'linear' });
+            
+            document.body.appendChild(ash);
+            setTimeout(() => ash.remove(), duration);
+        }
+        setInterval(createAsh, 200);
+    </script>
+</body>
+</html>

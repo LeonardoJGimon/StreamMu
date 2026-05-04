@@ -1,0 +1,12 @@
+# Ignorar archivos pesados y binarios
+downloads/*.exe
+*.zip
+*.rar
+*.7z
+node_modules/
+.DS_Store
+thumbs.db
+
+# Ignorar archivos de logs o temporales
+*.log
+latest-stats.json

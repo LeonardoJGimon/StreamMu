@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - AzuraMu</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+    <!-- Modern UI Enhancements -->
+    <link rel="stylesheet" href="assets/css/glassmorphism.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Marcellus&family=Work+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Boxicons -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <script disable-devtool-auto src="assets/js/js.js" type="text/javascript"></script>
+    <style>
+        body {
+            visibility: hidden;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="notification-area"></div>
+
+    <div id="header-placeholder"></div>
+
+    <div class="dashboard-container container">
+        <aside class="dashboard-sidebar">
+            <nav class="sidebar-nav">
+                <a href="#" class="active" data-tab="overview"><i class="fas fa-home"></i> <span
+                        data-i18n="dashboard.overview">Overview</span></a>
+                <a href="#" data-tab="vote"><i class="fas fa-vote-yea"></i> <span data-i18n="dashboard.vote_reward">Vote
+                        Reward</span></a>
+                <a href="#" data-tab="streamers"><i class="fas fa-broadcast-tower"></i> <span
+                        data-i18n="dashboard.streamers">Streamers</span></a>
+            </nav>
+        </aside>
+
+        <main class="dashboard-content">
+            <div class="welcome-banner" style="text-align: center;">
+                <h2 data-i18n="dashboard.welcome" style="display: inline-block; text-align: center;">Welcome back,
+                    warrior!</h2>
+                <p>
+                    <span data-i18n="dashboard.server_time">Server Time:</span> <span id="server-time">12:00:00</span>
+                    <span style="margin-left: 10px; opacity: 0.55;">|</span>
+                    <span style="margin-left: 10px;"><span>Local Time:</span> <span id="local-time-display">--:--:-- --
+                            --</span></span>
+                    <span style="margin-left: 10px; opacity: 0.55;">|</span>
+                    <span style="margin-left: 10px;"><span data-i18n="dashboard.server">Server:</span> <span
+                            id="db-server-name">-</span></span>
+                </p>
+            </div>
+
+            <section class="dash-tab active" id="tab-overview">
+                <div class="overview">
+                    <div class="overview-card">
+                        <div class="overview-card__head">
+                            <div class="overview-card__title">Profile</div>
+                        </div>
+
+                        <div class="overview-section">
+                            <div class="overview-section__title">Account</div>
+                            <div class="overview-grid">
+                                <div class="overview-item">
+                                    <span class="overview-item__icon" aria-hidden="true"><i
+                                            class="fas fa-user"></i></span>
+                                    <span class="overview-item__content"><span class="overview-item__label"
+                                            data-i18n="dashboard.account">Account</span><span
+                                            class="overview-item__value" id="db-username">-</span></span>
+                                </div>
+                                <div class="overview-item">
+                                    <span class="overview-item__icon" aria-hidden="true"><i
+                                            class="fas fa-envelope"></i></span>
+                                    <span class="overview-item__content"><span class="overview-item__label"
+                                            data-i18n="auth.email">EMAIL</span><span class="overview-item__value"
+                                            id="db-email">-</span></span>
+                                </div>
+                                <div class="overview-item">
+                                    <span class="overview-item__icon" aria-hidden="true"><i
+                                            class="fas fa-flag"></i></span>
+                                    <span class="overview-item__content"><span class="overview-item__label"
+                                            data-i18n="dashboard.country">Country:</span><span
+                                            class="overview-item__value" id="db-country">-</span></span>
+                                </div>
+                                <div class="overview-item">
+                                    <span class="overview-item__icon" aria-hidden="true"><i
+                                            class="fas fa-shield"></i></span>
+                                    <span class="overview-item__content"><span class="overview-item__label"
+                                            data-i18n="dashboard.twofa">2FA:</span><span class="overview-item__value"
+                                            id="db-2fa-status">-</span></span>
+                                </div>
+                                <div class="overview-item">
+                                    <span class="overview-item__icon" aria-hidden="true"><i
+                                            class="fab fa-discord"></i></span>
+                                    <span class="overview-item__content"><span class="overview-item__label"
+                                            data-i18n="dashboard.details.discord">Discord</span><span
+                                            class="overview-item__value" id="db-discord-username">-</span></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="overview-section">
+                            <div class="overview-section__title">Balance</div>
+                            <div class="overview-grid">
+                                <div class="overview-item">
+                                    <span class="overview-item__icon" aria-hidden="true"><i
+                                            class="fas fa-wallet"></i></span>
+                                    <span class="overview-item__content"><span class="overview-item__label"
+                                            data-i18n="dashboard.cash">Cash</span><span class="overview-item__value"
+                                            id="db-cash">0</span></span>
+                                </div>
+                                <div class="overview-item">
+                                    <span class="overview-item__icon" aria-hidden="true"><i
+                                            class="fas fa-coins"></i></span>
+                                    <span class="overview-item__content"><span class="overview-item__label"
+                                            data-i18n="dashboard.wcoins">WCoins</span><span class="overview-item__value"
+                                            id="db-wcoin">0</span></span>
+                                </div>
+                                <div class="overview-item">
+                                    <span class="overview-item__icon" aria-hidden="true"><i
+                                            class="fas fa-gem"></i></span>
+                                    <span class="overview-item__content"><span class="overview-item__label"
+                                            data-i18n="dashboard.goblin_points">Goblin Points</span><span
+                                            class="overview-item__value" id="db-goblinpoint">0</span></span>
+                                </div>
+                                <div class="overview-item">
+                                    <span class="overview-item__icon" aria-hidden="true"><i
+                                            class="fas fa-key"></i></span>
+                                    <span class="overview-item__content"><span class="overview-item__label"
+                                            data-i18n="dashboard.key_points">Key Points</span><span
+                                            class="overview-item__value" id="db-keypoints">0</span></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="overview-section">
+                            <div class="overview-section__title">VIP</div>
+                            <div class="overview-grid">
+                                <div class="overview-item">
+                                    <span class="overview-item__icon" aria-hidden="true"><i
+                                            class="fas fa-crown"></i></span>
+                                    <span class="overview-item__content"><span class="overview-item__label"
+                                            data-i18n="dashboard.details.vip_level">VIP Level</span><span
+                                            class="overview-item__value" id="db-vip-level">-</span></span>
+                                </div>
+                                <div class="overview-item">
+                                    <span class="overview-item__icon" aria-hidden="true"><i
+                                            class="fas fa-calendar-alt"></i></span>
+                                    <span class="overview-item__content"><span class="overview-item__label"
+                                            data-i18n="dashboard.details.vip_expiration">VIP Expiration</span><span
+                                            class="overview-item__value" id="db-vip-expiration">-</span></span>
+                                </div>
+                                <div class="overview-item">
+                                    <span class="overview-item__icon" aria-hidden="true"><i
+                                            class="fas fa-percent"></i></span>
+                                    <span class="overview-item__content"><span class="overview-item__label"
+                                            data-i18n="dashboard.details.title_discount">Title Discount</span><span
+                                            class="overview-item__value" id="db-title-discount">-</span></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="dash-tab" id="tab-vote">
+                <h3 class="section-title" data-i18n="dashboard.vote_reward">Vote Reward</h3>
+                <div class="dash-grid" id="vote-sites-container"></div>
+            </section>
+
+            <section class="dash-tab" id="tab-streamers">
+                <div id="streaming" class="dh-tab-content">
+
+                    <div id="streamer-loading-view" class="dh-card" style="text-align: center; padding: 50px;">
+                        <i class='bx bx-loader-alt bx-spin' style="font-size: 3rem; color: #d4af37;"></i>
+                        <h3 style="margin-top: 20px; color: #fff;" data-i18n="streamers.loading_status">Loading
+                            Status...</h3>
+                    </div>
+
+                    <div id="streamer-register-view" class="dh-card" style="display: none;">
+                        <div class="dh-header">
+                            <h2>
+                                <i class='bx bx-broadcast' aria-hidden="true"></i>
+                                <span data-i18n="streamers.become_streamer">Become a Streamer</span>
+                            </h2>
+                            <p data-i18n="streamers.apply_desc">Apply to become an official streamer by linking your
+                                channels.</p>
+                        </div>
+                        <form id="streamerRegisterForm" style="max-width: 500px; margin: 0 auto;">
+                            <div class="form-group">
+                                <label data-i18n="streamers.youtube_channel_id_optional">YouTube Channel ID
+                                    (Optional)</label>
+                                <input type="text" id="youtubeChannelId">
+                            </div>
+                            <div class="form-group">
+                                <label data-i18n="streamers.twitch_username_optional">Twitch Username (Optional)</label>
+                                <input type="text" id="twitchChannelId">
+                            </div>
+                            <div class="form-group">
+                                <label data-i18n="streamers.kick_username_optional">Kick Username (Optional)</label>
+                                <input type="text" id="kickChannelId">
+                            </div>
+                            <div class="form-group">
+                                <label>TikTok Username (Optional)</label>
+                                <input type="text" id="tiktokChannelId" placeholder="@username">
+                            </div>
+                            <button type="submit" class="action-btn" style="margin-top: 20px;"
+                                data-i18n="streamers.request_approval">Request Approval</button>
+                        </form>
+                    </div>
+
+                    <div id="streamer-pending-view" class="dh-card"
+                        style="display: none; text-align: center; padding: 50px;">
+                        <i class='bx bx-time-five' style="font-size: 4rem; color: #d4af37; margin-bottom: 20px;"></i>
+                        <h2 data-i18n="streamers.application_pending">Application Pending</h2>
+                        <p data-i18n="streamers.application_pending_desc">Your application is under review by our team.
+                        </p>
+                    </div>
+
+                    <div id="streamer-dashboard-view" class="stream-layout" style="display: none;">
+
+                        <div class="stream-main-col">
+
+                            <div class="dh-card">
+                                <h3><i class='bx bx-broadcast'></i> <span data-i18n="streamers.stream_control">Stream
+                                        Control</span></h3>
+
+                                <div id="stream-start-controls">
+                                    <p style="color: #888; margin-bottom: 15px;" data-i18n="streamers.select_platform">
+                                        Select your platform and start tracking.</p>
+                                    <div class="platform-selector">
+                                        <button class="platform-btn" data-platform="Twitch"><i
+                                                class='bx bxl-twitch'></i> Twitch</button>
+                                        <button class="platform-btn" data-platform="YouTube"><i
+                                                class='bx bxl-youtube'></i> YouTube</button>
+                                        <button class="platform-btn" data-platform="Kick"><i
+                                                class='bx bxs-joystick'></i> Kick</button>
+                                        <button class="platform-btn" data-platform="TikTok"><i
+                                                class='bx bxl-tiktok'></i> TikTok</button>
+                                    </div>
+                                    <button class="action-btn" id="startTrackingBtn" disabled style="margin-top: 10px;"
+                                        data-i18n="streamers.start_tracking">Start Tracking</button>
+                                </div>
+
+                                <div id="stream-stop-controls" style="display: none;">
+                                    <p style="color: #fff; font-size: 1.1rem; margin-bottom: 15px;">
+                                        <span data-i18n="streamers.current_status">Current Status:</span> <strong
+                                            style="color: #10B981;" data-i18n="streamers.live">LIVE</strong> <span
+                                            data-i18n="streamers.on">on</span> <strong id="currentTrackingPlatform"
+                                            style="color: #d4af37;">...</strong>
+                                    </p>
+                                    <button class="action-btn" id="stopTrackingBtn"
+                                        style="background: #ef4444; color: #fff;"
+                                        data-i18n="streamers.stop_tracking">Stop Tracking</button>
+                                </div>
+
+                            </div>
+
+                            <div class="dh-card affiliate-section">
+                                <h3><i class='bx bxs-diamond'></i> <span data-i18n="affiliate.program">Affiliate
+                                        Program</span></h3>
+
+                                <div class="affiliate-stats-row">
+                                    <div class="a-stat">
+                                        <span data-i18n="affiliate.you_earn">You Earn</span>
+                                        <strong id="affiliate-comm-rate">15% Cash</strong>
+                                    </div>
+                                    <div class="a-divider"></div>
+                                    <div class="a-stat">
+                                        <span data-i18n="affiliate.viewer_gets">Viewer Gets</span>
+                                        <strong id="affiliate-disc-rate" style="color: #10B981;">5% OFF</strong>
+                                    </div>
+                                </div>
+
+                                <div class="affiliate-code-container">
+                                    <label data-i18n="affiliate.your_code">YOUR AFFILIATE CODE</label>
+                                    <div class="code-box">
+                                        <span id="affiliate-code-display" data-i18n="common.loading">LOADING...</span>
+                                        <button id="copy-affiliate-btn"><i class='bx bxs-copy'></i></button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="dh-card">
+                                <h3><i class='bx bxs-wallet'></i> <span data-i18n="wallet.title">Wallet & Payouts</span>
+                                </h3>
+                                <div class="wallet-grid">
+                                    <div class="wallet-item">
+                                        <label data-i18n="wallet.available">Available</label>
+                                        <span id="wallet-available">$0.00</span>
+                                    </div>
+                                    <div class="wallet-item">
+                                        <label data-i18n="wallet.pending">Pending</label>
+                                        <span id="wallet-pending" style="color: #f9d765;">$0.00</span>
+                                    </div>
+                                    <div class="wallet-item">
+                                        <label data-i18n="wallet.total_earned">Total Earned</label>
+                                        <span id="wallet-total" style="color: #888;">$0.00</span>
+                                    </div>
+                                </div>
+                                <button id="request-payout-btn" class="action-btn" style="margin-top: 20px;"
+                                    data-i18n="wallet.request_payout">Request Payout</button>
+
+                                <div style="margin-top: 25px;">
+                                    <h4 style="font-size: 0.9rem; color: #888; text-transform: uppercase; margin-bottom: 10px;"
+                                        data-i18n="wallet.recent_history">Recent History</h4>
+                                    <table class="mini-table" id="payout-history-table">
+                                        <thead>
+                                            <tr>
+                                                <th data-i18n="wallet.date">Date</th>
+                                                <th data-i18n="wallet.amount">Amount</th>
+                                                <th data-i18n="wallet.status">Status</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3" data-i18n="wallet.no_history">No history.</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="stream-sidebar">
+
+                            <div class="dh-card">
+                                <h3><i class='bx bxs-trophy'></i> <span data-i18n="streamers.rewards">Rewards</span>
+                                </h3>
+                                <div class="reward-row">
+                                    <span data-i18n="streamers.total_minutes">Total Minutes</span>
+                                    <strong id="streamTotalMinutes">0</strong>
+                                </div>
+                                <div class="reward-row">
+                                    <span data-i18n="streamers.claimable">Claimable</span>
+                                    <strong id="streamClaimableAmount" style="color: #10B981;">0 WCoin</strong>
+                                </div>
+                                <div class="reward-row live-timer"
+                                    style="display: none; border-top: 1px solid #333; margin-top: 10px; padding-top: 10px;">
+                                    <span style="color: #ef4444;"><i class='bx bxs-circle'></i> <span
+                                            data-i18n="streamers.live_label">Live:</span></span>
+                                    <strong id="liveStreamDuration">00:00:00</strong>
+                                </div>
+                                <button id="claimRewardsBtn" class="action-btn" disabled
+                                    style="margin-top: 15px; font-size: 0.8rem;"
+                                    data-i18n="streamers.claim_wcoins">Claim WCoins</button>
+                            </div>
+
+                            <div class="dh-card">
+                                <h3><i class='bx bxs-user-detail'></i> <span
+                                        data-i18n="streamers.channels">Channels</span></h3>
+                                <div class="channel-list">
+                                    <div class="channel-item" id="streamChannelYouTube"><i class='bx bxl-youtube'></i>
+                                        <span id="streamChannelYouTubeID" data-i18n="common.not_set">Not set</span>
+                                    </div>
+                                    <div class="channel-item" id="streamChannelTwitch"><i class='bx bxl-twitch'></i>
+                                        <span id="streamChannelTwitchID" data-i18n="common.not_set">Not set</span></div>
+                                    <div class="channel-item" id="streamChannelKick"><i class='bx bxs-joystick'></i>
+                                        <span id="streamChannelKickID" data-i18n="common.not_set">Not set</span></div>
+                                    <div class="channel-item" id="streamChannelTikTok"><i class='bx bxl-tiktok'></i>
+                                        <span id="streamChannelTikTokID" data-i18n="common.not_set">Not set</span></div>
+                                </div>
+                            </div>
+
+                            <div class="dh-card">
+                                <h3><i class='bx bxs-gift'></i> <span data-i18n="promo.title">Promo Codes</span></h3>
+                                <p style="font-size: 0.8rem; color: #888; margin-bottom: 15px;" data-i18n="promo.desc">
+                                    Generate daily codes for your viewers.</p>
+                                <button id="generateDailyCodesBtn" class="action-btn"
+                                    style="margin-bottom: 15px; font-size: 0.8rem;" data-i18n="promo.generate">Generate
+                                    Codes</button>
+                                <div id="streamer-promo-codes-list" class="promo-code-list">
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <div id="withdrawal-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <button id="close-withdrawal-modal" class="modal-close" type="button">&times;</button>
+            <h2 style="margin-bottom: 10px;" data-i18n="wallet.request_payout">Request Payout</h2>
+            <p style="color:#aaa; margin-bottom: 18px;"><span data-i18n="wallet.available">Available</span>: <strong
+                    id="modal-available-amount">0</strong> USD</p>
+            <form id="withdrawal-form">
+                <div class="form-group">
+                    <label data-i18n="wallet.method">Method</label>
+                    <select id="withdraw-method">
+                        <option value="Revolut">Revolut</option>
+                        <option value="BankTransfer">Bank Transfer</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label data-i18n="wallet.amount_usd">Amount (USD)</label>
+                    <input id="withdraw-amount" type="number" min="25" step="0.01" data-i18n-placeholder="wallet.min_25"
+                        placeholder="Min $25">
+                </div>
+
+                <div id="revolut-fields">
+                    <div class="form-group">
+                        <label data-i18n="wallet.revolut_tag">Revolut Tag</label>
+                        <input id="withdraw-revtag" type="text" data-i18n-placeholder="wallet.revtag_placeholder"
+                            placeholder="@username">
+                    </div>
+                </div>
+
+                <div id="bank-fields" style="display:none;">
+                    <div class="form-group">
+                        <label data-i18n="wallet.bank_name">Bank Name</label>
+                        <input id="withdraw-bank-details" type="text"
+                            data-i18n-placeholder="wallet.bank_name_placeholder" placeholder="Bank name">
+                    </div>
+                    <div class="form-group">
+                        <label data-i18n="wallet.account_holder_name">Account Holder Name</label>
+                        <input id="withdraw-bank-name" type="text" data-i18n-placeholder="wallet.full_name_placeholder"
+                            placeholder="Full name">
+                    </div>
+                    <div class="form-group">
+                        <label data-i18n="wallet.iban">IBAN</label>
+                        <input id="withdraw-iban" type="text" placeholder="IBAN">
+                    </div>
+                    <div class="form-group">
+                        <label data-i18n="wallet.swift">SWIFT / BIC</label>
+                        <input id="withdraw-swift" type="text" placeholder="SWIFT">
+                    </div>
+                    <div class="form-group">
+                        <label data-i18n="wallet.bank_country">Bank Country</label>
+                        <input id="withdraw-bank-country" type="text" data-i18n-placeholder="wallet.country_placeholder"
+                            placeholder="Country">
+                    </div>
+                    <div class="form-group">
+                        <label data-i18n="wallet.currency">Currency</label>
+                        <input id="withdraw-currency" type="text" placeholder="USD" value="USD">
+                    </div>
+                </div>
+
+                <button type="submit" class="action-btn" style="margin-top: 10px;"
+                    data-i18n="wallet.submit_withdrawal">Submit Withdrawal</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="assets/js/constants.js"></script>
+    <script src="assets/js/countries.js"></script>
+    <script src="assets/js/layout.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/dashboard.js"></script>
+</body>
+
+</html>
+</body>
+
+</html>

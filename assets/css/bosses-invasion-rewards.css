@@ -1,0 +1,258 @@
+/* Boss Rewards page-only styles */
+.si-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  justify-content: center;
+  max-width: 1200px;
+  margin: 10px auto 16px;
+}
+
+@media (max-width: 1100px) {
+  .si-stat-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+.si-stat-card {
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 14px;
+  padding: 16px 14px;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.32), rgba(0, 0, 0, 0.18));
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+  text-align: center;
+}
+
+.si-stat-label {
+  color: rgba(255, 255, 255, 0.55);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.si-stat-value {
+  margin-top: 8px;
+  color: #fff;
+  font-family: var(--font-head);
+  font-size: 1.35rem;
+  text-shadow: 0 0 18px rgba(0, 0, 0, 0.35);
+}
+
+.br-top { padding: 14px 14px 0 14px; }
+
+.br-sections { padding: 10px 14px 14px 14px; display: grid; gap: 10px; }
+
+/* Accordion */
+.br-accordion {
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 12px;
+  background: rgba(0,0,0,0.22);
+  overflow: hidden;
+}
+
+.br-accordion-summary {
+  cursor: pointer;
+  padding: 12px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  user-select: none;
+}
+
+.br-accordion-summary::-webkit-details-marker { display: none; }
+
+.br-accordion-title {
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.br-accordion-hint {
+  font-size: 12px;
+  opacity: 0.75;
+}
+
+.br-accordion-body {
+  padding: 10px 12px 12px 12px;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  display: grid;
+  gap: 10px;
+}
+
+/* Drop groups */
+.br-drop-group {
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 10px;
+  background: rgba(0,0,0,0.18);
+}
+
+.br-drop-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.br-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  padding: 6px 9px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.06);
+}
+
+.br-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Chips */
+.br-chip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.06);
+  font-size: 13px;
+  line-height: 1;
+  cursor: default;
+  white-space: nowrap;
+}
+
+.br-chip-count {
+  font-size: 12px;
+  opacity: 0.85;
+  padding: 2px 7px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.18);
+  background: rgba(0,0,0,0.22);
+}
+
+/* Color themes (you can adjust these to your palette) */
+.br-chip-exc {
+  border-color: rgba(0, 255, 128, 0.45);
+  background: rgba(0, 255, 128, 0.10);
+}
+
+.br-chip-socket {
+  border-color: rgba(180, 100, 255, 0.50);
+  background: rgba(180, 100, 255, 0.12);
+}
+
+.br-chip-nonexc {
+  border-color: rgba(255, 220, 90, 0.55);
+  background: rgba(255, 220, 90, 0.10);
+}
+
+/* Tooltip */
+.br-tooltip {
+  position: absolute;
+  z-index: 9999;
+  max-width: 320px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(0,0,0,0.72);
+  color: rgba(255,255,255,0.95);
+  font-size: 12px;
+  line-height: 1.35;
+  pointer-events: none;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.45);
+}
+
+/* Mobile */
+@media (max-width: 900px) {
+  .br-items { gap: 6px; }
+  .br-chip { font-size: 12px; padding: 6px 9px; }
+}
+
+/* Bigger “meta pills” with labels */
+/* Meta grid layout */
+.br-drop-meta-lg {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+/* Meta pill container */
+.br-meta-pill {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* left label, right value */
+  border-radius: 14px;
+  padding: 14px 16px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: linear-gradient(135deg, rgba(255,255,255,0.06), rgba(0,0,0,0.25));
+}
+
+/* Left label */
+.br-meta-label {
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0.85;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Right value */
+.br-meta-value {
+  font-size: 12px;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 999px;
+  min-width: 70px;
+  text-align: center;
+  letter-spacing: 0.5px;
+}
+
+/* Individual colors */
+.br-meta-pill:nth-child(1) .br-meta-value {
+  /* Drop Chance */
+  background: rgba(0, 180, 255, 0.15);
+  border: 1px solid rgba(0, 180, 255, 0.5);
+  color: #3dc6ff;
+}
+
+.br-meta-pill:nth-child(2) .br-meta-value {
+  /* Item Drop Count */
+  background: rgba(255, 170, 0, 0.15);
+  border: 1px solid rgba(255, 170, 0, 0.5);
+  color: #ffb347;
+}
+
+.br-meta-pill:nth-child(3) .br-meta-value {
+  /* Drop Type */
+  background: rgba(180, 100, 255, 0.15);
+  border: 1px solid rgba(180, 100, 255, 0.5);
+  color: #c98fff;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .br-drop-meta-lg {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Tooltip: larger + more readable */
+.br-tooltip {
+  max-width: 360px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+/* Make the items feel slightly “smaller” than meta */
+.br-items .br-chip {
+  font-size: 12.5px;
+}
+

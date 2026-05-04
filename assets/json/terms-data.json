@@ -1,0 +1,63 @@
+{
+    "serverRules": {
+        "id": "server-rules",
+        "title": {
+            "en": "Server Rules & Conduct",
+            "ro": "Reguli Server & Conduită"
+        },
+        "icon": "bx-bible",
+        "content": {
+            "en": "<h1>Code of Honor</h1><p>Welcome to the realm of AzuraMu. To maintain order and fairness in our world, all adventurers must abide by these sacred laws.</p><h2>1. General Conduct</h2><ul><li><strong>Respect & Dignity</strong>Treat all players and staff with respect. Toxicity, hate speech, and harassment are strictly prohibited.</li><li><strong>Staff Impersonation</strong>Never impersonate a Game Master or Administrator. Staff will NEVER ask for your password.</li><li><strong>Language</strong>English is the official language for Global Chat (/post).</li></ul><h2>2. Game Integrity</h2><ul><li><strong>Fair Play</strong>Use of third-party software (hacks, bots, scripts) creates an unfair advantage and results in a permanent ban.</li><li><strong>Bug Reporting</strong>Exploiting bugs for personal gain is forbidden. Report them immediately to receive rewards instead of punishment.</li><li><strong>Real Money Trading</strong>Buying or selling virtual assets for real-world currency is strictly prohibited and undermines the economy.</li></ul><h2>Punishment Tier List</h2><div class=\"tos-table-wrapper\"><table><thead><tr><th>Violation</th><th>1st Offense</th><th>2nd Offense</th></tr></thead><tbody><tr><td>Harassment</td><td>Chat Ban (24h)</td><td>Account Ban (3 Days)</td></tr><tr><td>Bug Abuse</td><td>7-Day Ban</td><td>Permanent Ban</td></tr><tr><td>Hacking / RMT</td><td>Permanent HWID Ban</td><td>-</td></tr></tbody></table></div>",
+            "ro": "<h1>Codul de Onoare</h1><p>Bine ai venit în tărâmul AzuraMu. Pentru a menține ordinea și corectitudinea în lumea noastră, toți aventurierii trebuie să respecte aceste legi.</p><h2>1. Conduită Generală</h2><ul><li><strong>Respect & Demnitate</strong>Tratează toți jucătorii și staff-ul cu respect. Toxicitatea, discursul instigator la ură și hărțuirea sunt strict interzise.</li><li><strong>Impersonarea Staff-ului</strong>Nu te da niciodată drept Game Master sau Administrator. Staff-ul nu îți va cere NICIODATĂ parola.</li><li><strong>Limbaj</strong>Engleza este limba oficială pentru Global Chat (/post).</li></ul><h2>2. Integritatea Jocului</h2><ul><li><strong>Fair Play</strong>Folosirea de software terț (hack-uri, boți, scripturi) oferă un avantaj incorect și duce la ban permanent.</li><li><strong>Raportare Bug-uri</strong>Exploatarea bug-urilor pentru câștig personal este interzisă. Raportează-le imediat pentru a primi recompense, nu pedeapsă.</li><li><strong>Real Money Trading</strong>Cumpărarea sau vânzarea de bunuri virtuale pentru bani reali este strict interzisă și afectează economia.</li></ul><h2>Lista de Pedepse</h2><div class=\"tos-table-wrapper\"><table><thead><tr><th>Încălcare</th><th>Prima Abatere</th><th>A Doua Abatere</th></tr></thead><tbody><tr><td>Hărțuire</td><td>Chat Ban (24h)</td><td>Account Ban (3 Zile)</td></tr><tr><td>Abuz de Bug</td><td>Ban 7 Zile</td><td>Ban Permanent</td></tr><tr><td>Hacking / RMT</td><td>Ban Permanent HWID</td><td>-</td></tr></tbody></table></div>"
+        }
+    },
+    "streamingAffiliate": {
+        "id": "streaming-affiliate",
+        "title": {
+            "en": "Streaming & Affiliate Program",
+            "ro": "Streaming & Program de Afiliere"
+        },
+        "icon": "bx-broadcast",
+        "specialSection": "affiliate",
+        "content": {
+            "en": "<h1>Streamer & Affiliate Policy</h1><p>Join the AzuraMu Content Creator program to earn real rewards while you play. However, strict rules apply to maintain integrity.</p><h2>1. Streaming Rules & Conduct</h2><ul><li><strong>Professionalism</strong>Streamers act as ambassadors for AzuraMu. Toxic behavior on stream towards the server or staff will result in partnership termination.</li><li><strong>Content Integrity</strong>Promoting cheats, bugs, or other servers while streaming AzuraMu is strictly forbidden.</li><li><strong>Payout Suspension</strong>Any violation of server rules will result in the immediate freezing of all pending payouts and wallet funds.</li></ul><h2>2. Promo Code Usage</h2><p>Your unique Affiliate Code is a powerful tool. Use it wisely.</p><ul><li><strong>Abuse Policy</strong>Creating fake accounts to use your own promo code (Self-Referral) is considered fraud.</li><li><strong>Consequence</strong>Abusing the promo code system will lead to immediate suspension of streamer activity, permanent ban of the main account, and confiscation of all earned funds.</li></ul><div class=\"tos-footer-note warning\"><strong>Warning:</strong> AzuraMu reserves the right to withhold any payment if fraudulent activity is suspected. All rights reserved.</div>",
+            "ro": "<h1>Politica Streameri & Afiliere</h1><p>Alătură-te programului AzuraMu Content Creator pentru a câștiga recompense reale în timp ce te joci. Totuși, se aplică reguli stricte pentru a menține integritatea.</p><h2>1. Reguli de Streaming & Conduită</h2><ul><li><strong>Profesionalism</strong>Streamerii acționează ca ambasadori pentru AzuraMu. Comportamentul toxic pe stream față de server sau staff va duce la încetarea parteneriatului.</li><li><strong>Integritatea Conținutului</strong>Promovarea de cheat-uri, bug-uri sau alte servere în timp ce faci stream pe AzuraMu este strict interzisă.</li><li><strong>Suspendarea Plăților</strong>Orice încălcare a regulilor serverului va duce la înghețarea imediată a plăților în așteptare și a fondurilor din wallet.</li></ul><h2>2. Utilizarea Codului Promo</h2><p>Codul tău de afiliere este un instrument puternic. Folosește-l cu responsabilitate.</p><ul><li><strong>Politica Anti-Abuz</strong>Crearea de conturi false pentru a folosi propriul cod promo (Self-Referral) este considerată fraudă.</li><li><strong>Consecință</strong>Abuzarea sistemului de coduri promo duce la suspendarea imediată a activității de streamer, ban permanent pe contul principal și confiscarea tuturor fondurilor câștigate.</li></ul><div class=\"tos-footer-note warning\"><strong>Atenție:</strong> AzuraMu își rezervă dreptul de a reține orice plată dacă există suspiciuni de activitate frauduloasă. Toate drepturile rezervate.</div>"
+        }
+    },
+    "termsAndConditions": {
+        "id": "tos",
+        "title": {
+            "en": "Terms of Service",
+            "ro": "Termeni de Utilizare"
+        },
+        "icon": "bx-file",
+        "content": {
+            "en": "<h1>User Agreement</h1><p>By accessing AzuraMu, you agree to the following terms regarding account ownership and service usage.</p><h2>1. Virtual Property</h2><ul><li><strong>Ownership</strong>All accounts, characters, and items remain the property of AzuraMu. You are granted a license to use them.</li><li><strong>Security</strong>You are responsible for your account security. We do not restore items lost due to password sharing or scams.</li></ul><h2>2. Service Availability</h2><p>We aim for 100% uptime but reserve the right to perform maintenance or shut down the service at any time without liability.</p><div class=\"tos-footer-note\">Note: AzuraMu reserves the right to terminate any account at any time without prior notice if these terms are violated.</div>",
+            "ro": "<h1>Acord Utilizator</h1><p>Accesând AzuraMu, ești de acord cu următorii termeni privind deținerea contului și utilizarea serviciului.</p><h2>1. Proprietate Virtuală</h2><ul><li><strong>Deținere</strong>Toate conturile, caracterele și itemele rămân proprietatea AzuraMu. Primești o licență pentru a le folosi.</li><li><strong>Securitate</strong>Ești responsabil pentru securitatea contului. Nu restaurăm iteme pierdute din cauza partajării parolei sau a scam-urilor.</li></ul><h2>2. Disponibilitatea Serviciului</h2><p>Țintim uptime de 100%, dar ne rezervăm dreptul de a efectua mentenanță sau de a opri serviciul oricând, fără răspundere.</p><div class=\"tos-footer-note\">Notă: AzuraMu își rezervă dreptul de a închide orice cont, oricând, fără notificare prealabilă, dacă acești termeni sunt încălcați.</div>"
+        }
+    },
+    "refundPolicy": {
+        "id": "refund-policy",
+        "title": {
+            "en": "Refund Policy",
+            "ro": "Politica de Rambursare"
+        },
+        "icon": "bx-money-withdraw",
+        "content": {
+            "en": "<h1>Donation Terms</h1><p>Donations support the server's running costs. Please read carefully before donating.</p><h2>Non-Refundable</h2><ul><li><strong>Final Sale</strong>All donations are voluntary and final. No refunds will be issued under any circumstances.</li><li><strong>Chargeback Policy</strong>Initiating a chargeback is considered fraud. It will result in an immediate permanent ban of all your accounts and IP addresses.</li></ul>",
+            "ro": "<h1>Termeni Donații</h1><p>Donațiile susțin costurile de funcționare ale serverului. Te rugăm să citești cu atenție înainte de a dona.</p><h2>Fără Rambursare</h2><ul><li><strong>Vânzare Finală</strong>Toate donațiile sunt voluntare și finale. Nu se vor oferi rambursări în nicio situație.</li><li><strong>Politica Chargeback</strong>Inițierea unui chargeback este considerată fraudă. Va duce la ban permanent imediat pentru toate conturile tale și pentru IP-urile asociate.</li></ul>"
+        }
+    },
+    "privacyPolicy": {
+        "id": "privacy",
+        "title": {
+            "en": "Privacy Policy",
+            "ro": "Politica de Confidențialitate"
+        },
+        "icon": "bx-shield-quarter",
+        "content": {
+            "en": "<h1>Data Privacy</h1><p>We respect your privacy and are committed to protecting your personal data.</p><h2>Data We Collect</h2><ul><li><strong>Credentials</strong>Username, Email (hashed passwords only).</li><li><strong>Telemetry</strong>IP Address, HWID for security and anti-cheat purposes.</li><li><strong>Logs</strong>Chat and trade logs for support and moderation.</li></ul>",
+            "ro": "<h1>Confidențialitatea Datelor</h1><p>Îți respectăm confidențialitatea și ne angajăm să-ți protejăm datele personale.</p><h2>Date pe care le Colectăm</h2><ul><li><strong>Date de autentificare</strong>Nume utilizator, Email (parolele sunt doar hash-uite).</li><li><strong>Telemetrie</strong>Adresă IP, HWID pentru securitate și anti-cheat.</li><li><strong>Log-uri</strong>Log-uri de chat și trade pentru suport și moderare.</li></ul>"
+        }
+    }
+}

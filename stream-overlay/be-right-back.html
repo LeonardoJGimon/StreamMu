@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mu Neutro - Be Right Back</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @font-face {
+            font-family: 'Exocet';
+            src: url('../assets/images/font/ExocetImmortal-Medium.otf') format('opentype');
+            font-weight: 500;
+        }
+
+        @font-face {
+            font-family: 'Alegreya';
+            src: url('../assets/images/font/AlegreyaSans-Regular.otf') format('opentype');
+            font-weight: 400;
+        }
+
+        :root {
+            --crimson: #9d0a0e;
+            --crimson-glow: rgba(157, 10, 14, 0.8);
+            --gold: #c0a375;
+        }
+
+        body, html {
+            margin: 0; padding: 0;
+            width: 100vw; height: 100vh;
+            background: #000 url('https://i.imgur.com/HQroNDd.png') no-repeat right center;
+            background-size: cover;
+            font-family: 'Alegreya', serif;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.75);
+            z-index: 0;
+        }
+
+        .fog-container {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at center, rgba(157, 10, 14, 0.3) 0%, transparent 70%);
+            z-index: 1;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 10;
+            gap: 10px;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .main-logo {
+            width: 250px;
+            max-width: 80vw;
+            filter: drop-shadow(0 0 30px var(--crimson-glow));
+            animation: pulseLogo 4s infinite ease-in-out;
+            transition: all 0.3s ease;
+        }
+
+        .title {
+            font-family: 'Exocet', serif;
+            font-size: 4.5rem;
+            letter-spacing: 12px;
+            margin: 10px 0;
+            text-align: center;
+            background: linear-gradient(90deg, var(--crimson) 0%, #fff 45%, #fff 55%, var(--crimson) 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 0 20px rgba(157, 10, 14, 0.5));
+            animation: shimmerLoop 4s linear infinite, glowPulse 3s infinite ease-in-out;
+        }
+
+        .subtitle {
+            font-family: 'Exocet', serif;
+            font-size: 1.5rem;
+            color: var(--gold);
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            opacity: 0.8;
+            margin-bottom: 20px;
+        }
+
+        /* --- SERVER STATUS (BANNERS) --- */
+        .server-status-container {
+            text-align: center;
+            width: 100%;
+        }
+
+        .status-header {
+            margin-bottom: 10px;
+        }
+
+        .status-title {
+            font-family: 'Exocet', serif;
+            font-size: 1.5rem;
+            color: var(--crimson);
+            text-shadow: 0 0 15px rgba(255, 46, 46, 0.6);
+            letter-spacing: 3px;
+            margin: 0;
+        }
+
+        .status-subtitle {
+            font-size: 0.7rem;
+            color: #aaa;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 2px;
+        }
+
+        .online-dot {
+            width: 8px;
+            height: 8px;
+            background: #2ecc71;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #2ecc71;
+            animation: dotPulse 2s infinite;
+        }
+
+        @keyframes dotPulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.2); }
+        }
+
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            padding: 0 20px;
+        }
+
+        .status-banner {
+            position: relative;
+            background: linear-gradient(180deg, #1a0505 0%, #000000 100%);
+            border-top: 2px solid var(--crimson);
+            padding: 10px 10px 25px 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            clip-path: polygon(0% 0%, 100% 0%, 100% 85%, 50% 100%, 0% 85%);
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        .status-banner:hover { transform: translateY(-5px); }
+
+        .status-icon {
+            font-size: 1.8rem;
+            color: var(--crimson);
+            filter: drop-shadow(0 0 8px rgba(255, 46, 46, 0.8));
+            margin-bottom: 5px;
+        }
+
+        .status-value {
+            font-family: 'Exocet', serif;
+            font-size: 1.1rem;
+            color: #ffffff;
+            font-weight: 900;
+        }
+
+        .status-label {
+            font-size: 0.65rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: auto;
+        }
+
+        /* --- GADGET CICLICO --- */
+        .cycling-container {
+            margin-top: 20px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Exocet', serif;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+        }
+
+        #gadget-label {
+            color: var(--crimson);
+            font-weight: 900;
+            margin-right: 15px;
+        }
+
+        .mask {
+            height: 40px;
+            overflow: hidden;
+            position: relative;
+            border-left: 2px solid var(--gold);
+            padding-left: 15px;
+            min-width: 200px;
+            text-align: left;
+        }
+
+        #gadget-value {
+            line-height: 40px;
+            color: #ffffff;
+            transition: all 0.5s ease;
+            white-space: nowrap;
+        }
+
+        /* CLOCKS */
+        .clock-footer {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(10, 5, 5, 0.85);
+            padding: 8px 20px;
+            border: 1px solid var(--crimson);
+            border-radius: 4px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.8);
+            z-index: 20;
+        }
+
+        .clock-item { display: flex; flex-direction: column; align-items: center; }
+        .clock-item .label { font-size: 0.55rem; color: var(--crimson); letter-spacing: 2px; font-weight: 900; margin-bottom: 2px; }
+        .clock-item .time { font-family: 'Alegreya', serif; font-size: 1rem; color: var(--gold); font-weight: 700; }
+        .clock-divider { width: 1px; height: 20px; background: var(--crimson); opacity: 0.4; }
+
+        @keyframes pulseLogo {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 30px var(--crimson-glow)); }
+            50% { transform: scale(1.05); filter: drop-shadow(0 0 50px var(--crimson-glow)); }
+        }
+
+        @keyframes shimmerLoop {
+            0% { background-position: 200% center; }
+            100% { background-position: -200% center; }
+        }
+
+        @keyframes glowPulse {
+            0%, 100% { filter: drop-shadow(0 0 15px rgba(157, 10, 14, 0.4)); }
+            50% { filter: drop-shadow(0 0 35px rgba(255, 0, 0, 0.8)); }
+        }
+
+        /* RESPONSIVE: VERTICAL */
+        @media (orientation: portrait) {
+            .title { font-size: 3rem; letter-spacing: 6px; }
+            .status-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+            .status-banner:nth-child(4), .status-banner:nth-child(5) { display: none; }
+            .main-logo { width: 180px; }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="fog-container"></div>
+
+    <div class="content">
+        <img src="../assets/images/logo/logosimple.png" class="main-logo" alt="Mu Logo">
+        <h1 class="title">BE RIGHT BACK</h1>
+        <div class="subtitle">Intermission</div>
+
+        <!-- PANEL DE ESTADO -->
+        <div class="server-status-container">
+            <div class="status-header">
+                <h2 class="status-title">ESTADO</h2>
+                <div class="status-subtitle">
+                    <span class="online-dot"></span>
+                    SERVIDOR EN LÍNEA
+                </div>
+            </div>
+
+            <div class="status-grid">
+                <div class="status-banner">
+                    <div class="status-icon"><i class="fas fa-users"></i></div>
+                    <div class="status-value" id="stat-online">0</div>
+                    <div class="status-label">EN LÍNEA</div>
+                </div>
+                <div class="status-banner">
+                    <div class="status-icon"><i class="fas fa-signal"></i></div>
+                    <div class="status-value">OPEN</div>
+                    <div class="status-label">ESTADO</div>
+                </div>
+                <div class="status-banner">
+                    <div class="status-icon"><i class="fas fa-crown"></i></div>
+                    <div class="status-value">S6 EP3</div>
+                    <div class="status-label">SEASON</div>
+                </div>
+                <div class="status-banner">
+                    <div class="status-icon"><i class="fas fa-bolt"></i></div>
+                    <div class="status-value">200X</div>
+                    <div class="status-label">EXP</div>
+                </div>
+                <div class="status-banner">
+                    <div class="status-icon"><i class="fas fa-percent"></i></div>
+                    <div class="status-value">20X</div>
+                    <div class="status-label">BOTÍN</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GADGET CICLICO -->
+        <div class="cycling-container">
+            <div id="gadget-label">NEW HERO</div>
+            <div class="mask">
+                <div id="gadget-value">PIPO</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="clock-footer">
+        <div class="clock-item">
+            <span class="label">SERVER TIME</span>
+            <span id="server-time" class="time">00:00:00</span>
+        </div>
+        <div class="clock-divider"></div>
+        <div class="clock-item">
+            <span class="label">LOCAL TIME</span>
+            <span id="local-time" class="time">00:00:00</span>
+        </div>
+    </div>
+
+    <script>
+        function updateClocks() {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('es-ES', { hour12: false });
+            document.getElementById('local-time').innerText = timeStr;
+            document.getElementById('server-time').innerText = timeStr;
+        }
+        setInterval(updateClocks, 1000);
+        updateClocks();
+
+        let gadgetItems = [
+            { label: "NEW HERO", value: "PIPO" },
+            { label: "TOP PLAYER", value: "LOADING..." },
+            { label: "LATEST WARRIOR", value: "LOADING..." }
+        ];
+        let gadgetIndex = 0;
+
+        async function updateStats() {
+            try {
+                const res = await fetch('../latest-stats.json?t=' + Date.now());
+                if (!res.ok) throw new Error('Network response was not ok');
+                const data = await res.json();
+                
+                // Actualizar online count
+                document.getElementById('stat-online').innerText = data.onlineCount || (data.recentUsers?.length || 0);
+
+                // Actualizar items del gadget
+                gadgetItems = [];
+                if (data.latestCharacter) {
+                    gadgetItems.push({ label: "NEW HERO", value: data.latestCharacter.name.toUpperCase() });
+                }
+                if (data.topStrengthCharacters?.length) {
+                    gadgetItems.push({ label: "TOP PLAYER", value: data.topStrengthCharacters[0].name.toUpperCase() });
+                }
+                if (data.latestUser) {
+                    gadgetItems.push({ label: "LATEST WARRIOR", value: data.latestUser.toUpperCase() });
+                }
+            } catch (e) {}
+        }
+
+        function rotateGadget() {
+            const labelEl = document.getElementById('gadget-label');
+            const valueEl = document.getElementById('gadget-value');
+            
+            valueEl.style.opacity = "0";
+            valueEl.style.transform = "translateY(-20px)";
+
+            setTimeout(() => {
+                gadgetIndex = (gadgetIndex + 1) % gadgetItems.length;
+                const item = gadgetItems[gadgetIndex];
+                labelEl.innerText = item.label;
+                valueEl.innerText = item.value;
+                valueEl.style.opacity = "1";
+                valueEl.style.transform = "translateY(0)";
+            }, 500);
+        }
+
+        setInterval(updateStats, 30000);
+        setInterval(rotateGadget, 6000);
+        updateStats();
+    </script>
+</body>
+</html>
