@@ -2,130 +2,108 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mu Neutro - Últimos Guerreros (Oficial)</title>
+    <title>Mu Neutro - Últimos Guerreros (Epic Edition)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <style>
         @font-face { font-family: 'Exocet'; src: url('../assets/images/font/ExocetImmortal-Medium.otf') format('opentype'); font-weight: 500; }
         @font-face { font-family: 'Alegreya'; src: url('../assets/images/font/AlegreyaSans-Regular.otf') format('opentype'); font-weight: 400; }
 
         :root {
-            --bg-dark: #1e1e1e;
-            --row-bg: #141414;
-            --crimson: #8b0000;
+            --crimson: #9d0a0e;
+            --crimson-bright: #ff2e2e;
             --gold: #c0a375;
-            --white: #ffffff;
+            --row-bg: rgba(15, 10, 10, 0.9);
         }
 
-        body, html {
-            margin: 0; padding: 0;
-            background: transparent;
-            font-family: 'Alegreya', sans-serif;
-            overflow: hidden;
-            width: 1920px; height: 1080px;
+        body {
+            margin: 0; padding: 15px; background: transparent;
+            font-family: 'Alegreya', serif; color: #ccc;
+            width: 100vw; display: flex; justify-content: flex-start; overflow: hidden;
         }
 
-        /* CONTENEDOR PRINCIPAL (Estilo exacto a la imagen) */
-        .widget-box {
-            position: absolute;
-            bottom: 50px;
-            left: 50px;
-            width: 520px;
-            background: var(--bg-dark);
-            border: 1px solid var(--crimson);
-            padding: 25px;
-            box-shadow: 10px 10px 40px rgba(0,0,0,0.8);
+        .outer-box {
+            position: relative; background: rgba(0, 0, 0, 0.75); border: 1px solid rgba(157, 10, 14, 0.4);
+            padding: 25px; width: 100%; max-width: 600px; box-sizing: border-box;
+            box-shadow: 0 0 50px rgba(0,0,0,1); backdrop-filter: blur(8px);
         }
 
-        .title {
-            font-family: 'Exocet', serif;
-            font-size: 1.1rem;
-            color: var(--gold);
-            letter-spacing: 4px;
-            margin: 0 0 10px 0;
-            text-transform: uppercase;
+        .outer-box::before {
+            content: ''; position: absolute; top: -6px; left: -6px; width: 40px; height: 40px;
+            border-top: 4px solid var(--crimson-bright); border-left: 4px solid var(--crimson-bright);
         }
 
-        .divider {
-            width: 100%;
-            height: 1px;
-            background: var(--crimson);
-            margin-bottom: 20px;
-            opacity: 0.6;
+        .outer-box::after {
+            content: ''; position: absolute; bottom: -6px; right: -6px; width: 40px; height: 40px;
+            border-bottom: 4px solid var(--crimson-bright); border-right: 4px solid var(--crimson-bright);
         }
 
-        .list-wrapper {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
+        .main-title {
+            font-family: 'Exocet', serif; font-size: 1.5rem; color: var(--gold);
+            letter-spacing: 6px; margin-bottom: 30px; text-align: center;
+            text-transform: uppercase; text-shadow: 0 0 15px rgba(192, 163, 117, 0.4);
         }
 
-        /* FILA DE PERSONAJE */
-        .char-row {
-            display: flex;
-            align-items: center;
-            background: var(--row-bg);
-            padding: 10px 15px;
-            border: 1px solid rgba(255,255,255,0.03);
+        .hall-container { display: flex; flex-direction: column; gap: 20px; }
+
+        .hall-card {
+            display: grid; grid-template-columns: 80px 1fr 130px; gap: 20px;
+            align-items: center; background: var(--row-bg); padding: 20px;
+            position: relative; border: 1px solid rgba(157, 10, 14, 0.2);
+            animation: fadeIn 0.8s ease-out forwards;
         }
 
-        .icon-container {
-            width: 55px;
-            height: 55px;
-            margin-right: 20px;
+        .category-label {
+            position: absolute; top: -12px; left: 20px; background: var(--crimson);
+            color: white; font-family: 'Exocet', serif; font-size: 0.7rem;
+            padding: 4px 15px; letter-spacing: 2px; box-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
 
-        .char-icon {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
+        .avatar-container { width: 70px; height: 70px; position: relative; }
+        .avatar-img { width: 100%; height: 100%; border: 2px solid var(--gold); background: #000; border-radius: 4px; }
+        
+        .info-box { display: flex; flex-direction: column; gap: 5px; }
+        .name { font-family: 'Exocet', serif; font-size: 1.6rem; color: #fff; text-shadow: 0 2px 5px #000; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .sub-info { font-size: 0.8rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; }
 
-        .char-name {
-            font-family: 'Exocet', serif;
-            font-size: 1.2rem;
-            color: var(--white);
-            flex-grow: 1;
-            letter-spacing: 1px;
-        }
+        .stat-box { text-align: right; }
+        .stat-value { font-family: 'Exocet', serif; font-size: 1.3rem; color: #fff; }
+        .stat-unit { font-size: 0.8rem; color: var(--crimson); display: block; font-weight: bold; }
 
-        .time-ago {
-            font-size: 0.95rem;
-            color: var(--gold);
-            font-style: italic;
-            font-weight: bold;
-        }
-
-        /* ALERTA (Se mantiene oculta hasta que hay un nuevo personaje) */
+        /* ALERTA GIGANTE */
         #alert-overlay {
             position: fixed; inset: 0;
             display: none; align-items: center; justify-content: center;
             z-index: 1000; pointer-events: none;
         }
         .alert-card {
-            width: 500px; padding: 40px;
-            background: #000; border: 2px solid var(--gold);
+            width: 600px; padding: 40px; background: #000; border: 2px solid var(--gold);
             display: flex; flex-direction: column; align-items: center; text-align: center;
-            box-shadow: 0 0 50px var(--crimson);
+            box-shadow: 0 0 100px var(--crimson);
         }
-        .alert-name { font-family: 'Exocet', serif; font-size: 4rem; color: #fff; margin: 10px 0; }
-        .alert-welcome { font-family: 'Exocet', serif; color: var(--gold); font-size: 1.2rem; }
+        .hero-name { font-family: 'Exocet', serif; font-size: 4.5rem; color: #fff; letter-spacing: 12px; text-shadow: 0 0 20px var(--crimson); margin: 10px 0; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
 
     <div id="alert-overlay">
-        <div class="alert-card">
-            <div class="alert-welcome">BIENVENIDOS A MU NEUTRO</div>
-            <img id="alert-img" src="" style="width: 150px; margin: 20px 0;">
-            <div id="alert-name" class="alert-name">NOMBRE</div>
-            <div style="color: #fff; font-size: 1.2rem; opacity: 0.8;">NUEVO GUERRERO SE UNE A LA BATALLA</div>
+        <div class="alert-card animate__animated animate__zoomIn" id="alert-box">
+            <div style="font-family: 'Exocet'; color: var(--gold); font-size: 1.2rem; letter-spacing: 4px;">BIENVENIDOS A MU NEUTRO</div>
+            <img id="alert-img" src="" style="width: 200px; margin: 20px 0; filter: drop-shadow(0 0 15px var(--gold));">
+            <div id="alert-name" class="hero-name">NOMBRE</div>
+            <div style="color: #fff; font-size: 1.5rem; opacity: 0.8; text-transform: uppercase; letter-spacing: 2px;">LA LEYENDA COMIENZA</div>
         </div>
     </div>
 
-    <div class="widget-box">
-        <h1 class="title">ÚLTIMOS GUERREROS</h1>
-        <div class="divider"></div>
-        <div id="list" class="list-wrapper">
-            <!-- Cargando datos... -->
+    <div class="outer-box">
+        <h1 class="main-title">ÚLTIMOS GUERREROS</h1>
+        <div id="list" class="hall-container">
+            <!-- Bloques se cargan aquí -->
+        </div>
+        <div style="margin-top: 25px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 10px;">
+            <span style="font-family: 'Exocet'; font-size: 0.7rem; color: #444; letter-spacing: 3px;">Mu Neutro Season 6</span>
         </div>
     </div>
 
@@ -146,42 +124,51 @@
 
         function formatTimeAgo(dateStr) {
             const diff = Math.floor((serverTime - new Date(dateStr)) / 1000);
-            if (diff < 60) return `hace ${Math.max(0, diff)}s`;
-            if (diff < 3600) return `hace ${Math.floor(diff/60)}m`;
-            return `hace ${Math.floor(diff/3600)}h`;
+            if (diff < 60) return `${Math.max(0, diff)} SEG`;
+            if (diff < 3600) return `${Math.floor(diff/60)} MIN`;
+            return `${Math.floor(diff/3600)} HORAS`;
         }
 
-        async function updateData() {
+        async function update() {
             try {
                 const res = await fetch('/api/stats');
                 if (!res.ok) return;
                 const data = await res.json();
                 serverTime = new Date(data.timestamp);
-                const chars = (data.recentCharacters || []).slice(0, 3); // Top 3 como la imagen
+                const chars = (data.recentCharacters || []).slice(0, 3);
 
                 if (chars.length > 0) {
                     if (!isFirstLoad && lastChars.length > 0 && chars[0].name !== lastChars[0].name) {
                         triggerAlert(chars[0]);
                     }
-                    renderList(chars);
+                    render(chars);
                     lastChars = chars;
                     isFirstLoad = false;
                 }
             } catch (e) { console.error(e); }
         }
 
-        function renderList(chars) {
+        function render(chars) {
             let html = '';
-            chars.forEach(c => {
+            const labels = ['NUEVA CREACIÓN', 'GUERRERO RECIENTE', 'ALMA DESPERTADA'];
+            
+            chars.forEach((c, i) => {
                 const info = classMap[c.classId] || classMap[0];
                 const iconPath = `../assets/images/chars/${info.folder}/${info.icon}`;
                 html += `
-                    <div class="char-row">
-                        <div class="icon-container">
-                            <img src="${iconPath}" class="char-icon">
+                    <div class="hall-card">
+                        <span class="category-label">${labels[i]}</span>
+                        <div class="avatar-container">
+                            <img src="${iconPath}" class="avatar-img">
                         </div>
-                        <div class="char-name">${c.name}</div>
-                        <div class="time-ago" id="time-${c.name}">${formatTimeAgo(c.date)}</div>
+                        <div class="info-box">
+                            <div class="name">${c.name}</div>
+                            <div class="sub-info">Nivel ${c.level} / ${c.resets} RR</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-value">${formatTimeAgo(c.date)}</div>
+                            <div class="stat-unit">ANTIGÜEDAD</div>
+                        </div>
                     </div>
                 `;
             });
@@ -190,24 +177,31 @@
 
         function triggerAlert(char) {
             const overlay = document.getElementById('alert-overlay');
+            const box = document.getElementById('alert-box');
             const info = classMap[char.classId] || classMap[0];
+
             document.getElementById('alert-name').innerText = char.name.toUpperCase();
             document.getElementById('alert-img').src = `../assets/images/chars/${info.folder}/${info.head}`;
-            
+
             overlay.style.display = 'flex';
-            setTimeout(() => { overlay.style.display = 'none'; }, 6000);
+            setTimeout(() => {
+                box.classList.remove('animate__zoomIn');
+                box.classList.add('animate__zoomOut');
+                setTimeout(() => {
+                    overlay.style.display = 'none';
+                    box.classList.remove('animate__zoomOut');
+                    box.classList.add('animate__zoomIn');
+                }, 800);
+            }, 6000);
         }
 
         setInterval(() => {
             serverTime.setSeconds(serverTime.getSeconds() + 1);
-            lastChars.forEach(c => {
-                const el = document.getElementById(`time-${c.name}`);
-                if (el) el.innerText = formatTimeAgo(c.date);
-            });
+            if (lastChars.length > 0) render(lastChars);
         }, 1000);
 
-        setInterval(updateData, 5000);
-        updateData();
+        setInterval(update, 5000);
+        update();
     </script>
     <script src="auto-refresh.js"></script>
 </body>
