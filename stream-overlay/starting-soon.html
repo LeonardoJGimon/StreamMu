@@ -41,13 +41,6 @@
             color: white;
         }
 
-        /* AJUSTE PARA VERTICAL (TIKTOK/REELS) */
-        @media (orientation: portrait) {
-            body, html {
-                background-position: 70% center; /* Centra más al personaje en vertical */
-            }
-        }
-
         /* FILTRO OSCURO PARA EL FONDO */
         body::before {
             content: '';
@@ -632,7 +625,10 @@
         }
 
         // LÓGICA DE ROTACIÓN DE TEXTO (GADGETS)
-        let gadgetItems = [{ label: "PREPARE FOR", value: "THE BATTLE" }];
+        let gadgetItems = [
+            { label: "PREPARE FOR", value: "THE BATTLE" },
+            { label: "VERSION", value: "SEASON 6 EP 3" }
+        ];
         let gadgetIndex = 0;
 
         // LÓGICA DE ESTADO DEL SERVIDOR (REAL-TIME)
@@ -650,30 +646,32 @@
                     }
 
                     // Actualizar Gadgets Dinámicos con datos reales
-                    gadgetItems = [
+                    const newGadgetItems = [
                         { label: "PREPARE FOR", value: "THE BATTLE" }
                     ];
 
                     if (data.recentCharacters && data.recentCharacters.length) {
-                        gadgetItems.push({ label: "NEW HERO", value: data.recentCharacters[0].name.toUpperCase() });
+                        newGadgetItems.push({ label: "NEW HERO", value: data.recentCharacters[0].name.toUpperCase() });
                     }
                     
                     if (data.topStrengthCharacters && data.topStrengthCharacters.length) {
-                        gadgetItems.push({ label: "TOP PLAYER", value: data.topStrengthCharacters[0].name.toUpperCase() });
+                        newGadgetItems.push({ label: "TOP PLAYER", value: data.topStrengthCharacters[0].name.toUpperCase() });
                     }
 
                     if (data.latestUser) {
-                        gadgetItems.push({ label: "NEW USER", value: data.latestUser.toUpperCase() });
+                        newGadgetItems.push({ label: "LATEST USER", value: data.latestUser.toUpperCase() });
                     }
 
-                    gadgetItems.push({ label: "VERSION", value: "SEASON 6 EP 3" });
+                    newGadgetItems.push({ label: "VERSION", value: "SEASON 6 EP 3" });
+                    
+                    gadgetItems = newGadgetItems;
                 }
             } catch (error) {
                 console.error("Error fetching stats:", error);
             }
         }
 
-        // Rotar texto cada 5 segundos
+        // Rotar texto cada 6 segundos
         function rotateGadget() {
             const labelEl = document.getElementById('gadget-label');
             const valueEl = document.getElementById('gadget-value');

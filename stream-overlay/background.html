@@ -7,9 +7,16 @@
         body, html {
             margin: 0; padding: 0;
             width: 100vw; height: 100vh;
-            background: #0a0505 url('https://i.imgur.com/HQroNDd.png') no-repeat center center;
+            background: #0a0505 url('https://i.imgur.com/HQroNDd.png') no-repeat;
+            background-position: right center;
             background-size: cover;
             overflow: hidden;
+        }
+
+        @media (orientation: portrait) {
+            body, html {
+                background-position: 80% center !important;
+            }
         }
 
         /* CAPA DE OSCURIDAD */

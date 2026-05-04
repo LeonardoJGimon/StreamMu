@@ -40,7 +40,7 @@
         /* AJUSTE PARA VERTICAL (TIKTOK/REELS) */
         @media (orientation: portrait) {
             body, html {
-                background-position: 70% center;
+                background-position: 80% center !important;
             }
         }
 
@@ -114,6 +114,15 @@
                 padding: 10px !important;
                 min-width: unset !important;
             }
+            .cycling-container {
+                font-size: 1rem;
+                gap: 5px;
+                margin-top: 20px;
+            }
+            .mask {
+                min-width: 150px;
+                padding-left: 10px;
+            }
         }
 
         .thanks-msg {
@@ -171,6 +180,42 @@
             font-weight: 700;
         }
 
+        .cycling-container {
+            margin-top: 40px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Exocet', serif;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            width: 100%;
+        }
+
+        #gadget-label {
+            color: var(--crimson);
+            font-weight: 900;
+            margin-right: 15px;
+            white-space: nowrap;
+        }
+
+        .mask {
+            height: 40px;
+            overflow: hidden;
+            position: relative;
+            border-left: 2px solid var(--gold);
+            padding-left: 15px;
+            min-width: 200px;
+            text-align: left;
+        }
+
+        #gadget-value {
+            line-height: 40px;
+            color: #ffffff;
+            transition: all 0.5s ease;
+            white-space: nowrap;
+        }
+
         @keyframes pulseLogo {
             0%, 100% { transform: scale(1); filter: drop-shadow(0 0 30px var(--crimson-glow)); }
             50% { transform: scale(1.05); filter: drop-shadow(0 0 50px var(--crimson-glow)); }
@@ -221,14 +266,6 @@
             </div>
         </div>
     </div>
-    <style>
-        .cycling-container { margin-top: 40px; height: 50px; display: flex; align-items: center; justify-content: center; font-family: 'Exocet', serif; font-size: 1.2rem; letter-spacing: 2px; width: 100%; }
-        #gadget-label { color: var(--crimson); font-weight: 900; margin-right: 15px; white-space: nowrap; }
-        .mask { height: 40px; overflow: hidden; position: relative; border-left: 2px solid var(--gold); padding-left: 15px; min-width: 200px; text-align: left; }
-        #gadget-value { line-height: 40px; color: #ffffff; transition: all 0.5s ease; white-space: nowrap; }
-        @media (orientation: portrait) { .cycling-container { font-size: 1rem; gap: 5px; margin-top: 20px; } .mask { min-width: 150px; padding-left: 10px; } }
-    </style>
-
     <script>
         // Efecto de partículas suaves de ceniza
         function createAsh() {
@@ -256,8 +293,11 @@
         }
         setInterval(createAsh, 200);
 
-        // LÓGICA DE DATOS DINÁMICOS
-        let gadgetItems = [{ label: "THANKS FOR", value: "WATCHING" }];
+        // LÓGICA DE DATOS DINÁMICOS (GADGETS)
+        let gadgetItems = [
+            { label: "THANKS FOR", value: "WATCHING" },
+            { label: "VERSION", value: "SEASON 6 EP 3" }
+        ];
         let gadgetIndex = 0;
 
         async function updateStats() {
@@ -266,14 +306,21 @@
                 if (!res.ok) return;
                 const data = await res.json();
                 
-                gadgetItems = [{ label: "THANKS FOR", value: "WATCHING" }];
+                const newGadgetItems = [
+                    { label: "THANKS FOR", value: "WATCHING" }
+                ];
                 if (data.recentCharacters && data.recentCharacters.length) {
-                    gadgetItems.push({ label: "NEW HERO", value: data.recentCharacters[0].name.toUpperCase() });
+                    newGadgetItems.push({ label: "NEW HERO", value: data.recentCharacters[0].name.toUpperCase() });
                 }
                 if (data.topStrengthCharacters && data.topStrengthCharacters.length) {
-                    gadgetItems.push({ label: "TOP PLAYER", value: data.topStrengthCharacters[0].name.toUpperCase() });
+                    newGadgetItems.push({ label: "TOP PLAYER", value: data.topStrengthCharacters[0].name.toUpperCase() });
                 }
-                gadgetItems.push({ label: "VERSION", value: "SEASON 6 EP 3" });
+                if (data.latestUser) {
+                    newGadgetItems.push({ label: "LATEST USER", value: data.latestUser.toUpperCase() });
+                }
+                newGadgetItems.push({ label: "VERSION", value: "SEASON 6 EP 3" });
+                
+                gadgetItems = newGadgetItems;
             } catch (e) { console.error(e); }
         }
 

@@ -40,7 +40,7 @@
         /* AJUSTE PARA VERTICAL (TIKTOK/REELS) */
         @media (orientation: portrait) {
             body, html {
-                background-position: 70% center;
+                background-position: 80% center !important;
             }
         }
 
@@ -226,8 +226,12 @@
             white-space: nowrap;
         }
 
-        /* AJUSTE PARA VERTICAL */
+        /* RESPONSIVE: VERTICAL */
         @media (orientation: portrait) {
+            .title { font-size: 3rem; letter-spacing: 6px; }
+            .status-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+            .status-banner:nth-child(4), .status-banner:nth-child(5) { display: none; }
+            .main-logo { width: 180px; }
             .cycling-container {
                 font-size: 1rem;
                 gap: 5px;
@@ -236,50 +240,6 @@
                 min-width: 150px;
                 padding-left: 10px;
             }
-        }
-
-        /* CLOCKS */
-        .clock-footer {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            background: rgba(10, 5, 5, 0.85);
-            padding: 8px 20px;
-            border: 1px solid var(--crimson);
-            border-radius: 4px;
-            box-shadow: 0 0 15px rgba(0,0,0,0.8);
-            z-index: 20;
-        }
-
-        .clock-item { display: flex; flex-direction: column; align-items: center; }
-        .clock-item .label { font-size: 0.55rem; color: var(--crimson); letter-spacing: 2px; font-weight: 900; margin-bottom: 2px; }
-        .clock-item .time { font-family: 'Alegreya', serif; font-size: 1rem; color: var(--gold); font-weight: 700; }
-        .clock-divider { width: 1px; height: 20px; background: var(--crimson); opacity: 0.4; }
-
-        @keyframes pulseLogo {
-            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 30px var(--crimson-glow)); }
-            50% { transform: scale(1.05); filter: drop-shadow(0 0 50px var(--crimson-glow)); }
-        }
-
-        @keyframes shimmerLoop {
-            0% { background-position: 200% center; }
-            100% { background-position: -200% center; }
-        }
-
-        @keyframes glowPulse {
-            0%, 100% { filter: drop-shadow(0 0 15px rgba(157, 10, 14, 0.4)); }
-            50% { filter: drop-shadow(0 0 35px rgba(255, 0, 0, 0.8)); }
-        }
-
-        /* RESPONSIVE: VERTICAL */
-        @media (orientation: portrait) {
-            .title { font-size: 3rem; letter-spacing: 6px; }
-            .status-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
-            .status-banner:nth-child(4), .status-banner:nth-child(5) { display: none; }
-            .main-logo { width: 180px; }
         }
 
     </style>
@@ -362,10 +322,10 @@
         setInterval(updateClocks, 1000);
         updateClocks();
 
+        // LÓGICA DE DATOS DINÁMICOS (GADGETS)
         let gadgetItems = [
-            { label: "NEW HERO", value: "PIPO" },
-            { label: "TOP PLAYER", value: "LOADING..." },
-            { label: "LATEST WARRIOR", value: "LOADING..." }
+            { label: "BRB", value: "STAY TUNED" },
+            { label: "VERSION", value: "SEASON 6 EP 3" }
         ];
         let gadgetIndex = 0;
 
@@ -382,17 +342,25 @@
                 }
 
                 // Actualizar items del gadget
-                gadgetItems = [];
+                const newGadgetItems = [
+                    { label: "BRB", value: "STAY TUNED" }
+                ];
+
                 if (data.recentCharacters && data.recentCharacters.length) {
-                    gadgetItems.push({ label: "NEW HERO", value: data.recentCharacters[0].name.toUpperCase() });
+                    newGadgetItems.push({ label: "NEW HERO", value: data.recentCharacters[0].name.toUpperCase() });
                 }
+                
                 if (data.topStrengthCharacters && data.topStrengthCharacters.length) {
-                    gadgetItems.push({ label: "TOP PLAYER", value: data.topStrengthCharacters[0].name.toUpperCase() });
+                    newGadgetItems.push({ label: "TOP PLAYER", value: data.topStrengthCharacters[0].name.toUpperCase() });
                 }
+
                 if (data.latestUser) {
-                    gadgetItems.push({ label: "LATEST WARRIOR", value: data.latestUser.toUpperCase() });
+                    newGadgetItems.push({ label: "LATEST USER", value: data.latestUser.toUpperCase() });
                 }
-                gadgetItems.push({ label: "VERSION", value: "SEASON 6 EP 3" });
+
+                newGadgetItems.push({ label: "VERSION", value: "SEASON 6 EP 3" });
+                
+                gadgetItems = newGadgetItems;
             } catch (e) {
                 console.error("Error updating stats:", e);
             }
