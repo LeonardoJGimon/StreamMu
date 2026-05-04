@@ -2,199 +2,174 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mu Neutro - Hall of Fame</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Mu Neutro - Hall of Fame (Oficial)</title>
     <style>
-        @font-face {
-            font-family: 'Exocet';
-            src: url('../assets/images/font/ExocetImmortal-Medium.otf') format('opentype');
-            font-weight: 500;
-        }
-
-        @font-face {
-            font-family: 'Alegreya';
-            src: url('../assets/images/font/AlegreyaSans-Regular.otf') format('opentype');
-            font-weight: 400;
-        }
+        @font-face { font-family: 'Exocet'; src: url('../assets/images/font/ExocetImmortal-Medium.otf') format('opentype'); font-weight: 500; }
+        @font-face { font-family: 'Alegreya'; src: url('../assets/images/font/AlegreyaSans-Regular.otf') format('opentype'); font-weight: 400; }
 
         :root {
-            --crimson: #9d0a0e;
-            --crimson-bright: #ff2e2e;
+            --bg-dark: #1e1e1e;
+            --row-bg: #141414;
+            --crimson: #8b0000;
             --gold: #c0a375;
-            --gold-bright: #ffd700;
-            --row-bg: rgba(15, 10, 10, 0.9);
+            --white: #ffffff;
         }
 
-        body {
-            margin: 0; padding: 15px; background: transparent;
-            font-family: 'Alegreya', serif; color: #ccc;
-            width: 100vw; display: flex; justify-content: flex-start; overflow-x: hidden;
+        body, html {
+            margin: 0; padding: 0;
+            background: transparent;
+            font-family: 'Alegreya', sans-serif;
+            overflow: hidden;
+            width: 1920px; height: 1080px;
         }
 
-        .outer-box {
-            position: relative; background: rgba(0, 0, 0, 0.75); border: 1px solid rgba(157, 10, 14, 0.4);
-            padding: 25px; width: 100%; max-width: 600px; box-sizing: border-box;
-            box-shadow: 0 0 50px rgba(0,0,0,1); backdrop-filter: blur(8px);
+        /* CONTENEDOR PRINCIPAL (Sincronizado con Guerreros) */
+        .widget-box {
+            position: absolute;
+            bottom: 50px;
+            right: 50px; /* En el lado derecho para balancear el stream */
+            width: 520px;
+            background: var(--bg-dark);
+            border: 1px solid var(--crimson);
+            padding: 25px;
+            box-shadow: -10px 10px 40px rgba(0,0,0,0.8);
         }
 
-        .outer-box::before {
-            content: ''; position: absolute; top: -6px; left: -6px; width: 40px; height: 40px;
-            border-top: 4px solid var(--crimson-bright); border-left: 4px solid var(--crimson-bright);
+        .title {
+            font-family: 'Exocet', serif;
+            font-size: 1.1rem;
+            color: var(--gold);
+            letter-spacing: 4px;
+            margin: 0 0 10px 0;
+            text-transform: uppercase;
         }
 
-        .outer-box::after {
-            content: ''; position: absolute; bottom: -6px; right: -6px; width: 40px; height: 40px;
-            border-bottom: 4px solid var(--crimson-bright); border-right: 4px solid var(--crimson-bright);
+        .divider {
+            width: 100%;
+            height: 1px;
+            background: var(--crimson);
+            margin-bottom: 20px;
+            opacity: 0.6;
         }
 
-        .main-title {
-            font-family: 'Exocet', serif; font-size: 1.5rem; color: var(--gold);
-            letter-spacing: 6px; margin-bottom: 30px; text-align: center;
-            text-transform: uppercase; text-shadow: 0 0 15px rgba(192, 163, 117, 0.4);
+        .list-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
-        .hall-container {
-            display: flex; flex-direction: column; gap: 20px;
+        /* FILA DE RANKING */
+        .rank-row {
+            display: flex;
+            align-items: center;
+            background: var(--row-bg);
+            padding: 12px 15px;
+            border: 1px solid rgba(255,255,255,0.03);
+            animation: fadeIn 0.5s ease forwards;
         }
 
-        .hall-card {
-            display: grid; grid-template-columns: 80px 1fr 120px; gap: 20px;
-            align-items: center; background: var(--row-bg); padding: 20px;
-            position: relative; border: 1px solid rgba(157, 10, 14, 0.2);
-            transition: 0.3s;
+        .category-icon {
+            width: 40px;
+            height: 40px;
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            font-size: 1.5rem;
+            border: 1px solid var(--gold);
+            border-radius: 50%;
         }
 
-        .hall-card:hover { transform: scale(1.02); background: rgba(25, 10, 10, 0.95); }
-
-        .category-label {
-            position: absolute; top: -12px; left: 20px; background: var(--crimson);
-            color: white; font-family: 'Exocet', serif; font-size: 0.7rem;
-            padding: 4px 15px; letter-spacing: 2px; box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        .rank-info {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
         }
 
-        .avatar-container { width: 70px; height: 70px; position: relative; }
-        .avatar-img { width: 100%; height: 100%; border: 2px solid var(--gold); background: #000; border-radius: 4px; }
-        
-        .info-box { display: flex; flex-direction: column; gap: 5px; }
-        .name { font-family: 'Exocet', serif; font-size: 1.6rem; color: #fff; text-shadow: 0 2px 5px #000; }
-        .sub-info { font-size: 0.9rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; }
+        .rank-label {
+            font-size: 0.75rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.8;
+        }
 
-        .stat-box { text-align: right; font-family: 'Exocet', serif; }
-        .stat-value { font-size: 1.8rem; color: #fff; }
-        .stat-unit { font-size: 0.8rem; color: var(--crimson); display: block; }
+        .rank-name {
+            font-family: 'Exocet', serif;
+            font-size: 1.2rem;
+            color: var(--white);
+            letter-spacing: 1px;
+        }
 
-        .footer { margin-top: 25px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 10px; }
-        .footer-tag { font-family: 'Exocet', serif; font-size: 0.7rem; color: #444; letter-spacing: 3px; }
+        .rank-value {
+            font-size: 0.95rem;
+            color: var(--gold);
+            font-style: italic;
+            font-weight: bold;
+            text-align: right;
+        }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .hall-card { animation: fadeIn 0.8s ease-out forwards; }
     </style>
 </head>
 <body>
 
-    <div class="outer-box">
-        <h1 class="main-title">HALL OF FAME</h1>
-        
-        <div id="hall" class="hall-container">
-            <!-- REY DE RESETS -->
-            <div class="hall-card">
-                <span class="category-label">REY DE RESETS</span>
-                <div class="avatar-container">
-                    <img id="reset-img" src="../assets/images/characters/DW.png" class="avatar-img">
-                </div>
-                <div class="info-box">
-                    <div class="name" id="reset-name">-</div>
-                    <div class="sub-info">PUESTO #1 RR</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-value" id="reset-val">0</div>
-                    <div class="stat-unit">RESETS</div>
-                </div>
-            </div>
-
-            <!-- CLAN SUPREMO -->
-            <div class="hall-card">
-                <span class="category-label">CLAN SUPREMO</span>
-                <div class="avatar-container">
-                    <img src="../assets/images/characters/GUILD.png" class="avatar-img" onerror="this.src='../assets/images/characters/DW.png'">
-                </div>
-                <div class="info-box">
-                    <div class="name" id="guild-name">-</div>
-                    <div class="sub-info">CLAN LÍDER</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-value" id="guild-val">0</div>
-                    <div class="stat-unit">SCORE</div>
-                </div>
-            </div>
-
-            <!-- ASESINO DE ÉLITE -->
-            <div class="hall-card">
-                <span class="category-label">ASESINO DE ÉLITE</span>
-                <div class="avatar-container">
-                    <img id="pvp-img" src="../assets/images/characters/DK.png" class="avatar-img">
-                </div>
-                <div class="info-box">
-                    <div class="name" id="pvp-name">-</div>
-                    <div class="sub-info">MÁS PVP KILLS</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-value" id="pvp-val">0</div>
-                    <div class="stat-unit">KILLS</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer">
-            <span class="footer-tag">Mu Neutro Season 6</span>
+    <div class="widget-box">
+        <h1 class="title">HALL OF FAME</h1>
+        <div class="divider"></div>
+        <div id="ranking-list" class="list-wrapper">
+            <!-- Cargando Ranking... -->
         </div>
     </div>
 
     <script>
-        const charImages = {
-            0: 'DW.png', 1: 'SM.png', 2: 'GM.png', 3: 'SW.png',
-            16: 'DK.png', 17: 'BK.png', 18: 'BM.png', 19: 'DRK.png',
-            32: 'ELF.png', 33: 'ME.png', 34: 'HE.png', 35: 'NE.png',
-            48: 'MG.png', 50: 'DM.png', 54: 'MK.png',
-            64: 'DL.png', 66: 'LE.png', 70: 'EL.png',
-            80: 'SUM.png', 81: 'BS.png', 82: 'DSM.png', 83: 'DSK.png',
-            96: 'RF.png', 98: 'FM.png', 102: 'FB.png'
-        };
-
-        async function update() {
+        async function updateRanking() {
             try {
-                const res = await fetch('/api/stats').catch(() => null);
-                if (!res || !res.ok) return;
+                const res = await fetch('/api/stats');
+                if (!res.ok) return;
                 const data = await res.json();
+                
+                const topResets = data.topStrengthCharacters ? data.topStrengthCharacters[0] : null;
+                const topGuild = data.topGuild;
+                const topPvP = data.topPvP;
+
+                let html = '';
 
                 // 1. REY DE RESETS
-                if (data.topStrengthCharacters && data.topStrengthCharacters.length > 0) {
-                    const topRR = data.topStrengthCharacters[0];
-                    document.getElementById('reset-name').innerText = topRR.name;
-                    document.getElementById('reset-val').innerText = topRR.resets;
-                    document.getElementById('reset-img').src = `../assets/images/characters/${charImages[topRR.classId] || 'DW.png'}`;
+                if (topResets) {
+                    html += createRow('fa-crown', 'Rey de Resets', topResets.name, `${topResets.resets} RR`);
                 }
 
                 // 2. CLAN SUPREMO
-                if (data.topGuild) {
-                    document.getElementById('guild-name').innerText = data.topGuild.G_Name;
-                    document.getElementById('guild-val').innerText = data.topGuild.G_Score;
+                if (topGuild) {
+                    html += createRow('fa-shield-halved', 'Clan Supremo', topGuild.G_Name, `${topGuild.G_Score} Pts`);
                 }
 
                 // 3. ASESINO DE ÉLITE
-                if (data.topPvP) {
-                    document.getElementById('pvp-name').innerText = data.topPvP.Name;
-                    document.getElementById('pvp-val').innerText = data.topPvP.PkCount || 0;
-                    // Aquí podrías añadir una lógica para el avatar del PvP si lo tienes
+                if (topPvP) {
+                    html += createRow('fa-skull', 'Asesino de Élite', topPvP.Name, `${topPvP.PkCount} Kills`);
                 }
 
-            } catch (e) {
-                console.error("Fetch error:", e);
-            }
+                document.getElementById('ranking-list').innerHTML = html;
+            } catch (e) { console.error(e); }
         }
 
-        setInterval(update, 30000);
-        update();
+        function createRow(icon, label, name, value) {
+            return `
+                <div class="rank-row">
+                    <div class="category-icon"><i class="fas ${icon}"></i></div>
+                    <div class="rank-info">
+                        <span class="rank-label">${label}</span>
+                        <span class="rank-name">${name}</span>
+                    </div>
+                    <div class="rank-value">${value}</div>
+                </div>
+            `;
+        }
+
+        setInterval(updateRanking, 30000);
+        updateRanking();
     </script>
     <script src="auto-refresh.js"></script>
 </body>
