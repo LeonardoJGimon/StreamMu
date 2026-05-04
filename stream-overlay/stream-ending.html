@@ -26,7 +26,8 @@
         body, html {
             margin: 0; padding: 0;
             width: 100vw; height: 100vh;
-            background: #000 url('https://i.imgur.com/HQroNDd.png') no-repeat right center;
+            background: #000 url('https://i.imgur.com/HQroNDd.png') no-repeat;
+            background-position: right center;
             background-size: cover;
             font-family: 'Alegreya', serif;
             overflow: hidden;
@@ -34,6 +35,13 @@
             align-items: center;
             justify-content: center;
             color: white;
+        }
+
+        /* AJUSTE PARA VERTICAL (TIKTOK/REELS) */
+        @media (orientation: portrait) {
+            body, html {
+                background-position: 70% center;
+            }
         }
 
         body::before {
