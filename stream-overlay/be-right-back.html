@@ -228,18 +228,25 @@
 
         /* RESPONSIVE: VERTICAL */
         @media (orientation: portrait) {
-            .title { font-size: 3rem; letter-spacing: 6px; }
-            .status-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
-            .status-banner:nth-child(4), .status-banner:nth-child(5) { display: none; }
-            .main-logo { width: 180px; }
+            .title { font-size: 4.5rem; letter-spacing: 10px; line-height: 1.1; margin-bottom: 20px; }
+            .status-grid { grid-template-columns: repeat(3, 1fr) !important; gap: 15px !important; width: 95% !important; padding: 0 10px !important; }
+            .status-banner:nth-child(4), .status-banner:nth-child(5) { display: none !important; }
+            .status-banner { padding: 20px 10px 35px 10px !important; }
+            .status-icon { font-size: 2.2rem !important; }
+            .status-value { font-size: 1.3rem !important; }
+            .status-label { font-size: 0.7rem !important; letter-spacing: 1px !important; }
+            .main-logo { width: 320px; margin-bottom: 20px; }
             .cycling-container {
-                font-size: 1rem;
-                gap: 5px;
+                font-size: 1.5rem !important;
+                gap: 10px !important;
+                margin-top: 50px !important;
             }
             .mask {
-                min-width: 150px;
-                padding-left: 10px;
+                min-width: 280px !important;
+                padding-left: 15px !important;
+                height: 50px !important;
             }
+            #gadget-value { line-height: 50px !important; }
         }
 
     </style>
