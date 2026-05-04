@@ -350,30 +350,37 @@
 
         async function updateStats() {
             try {
-                const res = await fetch('../latest-stats.json?t=' + Date.now());
+                const res = await fetch('/api/stats');
                 if (!res.ok) throw new Error('Network response was not ok');
                 const data = await res.json();
                 
                 // Actualizar online count
-                document.getElementById('stat-online').innerText = data.onlineCount || (data.recentUsers?.length || 0);
+                const onlineEl = document.getElementById('stat-online');
+                if (onlineEl) {
+                    onlineEl.innerText = data.onlineCount || 0;
+                }
 
                 // Actualizar items del gadget
                 gadgetItems = [];
-                if (data.latestCharacter) {
-                    gadgetItems.push({ label: "NEW HERO", value: data.latestCharacter.name.toUpperCase() });
+                if (data.recentCharacters && data.recentCharacters.length) {
+                    gadgetItems.push({ label: "NEW HERO", value: data.recentCharacters[0].name.toUpperCase() });
                 }
-                if (data.topStrengthCharacters?.length) {
+                if (data.topStrengthCharacters && data.topStrengthCharacters.length) {
                     gadgetItems.push({ label: "TOP PLAYER", value: data.topStrengthCharacters[0].name.toUpperCase() });
                 }
                 if (data.latestUser) {
                     gadgetItems.push({ label: "LATEST WARRIOR", value: data.latestUser.toUpperCase() });
                 }
-            } catch (e) {}
+                gadgetItems.push({ label: "VERSION", value: "SEASON 6 EP 3" });
+            } catch (e) {
+                console.error("Error updating stats:", e);
+            }
         }
 
         function rotateGadget() {
             const labelEl = document.getElementById('gadget-label');
             const valueEl = document.getElementById('gadget-value');
+            if (!labelEl || !valueEl || gadgetItems.length === 0) return;
             
             valueEl.style.opacity = "0";
             valueEl.style.transform = "translateY(-20px)";

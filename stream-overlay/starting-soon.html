@@ -581,86 +581,49 @@
         // LÓGICA DE ESTADO DEL SERVIDOR (REAL-TIME)
         async function updateServerStats() {
             try {
-                const response = await fetch('/auth/online-count?serverType=server1');
+                const response = await fetch('/api/stats');
                 if (response.ok) {
                     const data = await response.json();
+                    
+                    // Actualizar contador online
                     const onlineEl = document.getElementById('stat-online');
                     if (onlineEl) {
                         const newCount = data.onlineCount || 0;
-                        
-                        // Si el valor cambia o se refresca, añadimos un efecto visual
-                        onlineEl.style.transition = "all 0.3s ease";
-                        onlineEl.style.color = "var(--crimson)";
-                        onlineEl.style.textShadow = "0 0 15px var(--crimson)";
-                        
-                        setTimeout(() => {
-                            onlineEl.innerText = newCount;
-                            setTimeout(() => {
-                                onlineEl.style.color = "#ffffff";
-                                onlineEl.style.textShadow = "none";
-                            }, 500);
-                        }, 300);
+                        onlineEl.innerText = newCount;
                     }
+
+                    // Actualizar Gadgets Dinámicos con datos reales
+                    gadgetItems = [
+                        { label: "PREPARE FOR", value: "THE BATTLE" }
+                    ];
+
+                    if (data.recentCharacters && data.recentCharacters.length) {
+                        gadgetItems.push({ label: "NEW HERO", value: data.recentCharacters[0].name.toUpperCase() });
+                    }
+                    
+                    if (data.topStrengthCharacters && data.topStrengthCharacters.length) {
+                        gadgetItems.push({ label: "TOP PLAYER", value: data.topStrengthCharacters[0].name.toUpperCase() });
+                    }
+
+                    if (data.latestUser) {
+                        gadgetItems.push({ label: "NEW USER", value: data.latestUser.toUpperCase() });
+                    }
+
+                    gadgetItems.push({ label: "VERSION", value: "SEASON 6 EP 3" });
                 }
             } catch (error) {
-                console.error("Error fetching online count:", error);
+                console.error("Error fetching stats:", error);
             }
         }
 
-        // GADGETS DINÁMICOS (RANKINGS & MÁS)
-        let gadgetItems = [
-            { label: "PREPARE FOR", value: "THE BATTLE" },
-            { label: "SERVER STATUS", value: "ONLINE" }
-        ];
-        let gadgetIndex = 0;
-
-        async function updateGadgetData() {
-            try {
-                const [players, guilds, pvp, latest] = await Promise.all([
-                    fetch('/top-ranking-characters?serverType=server1').then(r => r.json()),
-                    fetch('/top-ranking-guilds?serverType=server1').then(r => r.json()),
-                    fetch('/top-ranking-pvp?serverType=server1').then(r => r.json()),
-                    fetch('../latest-stats.json?t=' + Date.now()).then(r => r.ok ? r.json() : null).catch(() => null)
-                ]);
-
-                gadgetItems = [
-                    { label: "PREPARE FOR", value: "THE BATTLE" }
-                ];
-
-                if (players && players.length) {
-                    gadgetItems.push({ label: "TOP PLAYER", value: `${players[0].Name} (${players[0].RESETS} RR)` });
-                }
-                if (guilds && guilds.length) {
-                    gadgetItems.push({ label: "TOP CLAN", value: guilds[0].G_Name });
-                }
-                if (pvp && pvp.length) {
-                    gadgetItems.push({ label: "TOP KILLER", value: pvp[0].Name });
-                }
-                
-                if (latest) {
-                    if (latest.latestUser) {
-                        gadgetItems.push({ label: "NEW USER", value: latest.latestUser.toUpperCase() });
-                    }
-                    if (latest.latestCharacter && latest.latestCharacter.name) {
-                        gadgetItems.push({ label: "NEW HERO", value: latest.latestCharacter.name.toUpperCase() });
-                    }
-                }
-
-                gadgetItems.push({ label: "VERSION", value: "SEASON 6 EP 3" });
-
-            } catch (e) {
-                console.error("Error updating gadgets:", e);
-            }
-        }
-
+        // Rotar texto cada 5 segundos
         function rotateGadget() {
             const labelEl = document.getElementById('gadget-label');
             const valueEl = document.getElementById('gadget-value');
-            if (!labelEl || !valueEl) return;
+            if (!labelEl || !valueEl || gadgetItems.length === 0) return;
 
-            // Animación de salida
-            valueEl.style.transform = "translateY(-40px)";
             valueEl.style.opacity = "0";
+            valueEl.style.transform = "translateY(-20px)";
 
             setTimeout(() => {
                 gadgetIndex = (gadgetIndex + 1) % gadgetItems.length;
@@ -669,21 +632,17 @@
                 labelEl.innerText = item.label;
                 valueEl.innerText = item.value;
 
-                // Animación de entrada
-                valueEl.style.transform = "translateY(40px)";
-                valueEl.style.transition = "none";
-                
-                setTimeout(() => {
-                    valueEl.style.transition = "all 0.5s ease";
-                    valueEl.style.transform = "translateY(0)";
-                    valueEl.style.opacity = "1";
-                }, 50);
+                valueEl.style.opacity = "1";
+                valueEl.style.transform = "translateY(0)";
             }, 500);
         }
 
-        // Cargar datos cada 2 minutos
-        setInterval(updateGadgetData, 120000);
-        updateGadgetData();
+        // Cargar datos cada 30 segundos
+        setInterval(updateServerStats, 30000);
+        updateServerStats();
+
+        // Rotar texto cada 6 segundos
+        setInterval(rotateGadget, 6000);
 
         // Rotar texto cada 5 segundos
         setInterval(rotateGadget, 5000);
