@@ -149,30 +149,45 @@
         }
 
         function render(chars) {
-            let html = '';
+            const listEl = document.getElementById('list');
             const labels = ['NUEVA CREACIÓN', 'GUERRERO RECIENTE', 'ALMA DESPERTADA'];
             
-            chars.forEach((c, i) => {
-                const info = classMap[c.classId] || classMap[0];
-                const iconPath = `../assets/images/chars/${info.folder}/${info.icon}`;
-                html += `
-                    <div class="hall-card">
-                        <span class="category-label">${labels[i]}</span>
-                        <div class="avatar-container">
-                            <img src="${iconPath}" class="avatar-img">
+            // Si el número de elementos cambió o es la primera vez, hacemos render completo
+            if (listEl.children.length !== chars.length) {
+                let html = '';
+                chars.forEach((c, i) => {
+                    const info = classMap[c.classId] || classMap[0];
+                    const iconPath = `../assets/images/chars/${info.folder}/${info.icon}`;
+                    html += `
+                        <div class="hall-card" id="card-${i}">
+                            <span class="category-label">${labels[i]}</span>
+                            <div class="avatar-container">
+                                <img src="${iconPath}" class="avatar-img">
+                            </div>
+                            <div class="info-box">
+                                <div class="name" id="name-${i}">${c.name}</div>
+                                <div class="sub-info" id="info-${i}">Nivel ${c.level} / ${c.resets} RR</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-value" id="time-${i}">${formatTimeAgo(c.date)}</div>
+                                <div class="stat-unit">ANTIGÜEDAD</div>
+                            </div>
                         </div>
-                        <div class="info-box">
-                            <div class="name">${c.name}</div>
-                            <div class="sub-info">Nivel ${c.level} / ${c.resets} RR</div>
-                        </div>
-                        <div class="stat-box">
-                            <div class="stat-value">${formatTimeAgo(c.date)}</div>
-                            <div class="stat-unit">ANTIGÜEDAD</div>
-                        </div>
-                    </div>
-                `;
-            });
-            document.getElementById('list').innerHTML = html;
+                    `;
+                });
+                listEl.innerHTML = html;
+            } else {
+                // Si solo cambiaron los datos, actualizamos solo el texto para evitar parpadeo
+                chars.forEach((c, i) => {
+                    const nameEl = document.getElementById(`name-${i}`);
+                    const infoEl = document.getElementById(`info-${i}`);
+                    const timeEl = document.getElementById(`time-${i}`);
+                    
+                    if (nameEl && nameEl.innerText !== c.name) nameEl.innerText = c.name;
+                    if (infoEl) infoEl.innerText = `Nivel ${c.level} / ${c.resets} RR`;
+                    if (timeEl) timeEl.innerText = formatTimeAgo(c.date);
+                });
+            }
         }
 
         function triggerAlert(char) {
@@ -195,9 +210,15 @@
             }, 6000);
         }
 
+        // Intervalo para actualizar el "hace X seg" sin parpadeo
         setInterval(() => {
             serverTime.setSeconds(serverTime.getSeconds() + 1);
-            if (lastChars.length > 0) render(lastChars);
+            if (lastChars.length > 0) {
+                lastChars.forEach((c, i) => {
+                    const timeEl = document.getElementById(`time-${i}`);
+                    if (timeEl) timeEl.innerText = formatTimeAgo(c.date);
+                });
+            }
         }, 1000);
 
         setInterval(update, 5000);
