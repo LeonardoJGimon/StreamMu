@@ -41,7 +41,7 @@ module.exports = async (req, res) => {
         }));
 
         // Latest 10 Creations
-        const resRecent = await mssql.query`SELECT TOP 10 Name, Class, MDate, cLevel, ResetCount FROM Character ORDER BY MDate DESC`;
+        const resRecent = await mssql.query`SELECT TOP 10 Name, Class, MDate, cLevel, ResetCount FROM Character WHERE CtlCode = 0 ORDER BY MDate DESC`;
         const recentCharacters = resRecent.recordset.map(c => ({
             name: c.Name,
             classId: c.Class,
@@ -51,7 +51,7 @@ module.exports = async (req, res) => {
         }));
 
         // Top 10 Strength
-        const resTop = await mssql.query`SELECT TOP 3 Name, Class, MDate, cLevel, ResetCount FROM Character ORDER BY ResetCount DESC, cLevel DESC`;
+        const resTop = await mssql.query`SELECT TOP 3 Name, Class, MDate, cLevel, ResetCount FROM Character WHERE CtlCode = 0 ORDER BY ResetCount DESC, cLevel DESC`;
         const topStrengthCharacters = resTop.recordset.map(c => ({
             name: c.Name,
             classId: c.Class,

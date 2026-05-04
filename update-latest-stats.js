@@ -40,7 +40,7 @@ async function updateStats() {
         }));
 
         // Query 1: Latest 10 Creations (By Date)
-        const resRecent = await mssql.query`SELECT TOP 10 Name, Class, MDate, cLevel, ResetCount FROM Character ORDER BY MDate DESC`;
+        const resRecent = await mssql.query`SELECT TOP 10 Name, Class, MDate, cLevel, ResetCount FROM Character WHERE CtlCode = 0 ORDER BY MDate DESC`;
         const offsetMs = new Date().getTimezoneOffset() * 60000;
         
         const recentCharacters = resRecent.recordset.map(c => ({
@@ -50,9 +50,9 @@ async function updateStats() {
             resets: c.ResetCount,
             date: new Date(c.MDate.getTime() + offsetMs).toISOString()
         }));
-
+ 
         // Query 2: Top 10 Strength (By Resets and Level) - FOR HALL OF FAME
-        const resTop = await mssql.query`SELECT TOP 10 Name, Class, MDate, cLevel, ResetCount FROM Character ORDER BY ResetCount DESC, cLevel DESC`;
+        const resTop = await mssql.query`SELECT TOP 10 Name, Class, MDate, cLevel, ResetCount FROM Character WHERE CtlCode = 0 ORDER BY ResetCount DESC, cLevel DESC`;
         const topStrengthCharacters = resTop.recordset.map(c => ({
             name: c.Name,
             classId: c.Class,
