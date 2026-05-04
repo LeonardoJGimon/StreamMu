@@ -8,6 +8,7 @@
     { "source": "/linear", "destination": "/stream-overlay/latest-creations-linear.html" },
     { "source": "/brb", "destination": "/stream-overlay/be-right-back.html" },
     { "source": "/alerts", "destination": "/stream-overlay/alerts.html" },
+    { "source": "/chat", "destination": "/stream-overlay/chat-widget.html" },
     { "source": "/end", "destination": "/stream-overlay/stream-ending.html" }
   ]
 }

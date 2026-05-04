@@ -45,45 +45,62 @@
         }
 
         .message-row {
-            background: var(--chat-bg);
-            border-left: 3px solid var(--crimson);
-            padding: 10px 15px;
-            border-radius: 0 4px 4px 0;
-            box-shadow: 2px 2px 10px rgba(0,0,0,0.5);
-            animation: messageIn 0.4s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
-            backdrop-filter: blur(4px);
+            background: linear-gradient(90deg, rgba(20, 10, 10, 0.95) 0%, rgba(10, 5, 5, 0.8) 100%);
+            border-left: 4px solid var(--crimson);
+            padding: 12px 18px;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.6), inset 0 0 20px rgba(157, 10, 14, 0.1);
+            animation: messageIn 0.5s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.03);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+            position: relative;
+        }
+
+        .message-row::before {
+            content: '';
+            position: absolute;
+            left: -4px; top: 0; bottom: 0;
+            width: 4px;
+            background: var(--crimson);
+            box-shadow: 0 0 15px var(--crimson);
+            z-index: 2;
         }
 
         .user-info {
             display: flex;
             align-items: center;
-            gap: 8px;
-            margin-bottom: 4px;
+            gap: 10px;
+            margin-bottom: 6px;
         }
 
         .username {
             font-family: 'Exocet', serif;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: var(--gold);
-            letter-spacing: 1px;
-            text-shadow: 0 1px 3px #000;
+            letter-spacing: 1.5px;
+            text-shadow: 0 2px 4px #000;
+            font-weight: 700;
         }
 
         .user-badge {
-            font-size: 0.7rem;
+            font-size: 0.8rem;
             color: var(--crimson);
+            filter: drop-shadow(0 0 5px var(--crimson));
         }
 
         .message-text {
-            color: #eee;
-            font-size: 1.1rem;
-            line-height: 1.3;
+            color: #ffffff;
+            font-size: 1.05rem;
+            line-height: 1.4;
             word-wrap: break-word;
+            font-weight: 400;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.8);
         }
 
         @keyframes messageIn {
-            from { opacity: 0; transform: translateX(-20px) scale(0.9); }
-            to { opacity: 1; transform: translateX(0) scale(1); }
+            from { opacity: 0; transform: translateX(-30px) scale(0.85) rotate(-2deg); }
+            to { opacity: 1; transform: translateX(0) scale(1) rotate(0deg); }
         }
 
         /* Test Controls (Ocultos en producción) */
