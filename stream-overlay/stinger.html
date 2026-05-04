@@ -12,6 +12,7 @@
 
         :root {
             --crimson: #9d0a0e;
+            --crimson-bright: #ff2e2e;
             --gold: #c0a375;
         }
 
@@ -31,55 +32,47 @@
             top: 0;
             width: 50vw;
             height: 100vh;
-            background: #0a0505 url('https://www.transparenttextures.com/patterns/dark-matter.png');
-            border: 2px solid var(--crimson);
+            background: #0a0505 url('../assets/images/newimg/stone-bg-2600.jpg');
+            background-size: cover;
+            border: 2px solid rgba(157, 10, 14, 0.5);
             box-sizing: border-box;
             z-index: 10;
             display: flex;
             align-items: center;
-            transition: all 0.5s cubic-bezier(0.7, 0, 0.3, 1);
+            transition: all 0.6s cubic-bezier(0.7, 0, 0.3, 1);
         }
 
         .door-left {
-            left: -50vw;
+            left: -55vw;
             justify-content: flex-end;
-            border-right: 4px solid var(--gold);
-            box-shadow: 20px 0 50px rgba(0,0,0,0.9);
+            border-right: 5px solid var(--gold);
+            box-shadow: 20px 0 100px rgba(0,0,0,1);
         }
 
         .door-right {
-            right: -50vw;
+            right: -55vw;
             justify-content: flex-start;
-            border-left: 4px solid var(--gold);
-            box-shadow: -20px 0 50px rgba(0,0,0,0.9);
-        }
-
-        /* ORNAMENTOS EN LAS PUERTAS */
-        .ornament {
-            width: 100px;
-            height: 200px;
-            border: 2px solid var(--crimson);
-            margin: 0 20px;
-            opacity: 0.3;
-            filter: grayscale(1);
+            border-left: 5px solid var(--gold);
+            box-shadow: -20px 0 100px rgba(0,0,0,1);
         }
 
         /* LOGO CENTRAL */
         .stinger-logo {
             position: absolute;
-            width: 400px;
+            width: 500px;
             z-index: 20;
             opacity: 0;
-            transform: scale(0.5) rotate(-10deg);
-            filter: drop-shadow(0 0 30px var(--crimson));
+            transform: scale(3) rotate(-5deg);
+            filter: drop-shadow(0 0 50px var(--crimson)) blur(10px);
         }
 
-        /* EFECTO DE IMPACTO */
-        .flash {
+        /* RESPLANDOR DE IMPACTO */
+        .glow-impact {
             position: absolute;
-            inset: 0;
-            background: white;
-            z-index: 30;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, var(--crimson) 0%, transparent 70%);
+            z-index: 15;
             opacity: 0;
             pointer-events: none;
         }
@@ -89,42 +82,37 @@
         body.animating .door-right { right: 0; }
         
         body.animating .stinger-logo {
-            animation: logoImpact 1.2s forwards;
-            animation-delay: 0.4s;
+            animation: logoImpact 1.5s forwards;
+            animation-delay: 0.3s;
         }
 
-        body.animating .flash {
-            animation: flashImpact 0.5s forwards;
+        body.animating .glow-impact {
+            animation: glowFlash 0.8s forwards;
             animation-delay: 0.5s;
         }
 
         @keyframes logoImpact {
-            0% { opacity: 0; transform: scale(2) rotate(-10deg); filter: blur(20px); }
+            0% { opacity: 0; transform: scale(3) rotate(-5deg); filter: blur(20px); }
             30% { opacity: 1; transform: scale(1) rotate(0deg); filter: blur(0); }
-            70% { opacity: 1; transform: scale(1.1); filter: drop-shadow(0 0 50px var(--crimson)); }
-            100% { opacity: 0; transform: scale(0.8); filter: blur(10px); }
+            80% { opacity: 1; transform: scale(1.05); filter: drop-shadow(0 0 80px var(--crimson-bright)); }
+            100% { opacity: 0; transform: scale(0.9); filter: blur(15px); }
         }
 
-        @keyframes flashImpact {
-            0% { opacity: 0; }
-            10% { opacity: 0.8; }
-            100% { opacity: 0; }
+        @keyframes glowFlash {
+            0% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 0.6; transform: scale(1.2); }
+            100% { opacity: 0; transform: scale(1.5); }
         }
     </style>
 </head>
 <body onclick="playStinger()">
 
-    <div class="door door-left">
-        <div class="ornament"></div>
-    </div>
+    <div class="door door-left"></div>
     
+    <div class="glow-impact"></div>
     <img src="../assets/images/logo/logosimple.png" class="stinger-logo" id="logo">
     
-    <div class="door door-right">
-        <div class="ornament"></div>
-    </div>
-
-    <div class="flash"></div>
+    <div class="door door-right"></div>
 
     <script>
         let isAnimating = false;
@@ -135,16 +123,16 @@
 
             document.body.classList.add('animating');
             
-            // Duración total de la animación de las puertas y el logo
+            // La transición completa dura 2 segundos antes de limpiar
             setTimeout(() => {
                 document.body.classList.remove('animating');
                 isAnimating = false;
-            }, 2500);
+            }, 2000);
         }
 
-        // Auto-ejecución al cargar (para OBS "Refresh on active")
+        // Auto-ejecución inmediata para prueba
         window.onload = () => {
-            setTimeout(playStinger, 200);
+            setTimeout(playStinger, 100);
         };
     </script>
 </body>
