@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mu Neutro - Últimos Guerreros (Linear Edition)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @font-face { font-family: 'Exocet'; src: url('../assets/images/font/ExocetImmortal-Medium.otf') format('opentype'); font-weight: 500; }
+        @font-face { font-family: 'Alegreya'; src: url('../assets/images/font/AlegreyaSans-Regular.otf') format('opentype'); font-weight: 400; }
+
+        :root {
+            --crimson: #9d0a0e;
+            --crimson-bright: #ff2e2e;
+            --gold: #c0a375;
+            --row-bg: rgba(15, 10, 10, 0.9);
+        }
+
+        body {
+            margin: 0; padding: 10px; background: transparent;
+            font-family: 'Alegreya', serif; color: #ccc;
+            width: 100vw; height: auto; 
+            overflow: hidden; box-sizing: border-box;
+        }
+
+        .linear-container {
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(157, 10, 14, 0.3);
+            backdrop-filter: blur(5px);
+            width: fit-content;
+        }
+
+        .hall-card {
+            display: grid; 
+            grid-template-columns: 60px 1fr 100px; 
+            gap: 15px;
+            min-width: 350px;
+            align-items: center; 
+            background: var(--row-bg); 
+            padding: 12px 20px;
+            position: relative; 
+            border: 1px solid rgba(157, 10, 14, 0.2);
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        .category-label {
+            position: absolute; top: -10px; left: 15px; background: var(--crimson);
+            color: white; font-family: 'Exocet', serif; font-size: 0.6rem;
+            padding: 3px 10px; letter-spacing: 1px; box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            z-index: 5;
+        }
+
+        .avatar-container { width: 55px; height: 55px; position: relative; display: flex; align-items: center; justify-content: center; }
+        .avatar-img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 0 5px rgba(0,0,0,0.5)); }
+        
+        .info-box { display: flex; flex-direction: column; gap: 2px; }
+        .name { font-family: 'Exocet', serif; font-size: 1.2rem; color: #fff; text-shadow: 0 2px 5px #000; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .sub-info { font-size: 0.75rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; }
+
+        .stat-box { text-align: right; }
+        .stat-value { font-family: 'Exocet', serif; font-size: 1.1rem; color: #fff; }
+        .stat-unit { font-size: 0.7rem; color: var(--crimson); display: block; font-weight: bold; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+    </style>
+</head>
+<body>
+
+    <div class="linear-container" id="list">
+        <!-- Tarjetas horizontales -->
+    </div>
+
+    <script>
+        const classMap = {
+            0: { folder: 'SM', icon: 'dw-icon.png' },
+            16: { folder: 'DK', icon: 'dk-icon.png' },
+            32: { folder: 'FAIRY ELF', icon: 'elf-icon.png' },
+            48: { folder: 'MG', icon: 'mg icon.png' },
+            64: { folder: 'DL', icon: 'dl icon.png' },
+            80: { folder: 'SUMONNER', icon: 'sm icon.png' },
+            96: { folder: 'RAGE', icon: 'rf icon.png' }
+        };
+
+        let serverTime = new Date();
+        let lastChars = [];
+
+        function formatTimeAgo(dateStr) {
+            const diff = Math.floor((serverTime - new Date(dateStr)) / 1000);
+            if (diff < 60) return `${Math.max(0, diff)} SEG`;
+            if (diff < 3600) return `${Math.floor(diff/60)} MIN`;
+            return `${Math.floor(diff/3600)} HORAS`;
+        }
+
+        async function update() {
+            try {
+                const res = await fetch('/api/stats?t=' + Date.now());
+                if (!res.ok) return;
+                const data = await res.json();
+                serverTime = new Date(data.timestamp);
+                const chars = (data.recentCharacters || []).slice(0, 4); // Mostramos 4 en horizontal
+
+                render(chars);
+                lastChars = chars;
+            } catch (e) { console.error(e); }
+        }
+
+        function render(chars) {
+            const listEl = document.getElementById('list');
+            const labels = ['NUEVA CREACIÓN', 'GUERRERO RECIENTE', 'ALMA DESPERTADA', 'SANGRE NUEVA'];
+            
+            if (listEl.children.length !== chars.length) {
+                let html = '';
+                chars.forEach((c, i) => {
+                    const info = classMap[c.classId] || classMap[0];
+                    const iconPath = `../assets/images/chars/${info.folder}/${info.icon}`;
+                    html += `
+                        <div class="hall-card" id="card-${i}">
+                            <span class="category-label">${labels[i] || 'WARRIOR'}</span>
+                            <div class="avatar-container">
+                                <img src="${iconPath}" class="avatar-img" onerror="this.src='../assets/images/characters/DW.png'">
+                            </div>
+                            <div class="info-box">
+                                <div class="name" id="name-${i}">${c.name}</div>
+                                <div class="sub-info" id="info-${i}">Nivel ${c.level} / ${c.resets} RR</div>
+                            </div>
+                            <div class="stat-box">
+                                <div class="stat-value" id="time-${i}">${formatTimeAgo(c.date)}</div>
+                                <div class="stat-unit">ANTIGÜEDAD</div>
+                            </div>
+                        </div>
+                    `;
+                });
+                listEl.innerHTML = html;
+            } else {
+                chars.forEach((c, i) => {
+                    const nameEl = document.getElementById(`name-${i}`);
+                    const infoEl = document.getElementById(`info-${i}`);
+                    const timeEl = document.getElementById(`time-${i}`);
+                    
+                    if (nameEl && nameEl.innerText !== c.name) nameEl.innerText = c.name;
+                    if (infoEl) infoEl.innerText = `Nivel ${c.level} / ${c.resets} RR`;
+                    if (timeEl) timeEl.innerText = formatTimeAgo(c.date);
+                });
+            }
+        }
+
+        setInterval(() => {
+            serverTime.setSeconds(serverTime.getSeconds() + 1);
+            if (lastChars.length > 0) {
+                lastChars.forEach((c, i) => {
+                    const timeEl = document.getElementById(`time-${i}`);
+                    if (timeEl) timeEl.innerText = formatTimeAgo(c.date);
+                });
+            }
+        }, 1000);
+
+        setInterval(update, 10000);
+        update();
+    </script>
+    <script src="auto-refresh.js"></script>
+</body>
+</html>
