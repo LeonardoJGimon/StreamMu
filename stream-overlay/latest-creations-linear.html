@@ -25,19 +25,57 @@
         .linear-container {
             display: flex;
             flex-direction: row;
-            gap: 15px;
-            padding: 15px;
-            background: rgba(0, 0, 0, 0.7);
-            border: 1px solid rgba(157, 10, 14, 0.3);
-            backdrop-filter: blur(5px);
+            align-items: stretch;
+            gap: 0;
+            padding: 0;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(157, 10, 14, 0.4);
+            backdrop-filter: blur(8px);
             width: fit-content;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+        }
+
+        .widget-header {
+            background: linear-gradient(180deg, var(--crimson) 0%, #1a0505 100%);
+            padding: 10px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border-right: 2px solid var(--gold);
+            min-width: 120px;
+        }
+
+        .header-label {
+            font-family: 'Alegreya', serif;
+            font-size: 0.7rem;
+            color: #fff;
+            letter-spacing: 2px;
+            opacity: 0.8;
+            text-transform: uppercase;
+        }
+
+        .header-title {
+            font-family: 'Exocet', serif;
+            font-size: 1.1rem;
+            color: var(--gold);
+            letter-spacing: 3px;
+            white-space: nowrap;
+            text-shadow: 0 0 10px rgba(192, 163, 117, 0.5);
+        }
+
+        .cards-wrapper {
+            display: flex;
+            flex-direction: row;
+            gap: 15px;
+            padding: 15px 20px;
         }
 
         .hall-card {
             display: grid; 
             grid-template-columns: 60px 1fr 100px; 
             gap: 15px;
-            min-width: 350px;
+            min-width: 320px;
             align-items: center; 
             background: var(--row-bg); 
             padding: 12px 20px;
@@ -69,8 +107,14 @@
 </head>
 <body>
 
-    <div class="linear-container" id="list">
-        <!-- Tarjetas horizontales -->
+    <div class="linear-container">
+        <div class="widget-header">
+            <div class="header-label">NUEVOS</div>
+            <div class="header-title">GUERREROS</div>
+        </div>
+        <div class="cards-wrapper" id="list">
+            <!-- Tarjetas horizontales -->
+        </div>
     </div>
 
     <script>
@@ -100,7 +144,7 @@
                 if (!res.ok) return;
                 const data = await res.json();
                 serverTime = new Date(data.timestamp);
-                const chars = (data.recentCharacters || []).slice(0, 4); // Mostramos 4 en horizontal
+                const chars = (data.recentCharacters || []).slice(0, 4);
 
                 render(chars);
                 lastChars = chars;
