@@ -57,9 +57,14 @@
                     return;
                 }
 
-                // Capturar pantalla
+                // Capturar pantalla ocultando el cursor
                 const stream = await navigator.mediaDevices.getDisplayMedia({
-                    video: { width: 1920, height: 1080, frameRate: 60 },
+                    video: { 
+                        width: 1920, 
+                        height: 1080, 
+                        frameRate: 60,
+                        cursor: 'never' 
+                    },
                     audio: false
                 });
 
@@ -73,12 +78,12 @@
 
                 recorder.startRecording();
                 
-                // ENVIAR SEÑAL DE INICIO AL STINGER
+                // ENVIAR SEÑAL DE INICIO AL STINGER (con pequeño delay extra)
                 setTimeout(() => {
                     win.postMessage('START_STINGER', '*');
-                }, 500);
+                }, 1000);
 
-                // Esperar 4.5 segundos para asegurar la animación completa
+                // Esperar 7 segundos para asegurar que termine de abrirse
                 setTimeout(() => {
                     recorder.stopRecording(() => {
                         const blob = recorder.getBlob();

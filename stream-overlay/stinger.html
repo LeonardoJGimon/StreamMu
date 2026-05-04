@@ -16,63 +16,53 @@
             --gold: #c0a375;
         }
 
-        /* FORZAR TRANSPARENCIA TOTAL */
         html, body {
             margin: 0; padding: 0;
             width: 100vw; height: 100vh;
-            background-color: rgba(0, 0, 0, 0) !important; /* Transparencia absoluta */
+            background-color: rgba(0, 0, 0, 0) !important;
             overflow: hidden;
             display: flex;
             align-items: center;
             justify-content: center;
+            cursor: none; /* Ocultar cursor en la página también */
         }
 
-        /* LAS PUERTAS DE PIEDRA */
         .door {
             position: absolute;
             top: 0;
-            width: 50vw;
+            width: 50.1vw; /* Un poco más del 50% para que no se vea una línea en medio */
             height: 100vh;
             background: #0a0505 url('../assets/images/newimg/stone-bg-2600.jpg');
             background-size: cover;
             border: 2px solid rgba(157, 10, 14, 0.5);
             box-sizing: border-box;
             z-index: 10;
-            display: flex;
-            align-items: center;
-            /* Usamos transform para mejor rendimiento y evitar saltos visuales */
-            transition: transform 1.0s cubic-bezier(0.7, 0, 0.3, 1);
-            will-change: transform;
         }
 
         .door-left {
             left: 0;
-            transform: translateX(-101%); /* Totalmente fuera a la izquierda */
-            justify-content: flex-end;
+            transform: translateX(-105%);
             border-right: 5px solid var(--gold);
-            box-shadow: 20px 0 120px rgba(0,0,0,1);
+            box-shadow: 30px 0 150px rgba(0,0,0,1);
         }
 
         .door-right {
             right: 0;
-            transform: translateX(101%); /* Totalmente fuera a la derecha */
-            justify-content: flex-start;
+            transform: translateX(105%);
             border-left: 5px solid var(--gold);
-            box-shadow: -20px 0 120px rgba(0,0,0,1);
+            box-shadow: -30px 0 150px rgba(0,0,0,1);
         }
 
-        /* LOGO CENTRAL */
         .stinger-logo {
             position: absolute;
             width: 500px;
             z-index: 20;
             opacity: 0;
-            transform: scale(3) rotate(-5deg);
-            filter: drop-shadow(0 0 50px var(--crimson)) blur(10px);
+            transform: scale(3);
+            filter: drop-shadow(0 0 50px var(--crimson));
             pointer-events: none;
         }
 
-        /* RESPLANDOR DE IMPACTO */
         .glow-impact {
             position: absolute;
             width: 100%;
@@ -83,72 +73,66 @@
             pointer-events: none;
         }
 
-        /* ANIMACIÓN ACTIVE */
-        body.animating .door-left { transform: translateX(0); }
-        body.animating .door-right { transform: translateX(0); }
-        
-        body.animating .stinger-logo {
-            animation: logoImpact 3.0s forwards;
-            animation-delay: 0.5s;
+        /* ANIMACIONES CONTROLADAS */
+        body.animating .door-left { animation: slideDoorLeft 4s cubic-bezier(0.7, 0, 0.3, 1) forwards; }
+        body.animating .door-right { animation: slideDoorRight 4s cubic-bezier(0.7, 0, 0.3, 1) forwards; }
+        body.animating .stinger-logo { animation: logoImpact 4s forwards; }
+        body.animating .glow-impact { animation: glowFlash 1.5s forwards; animation-delay: 0.8s; }
+
+        @keyframes slideDoorLeft {
+            0% { transform: translateX(-105%); }
+            20% { transform: translateX(0); } /* Cierra en 0.8s */
+            70% { transform: translateX(0); } /* Se queda cerrado hasta el 2.8s */
+            100% { transform: translateX(-105%); } /* Abre completamente */
         }
 
-        body.animating .glow-impact {
-            animation: glowFlash 1.2s forwards;
-            animation-delay: 0.8s;
+        @keyframes slideDoorRight {
+            0% { transform: translateX(105%); }
+            20% { transform: translateX(0); }
+            70% { transform: translateX(0); }
+            100% { transform: translateX(105%); }
         }
 
         @keyframes logoImpact {
-            0% { opacity: 0; transform: scale(3) rotate(-5deg); filter: blur(20px); }
-            20% { opacity: 1; transform: scale(1) rotate(0deg); filter: blur(0); }
-            85% { opacity: 1; transform: scale(1.08); filter: drop-shadow(0 0 100px var(--crimson-bright)); }
-            100% { opacity: 0; transform: scale(0.8); filter: blur(20px); }
+            0% { opacity: 0; transform: scale(3); filter: blur(20px); }
+            20% { opacity: 1; transform: scale(1); filter: blur(0); }
+            70% { opacity: 1; transform: scale(1.1); filter: drop-shadow(0 0 100px var(--crimson-bright)); }
+            90% { opacity: 0; transform: scale(0.8); filter: blur(20px); }
+            100% { opacity: 0; }
         }
 
         @keyframes glowFlash {
             0% { opacity: 0; transform: scale(0.5); }
-            40% { opacity: 0.7; transform: scale(1.3); }
-            100% { opacity: 0; transform: scale(1.8); }
+            30% { opacity: 0.8; transform: scale(1.3); }
+            100% { opacity: 0; transform: scale(2); }
         }
     </style>
 </head>
-<body onclick="playStinger()">
+<body>
 
     <div class="door door-left"></div>
-    
     <div class="glow-impact"></div>
     <img src="../assets/images/logo/logosimple.png" class="stinger-logo" id="logo">
-    
     <div class="door door-right"></div>
 
     <script>
         let isAnimating = false;
-
         function playStinger() {
             if (isAnimating) return;
             isAnimating = true;
-
             document.body.classList.add('animating');
-            
-            // La transición completa dura 4 segundos antes de resetear
             setTimeout(() => {
                 document.body.classList.remove('animating');
                 isAnimating = false;
-            }, 4000);
+            }, 5000);
         }
 
-        // Escuchar la orden del grabador
         window.addEventListener('message', (event) => {
-            if (event.data === 'START_STINGER') {
-                playStinger();
-            }
+            if (event.data === 'START_STINGER') { playStinger(); }
         });
 
-        // Auto-ejecución solo si no hay un grabador esperando (opcional)
         window.onload = () => {
-            // Si entras directo, sigue funcionando solo después de 1 segundo
-            if (window.opener === null) {
-                setTimeout(playStinger, 1000);
-            }
+            if (window.opener === null) { setTimeout(playStinger, 1000); }
         };
     </script>
 </body>
