@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mu Neutro - Generador de WebM</title>
+    <style>
+        body { background: #111; color: white; font-family: sans-serif; text-align: center; padding-top: 50px; }
+        #status { font-size: 20px; color: #gold; margin-bottom: 20px; }
+        button { padding: 15px 30px; font-size: 18px; cursor: pointer; background: #9d0a0e; color: white; border: none; border-radius: 5px; }
+        iframe { width: 1920px; height: 1080px; border: 1px solid #333; display: none; }
+    </style>
+</head>
+<body>
+    <h1>Generador de Video Stinger (WebM)</h1>
+    <p>Esta herramienta grabará la animación y la descargará en formato .webm con transparencia.</p>
+    <div id="status">Listo para grabar</div>
+    <button id="btn">GRABAR Y DESCARGAR .WEBM</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/recordrtc@5.6.2/RecordRTC.js"></script>
+    <script>
+        const btn = document.getElementById('btn');
+        const status = document.getElementById('status');
+
+        btn.onclick = async () => {
+            status.innerText = "Preparando grabación... (Espera 2 segundos)";
+            btn.disabled = true;
+
+            // Abrir el stinger en una ventana nueva o iframe
+            const win = window.open('stinger.html', 'stinger', 'width=1920,height=1080');
+            
+            // Esperar a que cargue
+            setTimeout(async () => {
+                status.innerText = "Grabando... (No cierres la ventana emergente)";
+                
+                // Intentar capturar la pestaña (el usuario debe seleccionar la pestaña del stinger)
+                const stream = await navigator.mediaDevices.getDisplayMedia({
+                    video: { width: 1920, height: 1080, frameRate: 60 },
+                    audio: false
+                });
+
+                const recorder = new RecordRTC(stream, {
+                    type: 'video',
+                    mimeType: 'video/webm;codecs=vp9',
+                    bitsPerSecond: 128000000 // Alta calidad
+                });
+
+                recorder.startRecording();
+
+                // Detener después de 4 segundos
+                setTimeout(() => {
+                    recorder.stopRecording(() => {
+                        const blob = recorder.getBlob();
+                        const url = URL.createObjectURL(blob);
+                        const a = document.createElement('a');
+                        a.href = url;
+                        a.download = 'stinger_mu_neutro.webm';
+                        a.click();
+                        
+                        stream.getTracks().forEach(t => t.stop());
+                        win.close();
+                        status.innerText = "¡Descarga completada!";
+                        btn.disabled = false;
+                    });
+                }, 4000);
+            }, 2000);
+        };
+    </script>
+</body>
+</html>
