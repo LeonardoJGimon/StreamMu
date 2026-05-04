@@ -27,6 +27,10 @@ module.exports = async (req, res) => {
     try {
         await mssql.connect(config);
         
+        // Time Sync
+        const resTime = await mssql.query`SELECT GETDATE() as dbTime`;
+        const dbTime = resTime.recordset[0].dbTime;
+
         // Online Count
         const resOnline = await mssql.query`SELECT COUNT(*) as onlineCount FROM MEMB_STAT WHERE ConnectStat = 1`;
         const onlineCount = resOnline.recordset[0].onlineCount || 0;
@@ -38,14 +42,12 @@ module.exports = async (req, res) => {
 
         // Latest 10 Creations
         const resRecent = await mssql.query`SELECT TOP 10 Name, Class, MDate, cLevel, ResetCount FROM Character ORDER BY MDate DESC`;
-        const offsetMs = new Date().getTimezoneOffset() * 60000;
-        
         const recentCharacters = resRecent.recordset.map(c => ({
             name: c.Name,
             classId: c.Class,
             level: c.cLevel,
             resets: c.ResetCount,
-            date: new Date(c.MDate.getTime() + offsetMs).toISOString()
+            date: c.MDate // Enviamos la fecha original para que el cliente la procese
         }));
 
         // Top 10 Strength
@@ -55,7 +57,7 @@ module.exports = async (req, res) => {
             classId: c.Class,
             level: c.cLevel,
             resets: c.ResetCount,
-            date: new Date(c.MDate.getTime() + offsetMs).toISOString()
+            date: c.MDate
         }));
 
         // Top 1 Guild
@@ -75,7 +77,7 @@ module.exports = async (req, res) => {
             topStrengthCharacters: topStrengthCharacters,
             topGuild: topGuild,
             topPvP: topPvP,
-            timestamp: new Date().toISOString()
+            timestamp: dbTime.toISOString()
         };
 
         res.status(200).json(stats);

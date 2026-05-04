@@ -214,9 +214,12 @@
             96: 'RF.png', 98: 'FM.png', 102: 'FB.png'
         };
 
-        function formatTimeAgo(dateString, referenceDate) {
+        let serverTimeReference = new Date();
+        let lastData = [];
+
+        function formatTimeAgo(dateString) {
             const date = new Date(dateString);
-            const now = new Date(); // Usar hora local para el contador por segundo
+            const now = serverTimeReference;
             const diffInSeconds = Math.floor((now - date) / 1000);
 
             if (diffInSeconds < 0) return `hace unos instantes`;
@@ -232,9 +235,7 @@
             return `hace ${diffInDays}d`;
         }
 
-        let lastData = [];
-
-        async function update() {
+        async function fetchData() {
             try {
                 let res = await fetch('/api/stats').catch(() => null);
                 if (!res || !res.ok) {
@@ -245,35 +246,49 @@
                 const data = await res.json();
                 const chars = data.recentCharacters || [];
                 
+                // Sincronizar con la hora del servidor
+                if (data.timestamp) {
+                    serverTimeReference = new Date(data.timestamp);
+                }
+                
                 if (chars.length === 0) return;
                 
-                let newHtml = '';
-                chars.slice(0, 3).forEach((c, i) => {
-                    const imgName = charImages[c.classId] || 'DW.png';
-                    const imgPath = `../assets/images/characters/${imgName}`;
-                    const timeAgo = formatTimeAgo(c.date);
-
-                    newHtml += `
-                        <div class="char-row" style="${lastData.length === 0 ? `animation: slideIn 0.5s ease forwards ${i * 0.1}s` : ''}">
-                            <div class="avatar-container">
-                                <img src="${imgPath}" class="avatar-img" onerror="this.src='../assets/images/characters/DW.png'">
-                            </div>
-                            <div class="char-name">${c.name}</div>
-                            <div class="time-ago">${timeAgo}</div>
-                        </div>
-                    `;
-                });
-
-                document.getElementById('list').innerHTML = newHtml;
+                render(chars);
                 lastData = chars;
             } catch (e) {
                 console.error("Fetch error:", e);
             }
         }
 
-        // Actualizar datos de la API cada 30s, pero refrescar visualmente cada 1s
-        setInterval(update, 1000); 
-        update();
+        function render(chars) {
+            let newHtml = '';
+            chars.slice(0, 3).forEach((c, i) => {
+                const imgName = charImages[c.classId] || 'DW.png';
+                const imgPath = `../assets/images/characters/${imgName}`;
+                const timeAgo = formatTimeAgo(c.date);
+
+                newHtml += `
+                    <div class="char-row" style="${lastData.length === 0 ? `animation: slideIn 0.5s ease forwards ${i * 0.1}s` : ''}">
+                        <div class="avatar-container">
+                            <img src="${imgPath}" class="avatar-img" onerror="this.src='../assets/images/characters/DW.png'">
+                        </div>
+                        <div class="char-name">${c.name}</div>
+                        <div class="time-ago">${timeAgo}</div>
+                    </div>
+                `;
+            });
+            document.getElementById('list').innerHTML = newHtml;
+        }
+
+        // Ticker de 1 segundo para el reloj y el renderizado
+        setInterval(() => {
+            serverTimeReference.setSeconds(serverTimeReference.getSeconds() + 1);
+            if (lastData.length > 0) render(lastData);
+        }, 1000);
+
+        // Fetch de datos cada 30s
+        setInterval(fetchData, 30000); 
+        fetchData();
     </script>
 </body>
 </html>
