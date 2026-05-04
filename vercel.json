@@ -9,6 +9,7 @@
     { "source": "/brb", "destination": "/stream-overlay/be-right-back.html" },
     { "source": "/alerts", "destination": "/stream-overlay/alerts.html" },
     { "source": "/chat", "destination": "/stream-overlay/chat-widget.html" },
+    { "source": "/livechat", "destination": "/stream-overlay/chat-master.html" },
     { "source": "/end", "destination": "/stream-overlay/stream-ending.html" }
   ]
 }

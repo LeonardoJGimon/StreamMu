@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mu Neutro - Chat Master</title>
+    <style>
+        @font-face { font-family: 'Exocet'; src: url('../assets/images/font/ExocetImmortal-Medium.otf') format('opentype'); font-weight: 500; }
+        @font-face { font-family: 'Alegreya'; src: url('../assets/images/font/AlegreyaSans-Regular.otf') format('opentype'); font-weight: 400; }
+
+        :root {
+            --crimson: #9d0a0e;
+            --gold: #c0a375;
+            --panel-bg: rgba(0, 0, 0, 0.75);
+        }
+
+        body, html {
+            margin: 0; padding: 0;
+            width: 100%; height: 100%;
+            background: transparent;
+            font-family: 'Alegreya', serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .master-container {
+            position: relative;
+            width: 95%;
+            height: 95%;
+            background: var(--panel-bg);
+            border: 1px solid rgba(157, 10, 14, 0.4);
+            display: flex;
+            flex-direction: column;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 50px rgba(0,0,0,1);
+        }
+
+        /* TÍTULO SUPERIOR */
+        .header {
+            background: linear-gradient(180deg, var(--crimson) 0%, #1a0505 100%);
+            padding: 12px;
+            text-align: center;
+            border-bottom: 2px solid var(--gold);
+            position: relative;
+        }
+
+        .header-title {
+            font-family: 'Exocet', serif;
+            color: var(--gold);
+            font-size: 1.3rem;
+            letter-spacing: 5px;
+            text-shadow: 0 0 10px rgba(192, 163, 117, 0.5);
+            margin: 0;
+        }
+
+        /* ESQUINAS ORNAMENTALES */
+        .master-container::before {
+            content: ''; position: absolute; top: -5px; left: -5px; width: 30px; height: 30px;
+            border-top: 3px solid var(--crimson); border-left: 3px solid var(--crimson); z-index: 10;
+        }
+        .master-container::after {
+            content: ''; position: absolute; bottom: -5px; right: -5px; width: 30px; height: 30px;
+            border-bottom: 3px solid var(--crimson); border-right: 3px solid var(--crimson); z-index: 10;
+        }
+
+        /* IFRAME DEL CHAT */
+        .chat-iframe {
+            flex-grow: 1;
+            border: none;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+        }
+
+        /* DECORACIÓN INFERIOR */
+        .footer-deco {
+            height: 5px;
+            background: linear-gradient(90deg, transparent 0%, var(--gold) 50%, transparent 100%);
+            opacity: 0.3;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="master-container">
+        <header class="header">
+            <h1 class="header-title">CHAT EN VIVO</h1>
+        </header>
+        
+        <iframe 
+            class="chat-iframe" 
+            src="https://socialmediastream.ninja/api/chat/CA343FF01F51B5B698DF7DB50171FC8009E65ABBA032E0A23AB7B521F7726FCC00EFD223C3F83CE1DAA8F4BD75C85A78FA2CE50946F7453B68261EB9AFF05BB086C3A563B17F075C9B82671A0FF7996326DF9E1642682B60034AEABF7E39393212E9F60CF73351F15C75910A41450D14CDEE9F5CF0AF37B6525FDDFEB8"
+            allowtransparency="true">
+        </iframe>
+
+        <div class="footer-deco"></div>
+    </div>
+
+</body>
+</html>
