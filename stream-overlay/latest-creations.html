@@ -216,17 +216,17 @@
 
         function formatTimeAgo(dateString, referenceDate) {
             const date = new Date(dateString);
-            const now = referenceDate ? new Date(referenceDate) : new Date();
+            const now = new Date(); // Usar hora local para el contador por segundo
             const diffInSeconds = Math.floor((now - date) / 1000);
 
             if (diffInSeconds < 0) return `hace unos instantes`;
             if (diffInSeconds < 60) return `hace ${diffInSeconds}s`;
             
             const diffInMinutes = Math.floor(diffInSeconds / 60);
-            if (diffInMinutes < 60) return `hace ${diffInMinutes}m`;
+            if (diffInMinutes < 60) return `hace ${diffInMinutes}m ${diffInSeconds % 60}s`;
             
             const diffInHours = Math.floor(diffInMinutes / 60);
-            if (diffInHours < 24) return `hace ${diffInHours}h`;
+            if (diffInHours < 24) return `hace ${diffInHours}h ${diffInMinutes % 60}m`;
             
             const diffInDays = Math.floor(diffInHours / 24);
             return `hace ${diffInDays}d`;
@@ -236,7 +236,6 @@
 
         async function update() {
             try {
-                // Intentar primero la API (Vercel/Nube) y si falla usar el JSON local
                 let res = await fetch('/api/stats').catch(() => null);
                 if (!res || !res.ok) {
                     res = await fetch('../latest-stats.json?t=' + Date.now());
@@ -245,15 +244,14 @@
                 if (!res.ok) throw new Error('Network response was not ok');
                 const data = await res.json();
                 const chars = data.recentCharacters || [];
-                const serverTime = data.timestamp; // Usar el timestamp del servidor como referencia
                 
                 if (chars.length === 0) return;
                 
                 let newHtml = '';
-                chars.slice(0, 5).forEach((c, i) => {
+                chars.slice(0, 3).forEach((c, i) => {
                     const imgName = charImages[c.classId] || 'DW.png';
                     const imgPath = `../assets/images/characters/${imgName}`;
-                    const timeAgo = formatTimeAgo(c.date, serverTime);
+                    const timeAgo = formatTimeAgo(c.date);
 
                     newHtml += `
                         <div class="char-row" style="${lastData.length === 0 ? `animation: slideIn 0.5s ease forwards ${i * 0.1}s` : ''}">
@@ -273,7 +271,8 @@
             }
         }
 
-        setInterval(update, 30000); // 30s es suficiente para actualizar el tiempo
+        // Actualizar datos de la API cada 30s, pero refrescar visualmente cada 1s
+        setInterval(update, 1000); 
         update();
     </script>
 </body>

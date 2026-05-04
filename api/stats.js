@@ -49,7 +49,7 @@ module.exports = async (req, res) => {
         }));
 
         // Top 10 Strength
-        const resTop = await mssql.query`SELECT TOP 10 Name, Class, MDate, cLevel, ResetCount FROM Character ORDER BY ResetCount DESC, cLevel DESC`;
+        const resTop = await mssql.query`SELECT TOP 3 Name, Class, MDate, cLevel, ResetCount FROM Character ORDER BY ResetCount DESC, cLevel DESC`;
         const topStrengthCharacters = resTop.recordset.map(c => ({
             name: c.Name,
             classId: c.Class,
@@ -58,13 +58,23 @@ module.exports = async (req, res) => {
             date: new Date(c.MDate.getTime() + offsetMs).toISOString()
         }));
 
+        // Top 1 Guild
+        const resGuild = await mssql.query`SELECT TOP 1 G_Name, G_Score FROM Guild ORDER BY G_Score DESC`;
+        const topGuild = resGuild.recordset[0] || { G_Name: 'Ninguno', G_Score: 0 };
+
+        // Top 1 PvP
+        const resPvP = await mssql.query`SELECT TOP 1 Name, PkCount FROM Character ORDER BY PkCount DESC`;
+        const topPvP = resPvP.recordset[0] || { Name: 'Ninguno', PkCount: 0 };
+
         const stats = {
             onlineCount: onlineCount,
             latestUser: latestUsers[0]?.name || '-',
             latestCharacter: recentCharacters[0] || { name: '-', classId: 0, level: 0, resets: 0 },
-            recentUsers: latestUsers,
-            recentCharacters: recentCharacters,
+            recentUsers: latestUsers.slice(0, 3),
+            recentCharacters: recentCharacters.slice(0, 3),
             topStrengthCharacters: topStrengthCharacters,
+            topGuild: topGuild,
+            topPvP: topPvP,
             timestamp: new Date().toISOString()
         };
 
