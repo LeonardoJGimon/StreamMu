@@ -27,7 +27,9 @@ module.exports = async (req, res) => {
     try {
         await mssql.connect(config);
         
-        // Latest 10 Users
+        // Online Count
+        const resOnline = await mssql.query`SELECT COUNT(*) as onlineCount FROM MEMB_STAT WHERE ConnectStat = 1`;
+        const onlineCount = resOnline.recordset[0].onlineCount || 0;
         const resUsers = await mssql.query`SELECT TOP 10 memb___id, appl_days FROM MEMB_INFO ORDER BY memb_guid DESC`;
         const latestUsers = resUsers.recordset.map(u => ({
             name: u.memb___id,
@@ -57,6 +59,7 @@ module.exports = async (req, res) => {
         }));
 
         const stats = {
+            onlineCount: onlineCount,
             latestUser: latestUsers[0]?.name || '-',
             latestCharacter: recentCharacters[0] || { name: '-', classId: 0, level: 0, resets: 0 },
             recentUsers: latestUsers,
