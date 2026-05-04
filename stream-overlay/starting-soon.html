@@ -578,6 +578,10 @@
             if (msElement) msElement.innerText = ":" + ms;
         }
 
+        // LÓGICA DE ROTACIÓN DE TEXTO (GADGETS)
+        let gadgetItems = [{ label: "PREPARE FOR", value: "THE BATTLE" }];
+        let gadgetIndex = 0;
+
         // LÓGICA DE ESTADO DEL SERVIDOR (REAL-TIME)
         async function updateServerStats() {
             try {
@@ -637,20 +641,10 @@
             }, 500);
         }
 
-        // Cargar datos cada 30 segundos
-        setInterval(updateServerStats, 30000);
         updateServerStats();
-
-        // Rotar texto cada 6 segundos
+        setInterval(updateServerStats, 30000);
         setInterval(rotateGadget, 6000);
-
-        // Rotar texto cada 5 segundos
-        setInterval(rotateGadget, 5000);
-
-        setInterval(updateServerStats, 30000);
-        updateServerStats();
-
-        const timerInterval = setInterval(updateTimer, 10);
+        setInterval(updateTimer, 10);
         updateTimer();
     </script>
     <script src="auto-refresh.js"></script>
