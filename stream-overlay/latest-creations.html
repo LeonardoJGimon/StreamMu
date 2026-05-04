@@ -2,15 +2,15 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mu Neutro - Últimas Creaciones & Alertas</title>
+    <title>Mu Neutro - Overlays & Alertas</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <style>
         @font-face {
             font-family: 'Exocet';
             src: url('../assets/images/font/ExocetImmortal-Medium.otf') format('opentype');
             font-weight: 500;
         }
-
         @font-face {
             font-family: 'Alegreya';
             src: url('../assets/images/font/AlegreyaSans-Regular.otf') format('opentype');
@@ -21,80 +21,135 @@
             --crimson: #9d0a0e;
             --crimson-bright: #ff2e2e;
             --gold: #c0a375;
-            --row-bg: rgba(15, 10, 10, 0.95);
+            --gold-bright: #ffd700;
         }
 
-        body {
+        body, html {
             margin: 0; padding: 0;
+            width: 1920px; height: 1080px;
             background: transparent;
             font-family: 'Alegreya', serif;
             color: #ccc;
-            width: 100vw; height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
             overflow: hidden;
         }
 
-        /* --- CONTENEDOR DE LA LISTA --- */
-        .outer-box {
-            position: relative;
-            background: rgba(0, 0, 0, 0.6);
-            border: 1px solid rgba(157, 10, 14, 0.4);
+        /* --- LISTA DE GUERREROS (ESQUINA INFERIOR IZQUIERDA) --- */
+        .list-container {
+            position: absolute;
+            bottom: 40px;
+            left: 40px;
+            width: 450px;
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid var(--crimson);
             padding: 20px;
-            width: 100%;
-            max-width: 500px;
-            margin: 20px;
-            box-sizing: border-box;
-            box-shadow: 0 0 30px rgba(0,0,0,0.8);
-            z-index: 5;
+            box-shadow: 0 0 30px rgba(0,0,0,0.9);
         }
 
-        .outer-box::before { content: ''; position: absolute; top: -5px; left: -5px; width: 30px; height: 30px; border-top: 4px solid var(--crimson-bright); border-left: 4px solid var(--crimson-bright); }
-        .outer-box::after { content: ''; position: absolute; bottom: -5px; right: -5px; width: 30px; height: 30px; border-bottom: 4px solid var(--crimson-bright); border-right: 4px solid var(--crimson-bright); }
-
-        .main-title { font-family: 'Exocet', serif; font-size: 1rem; color: #888; letter-spacing: 3px; margin-bottom: 15px; text-transform: uppercase; }
-
-        .list-wrapper { display: flex; flex-direction: column; gap: 10px; }
+        .main-title {
+            font-family: 'Exocet', serif;
+            font-size: 1rem;
+            color: var(--gold);
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--crimson);
+            padding-bottom: 5px;
+        }
 
         .char-row {
-            display: grid; grid-template-columns: 60px 1fr 120px; gap: 15px; align-items: center;
-            background: var(--row-bg); padding: 8px; border: 1px solid rgba(157, 10, 14, 0.2);
-            animation: slideIn 0.5s ease forwards;
+            display: grid;
+            grid-template-columns: 50px 1fr 100px;
+            gap: 15px;
+            align-items: center;
+            background: rgba(20, 10, 10, 0.8);
+            margin-bottom: 8px;
+            padding: 5px 10px;
+            border: 1px solid rgba(157, 10, 14, 0.2);
         }
 
-        .avatar-container { width: 50px; height: 50px; }
-        .avatar-img { width: 100%; height: 100%; border-radius: 4px; border: 1px solid #333; background: #000; }
-        .char-name { font-family: 'Exocet', serif; font-size: 1.1rem; color: #eee; }
-        .time-ago { font-size: 0.9rem; color: var(--gold); text-align: right; padding-right: 10px; font-style: italic; }
+        .avatar-img { width: 40px; height: 40px; border: 1px solid var(--gold); border-radius: 4px; }
+        .char-name { font-family: 'Exocet', serif; font-size: 1rem; color: #fff; }
+        .time-ago { font-size: 0.85rem; color: var(--gold); text-align: right; font-style: italic; }
 
-        @keyframes slideIn { from { opacity: 0; transform: translateX(-20px); } to { opacity: 1; transform: translateX(0); } }
-
-        /* --- SISTEMA DE ALERTA INTEGRADO --- */
+        /* --- ALERTA GIGANTE (Twitch Style) --- */
         #alert-overlay {
-            position: fixed; inset: 0;
-            display: none; align-items: center; justify-content: center;
-            z-index: 100; pointer-events: none;
+            position: fixed;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            pointer-events: none;
         }
 
-        .flash { position: absolute; inset: 0; background: white; opacity: 0; z-index: 110; }
-        .flash.active { animation: flashAnim 1.5s ease-out; }
-        @keyframes flashAnim { 0% { opacity: 1; } 30% { opacity: 0.8; background: var(--crimson-bright); } 100% { opacity: 0; } }
-
-        .alert-content {
-            display: flex; flex-direction: column; align-items: center; text-align: center;
-            animation: alertIn 0.8s cubic-bezier(0.17, 0.89, 0.32, 1.49) forwards;
-            z-index: 120;
+        .alert-box {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 50px;
+            background: radial-gradient(circle, rgba(157, 10, 14, 0.2) 0%, transparent 70%);
         }
 
-        @keyframes alertIn { 0% { transform: scale(0.5); opacity: 0; filter: blur(20px); } 100% { transform: scale(1); opacity: 1; filter: blur(0); } }
+        .alert-shield {
+            width: 350px;
+            height: 350px;
+            position: relative;
+            margin-bottom: 20px;
+        }
 
-        .alert-avatar { width: 250px; height: 250px; border: 5px solid var(--gold); border-radius: 50%; box-shadow: 0 0 80px var(--crimson-bright); background: #000; margin-bottom: 20px; }
-        .alert-text { font-family: 'Exocet', serif; color: #fff; text-shadow: 0 0 20px var(--crimson); }
-        .alert-name { font-size: 4rem; color: var(--gold); letter-spacing: 10px; margin: 10px 0; }
-        
-        .alert-content.exit { animation: alertOut 0.8s ease-in forwards; }
-        @keyframes alertOut { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(1.5); opacity: 0; filter: blur(30px); } }
+        .alert-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 0 30px var(--crimson-bright));
+            animation: pulseImg 2s infinite ease-in-out;
+        }
+
+        .alert-title {
+            font-family: 'Exocet', serif;
+            font-size: 2.2rem;
+            color: #fff;
+            letter-spacing: 5px;
+            text-shadow: 0 0 20px var(--crimson-bright);
+            margin-bottom: 10px;
+        }
+
+        .alert-welcome {
+            font-family: 'Exocet', serif;
+            font-size: 4.5rem;
+            color: var(--gold-bright);
+            letter-spacing: 10px;
+            text-shadow: 0 5px 15px #000;
+            margin-bottom: 5px;
+        }
+
+        .alert-footer {
+            font-family: 'Alegreya';
+            font-size: 1.8rem;
+            color: #fff;
+            letter-spacing: 2px;
+            background: var(--crimson);
+            padding: 5px 40px;
+            clip-path: polygon(5% 0%, 95% 0%, 100% 50%, 95% 100%, 5% 100%, 0% 50%);
+        }
+
+        @keyframes pulseImg {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 30px var(--crimson-bright)); }
+            50% { transform: scale(1.1); filter: drop-shadow(0 0 60px var(--gold)); }
+        }
+
+        /* FLASH DE IMPACTO */
+        .flash {
+            position: absolute;
+            inset: 0;
+            background: white;
+            opacity: 0;
+            z-index: 1000;
+        }
+        .flash.active { animation: flashImpact 1s ease-out forwards; }
+        @keyframes flashImpact { 0% { opacity: 1; } 100% { opacity: 0; } }
 
     </style>
 </head>
@@ -102,32 +157,38 @@
 
     <div id="alert-overlay">
         <div class="flash" id="flash"></div>
-        <div id="alert-body" class="alert-content">
-            <div style="font-family: 'Exocet'; font-size: 1.2rem; letter-spacing: 4px; color: #fff;">NUEVO GUERRERO DESPIERTA</div>
-            <img id="alert-img" src="" class="alert-avatar">
-            <div id="alert-name" class="alert-name">NOMBRE</div>
-            <div id="alert-class" style="font-size: 1.2rem; color: #fff; border-top: 1px solid var(--gold); padding-top: 5px;">CLASE</div>
+        <div class="alert-box animate__animated animate__zoomIn" id="alert-box">
+            <div class="alert-title">¡NUEVO GUERRERO EN MU NEUTRO!</div>
+            <div class="alert-shield">
+                <img id="alert-img" src="" class="alert-img">
+            </div>
+            <div class="alert-welcome">BIENVENIDO, <span id="alert-name">NOMBRE</span></div>
+            <div class="alert-footer">LA BATALLA COMIENZA AHORA</div>
         </div>
     </div>
 
-    <div class="outer-box">
-        <h1 class="main-title">ÚLTIMOS GUERREROS CREADOS</h1>
-        <div id="list" class="list-wrapper">
-            <!-- Data -->
+    <div class="list-container">
+        <h1 class="main-title">ÚLTIMOS GUERREROS</h1>
+        <div id="list">
+            <!-- Cargando... -->
         </div>
     </div>
 
     <script>
         const charData = {
-            0: { name: 'Dark Wizard', img: 'DW.png' }, 1: { name: 'Soul Master', img: 'SM.png' }, 16: { name: 'Dark Knight', img: 'DK.png' },
-            17: { name: 'Blade Knight', img: 'BK.png' }, 32: { name: 'Fairy Elf', img: 'ELF.png' }, 33: { name: 'Muse Elf', img: 'ME.png' },
-            48: { name: 'Magic Gladiator', img: 'MG.png' }, 64: { name: 'Dark Lord', img: 'DL.png' }, 80: { name: 'Summoner', img: 'SUM.png' },
-            96: { name: 'Rage Fighter', img: 'RF.png' }
+            0: { name: 'Dark Wizard', img: 'DW.png' }, 1: { name: 'Soul Master', img: 'SM.png' }, 2: { name: 'Grand Master', img: 'GM.png' },
+            16: { name: 'Dark Knight', img: 'DK.png' }, 17: { name: 'Blade Knight', img: 'BK.png' }, 18: { name: 'Blade Master', img: 'BM.png' },
+            32: { name: 'Fairy Elf', img: 'ELF.png' }, 33: { name: 'Muse Elf', img: 'ME.png' }, 34: { name: 'High Elf', img: 'HE.png' },
+            48: { name: 'Magic Gladiator', img: 'MG.png' }, 50: { name: 'Duel Master', img: 'DM.png' },
+            64: { name: 'Dark Lord', img: 'DL.png' }, 66: { name: 'Lord Emperor', img: 'LE.png' },
+            80: { name: 'Summoner', img: 'SUM.png' }, 81: { name: 'Bloody Summoner', img: 'BS.png' }, 82: { name: 'Dimension Master', img: 'DSM.png' },
+            96: { name: 'Rage Fighter', img: 'RF.png' }, 98: { name: 'Fist Master', img: 'FM.png' }
         };
 
         let serverTime = new Date();
         let lastChars = [];
-        let firstLoad = true;
+        let isFirstLoad = true;
+        let isAlertActive = false;
 
         function formatTimeAgo(dateStr) {
             const diff = Math.floor((serverTime - new Date(dateStr)) / 1000);
@@ -136,78 +197,94 @@
             return `hace ${Math.floor(diff/3600)}h`;
         }
 
-        async function update() {
+        async function updateData() {
             try {
                 const res = await fetch('/api/stats');
                 if (!res.ok) return;
                 const data = await res.json();
-                const chars = (data.recentCharacters || []).slice(0, 3);
                 serverTime = new Date(data.timestamp);
+                const chars = (data.recentCharacters || []).slice(0, 5);
 
                 if (chars.length > 0) {
-                    // Detectar Alerta
-                    if (!firstLoad && lastChars.length > 0 && chars[0].name !== lastChars[0].name) {
+                    // SI HAY UN PERSONAJE NUEVO Y NO ES LA PRIMERA VEZ
+                    if (!isFirstLoad && lastChars.length > 0 && chars[0].name !== lastChars[0].name) {
                         triggerAlert(chars[0]);
                     }
+
+                    // SOLO REDIBUJAMOS LA LISTA SI LOS NOMBRES CAMBIARON (Para evitar parpadeo)
+                    const currentNames = chars.map(c => c.name).join('|');
+                    const lastNames = lastChars.map(c => c.name).join('|');
                     
-                    render(chars);
+                    if (currentNames !== lastNames) {
+                        renderList(chars);
+                    }
+                    
                     lastChars = chars;
-                    firstLoad = false;
+                    isFirstLoad = false;
                 }
             } catch (e) { console.error(e); }
         }
 
-        function render(chars) {
+        function renderList(chars) {
             let html = '';
             chars.forEach(c => {
                 const info = charData[c.classId] || { img: 'DW.png' };
                 html += `
-                    <div class="char-row">
-                        <div class="avatar-container"><img src="../assets/images/characters/${info.img}" class="avatar-img"></div>
+                    <div class="char-row animate__animated animate__fadeInLeft">
+                        <img src="../assets/images/characters/${info.img}" class="avatar-img">
                         <div class="char-name">${c.name}</div>
-                        <div class="time-ago">${formatTimeAgo(c.date)}</div>
+                        <div class="time-ago" id="time-${c.name}">${formatTimeAgo(c.date)}</div>
                     </div>
                 `;
             });
             document.getElementById('list').innerHTML = html;
         }
 
+        // ACTUALIZAR SOLO LOS TEXTOS DEL TIEMPO CADA SEGUNDO (Sin redibujar todo)
+        setInterval(() => {
+            serverTime.setSeconds(serverTime.getSeconds() + 1);
+            lastChars.forEach(c => {
+                const el = document.getElementById(`time-${c.name}`);
+                if (el) el.innerText = formatTimeAgo(c.date);
+            });
+        }, 1000);
+
         function triggerAlert(char) {
+            if (isAlertActive) return;
+            isAlertActive = true;
+
             const overlay = document.getElementById('alert-overlay');
-            const body = document.getElementById('alert-body');
+            const box = document.getElementById('alert-box');
             const flash = document.getElementById('flash');
             const info = charData[char.classId] || { name: 'Guerrero', img: 'DW.png' };
 
             document.getElementById('alert-name').innerText = char.name;
-            document.getElementById('alert-class').innerText = info.name;
             document.getElementById('alert-img').src = `../assets/images/characters/${info.img}`;
 
             overlay.style.display = 'flex';
-            body.classList.remove('exit');
             flash.classList.add('active');
-
-            setTimeout(() => flash.classList.remove('active'), 1500);
+            
             setTimeout(() => {
-                body.classList.add('exit');
-                setTimeout(() => { overlay.style.display = 'none'; }, 800);
-            }, 6000);
+                box.classList.remove('animate__zoomIn');
+                box.classList.add('animate__zoomOut');
+                setTimeout(() => {
+                    overlay.style.display = 'none';
+                    box.classList.remove('animate__zoomOut');
+                    box.classList.add('animate__zoomIn');
+                    flash.classList.remove('active');
+                    isAlertActive = false;
+                }, 800);
+            }, 6000); // 6 segundos de gloria
         }
 
-        setInterval(() => {
-            serverTime.setSeconds(serverTime.getSeconds() + 1);
-            if (lastChars.length > 0) render(lastChars);
-        }, 1000);
-
-        setInterval(update, 3000); // Revisar cada 3 segundos para máxima velocidad
-        update();
-
-        // MODO PRUEBA: Si la URL tiene ?test=1, dispara una alerta ahora
-        const urlParams = new URLSearchParams(window.location.search);
-        if (urlParams.get('test')) {
-            setTimeout(() => {
-                triggerAlert({ name: 'TEST_HERO', classId: 16, date: new Date().toISOString() });
-            }, 2000);
+        // Modo Prueba (?test=1)
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('test')) {
+            setTimeout(() => triggerAlert({ name: 'LANCELOT', classId: 18, date: new Date().toISOString() }), 2000);
         }
+
+        setInterval(updateData, 4000); // Revisar cada 4s
+        updateData();
     </script>
 </body>
 </html>
