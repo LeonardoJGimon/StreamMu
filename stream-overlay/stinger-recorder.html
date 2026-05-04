@@ -83,7 +83,7 @@
                     win.postMessage('START_STINGER', '*');
                 }, 1000);
 
-                // Esperar 7 segundos para asegurar que termine de abrirse
+                // Esperar 10 segundos para asegurar que termine de abrirse
                 setTimeout(() => {
                     recorder.stopRecording(() => {
                         const blob = recorder.getBlob();
