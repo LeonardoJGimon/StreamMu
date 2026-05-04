@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mu Neutro - Alerta Nuevo Personaje</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @font-face {
+            font-family: 'Exocet';
+            src: url('../assets/images/font/ExocetImmortal-Medium.otf') format('opentype');
+            font-weight: 500;
+        }
+
+        :root {
+            --crimson: #9d0a0e;
+            --crimson-bright: #ff2e2e;
+            --gold: #c0a375;
+        }
+
+        body, html {
+            margin: 0; padding: 0;
+            width: 100vw; height: 100vh;
+            background: transparent;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Exocet', serif;
+        }
+
+        #alert-container {
+            display: none;
+            position: relative;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* EFECTO DE FLASH INICIAL */
+        .flash {
+            position: absolute;
+            inset: 0;
+            background: white;
+            opacity: 0;
+            z-index: 100;
+            pointer-events: none;
+        }
+
+        .flash.active {
+            animation: flashAnim 1.5s ease-out;
+        }
+
+        @keyframes flashAnim {
+            0% { opacity: 1; }
+            30% { opacity: 0.8; background: var(--crimson-bright); }
+            100% { opacity: 0; }
+        }
+
+        /* CONTENIDO DE LA ALERTA */
+        .alert-content {
+            z-index: 10;
+            animation: contentIn 0.8s cubic-bezier(0.17, 0.89, 0.32, 1.49) forwards;
+        }
+
+        @keyframes contentIn {
+            0% { transform: scale(0.5); opacity: 0; filter: blur(20px); }
+            100% { transform: scale(1); opacity: 1; filter: blur(0); }
+        }
+
+        .char-avatar {
+            width: 300px;
+            height: 300px;
+            border: 5px solid var(--gold);
+            border-radius: 50%;
+            box-shadow: 0 0 100px var(--crimson-bright);
+            object-fit: cover;
+            background: #000;
+            margin-bottom: 20px;
+        }
+
+        .alert-label {
+            color: #fff;
+            font-size: 1.5rem;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            text-shadow: 0 0 20px var(--crimson);
+            margin-bottom: 5px;
+        }
+
+        .char-name {
+            color: var(--gold);
+            font-size: 5rem;
+            letter-spacing: 15px;
+            text-transform: uppercase;
+            filter: drop-shadow(0 0 15px rgba(192, 163, 117, 0.6));
+            margin-bottom: 10px;
+        }
+
+        .char-class {
+            color: #fff;
+            font-size: 1.2rem;
+            letter-spacing: 8px;
+            opacity: 0.8;
+            border-top: 1px solid var(--gold);
+            padding-top: 10px;
+        }
+
+        /* SALIDA DE LA ALERTA */
+        .alert-content.exit {
+            animation: contentOut 0.8s ease-in forwards;
+        }
+
+        @keyframes contentOut {
+            0% { transform: scale(1); opacity: 1; filter: blur(0); }
+            100% { transform: scale(1.5); opacity: 0; filter: blur(30px); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="flash" id="flash-overlay"></div>
+
+    <div id="alert-container">
+        <div id="alert-body" class="alert-content">
+            <div class="alert-label">UN NUEVO GUERRERO HA DESPERTADO</div>
+            <img id="alert-img" src="" class="char-avatar">
+            <div id="alert-name" class="char-name">-</div>
+            <div id="alert-class" class="char-class">-</div>
+        </div>
+    </div>
+
+    <script>
+        const charData = {
+            0: { name: 'Dark Wizard', img: 'DW.png' }, 1: { name: 'Soul Master', img: 'SM.png' }, 2: { name: 'Grand Master', img: 'GM.png' },
+            16: { name: 'Dark Knight', img: 'DK.png' }, 17: { name: 'Blade Knight', img: 'BK.png' }, 18: { name: 'Blade Master', img: 'BM.png' },
+            32: { name: 'Fairy Elf', img: 'ELF.png' }, 33: { name: 'Muse Elf', img: 'ME.png' }, 34: { name: 'High Elf', img: 'HE.png' },
+            48: { name: 'Magic Gladiator', img: 'MG.png' }, 50: { name: 'Duel Master', img: 'DM.png' },
+            64: { name: 'Dark Lord', img: 'DL.png' }, 66: { name: 'Lord Emperor', img: 'LE.png' },
+            80: { name: 'Summoner', img: 'SUM.png' }, 81: { name: 'Bloody Summoner', img: 'BS.png' }, 82: { name: 'Dimension Master', img: 'DSM.png' },
+            96: { name: 'Rage Fighter', img: 'RF.png' }, 98: { name: 'Fist Master', img: 'FM.png' }
+        };
+
+        let lastCharacterName = null;
+        let isDisplaying = false;
+
+        async function checkAlerts() {
+            if (isDisplaying) return;
+
+            try {
+                const res = await fetch('/api/stats');
+                if (!res.ok) return;
+                const data = await res.json();
+                
+                if (!data.recentCharacters || data.recentCharacters.length === 0) return;
+                
+                const newest = data.recentCharacters[0];
+
+                // Si es la primera vez que cargamos, guardamos el nombre y no disparamos nada
+                if (lastCharacterName === null) {
+                    lastCharacterName = newest.name;
+                    return;
+                }
+
+                // Si el nombre más reciente es diferente al último que vimos, ¡HAY ALERTA!
+                if (newest.name !== lastCharacterName) {
+                    lastCharacterName = newest.name;
+                    triggerAlert(newest);
+                }
+
+            } catch (e) {
+                console.error("Alert fetch error:", e);
+            }
+        }
+
+        function triggerAlert(char) {
+            isDisplaying = true;
+            const container = document.getElementById('alert-container');
+            const body = document.getElementById('alert-body');
+            const flash = document.getElementById('flash-overlay');
+            const nameEl = document.getElementById('alert-name');
+            const classEl = document.getElementById('alert-class');
+            const imgEl = document.getElementById('alert-img');
+
+            const info = charData[char.classId] || { name: 'Guerrero', img: 'DW.png' };
+
+            nameEl.innerText = char.name;
+            classEl.innerText = info.name;
+            imgEl.src = `../assets/images/characters/${info.img}`;
+
+            // 1. Mostrar contenedor
+            container.style.display = 'flex';
+            body.classList.remove('exit');
+            
+            // 2. Disparar Flash
+            flash.classList.add('active');
+            setTimeout(() => flash.classList.remove('active'), 1500);
+
+            // 3. Esperar y quitar alerta
+            setTimeout(() => {
+                body.classList.add('exit');
+                setTimeout(() => {
+                    container.style.display = 'none';
+                    isDisplaying = false;
+                }, 800);
+            }, 5000); // La alerta dura 5 segundos en pantalla
+        }
+
+        // Revisar cada 10 segundos si hay personajes nuevos
+        setInterval(checkAlerts, 10000);
+        checkAlerts();
+    </script>
+</body>
+</html>
