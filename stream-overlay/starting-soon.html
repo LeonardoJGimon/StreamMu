@@ -109,19 +109,19 @@
             }
 
             .main-logo {
-                width: 280px; /* Un pelín más grande */
+                width: 180px; /* Tamaño unificado */
                 margin-bottom: 0px;
             }
 
             .title {
-                font-size: 3.5rem; /* Un poco más grande ahora que está compacto */
-                letter-spacing: 4px;
+                font-size: 3rem; /* Tamaño unificado */
+                letter-spacing: 6px;
                 line-height: 1;
             }
 
             .timer-container {
-                font-size: 3.8rem !important;
-                margin: 10px 0 !important; /* Compactado al máximo */
+                font-size: 3.5rem !important; /* Un poco más pequeño para caber mejor */
+                margin: 10px 0 !important;
             }
 
             .clock-footer {
@@ -144,29 +144,44 @@
                 letter-spacing: 1px !important;
             }
             
-            /* Ajuste para los estandartes en vertical - TODO EN UNA LÍNEA */
+            /* Ajuste para los estandartes en vertical - UNIFICADO (3 columnas, oculta 2) */
             .status-grid {
-                grid-template-columns: repeat(5, 1fr) !important;
-                gap: 5px !important;
-                width: 100% !important;
+                grid-template-columns: repeat(3, 1fr) !important;
+                gap: 10px !important;
+                width: 95% !important;
                 padding: 0 5px !important;
             }
 
+            .status-banner:nth-child(4), 
+            .status-banner:nth-child(5) { 
+                display: none !important; 
+            }
+
             .status-banner {
-                padding: 10px 2px 20px 2px !important;
+                padding: 10px 5px 25px 5px !important;
             }
 
             .status-icon {
-                font-size: 1.2rem !important;
+                font-size: 1.5rem !important;
             }
 
             .status-value {
-                font-size: 0.75rem !important;
+                font-size: 0.9rem !important;
             }
 
             .status-label {
-                font-size: 0.45rem !important;
+                font-size: 0.55rem !important;
                 letter-spacing: 0px !important;
+            }
+
+            .cycling-container {
+                font-size: 1rem !important;
+                gap: 5px !important;
+            }
+            
+            .mask {
+                min-width: 150px !important;
+                padding-left: 10px !important;
             }
         }
 
