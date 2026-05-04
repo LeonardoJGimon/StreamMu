@@ -2,113 +2,147 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mu Neutro - Alertas de Guerreros</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <title>Mu Neutro - Últimos Guerreros (Oficial)</title>
     <style>
         @font-face { font-family: 'Exocet'; src: url('../assets/images/font/ExocetImmortal-Medium.otf') format('opentype'); font-weight: 500; }
         @font-face { font-family: 'Alegreya'; src: url('../assets/images/font/AlegreyaSans-Regular.otf') format('opentype'); font-weight: 400; }
 
         :root {
-            --crimson: #9d0a0e;
+            --bg-dark: #1e1e1e;
+            --row-bg: #141414;
+            --crimson: #8b0000;
             --gold: #c0a375;
-            --gold-bright: #f3e5ab;
+            --white: #ffffff;
         }
 
         body, html {
             margin: 0; padding: 0;
-            width: 1920px; height: 1080px;
             background: transparent;
-            font-family: 'Alegreya', serif;
-            color: #eee;
+            font-family: 'Alegreya', sans-serif;
             overflow: hidden;
+            width: 1920px; height: 1080px;
         }
 
-        /* --- LISTA DE GUERREROS (IZQUIERDA) --- */
-        .list-container {
-            position: absolute; bottom: 40px; left: 40px;
-            width: 420px; background: rgba(0, 0, 0, 0.8);
-            border: 1px solid var(--crimson); padding: 20px;
-            box-shadow: 0 10px 30px #000; z-index: 10;
+        /* CONTENEDOR PRINCIPAL (Estilo exacto a la imagen) */
+        .widget-box {
+            position: absolute;
+            bottom: 50px;
+            left: 50px;
+            width: 520px;
+            background: var(--bg-dark);
+            border: 1px solid var(--crimson);
+            padding: 25px;
+            box-shadow: 10px 10px 40px rgba(0,0,0,0.8);
         }
 
-        .main-title { font-family: 'Exocet', serif; font-size: 0.85rem; color: var(--gold); letter-spacing: 3px; margin-bottom: 15px; text-transform: uppercase; border-bottom: 1px solid var(--crimson); padding-bottom: 5px; }
+        .title {
+            font-family: 'Exocet', serif;
+            font-size: 1.1rem;
+            color: var(--gold);
+            letter-spacing: 4px;
+            margin: 0 0 10px 0;
+            text-transform: uppercase;
+        }
 
-        .char-row { display: grid; grid-template-columns: 45px 1fr 120px; gap: 15px; align-items: center; background: rgba(20, 10, 10, 0.5); margin-bottom: 6px; padding: 6px 10px; border: 1px solid rgba(157, 10, 14, 0.1); }
-        .avatar-img { width: 35px; height: 35px; border: 1px solid var(--gold); border-radius: 3px; }
-        .char-name { font-family: 'Exocet', serif; font-size: 1rem; color: #fff; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .time-ago { font-size: 0.8rem; color: var(--gold); text-align: right; font-style: italic; }
+        .divider {
+            width: 100%;
+            height: 1px;
+            background: var(--crimson);
+            margin-bottom: 20px;
+            opacity: 0.6;
+        }
 
-        /* --- ALERTA ÉPICA (CENTRO) --- */
+        .list-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* FILA DE PERSONAJE */
+        .char-row {
+            display: flex;
+            align-items: center;
+            background: var(--row-bg);
+            padding: 10px 15px;
+            border: 1px solid rgba(255,255,255,0.03);
+        }
+
+        .icon-container {
+            width: 55px;
+            height: 55px;
+            margin-right: 20px;
+        }
+
+        .char-icon {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .char-name {
+            font-family: 'Exocet', serif;
+            font-size: 1.2rem;
+            color: var(--white);
+            flex-grow: 1;
+            letter-spacing: 1px;
+        }
+
+        .time-ago {
+            font-size: 0.95rem;
+            color: var(--gold);
+            font-style: italic;
+            font-weight: bold;
+        }
+
+        /* ALERTA (Se mantiene oculta hasta que hay un nuevo personaje) */
         #alert-overlay {
             position: fixed; inset: 0;
             display: none; align-items: center; justify-content: center;
             z-index: 1000; pointer-events: none;
         }
-
         .alert-card {
-            position: relative; width: 600px; padding: 40px;
-            background: linear-gradient(180deg, #1a0505 0%, #000 100%);
-            border: 2px solid var(--gold); box-shadow: 0 0 100px rgba(0,0,0,1), 0 0 30px var(--crimson);
+            width: 500px; padding: 40px;
+            background: #000; border: 2px solid var(--gold);
             display: flex; flex-direction: column; align-items: center; text-align: center;
+            box-shadow: 0 0 50px var(--crimson);
         }
-
-        .alert-card::before { content: ''; position: absolute; inset: 5px; border: 1px solid rgba(192, 163, 117, 0.2); pointer-events: none; }
-
-        .header-img { width: 200px; height: auto; margin-bottom: 20px; filter: drop-shadow(0 0 15px var(--gold)); }
-
-        .welcome-text { font-family: 'Exocet', serif; font-size: 1.2rem; color: var(--gold); letter-spacing: 4px; margin-bottom: 10px; }
-        .hero-name { font-family: 'Exocet', serif; font-size: 4.5rem; color: #fff; letter-spacing: 12px; text-shadow: 0 0 20px var(--crimson); margin: 10px 0; }
-        .footer-text { font-size: 1.5rem; color: #fff; letter-spacing: 2px; text-transform: uppercase; opacity: 0.8; }
-
-        /* EFECTO DE FLASH */
-        .flash { position: absolute; inset: 0; background: white; opacity: 0; z-index: 1100; }
-        .flash.active { animation: flashImpact 1s ease-out forwards; }
-        @keyframes flashImpact { 0% { opacity: 1; } 100% { opacity: 0; } }
-
+        .alert-name { font-family: 'Exocet', serif; font-size: 4rem; color: #fff; margin: 10px 0; }
+        .alert-welcome { font-family: 'Exocet', serif; color: var(--gold); font-size: 1.2rem; }
     </style>
 </head>
 <body>
 
     <div id="alert-overlay">
-        <div class="flash" id="flash"></div>
-        <div class="alert-card animate__animated animate__zoomIn" id="alert-card">
-            <div class="welcome-text">BIENVENIDOS A MU NEUTRO</div>
-            <img id="alert-img" src="" class="header-img">
-            <div id="alert-name" class="hero-name">NOMBRE</div>
-            <div class="footer-text">LA LEYENDA COMIENZA</div>
+        <div class="alert-card">
+            <div class="alert-welcome">BIENVENIDOS A MU NEUTRO</div>
+            <img id="alert-img" src="" style="width: 150px; margin: 20px 0;">
+            <div id="alert-name" class="alert-name">NOMBRE</div>
+            <div style="color: #fff; font-size: 1.2rem; opacity: 0.8;">NUEVO GUERRERO SE UNE A LA BATALLA</div>
         </div>
     </div>
 
-    <div class="list-container">
-        <h1 class="main-title">ÚLTIMOS GUERREROS</h1>
-        <div id="list"></div>
+    <div class="widget-box">
+        <h1 class="title">ÚLTIMOS GUERREROS</h1>
+        <div class="divider"></div>
+        <div id="list" class="list-wrapper">
+            <!-- Cargando datos... -->
+        </div>
     </div>
 
     <script>
         const classMap = {
             0: { folder: 'SM', icon: 'dw-icon.png', head: 'DW encabezado.png' },
-            1: { folder: 'SM', icon: 'dw-icon.png', head: 'DW encabezado.png' },
-            2: { folder: 'SM', icon: 'dw-icon.png', head: 'DW encabezado.png' },
             16: { folder: 'DK', icon: 'dk-icon.png', head: 'dk encabezado.png' },
-            17: { folder: 'DK', icon: 'dk-icon.png', head: 'dk encabezado.png' },
-            18: { folder: 'DK', icon: 'dk-icon.png', head: 'dk encabezado.png' },
             32: { folder: 'FAIRY ELF', icon: 'elf-icon.png', head: 'ELf encabezado-WmkejHhTPPZ6wZaPMkqTLLQg1QRAoB.png' },
-            33: { folder: 'FAIRY ELF', icon: 'elf-icon.png', head: 'ELf encabezado-WmkejHhTPPZ6wZaPMkqTLLQg1QRAoB.png' },
             48: { folder: 'MG', icon: 'mg icon.png', head: 'MG encabezado.png' },
-            50: { folder: 'MG', icon: 'mg icon.png', head: 'MG encabezado.png' },
             64: { folder: 'DL', icon: 'dl icon.png', head: 'DL encabezado.png' },
-            66: { folder: 'DL', icon: 'dl icon.png', head: 'DL encabezado.png' },
             80: { folder: 'SUMONNER', icon: 'sm icon.png', head: 'SM encabezado.png' },
-            81: { folder: 'SUMONNER', icon: 'sm icon.png', head: 'SM encabezado.png' },
-            96: { folder: 'RAGE', icon: 'rf icon.png', head: 'RF-encabezado.png' },
-            98: { folder: 'RAGE', icon: 'rf icon.png', head: 'RF-encabezado.png' }
+            96: { folder: 'RAGE', icon: 'rf icon.png', head: 'RF-encabezado.png' }
         };
 
         let serverTime = new Date();
         let lastChars = [];
         let isFirstLoad = true;
-        let isAlertActive = false;
 
         function formatTimeAgo(dateStr) {
             const diff = Math.floor((serverTime - new Date(dateStr)) / 1000);
@@ -123,15 +157,13 @@
                 if (!res.ok) return;
                 const data = await res.json();
                 serverTime = new Date(data.timestamp);
-                const chars = (data.recentCharacters || []).slice(0, 5);
+                const chars = (data.recentCharacters || []).slice(0, 3); // Top 3 como la imagen
 
                 if (chars.length > 0) {
                     if (!isFirstLoad && lastChars.length > 0 && chars[0].name !== lastChars[0].name) {
                         triggerAlert(chars[0]);
                     }
-                    const currentNames = chars.map(c => c.name).join('|');
-                    const lastNames = lastChars.map(c => c.name).join('|');
-                    if (currentNames !== lastNames) renderList(chars);
+                    renderList(chars);
                     lastChars = chars;
                     isFirstLoad = false;
                 }
@@ -144,14 +176,26 @@
                 const info = classMap[c.classId] || classMap[0];
                 const iconPath = `../assets/images/chars/${info.folder}/${info.icon}`;
                 html += `
-                    <div class="char-row animate__animated animate__fadeIn">
-                        <img src="${iconPath}" class="avatar-img" onerror="this.src='../assets/images/characters/DW.png'">
+                    <div class="char-row">
+                        <div class="icon-container">
+                            <img src="${iconPath}" class="char-icon">
+                        </div>
                         <div class="char-name">${c.name}</div>
                         <div class="time-ago" id="time-${c.name}">${formatTimeAgo(c.date)}</div>
                     </div>
                 `;
             });
             document.getElementById('list').innerHTML = html;
+        }
+
+        function triggerAlert(char) {
+            const overlay = document.getElementById('alert-overlay');
+            const info = classMap[char.classId] || classMap[0];
+            document.getElementById('alert-name').innerText = char.name.toUpperCase();
+            document.getElementById('alert-img').src = `../assets/images/chars/${info.folder}/${info.head}`;
+            
+            overlay.style.display = 'flex';
+            setTimeout(() => { overlay.style.display = 'none'; }, 6000);
         }
 
         setInterval(() => {
@@ -162,41 +206,7 @@
             });
         }, 1000);
 
-        function triggerAlert(char) {
-            if (isAlertActive) return;
-            isAlertActive = true;
-
-            const overlay = document.getElementById('alert-overlay');
-            const card = document.getElementById('alert-card');
-            const flash = document.getElementById('flash');
-            const info = classMap[char.classId] || classMap[0];
-            const headPath = `../assets/images/chars/${info.folder}/${info.head}`;
-
-            document.getElementById('alert-name').innerText = char.name.toUpperCase();
-            document.getElementById('alert-img').src = headPath;
-
-            overlay.style.display = 'flex';
-            flash.classList.add('active');
-            
-            setTimeout(() => {
-                card.classList.remove('animate__zoomIn');
-                card.classList.add('animate__zoomOut');
-                setTimeout(() => {
-                    overlay.style.display = 'none';
-                    card.classList.remove('animate__zoomOut');
-                    card.classList.add('animate__zoomIn');
-                    flash.classList.remove('active');
-                    isAlertActive = false;
-                }, 800);
-            }, 6000);
-        }
-
-        const params = new URLSearchParams(window.location.search);
-        if (params.get('test')) {
-            setTimeout(() => triggerAlert({ name: 'LANCELOT', classId: 16, date: new Date().toISOString() }), 2000);
-        }
-
-        setInterval(updateData, 4000);
+        setInterval(updateData, 5000);
         updateData();
     </script>
     <script src="auto-refresh.js"></script>
