@@ -16,10 +16,11 @@
             --gold: #c0a375;
         }
 
-        body, html {
+        /* FORZAR TRANSPARENCIA TOTAL */
+        html, body {
             margin: 0; padding: 0;
             width: 100vw; height: 100vh;
-            background: transparent;
+            background-color: rgba(0, 0, 0, 0) !important; /* Transparencia absoluta */
             overflow: hidden;
             display: flex;
             align-items: center;
@@ -39,18 +40,22 @@
             z-index: 10;
             display: flex;
             align-items: center;
-            transition: all 1.0s cubic-bezier(0.7, 0, 0.3, 1); /* Más lento */
+            /* Usamos transform para mejor rendimiento y evitar saltos visuales */
+            transition: transform 1.0s cubic-bezier(0.7, 0, 0.3, 1);
+            will-change: transform;
         }
 
         .door-left {
-            left: -55vw;
+            left: 0;
+            transform: translateX(-101%); /* Totalmente fuera a la izquierda */
             justify-content: flex-end;
             border-right: 5px solid var(--gold);
             box-shadow: 20px 0 120px rgba(0,0,0,1);
         }
 
         .door-right {
-            right: -55vw;
+            right: 0;
+            transform: translateX(101%); /* Totalmente fuera a la derecha */
             justify-content: flex-start;
             border-left: 5px solid var(--gold);
             box-shadow: -20px 0 120px rgba(0,0,0,1);
@@ -64,6 +69,7 @@
             opacity: 0;
             transform: scale(3) rotate(-5deg);
             filter: drop-shadow(0 0 50px var(--crimson)) blur(10px);
+            pointer-events: none;
         }
 
         /* RESPLANDOR DE IMPACTO */
@@ -78,11 +84,11 @@
         }
 
         /* ANIMACIÓN ACTIVE */
-        body.animating .door-left { left: 0; }
-        body.animating .door-right { right: 0; }
+        body.animating .door-left { transform: translateX(0); }
+        body.animating .door-right { transform: translateX(0); }
         
         body.animating .stinger-logo {
-            animation: logoImpact 3.0s forwards; /* Más tiempo en pantalla */
+            animation: logoImpact 3.0s forwards;
             animation-delay: 0.5s;
         }
 
@@ -130,9 +136,9 @@
             }, 4000);
         }
 
-        // Auto-ejecución con pequeño delay
+        // Auto-ejecución inmediata
         window.onload = () => {
-            setTimeout(playStinger, 300);
+            setTimeout(playStinger, 200);
         };
     </script>
 </body>
