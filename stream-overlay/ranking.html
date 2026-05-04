@@ -2,26 +2,16 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mu Neutro - Hall of Fame</title>
+    <title>Mu Neutro - Hall of Fame (Epic Edition)</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        @font-face {
-            font-family: 'Exocet';
-            src: url('../assets/images/font/ExocetImmortal-Medium.otf') format('opentype');
-            font-weight: 500;
-        }
-
-        @font-face {
-            font-family: 'Alegreya';
-            src: url('../assets/images/font/AlegreyaSans-Regular.otf') format('opentype');
-            font-weight: 400;
-        }
+        @font-face { font-family: 'Exocet'; src: url('../assets/images/font/ExocetImmortal-Medium.otf') format('opentype'); font-weight: 500; }
+        @font-face { font-family: 'Alegreya'; src: url('../assets/images/font/AlegreyaSans-Regular.otf') format('opentype'); font-weight: 400; }
 
         :root {
             --crimson: #9d0a0e;
             --crimson-bright: #ff2e2e;
             --gold: #c0a375;
-            --gold-bright: #ffd700;
             --row-bg: rgba(15, 10, 10, 0.9);
         }
 
@@ -53,18 +43,14 @@
             text-transform: uppercase; text-shadow: 0 0 15px rgba(192, 163, 117, 0.4);
         }
 
-        .hall-container {
-            display: flex; flex-direction: column; gap: 20px;
-        }
+        .hall-container { display: flex; flex-direction: column; gap: 20px; }
 
         .hall-card {
-            display: grid; grid-template-columns: 80px 1fr 120px; gap: 20px;
+            display: grid; grid-template-columns: 80px 1fr 130px; gap: 20px;
             align-items: center; background: var(--row-bg); padding: 20px;
             position: relative; border: 1px solid rgba(157, 10, 14, 0.2);
-            transition: 0.3s;
+            animation: fadeIn 0.8s ease-out forwards;
         }
-
-        .hall-card:hover { transform: scale(1.02); background: rgba(25, 10, 10, 0.95); }
 
         .category-label {
             position: absolute; top: -12px; left: 20px; background: var(--crimson);
@@ -72,22 +58,21 @@
             padding: 4px 15px; letter-spacing: 2px; box-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
 
-        .avatar-container { width: 70px; height: 70px; position: relative; }
-        .avatar-img { width: 100%; height: 100%; border: 2px solid var(--gold); background: #000; border-radius: 4px; }
+        .avatar-container { width: 70px; height: 70px; position: relative; display: flex; align-items: center; justify-content: center; }
+        .avatar-img { width: 100%; height: 100%; object-fit: contain; }
         
         .info-box { display: flex; flex-direction: column; gap: 5px; }
         .name { font-family: 'Exocet', serif; font-size: 1.6rem; color: #fff; text-shadow: 0 2px 5px #000; }
         .sub-info { font-size: 0.9rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; }
 
-        .stat-box { text-align: right; font-family: 'Exocet', serif; }
-        .stat-value { font-size: 1.8rem; color: #fff; }
+        .stat-box { text-align: right; }
+        .stat-value { font-family: 'Exocet', serif; font-size: 1.8rem; color: #fff; }
         .stat-unit { font-size: 0.8rem; color: var(--crimson); display: block; }
 
         .footer { margin-top: 25px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 10px; }
         .footer-tag { font-family: 'Exocet', serif; font-size: 0.7rem; color: #444; letter-spacing: 3px; }
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .hall-card { animation: fadeIn 0.8s ease-out forwards; }
     </style>
 </head>
 <body>
@@ -96,53 +81,7 @@
         <h1 class="main-title">HALL OF FAME</h1>
         
         <div id="hall" class="hall-container">
-            <!-- REY DE RESETS -->
-            <div class="hall-card">
-                <span class="category-label">REY DE RESETS</span>
-                <div class="avatar-container">
-                    <img id="reset-img" src="../assets/images/characters/DW.png" class="avatar-img">
-                </div>
-                <div class="info-box">
-                    <div class="name" id="reset-name">-</div>
-                    <div class="sub-info">PUESTO #1 RR</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-value" id="reset-val">0</div>
-                    <div class="stat-unit">RESETS</div>
-                </div>
-            </div>
-
-            <!-- CLAN SUPREMO -->
-            <div class="hall-card">
-                <span class="category-label">CLAN SUPREMO</span>
-                <div class="avatar-container">
-                    <img src="../assets/images/characters/GUILD.png" class="avatar-img" onerror="this.src='../assets/images/characters/DW.png'">
-                </div>
-                <div class="info-box">
-                    <div class="name" id="guild-name">-</div>
-                    <div class="sub-info">CLAN LÍDER</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-value" id="guild-val">0</div>
-                    <div class="stat-unit">SCORE</div>
-                </div>
-            </div>
-
-            <!-- ASESINO DE ÉLITE -->
-            <div class="hall-card">
-                <span class="category-label">ASESINO DE ÉLITE</span>
-                <div class="avatar-container">
-                    <img id="pvp-img" src="../assets/images/characters/DK.png" class="avatar-img">
-                </div>
-                <div class="info-box">
-                    <div class="name" id="pvp-name">-</div>
-                    <div class="sub-info">MÁS PVP KILLS</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-value" id="pvp-val">0</div>
-                    <div class="stat-unit">KILLS</div>
-                </div>
-            </div>
+            <!-- Bloques cargados vía JS -->
         </div>
 
         <div class="footer">
@@ -151,46 +90,72 @@
     </div>
 
     <script>
-        const charImages = {
-            0: 'DW.png', 1: 'SM.png', 2: 'GM.png', 3: 'SW.png',
-            16: 'DK.png', 17: 'BK.png', 18: 'BM.png', 19: 'DRK.png',
-            32: 'ELF.png', 33: 'ME.png', 34: 'HE.png', 35: 'NE.png',
-            48: 'MG.png', 50: 'DM.png', 54: 'MK.png',
-            64: 'DL.png', 66: 'LE.png', 70: 'EL.png',
-            80: 'SUM.png', 81: 'BS.png', 82: 'DSM.png', 83: 'DSK.png',
-            96: 'RF.png', 98: 'FM.png', 102: 'FB.png'
+        const classMap = {
+            0: { folder: 'SM', icon: 'dw-icon.png' },
+            1: { folder: 'SM', icon: 'dw-icon.png' },
+            2: { folder: 'SM', icon: 'dw-icon.png' },
+            16: { folder: 'DK', icon: 'dk-icon.png' },
+            17: { folder: 'DK', icon: 'dk-icon.png' },
+            18: { folder: 'DK', icon: 'dk-icon.png' },
+            32: { folder: 'FAIRY ELF', icon: 'elf-icon.png' },
+            33: { folder: 'FAIRY ELF', icon: 'elf-icon.png' },
+            48: { folder: 'MG', icon: 'mg icon.png' },
+            50: { folder: 'MG', icon: 'mg icon.png' },
+            64: { folder: 'DL', icon: 'dl icon.png' },
+            66: { folder: 'DL', icon: 'dl icon.png' },
+            80: { folder: 'SUMONNER', icon: 'sm icon.png' },
+            81: { folder: 'SUMONNER', icon: 'sm icon.png' },
+            96: { folder: 'RAGE', icon: 'rf icon.png' },
+            98: { folder: 'RAGE', icon: 'rf icon.png' }
         };
 
         async function update() {
             try {
-                const res = await fetch('/api/stats').catch(() => null);
-                if (!res || !res.ok) return;
+                const res = await fetch('/api/stats');
+                if (!res.ok) return;
                 const data = await res.json();
+
+                let html = '';
 
                 // 1. REY DE RESETS
                 if (data.topStrengthCharacters && data.topStrengthCharacters.length > 0) {
                     const topRR = data.topStrengthCharacters[0];
-                    document.getElementById('reset-name').innerText = topRR.name;
-                    document.getElementById('reset-val').innerText = topRR.resets;
-                    document.getElementById('reset-img').src = `../assets/images/characters/${charImages[topRR.classId] || 'DW.png'}`;
+                    html += createCard('REY DE RESETS', topRR.name, 'PUESTO #1 RR', topRR.resets, 'RESETS', topRR.classId);
                 }
 
                 // 2. CLAN SUPREMO
                 if (data.topGuild) {
-                    document.getElementById('guild-name').innerText = data.topGuild.G_Name;
-                    document.getElementById('guild-val').innerText = data.topGuild.G_Score;
+                    html += createCard('CLAN SUPREMO', data.topGuild.G_Name, 'CLAN LÍDER', data.topGuild.G_Score, 'SCORE', null, '../assets/images/characters/GUILD.png');
                 }
 
                 // 3. ASESINO DE ÉLITE
                 if (data.topPvP) {
-                    document.getElementById('pvp-name').innerText = data.topPvP.Name;
-                    document.getElementById('pvp-val').innerText = data.topPvP.PkCount || 0;
-                    // Aquí podrías añadir una lógica para el avatar del PvP si lo tienes
+                    html += createCard('ASESINO DE ÉLITE', data.topPvP.Name, 'MÁS PVP KILLS', data.topPvP.PkCount || 0, 'KILLS', data.topPvP.Class);
                 }
 
-            } catch (e) {
-                console.error("Fetch error:", e);
-            }
+                document.getElementById('hall').innerHTML = html;
+            } catch (e) { console.error(e); }
+        }
+
+        function createCard(category, name, sub, val, unit, classId, manualIcon) {
+            const info = classMap[classId] || classMap[0];
+            const iconPath = manualIcon || `../assets/images/chars/${info.folder}/${info.icon}`;
+            return `
+                <div class="hall-card">
+                    <span class="category-label">${category}</span>
+                    <div class="avatar-container">
+                        <img src="${iconPath}" class="avatar-img" onerror="this.src='../assets/images/characters/DW.png'">
+                    </div>
+                    <div class="info-box">
+                        <div class="name">${name}</div>
+                        <div class="sub-info">${sub}</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value">${val}</div>
+                        <div class="stat-unit">${unit}</div>
+                    </div>
+                </div>
+            `;
         }
 
         setInterval(update, 30000);
