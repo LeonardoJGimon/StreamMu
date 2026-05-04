@@ -16,19 +16,10 @@
 </head>
 <body>
     <div class="container">
-        <h1>🎥 Generador de Video Stinger (6s)</h1>
-        
-        <div class="instructions">
-            <strong>Instrucciones:</strong><br>
-            1. Haz clic en el botón.<br>
-            2. Selecciona la pestaña <strong>"Mu Neutro - Stinger Transition"</strong>.<br>
-            3. Espera a que el contador llegue a 0.<br>
-            4. El video se descargará automáticamente.
-        </div>
-
-        <div id="timer">06</div>
+        <h1>🎥 Generador de Video Stinger (Prueba 0s)</h1>
+        <div id="timer">04</div>
         <div id="status">Esperando interacción...</div>
-        <button id="btn">EMPEZAR GRABACIÓN (6 SEG)</button>
+        <button id="btn">GRABAR AHORA (4 SEG)</button>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/recordrtc@5.6.2/RecordRTC.js"></script>
@@ -41,12 +32,7 @@
             try {
                 btn.disabled = true;
                 const win = window.open('stinger.html', '_blank', 'width=1920,height=1080');
-                
-                if (!win) {
-                    alert("Bloqueador de ventanas detectado.");
-                    btn.disabled = false;
-                    return;
-                }
+                if (!win) { alert("Bloqueador de ventanas detectado."); btn.disabled = false; return; }
 
                 const stream = await navigator.mediaDevices.getDisplayMedia({
                     video: { width: 1920, height: 1080, frameRate: 60, cursor: 'never' },
@@ -61,9 +47,10 @@
 
                 recorder.startRecording();
                 
-                setTimeout(() => { win.postMessage('START_STINGER', '*'); }, 1000);
+                // INICIO INMEDIATO (0 segundos)
+                win.postMessage('START_STINGER', '*');
 
-                let secondsLeft = 6;
+                let secondsLeft = 4;
                 timer.innerText = secondsLeft;
                 status.innerText = "🔴 GRABANDO...";
 
@@ -73,20 +60,21 @@
                     if (secondsLeft <= 0) clearInterval(countdown);
                 }, 1000);
 
+                // DURACIÓN EXACTA (4 segundos)
                 setTimeout(() => {
                     recorder.stopRecording(() => {
                         const blob = recorder.getBlob();
                         const url = URL.createObjectURL(blob);
                         const a = document.createElement('a');
                         a.href = url;
-                        a.download = 'stinger_mu_neutro_pro.webm';
+                        a.download = 'stinger_mu_neutro_test.webm';
                         a.click();
                         stream.getTracks().forEach(t => t.stop());
                         win.close();
-                        status.innerText = "✅ ¡Descarga completada!";
+                        status.innerText = "✅ ¡Prueba terminada!";
                         btn.disabled = false;
                     });
-                }, 6000);
+                }, 4000);
 
             } catch (err) {
                 status.innerText = "Error: " + err.message;
