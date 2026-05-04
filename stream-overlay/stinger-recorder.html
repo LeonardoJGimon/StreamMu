@@ -72,6 +72,11 @@
                 });
 
                 recorder.startRecording();
+                
+                // ENVIAR SEÑAL DE INICIO AL STINGER
+                setTimeout(() => {
+                    win.postMessage('START_STINGER', '*');
+                }, 500);
 
                 // Esperar 4.5 segundos para asegurar la animación completa
                 setTimeout(() => {

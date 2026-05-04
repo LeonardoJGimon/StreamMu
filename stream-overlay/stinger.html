@@ -136,9 +136,19 @@
             }, 4000);
         }
 
-        // Auto-ejecución inmediata
+        // Escuchar la orden del grabador
+        window.addEventListener('message', (event) => {
+            if (event.data === 'START_STINGER') {
+                playStinger();
+            }
+        });
+
+        // Auto-ejecución solo si no hay un grabador esperando (opcional)
         window.onload = () => {
-            setTimeout(playStinger, 200);
+            // Si entras directo, sigue funcionando solo después de 1 segundo
+            if (window.opener === null) {
+                setTimeout(playStinger, 1000);
+            }
         };
     </script>
 </body>
