@@ -28,11 +28,38 @@
             align-items: stretch;
             gap: 0;
             padding: 0;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(0, 0, 0, 0.85);
             border: 1px solid rgba(157, 10, 14, 0.4);
             backdrop-filter: blur(8px);
             width: fit-content;
             box-shadow: 0 0 30px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden; /* Necesario para el brillo */
+        }
+
+        /* EFECTO DE BRILLO (SHIMMER) */
+        .linear-container::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -150%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(
+                to right,
+                transparent 0%,
+                rgba(255, 255, 255, 0.05) 50%,
+                transparent 100%
+            );
+            transform: skewX(-25deg);
+            animation: shimmerEffect 12s infinite linear;
+            pointer-events: none;
+        }
+
+        @keyframes shimmerEffect {
+            0% { left: -150%; }
+            20% { left: 150%; }
+            100% { left: 150%; }
         }
 
         .widget-header {
@@ -44,6 +71,8 @@
             align-items: center;
             border-right: 2px solid var(--gold);
             min-width: 120px;
+            position: relative;
+            z-index: 2;
         }
 
         .header-label {
@@ -62,6 +91,12 @@
             letter-spacing: 3px;
             white-space: nowrap;
             text-shadow: 0 0 10px rgba(192, 163, 117, 0.5);
+            animation: titlePulse 4s infinite ease-in-out;
+        }
+
+        @keyframes titlePulse {
+            0%, 100% { opacity: 0.8; text-shadow: 0 0 10px rgba(192, 163, 117, 0.3); }
+            50% { opacity: 1; text-shadow: 0 0 20px rgba(192, 163, 117, 0.7); }
         }
 
         .cards-wrapper {
