@@ -198,8 +198,16 @@
             if (lastChars.length > 0) render(lastChars);
         }, 1000);
 
-        setInterval(update, 10000);
+        setInterval(update, 3000); // Revisar cada 3 segundos para máxima velocidad
         update();
+
+        // MODO PRUEBA: Si la URL tiene ?test=1, dispara una alerta ahora
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('test')) {
+            setTimeout(() => {
+                triggerAlert({ name: 'TEST_HERO', classId: 16, date: new Date().toISOString() });
+            }, 2000);
+        }
     </script>
 </body>
 </html>
