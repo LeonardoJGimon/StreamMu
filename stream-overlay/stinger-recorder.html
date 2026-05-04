@@ -7,69 +7,52 @@
         body { background: #111; color: white; font-family: sans-serif; text-align: center; padding: 20px; }
         .container { max-width: 800px; margin: 0 auto; background: #222; padding: 30px; border-radius: 10px; border: 1px solid #444; }
         #status { font-size: 18px; color: #c0a375; margin: 20px 0; padding: 10px; background: #000; border-radius: 5px; }
+        #timer { font-size: 40px; font-weight: bold; color: #9d0a0e; margin: 10px; }
         button { padding: 15px 30px; font-size: 18px; cursor: pointer; background: #9d0a0e; color: white; border: none; border-radius: 5px; transition: 0.3s; }
         button:hover { background: #ff2e2e; }
         button:disabled { background: #555; cursor: not-allowed; }
         .instructions { text-align: left; margin: 20px 0; font-size: 14px; color: #aaa; line-height: 1.6; }
-        #preview-container { margin-top: 20px; border: 1px solid #9d0a0e; display: none; }
-        iframe { width: 100%; height: 450px; border: none; }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>🎥 Generador de Video Stinger</h1>
+        <h1>🎥 Generador de Video Stinger (15s)</h1>
         
         <div class="instructions">
             <strong>Instrucciones:</strong><br>
-            1. Haz clic en el botón de abajo.<br>
-            2. Tu navegador abrirá una ventana de <strong>"Compartir pantalla"</strong>.<br>
-            3. Selecciona la pestaña que dice <strong>"Mu Neutro - Stinger Transition"</strong> (se abrirá automáticamente).<br>
-            4. No muevas nada, la grabación durará 4 segundos y se descargará sola.
+            1. Haz clic en el botón.<br>
+            2. Selecciona la pestaña <strong>"Mu Neutro - Stinger Transition"</strong>.<br>
+            3. Espera a que el contador llegue a 0.<br>
+            4. El video se descargará automáticamente.
         </div>
 
+        <div id="timer">00</div>
         <div id="status">Esperando interacción...</div>
-        <button id="btn">EMPEZAR GRABACIÓN</button>
-
-        <div id="preview-container">
-            <p>Grabando esta ventana:</p>
-            <iframe id="stinger-iframe" src="stinger.html"></iframe>
-        </div>
+        <button id="btn">EMPEZAR GRABACIÓN (15 SEG)</button>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/recordrtc@5.6.2/RecordRTC.js"></script>
     <script>
         const btn = document.getElementById('btn');
         const status = document.getElementById('status');
-        const preview = document.getElementById('preview-container');
+        const timer = document.getElementById('timer');
 
         btn.onclick = async () => {
             try {
-                status.innerText = "Paso 1: Selecciona la pestaña del Stinger en el cuadro que aparecerá...";
                 btn.disabled = true;
-
-                // Abrir el stinger en una ventana nueva
                 const win = window.open('stinger.html', '_blank', 'width=1920,height=1080');
                 
                 if (!win) {
-                    alert("¡Bloqueador de ventanas detectado! Por favor, permite las ventanas emergentes para este sitio y vuelve a intentarlo.");
+                    alert("Bloqueador de ventanas detectado.");
                     btn.disabled = false;
-                    status.innerText = "Error: Ventana bloqueada.";
                     return;
                 }
 
-                // Capturar pantalla ocultando el cursor
                 const stream = await navigator.mediaDevices.getDisplayMedia({
-                    video: { 
-                        width: 1920, 
-                        height: 1080, 
-                        frameRate: 60,
-                        cursor: 'never' 
-                    },
+                    video: { width: 1920, height: 1080, frameRate: 60, cursor: 'never' },
                     audio: false
                 });
 
-                status.innerText = "🔴 GRABANDO... Mantén abierta la ventana del Stinger.";
-                
                 const recorder = new RecordRTC(stream, {
                     type: 'video',
                     mimeType: 'video/webm;codecs=vp9',
@@ -78,34 +61,34 @@
 
                 recorder.startRecording();
                 
-                // ENVIAR SEÑAL DE INICIO AL STINGER (con pequeño delay extra)
-                setTimeout(() => {
-                    win.postMessage('START_STINGER', '*');
+                setTimeout(() => { win.postMessage('START_STINGER', '*'); }, 1000);
+
+                let secondsLeft = 15;
+                timer.innerText = secondsLeft;
+                status.innerText = "🔴 GRABANDO...";
+
+                const countdown = setInterval(() => {
+                    secondsLeft--;
+                    timer.innerText = (secondsLeft < 10 ? '0' : '') + secondsLeft;
+                    if (secondsLeft <= 0) clearInterval(countdown);
                 }, 1000);
 
-                // Esperar 10 segundos para asegurar que termine de abrirse
                 setTimeout(() => {
                     recorder.stopRecording(() => {
                         const blob = recorder.getBlob();
                         const url = URL.createObjectURL(blob);
-                        
-                        status.innerText = "✅ ¡Grabación finalizada! Descargando archivo...";
-                        
                         const a = document.createElement('a');
                         a.href = url;
-                        a.download = 'stinger_mu_neutro.webm';
-                        document.body.appendChild(a);
+                        a.download = 'stinger_mu_neutro_pro.webm';
                         a.click();
-                        
-                        // Limpieza
                         stream.getTracks().forEach(t => t.stop());
                         win.close();
+                        status.innerText = "✅ ¡Descarga completada!";
                         btn.disabled = false;
                     });
-                }, 4500);
+                }, 15000);
 
             } catch (err) {
-                console.error(err);
                 status.innerText = "Error: " + err.message;
                 btn.disabled = false;
             }
