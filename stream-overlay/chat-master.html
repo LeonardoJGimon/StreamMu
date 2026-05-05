@@ -11,7 +11,6 @@
         :root {
             --crimson: #9d0a0e;
             --gold: #c0a375;
-            --panel-bg: rgba(0, 0, 0, 0.85);
             --border-glow: rgba(157, 10, 14, 0.6);
         }
 
@@ -33,12 +32,11 @@
             width: 98vw;
             height: 98vh;
             max-width: 600px;
-            background: var(--panel-bg);
+            background: transparent;
             border: 2px solid var(--border-glow);
             display: flex;
             flex-direction: column;
-            backdrop-filter: blur(12px);
-            box-shadow: 0 0 30px rgba(0,0,0,0.8);
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
             margin: auto;
         }
 
@@ -79,7 +77,7 @@
             position: relative;
             width: 100%;
             overflow: hidden;
-            background: rgba(0,0,0,0.2);
+            background: transparent;
         }
 
         .chat-iframe {
