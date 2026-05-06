@@ -166,6 +166,10 @@
 </head>
 <body>
 
+    <div id="test-btn" onclick="triggerTest()" style="position: fixed; bottom: 20px; left: 20px; z-index: 1000; background: rgba(157, 10, 14, 0.3); border: 1px solid var(--gold); color: var(--gold); padding: 8px 15px; cursor: pointer; font-family: 'Exocet', serif; font-size: 0.7rem; letter-spacing: 2px; transition: 0.3s; opacity: 0.3; border-radius: 4px; text-transform: uppercase;" onmouseover="this.style.opacity=1" onmouseout="this.style.opacity=0.3">
+        Test Alert (T)
+    </div>
+
     <div id="alert-container">
         <div class="particles"></div>
         <div class="flash-impact" id="flash"></div>
@@ -257,6 +261,23 @@
                 }, 600);
             }, 7000);
         }
+
+        // Función para disparar un test manual
+        function triggerTest() {
+            if (isDisplaying) return;
+            const classes = Object.keys(charData);
+            const randomClass = classes[Math.floor(Math.random() * classes.length)];
+            const dummyChar = {
+                name: 'TEST_WARRIOR',
+                classId: parseInt(randomClass)
+            };
+            triggerAlert(dummyChar);
+        }
+
+        // Tecla T para test
+        window.addEventListener('keydown', (e) => {
+            if (e.key.toLowerCase() === 't') triggerTest();
+        });
 
         setInterval(checkAlerts, 10000);
         checkAlerts();
