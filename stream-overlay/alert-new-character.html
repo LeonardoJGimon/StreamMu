@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mu Neutro - Alerta Nítida</title>
+    <title>Mu Neutro - Alerta Nivel</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @font-face {
@@ -38,16 +38,15 @@
             height: 100%;
         }
 
-        /* PERSONAJE OPTIMIZADO PARA NO PIXELAR */
+        /* PERSONAJE */
         .char-container {
             position: relative;
-            width: 320px; /* Reducido para mayor nitidez */
+            width: 320px;
             height: 320px;
             margin-bottom: -40px;
             z-index: 5;
             opacity: 0;
             transform: translateY(80px);
-            /* Mejora de renderizado */
             image-rendering: -webkit-optimize-contrast;
             image-rendering: auto;
         }
@@ -73,13 +72,25 @@
 
         .red-bar {
             position: absolute;
-            width: 150px; height: 35px;
+            width: 130px; height: 35px;
             background: linear-gradient(to right, var(--crimson), var(--crimson-bright));
             z-index: 1;
             transform: scaleX(0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .bar-l { right: 100%; margin-right: -30px; transform: skewX(-45deg) scaleX(0); transform-origin: right; }
         .bar-r { left: 100%; margin-left: -30px; transform: skewX(45deg) scaleX(0); transform-origin: left; }
+
+        .lvl-text {
+            color: #fff;
+            font-size: 1rem;
+            font-weight: bold;
+            letter-spacing: 2px;
+            transform: skewX(45deg); /* Compensa el skew de la barra */
+            text-shadow: 0 0 5px #000;
+        }
 
         .banner-main {
             position: relative;
@@ -163,13 +174,17 @@
         </div>
 
         <div class="banner-wrapper">
-            <div class="red-bar bar-l" id="bar-l"></div>
+            <div class="red-bar bar-l" id="bar-l">
+                <span class="lvl-text">LVL <span id="alert-lvl">1</span></span>
+            </div>
             <div class="banner-main" id="b-main">
                 <span class="label-new" id="l-new">NUEVO JUGADOR</span>
                 <h1 id="alert-name" class="player-name">NAME</h1>
                 <div id="alert-class" class="player-class">CLASS</div>
             </div>
-            <div class="red-bar bar-r" id="bar-r"></div>
+            <div class="red-bar bar-r" id="bar-r">
+                <span class="lvl-text" style="transform: skewX(-45deg);">MU</span>
+            </div>
         </div>
     </div>
 
@@ -209,6 +224,7 @@
                 barR: document.getElementById('bar-r'),
                 name: document.getElementById('alert-name'),
                 class: document.getElementById('alert-class'),
+                lvl: document.getElementById('alert-lvl'),
                 lNew: document.getElementById('l-new'),
                 img: document.getElementById('alert-img')
             };
@@ -216,6 +232,7 @@
             const info = charData[char.classId] || charData[0];
             els.name.innerText = char.name;
             els.class.innerText = info.name;
+            els.lvl.innerText = char.level || char.cLevel || 1;
             els.img.src = `../assets/images/chars/${info.folder}/${info.img}`;
 
             els.cont.style.display = 'flex';
@@ -239,7 +256,7 @@
 
         function triggerTest() {
             if (isDisplaying) return;
-            trigger({ name: 'LLAMA', classId: 96 });
+            trigger({ name: 'NUEVO_HÉROE', classId: 16, level: 1 });
         }
 
         window.onkeydown = (e) => { if(e.key.toLowerCase()==='t') triggerTest(); };
