@@ -1,9 +1,10 @@
 (function() {
     let currentVersion = null;
-    const checkInterval = 3000; // Revisar cada 3 segundos (Ultra rápido)
+    const checkInterval = 3000;
+    // Obtenemos el nombre del archivo actual (ej: ranking.html)
+    const myName = window.location.pathname.split('/').pop() || 'index.html';
 
     async function checkVersion() {
-        // Probamos ambas rutas: absoluta (para servidores) y relativa (para archivos locales OBS)
         const paths = ['/version.json', '../version.json', './version.json'];
         
         for (let path of paths) {
@@ -12,18 +13,20 @@
                 if (!res.ok) continue;
                 
                 const data = await res.json();
-                if (!data || !data.version) continue;
+                if (!data) continue;
+
+                // Buscamos la versión específica de este archivo o la global
+                const newVersion = data[myName] || data.global || null;
 
                 if (currentVersion === null) {
-                    currentVersion = data.version;
-                    console.log("Sistema de Auto-Refresco Activo. Versión actual:", currentVersion);
-                } else if (currentVersion !== data.version) {
-                    console.log("¡Cambio detectado! Nueva versión:", data.version, "Recargando...");
-                    // Pequeña pausa para asegurar que el servidor terminó de subir todo
+                    currentVersion = newVersion;
+                    console.log(`Sistema de Auto-Refresco Activo para ${myName}. Versión actual:`, currentVersion);
+                } else if (newVersion && currentVersion !== newVersion) {
+                    console.log(`[${myName}] Nueva versión detectada: ${newVersion}. Recargando...`);
                     setTimeout(() => window.location.reload(true), 500);
                     return;
                 }
-                break; // Si encontramos el archivo, no seguimos probando rutas
+                break;
             } catch (e) {
                 // Silencioso para no ensuciar la consola
             }
