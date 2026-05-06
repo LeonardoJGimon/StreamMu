@@ -34,32 +34,7 @@
             width: fit-content;
             box-shadow: 0 0 30px rgba(0,0,0,0.5);
             position: relative;
-            overflow: hidden; /* Necesario para el brillo */
-        }
-
-        /* EFECTO DE BRILLO (SHIMMER) */
-        .linear-container::after {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -150%;
-            width: 50%;
-            height: 100%;
-            background: linear-gradient(
-                to right,
-                transparent 0%,
-                rgba(255, 255, 255, 0.05) 50%,
-                transparent 100%
-            );
-            transform: skewX(-25deg);
-            animation: shimmerEffect 12s infinite linear;
-            pointer-events: none;
-        }
-
-        @keyframes shimmerEffect {
-            0% { left: -150%; }
-            20% { left: 150%; }
-            100% { left: 150%; }
+            overflow: hidden;
         }
 
         .widget-header {
@@ -72,16 +47,7 @@
             border-right: 2px solid var(--gold);
             min-width: 120px;
             position: relative;
-            z-index: 2;
-        }
-
-        .header-label {
-            font-family: 'Alegreya', serif;
-            font-size: 0.7rem;
-            color: #fff;
-            letter-spacing: 2px;
-            opacity: 0.8;
-            text-transform: uppercase;
+            z-index: 10;
         }
 
         .header-title {
@@ -91,12 +57,6 @@
             letter-spacing: 3px;
             white-space: nowrap;
             text-shadow: 0 0 10px rgba(192, 163, 117, 0.5);
-            animation: titlePulse 4s infinite ease-in-out;
-        }
-
-        @keyframes titlePulse {
-            0%, 100% { opacity: 0.8; text-shadow: 0 0 10px rgba(192, 163, 117, 0.3); }
-            50% { opacity: 1; text-shadow: 0 0 20px rgba(192, 163, 117, 0.7); }
         }
 
         .cards-wrapper {
@@ -104,19 +64,45 @@
             flex-direction: row;
             gap: 15px;
             padding: 15px 20px;
+            position: relative;
         }
 
         .hall-card {
             display: grid; 
             grid-template-columns: 60px 1fr 100px; 
             gap: 15px;
+            width: 320px; /* Ancho fijo para la animación */
             min-width: 320px;
             align-items: center; 
             background: var(--row-bg); 
             padding: 12px 20px;
             position: relative; 
             border: 1px solid rgba(157, 10, 14, 0.2);
-            animation: fadeIn 0.6s ease-out forwards;
+            box-sizing: border-box;
+            transition: all 0.8s ease;
+        }
+
+        /* ANIMACIÓN DE EMPUJE (SHIFT) */
+        .hall-card.new-entry {
+            animation: slideInWidth 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        @keyframes slideInWidth {
+            from { width: 0; min-width: 0; opacity: 0; margin-right: -15px; transform: translateX(-50px); }
+            to { width: 320px; min-width: 320px; opacity: 1; margin-right: 0; transform: translateX(0); }
+        }
+
+        .hall-card.removing {
+            animation: slideOutWidth 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        @keyframes slideOutWidth {
+            from { width: 320px; min-width: 320px; opacity: 1; }
+            to { width: 0; min-width: 0; opacity: 0; margin-left: -15px; transform: translateX(50px); }
         }
 
         .category-label {
@@ -127,28 +113,26 @@
         }
 
         .avatar-container { width: 55px; height: 55px; position: relative; display: flex; align-items: center; justify-content: center; }
-        .avatar-img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 0 5px rgba(0,0,0,0.5)); }
+        .avatar-img { width: 100%; height: 100%; object-fit: contain; }
         
         .info-box { display: flex; flex-direction: column; gap: 2px; }
-        .name { font-family: 'Exocet', serif; font-size: 1.2rem; color: #fff; text-shadow: 0 2px 5px #000; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .name { font-family: 'Exocet', serif; font-size: 1.2rem; color: #fff; text-shadow: 0 2px 5px #000; }
         .sub-info { font-size: 0.75rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; }
 
         .stat-box { text-align: right; }
         .stat-value { font-family: 'Exocet', serif; font-size: 1.1rem; color: #fff; }
         .stat-unit { font-size: 0.7rem; color: var(--crimson); display: block; font-weight: bold; }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
     </style>
 </head>
 <body>
 
     <div class="linear-container">
         <div class="widget-header">
-            <div class="header-label">NUEVOS</div>
+            <div style="font-size: 0.7rem; color: #fff; opacity: 0.8; letter-spacing: 2px;">NUEVOS</div>
             <div class="header-title">GUERREROS</div>
         </div>
         <div class="cards-wrapper" id="list">
-            <!-- Tarjetas horizontales -->
+            <!-- Tarjetas dinámicas -->
         </div>
     </div>
 
@@ -163,6 +147,7 @@
             96: { folder: 'RAGE', icon: 'rf icon.png' }
         };
 
+        const labels = ['NUEVA CREACIÓN', 'GUERRERO RECIENTE', 'ALMA DESPERTADA', 'SANGRE NUEVA'];
         let serverTime = new Date();
         let lastChars = [];
 
@@ -179,61 +164,89 @@
                 if (!res.ok) return;
                 const data = await res.json();
                 serverTime = new Date(data.timestamp);
-                const chars = (data.recentCharacters || []).slice(0, 4);
+                const chars = (data.recentCharacters || []).slice(0, 3);
 
-                render(chars);
+                if (lastChars.length === 0) {
+                    initialRender(chars);
+                } else if (chars[0].name !== lastChars[0].name) {
+                    shiftRender(chars[0]);
+                } else {
+                    refreshData(chars);
+                }
                 lastChars = chars;
             } catch (e) { console.error(e); }
         }
 
-        function render(chars) {
+        function createCardHtml(c, index, extraClass = '') {
+            const info = classMap[c.classId] || classMap[0];
+            const iconPath = `../assets/images/chars/${info.folder}/${info.icon}`;
+            return `
+                <div class="hall-card ${extraClass}" data-name="${c.name}">
+                    <span class="category-label">${labels[index] || 'WARRIOR'}</span>
+                    <div class="avatar-container">
+                        <img src="${iconPath}" class="avatar-img">
+                    </div>
+                    <div class="info-box">
+                        <div class="name">${c.name}</div>
+                        <div class="sub-info">Nivel ${c.level} / ${c.resets} RR</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value time-ago">${formatTimeAgo(c.date)}</div>
+                        <div class="stat-unit">ANTIGÜEDAD</div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function initialRender(chars) {
             const listEl = document.getElementById('list');
-            const labels = ['NUEVA CREACIÓN', 'GUERRERO RECIENTE', 'ALMA DESPERTADA', 'SANGRE NUEVA'];
+            listEl.innerHTML = chars.map((c, i) => createCardHtml(c, i)).join('');
+        }
+
+        function shiftRender(newChar) {
+            const listEl = document.getElementById('list');
+            const cards = listEl.querySelectorAll('.hall-card');
             
-            if (listEl.children.length !== chars.length) {
-                let html = '';
-                chars.forEach((c, i) => {
-                    const info = classMap[c.classId] || classMap[0];
-                    const iconPath = `../assets/images/chars/${info.folder}/${info.icon}`;
-                    html += `
-                        <div class="hall-card" id="card-${i}">
-                            <span class="category-label">${labels[i] || 'WARRIOR'}</span>
-                            <div class="avatar-container">
-                                <img src="${iconPath}" class="avatar-img" onerror="this.src='../assets/images/characters/DW.png'">
-                            </div>
-                            <div class="info-box">
-                                <div class="name" id="name-${i}">${c.name}</div>
-                                <div class="sub-info" id="info-${i}">Nivel ${c.level} / ${c.resets} RR</div>
-                            </div>
-                            <div class="stat-box">
-                                <div class="stat-value" id="time-${i}">${formatTimeAgo(c.date)}</div>
-                                <div class="stat-unit">ANTIGÜEDAD</div>
-                            </div>
-                        </div>
-                    `;
-                });
-                listEl.innerHTML = html;
-            } else {
-                chars.forEach((c, i) => {
-                    const nameEl = document.getElementById(`name-${i}`);
-                    const infoEl = document.getElementById(`info-${i}`);
-                    const timeEl = document.getElementById(`time-${i}`);
-                    
-                    if (nameEl && nameEl.innerText !== c.name) nameEl.innerText = c.name;
-                    if (infoEl) infoEl.innerText = `Nivel ${c.level} / ${c.resets} RR`;
-                    if (timeEl) timeEl.innerText = formatTimeAgo(c.date);
-                });
+            // 1. Crear nueva tarjeta (Pos 1)
+            const tempDiv = document.createElement('div');
+            tempDiv.innerHTML = createCardHtml(newChar, 0, 'new-entry');
+            const newCard = tempDiv.firstElementChild;
+            
+            // 2. Insertar al principio
+            listEl.insertBefore(newCard, listEl.firstChild);
+            
+            // 3. Marcar la última para remover
+            if (cards.length >= 3) {
+                const lastCard = cards[cards.length - 1];
+                lastCard.classList.add('removing');
+                setTimeout(() => lastCard.remove(), 800);
             }
+
+            // 4. Actualizar etiquetas de las que se quedaron
+            setTimeout(() => {
+                const currentCards = listEl.querySelectorAll('.hall-card:not(.removing)');
+                currentCards.forEach((card, i) => {
+                    card.querySelector('.category-label').innerText = labels[i];
+                });
+            }, 100);
+        }
+
+        function refreshData(chars) {
+            const listEl = document.getElementById('list');
+            const cards = listEl.querySelectorAll('.hall-card:not(.removing)');
+            chars.forEach((c, i) => {
+                if (cards[i]) {
+                    const timeEl = cards[i].querySelector('.time-ago');
+                    if (timeEl) timeEl.innerText = formatTimeAgo(c.date);
+                    const infoEl = cards[i].querySelector('.sub-info');
+                    if (infoEl) infoEl.innerText = `Nivel ${c.level} / ${c.resets} RR`;
+                }
+            });
         }
 
         setInterval(() => {
             serverTime.setSeconds(serverTime.getSeconds() + 1);
-            if (lastChars.length > 0) {
-                lastChars.forEach((c, i) => {
-                    const timeEl = document.getElementById(`time-${i}`);
-                    if (timeEl) timeEl.innerText = formatTimeAgo(c.date);
-                });
-            }
+            refreshData(lastChars);
         }, 1000);
 
         setInterval(update, 10000);
