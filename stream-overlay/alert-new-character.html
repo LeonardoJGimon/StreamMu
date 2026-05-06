@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mu Neutro - Alerta Jugador</title>
+    <title>Mu Neutro - Alerta Responsiva</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @font-face {
@@ -57,33 +57,39 @@
             filter: drop-shadow(0 0 20px var(--crimson-bright));
         }
 
-        /* BANNER */
+        /* BANNER RESPONSIVO */
         .banner-wrapper {
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 900px;
+            /* El wrapper ahora envuelve el contenido dinámicamente */
+            width: auto;
+            max-width: 95vw;
             height: 160px;
         }
 
         .red-bar {
             position: absolute;
-            width: 200px; height: 35px;
+            width: 150px; height: 35px;
             background: linear-gradient(to right, var(--crimson), var(--crimson-bright));
             z-index: 1;
             transform: scaleX(0);
         }
-        .bar-l { left: 0; transform: skewX(-45deg) scaleX(0); }
-        .bar-r { right: 0; transform: skewX(45deg) scaleX(0); }
+        /* Ajustadas para que queden en los extremos del banner dinámico */
+        .bar-l { right: 100%; margin-right: -40px; transform: skewX(-45deg) scaleX(0); transform-origin: right; }
+        .bar-r { left: 100%; margin-left: -40px; transform: skewX(45deg) scaleX(0); transform-origin: left; }
 
         .banner-main {
             position: relative;
-            width: 650px; /* Más ancho para que quepa el nombre */
+            width: fit-content; /* ANCHO DINÁMICO */
+            min-width: 400px;
+            padding: 10px 80px; /* Espacio para que el nombre respire */
             height: 110px;
             background: #000;
             border-bottom: 4px solid var(--crimson-bright);
-            clip-path: polygon(8% 0%, 92% 0%, 100% 100%, 0% 100%);
+            /* Clip-path responsivo: mantiene 50px de ángulo en cada lado */
+            clip-path: polygon(50px 0%, calc(100% - 50px) 0%, 100% 100%, 0% 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -91,6 +97,7 @@
             z-index: 10;
             transform: scaleY(0);
             box-shadow: 0 15px 40px rgba(0,0,0,0.9);
+            white-space: nowrap; /* Evita que el nombre salte de línea */
         }
 
         .banner-main.active { animation: expandY 0.4s ease-out forwards; }
@@ -101,7 +108,7 @@
         @keyframes shootL { to { transform: skewX(-45deg) scaleX(1); } }
         @keyframes shootR { to { transform: skewX(45deg) scaleX(1); } }
 
-        /* TEXTOS AJUSTADOS */
+        /* TEXTOS */
         .label-new {
             color: var(--crimson-bright);
             font-size: 1.1rem;
@@ -212,7 +219,7 @@
             els.img.src = `../assets/images/chars/${info.folder}/${info.img}`;
 
             els.cont.style.display = 'flex';
-            Object.values(els).forEach(el => { if(el.classList) el.classList.remove('active', 'exit-alert'); });
+            Object.values(els).forEach(el => { if(el.classList) el.classList.remove('active'); });
 
             setTimeout(() => {
                 els.main.classList.add('active');
@@ -232,7 +239,8 @@
 
         function triggerTest() {
             if (isDisplaying) return;
-            trigger({ name: 'LEONARDO_GIMON', classId: 0 });
+            // Test con nombre largo para probar responsividad
+            trigger({ name: 'GUERRERO_MU_NEUTRO_LEGEN', classId: 16 });
         }
 
         window.onkeydown = (e) => { if(e.key.toLowerCase()==='t') triggerTest(); };
