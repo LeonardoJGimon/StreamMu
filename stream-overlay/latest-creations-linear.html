@@ -71,7 +71,7 @@
             display: grid; 
             grid-template-columns: 60px 1fr 100px; 
             gap: 15px;
-            width: 320px; /* Ancho fijo para la animación */
+            width: 320px;
             min-width: 320px;
             align-items: center; 
             background: var(--row-bg); 
@@ -82,7 +82,6 @@
             transition: all 0.8s ease;
         }
 
-        /* ANIMACIÓN DE EMPUJE (SHIFT) */
         .hall-card.new-entry {
             animation: slideInWidth 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
             overflow: hidden;
@@ -160,21 +159,26 @@
 
         async function update() {
             try {
+                // Cache buster con timestamp
                 const res = await fetch('/api/stats?t=' + Date.now());
                 if (!res.ok) return;
                 const data = await res.json();
                 serverTime = new Date(data.timestamp);
                 const chars = (data.recentCharacters || []).slice(0, 3);
 
+                if (chars.length === 0) return;
+
                 if (lastChars.length === 0) {
                     initialRender(chars);
-                } else if (chars[0].name !== lastChars[0].name) {
+                } else if (chars[0].name.trim() !== lastChars[0].name.trim()) {
+                    // Si el nombre del primer personaje cambió, activamos el desplazamiento
                     shiftRender(chars[0]);
                 } else {
+                    // Si solo cambió el nivel o tiempo, refrescamos los datos sin mover nada
                     refreshData(chars);
                 }
                 lastChars = chars;
-            } catch (e) { console.error(e); }
+            } catch (e) { console.error("Error en update:", e); }
         }
 
         function createCardHtml(c, index, extraClass = '') {
@@ -207,26 +211,27 @@
             const listEl = document.getElementById('list');
             const cards = listEl.querySelectorAll('.hall-card');
             
-            // 1. Crear nueva tarjeta (Pos 1)
+            // 1. Crear nueva tarjeta
             const tempDiv = document.createElement('div');
             tempDiv.innerHTML = createCardHtml(newChar, 0, 'new-entry');
             const newCard = tempDiv.firstElementChild;
             
-            // 2. Insertar al principio
+            // 2. Insertar al inicio para el efecto "push"
             listEl.insertBefore(newCard, listEl.firstChild);
             
-            // 3. Marcar la última para remover
+            // 3. Remover el excedente (si hay más de 3)
             if (cards.length >= 3) {
                 const lastCard = cards[cards.length - 1];
                 lastCard.classList.add('removing');
                 setTimeout(() => lastCard.remove(), 800);
             }
 
-            // 4. Actualizar etiquetas de las que se quedaron
+            // 4. Corregir etiquetas de posición
             setTimeout(() => {
                 const currentCards = listEl.querySelectorAll('.hall-card:not(.removing)');
                 currentCards.forEach((card, i) => {
-                    card.querySelector('.category-label').innerText = labels[i];
+                    const label = card.querySelector('.category-label');
+                    if (label) label.innerText = labels[i] || 'WARRIOR';
                 });
             }, 100);
         }
@@ -240,18 +245,20 @@
                     if (timeEl) timeEl.innerText = formatTimeAgo(c.date);
                     const infoEl = cards[i].querySelector('.sub-info');
                     if (infoEl) infoEl.innerText = `Nivel ${c.level} / ${c.resets} RR`;
+                    // Asegurar que el nombre esté actualizado si hubo micro-cambios
+                    const nameEl = cards[i].querySelector('.name');
+                    if (nameEl && nameEl.innerText !== c.name) nameEl.innerText = c.name;
                 }
             });
         }
 
         setInterval(() => {
             serverTime.setSeconds(serverTime.getSeconds() + 1);
-            refreshData(lastChars);
+            if (lastChars.length > 0) refreshData(lastChars);
         }, 1000);
 
-        setInterval(update, 10000);
+        setInterval(update, 5000); // Revisar cada 5 segundos
         update();
     </script>
-    <script src="auto-refresh.js"></script>
 </body>
 </html>
