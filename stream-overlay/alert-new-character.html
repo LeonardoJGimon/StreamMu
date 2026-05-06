@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mu Neutro - Alerta Nuevo Personaje</title>
+    <title>Mu Neutro - Alerta Nuevo Guerrero</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @font-face {
@@ -15,6 +15,7 @@
             --crimson: #9d0a0e;
             --crimson-bright: #ff2e2e;
             --gold: #c0a375;
+            --deep-bg: rgba(10, 5, 5, 0.95);
         }
 
         body, html {
@@ -34,113 +35,167 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            width: 100%;
-            height: 100%;
+            width: 800px;
+            height: 600px;
+            perspective: 1000px;
         }
 
-        /* EFECTO DE FLASH INICIAL */
-        .flash {
+        /* FONDO DE PARTÍCULAS (Simulado con gradientes y animación) */
+        .particles {
             position: absolute;
             inset: 0;
+            background: radial-gradient(circle, rgba(157, 10, 14, 0.1) 0%, transparent 70%);
+            z-index: 1;
+        }
+
+        /* FLASH DE IMPACTO */
+        .flash-impact {
+            position: absolute;
+            width: 100%; height: 100%;
             background: white;
+            border-radius: 50%;
+            filter: blur(50px);
             opacity: 0;
             z-index: 100;
             pointer-events: none;
         }
+        .flash-impact.active { animation: impactAnim 1s ease-out forwards; }
 
-        .flash.active {
-            animation: flashAnim 1.5s ease-out;
+        @keyframes impactAnim {
+            0% { transform: scale(0.1); opacity: 1; background: #fff; }
+            50% { transform: scale(1.5); opacity: 0.5; background: var(--crimson-bright); }
+            100% { transform: scale(2); opacity: 0; }
         }
 
-        @keyframes flashAnim {
-            0% { opacity: 1; }
-            30% { opacity: 0.8; background: var(--crimson-bright); }
-            100% { opacity: 0; }
-        }
-
-        /* CONTENIDO DE LA ALERTA */
-        .alert-content {
+        /* CUERPO DE LA ALERTA */
+        .alert-box {
+            position: relative;
             z-index: 10;
-            animation: contentIn 0.8s cubic-bezier(0.17, 0.89, 0.32, 1.49) forwards;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0;
+            transform: scale(0.8) translateY(50px);
         }
 
-        @keyframes contentIn {
-            0% { transform: scale(0.5); opacity: 0; filter: blur(20px); }
-            100% { transform: scale(1); opacity: 1; filter: blur(0); }
+        .alert-box.active {
+            animation: boxIn 0.8s cubic-bezier(0.17, 0.89, 0.32, 1.2) forwards;
+        }
+
+        @keyframes boxIn {
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        /* MARCO DEL PERSONAJE */
+        .avatar-frame {
+            position: relative;
+            width: 350px; height: 350px;
+            margin-bottom: 30px;
+        }
+
+        .avatar-frame::before {
+            content: ''; position: absolute; inset: -15px;
+            border: 2px solid var(--gold);
+            clip-path: polygon(0 15%, 15% 0, 85% 0, 100% 15%, 100% 85%, 85% 100%, 15% 100%, 0 85%);
+            box-shadow: inset 0 0 30px var(--crimson);
+            animation: borderPulse 2s infinite alternate;
+        }
+
+        @keyframes borderPulse {
+            from { opacity: 0.5; box-shadow: inset 0 0 20px var(--crimson); }
+            to { opacity: 1; box-shadow: inset 0 0 50px var(--crimson-bright); }
         }
 
         .char-avatar {
-            width: 300px;
-            height: 300px;
-            border: 5px solid var(--gold);
-            border-radius: 50%;
-            box-shadow: 0 0 100px var(--crimson-bright);
-            object-fit: cover;
-            background: #000;
-            margin-bottom: 20px;
+            width: 100%; height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(0 0 20px var(--crimson));
+            z-index: 5;
         }
 
-        .alert-label {
+        /* TEXTOS */
+        .label-top {
             color: #fff;
-            font-size: 1.5rem;
-            letter-spacing: 5px;
+            font-size: 1.2rem;
+            letter-spacing: 10px;
             text-transform: uppercase;
-            text-shadow: 0 0 20px var(--crimson);
-            margin-bottom: 5px;
+            margin-bottom: 10px;
+            opacity: 0.8;
+            text-shadow: 0 0 10px #000;
         }
 
         .char-name {
-            color: var(--gold);
-            font-size: 5rem;
-            letter-spacing: 15px;
+            font-size: 4.5rem;
+            background: linear-gradient(to bottom, #fff 20%, var(--gold) 50%, #8a6d3b 80%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 12px;
             text-transform: uppercase;
-            filter: drop-shadow(0 0 15px rgba(192, 163, 117, 0.6));
-            margin-bottom: 10px;
+            margin: 0;
+            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.8));
+            animation: textGlow 2s infinite alternate;
+        }
+
+        @keyframes textGlow {
+            from { filter: drop-shadow(0 0 5px rgba(192, 163, 117, 0.3)); }
+            to { filter: drop-shadow(0 0 20px rgba(192, 163, 117, 0.6)); }
         }
 
         .char-class {
-            color: #fff;
-            font-size: 1.2rem;
-            letter-spacing: 8px;
-            opacity: 0.8;
-            border-top: 1px solid var(--gold);
+            color: var(--crimson-bright);
+            font-size: 1.5rem;
+            letter-spacing: 5px;
+            margin-top: 10px;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-top: 1px solid rgba(192, 163, 117, 0.3);
             padding-top: 10px;
+            width: 100%;
+            text-align: center;
         }
 
-        /* SALIDA DE LA ALERTA */
-        .alert-content.exit {
-            animation: contentOut 0.8s ease-in forwards;
+        /* SALIDA */
+        .alert-box.exit {
+            animation: boxOut 0.6s ease-in forwards;
         }
 
-        @keyframes contentOut {
-            0% { transform: scale(1); opacity: 1; filter: blur(0); }
-            100% { transform: scale(1.5); opacity: 0; filter: blur(30px); }
+        @keyframes boxOut {
+            to { opacity: 0; transform: scale(1.2) translateY(-100px); filter: blur(20px); }
         }
     </style>
 </head>
 <body>
 
-    <div class="flash" id="flash-overlay"></div>
-
     <div id="alert-container">
-        <div id="alert-body" class="alert-content">
-            <div class="alert-label">UN NUEVO GUERRERO HA DESPERTADO</div>
-            <img id="alert-img" src="" class="char-avatar">
-            <div id="alert-name" class="char-name">-</div>
+        <div class="particles"></div>
+        <div class="flash-impact" id="flash"></div>
+        
+        <div id="alert-box" class="alert-box">
+            <span class="label-top">Un nuevo guerrero ha despertado</span>
+            
+            <div class="avatar-frame">
+                <img id="alert-img" src="" class="char-avatar">
+            </div>
+
+            <h1 id="alert-name" class="char-name">-</h1>
             <div id="alert-class" class="char-class">-</div>
         </div>
     </div>
 
     <script>
         const charData = {
-            0: { name: 'Dark Wizard', img: 'DW.png' }, 1: { name: 'Soul Master', img: 'SM.png' }, 2: { name: 'Grand Master', img: 'GM.png' },
-            16: { name: 'Dark Knight', img: 'DK.png' }, 17: { name: 'Blade Knight', img: 'BK.png' }, 18: { name: 'Blade Master', img: 'BM.png' },
-            32: { name: 'Fairy Elf', img: 'ELF.png' }, 33: { name: 'Muse Elf', img: 'ME.png' }, 34: { name: 'High Elf', img: 'HE.png' },
-            48: { name: 'Magic Gladiator', img: 'MG.png' }, 50: { name: 'Duel Master', img: 'DM.png' },
-            64: { name: 'Dark Lord', img: 'DL.png' }, 66: { name: 'Lord Emperor', img: 'LE.png' },
-            80: { name: 'Summoner', img: 'SUM.png' }, 81: { name: 'Bloody Summoner', img: 'BS.png' }, 82: { name: 'Dimension Master', img: 'DSM.png' },
-            96: { name: 'Rage Fighter', img: 'RF.png' }, 98: { name: 'Fist Master', img: 'FM.png' }
+            0: { name: 'Dark Wizard', folder: 'SM', img: 'dw-icon.png' },
+            1: { name: 'Soul Master', folder: 'SM', img: 'dw-icon.png' },
+            2: { name: 'Grand Master', folder: 'SM', img: 'dw-icon.png' },
+            16: { name: 'Dark Knight', folder: 'DK', img: 'dk-icon.png' },
+            17: { name: 'Blade Knight', folder: 'DK', img: 'dk-icon.png' },
+            18: { name: 'Blade Master', folder: 'DK', img: 'dk-icon.png' },
+            32: { name: 'Fairy Elf', folder: 'FAIRY ELF', img: 'elf-icon.png' },
+            33: { name: 'Muse Elf', folder: 'FAIRY ELF', img: 'elf-icon.png' },
+            48: { name: 'Magic Gladiator', folder: 'MG', img: 'mg icon.png' },
+            64: { name: 'Dark Lord', folder: 'DL', img: 'dl icon.png' },
+            80: { name: 'Summoner', folder: 'SUMONNER', img: 'sm icon.png' },
+            96: { name: 'Rage Fighter', folder: 'RAGE', img: 'rf icon.png' }
         };
 
         let lastCharacterName = null;
@@ -148,67 +203,61 @@
 
         async function checkAlerts() {
             if (isDisplaying) return;
-
             try {
-                const res = await fetch('/api/stats');
+                const res = await fetch('/api/stats?t=' + Date.now());
                 if (!res.ok) return;
                 const data = await res.json();
-                
                 if (!data.recentCharacters || data.recentCharacters.length === 0) return;
                 
                 const newest = data.recentCharacters[0];
 
-                // Si es la primera vez que cargamos, guardamos el nombre y no disparamos nada
                 if (lastCharacterName === null) {
                     lastCharacterName = newest.name;
                     return;
                 }
 
-                // Si el nombre más reciente es diferente al último que vimos, ¡HAY ALERTA!
                 if (newest.name !== lastCharacterName) {
                     lastCharacterName = newest.name;
                     triggerAlert(newest);
                 }
-
-            } catch (e) {
-                console.error("Alert fetch error:", e);
-            }
+            } catch (e) { console.error(e); }
         }
 
         function triggerAlert(char) {
             isDisplaying = true;
             const container = document.getElementById('alert-container');
-            const body = document.getElementById('alert-body');
-            const flash = document.getElementById('flash-overlay');
+            const box = document.getElementById('alert-box');
+            const flash = document.getElementById('flash');
             const nameEl = document.getElementById('alert-name');
             const classEl = document.getElementById('alert-class');
             const imgEl = document.getElementById('alert-img');
 
-            const info = charData[char.classId] || { name: 'Guerrero', img: 'DW.png' };
-
+            const info = charData[char.classId] || charData[0];
             nameEl.innerText = char.name;
             classEl.innerText = info.name;
-            imgEl.src = `../assets/images/characters/${info.img}`;
+            imgEl.src = `../assets/images/chars/${info.folder}/${info.icon}`;
 
-            // 1. Mostrar contenedor
             container.style.display = 'flex';
-            body.classList.remove('exit');
+            box.classList.remove('exit', 'active');
             
-            // 2. Disparar Flash
+            // Disparar impacto
             flash.classList.add('active');
-            setTimeout(() => flash.classList.remove('active'), 1500);
-
-            // 3. Esperar y quitar alerta
+            
             setTimeout(() => {
-                body.classList.add('exit');
+                box.classList.add('active');
+            }, 100);
+
+            // Tiempo en pantalla (7 segundos para mayor impacto)
+            setTimeout(() => {
+                box.classList.add('exit');
                 setTimeout(() => {
                     container.style.display = 'none';
+                    flash.classList.remove('active');
                     isDisplaying = false;
-                }, 800);
-            }, 5000); // La alerta dura 5 segundos en pantalla
+                }, 600);
+            }, 7000);
         }
 
-        // Revisar cada 10 segundos si hay personajes nuevos
         setInterval(checkAlerts, 10000);
         checkAlerts();
     </script>
