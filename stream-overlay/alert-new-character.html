@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mu Neutro - Alerta Angular</title>
+    <title>Mu Neutro - Alerta Jugador</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @font-face {
@@ -15,7 +15,6 @@
             --crimson: #800000;
             --crimson-bright: #ff0000;
             --gold: #c0a375;
-            --bg-dark: #0a0a0a;
         }
 
         body, html {
@@ -35,149 +34,116 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            width: 1000px;
-            height: 600px;
-        }
-
-        /* PERSONAJE AJUSTADO */
-        .char-container {
-            position: relative;
-            width: 400px;
-            height: 400px;
-            margin-bottom: -60px; /* Integración con el banner */
-            z-index: 5;
-            opacity: 0;
-            transform: translateY(100px) scale(0.8);
-        }
-        .char-container.active {
-            animation: charReveal 0.6s cubic-bezier(0.17, 0.89, 0.32, 1.2) forwards 0.3s;
-        }
-        @keyframes charReveal {
-            to { opacity: 1; transform: translateY(0) scale(1); }
-        }
-
-        .char-img {
             width: 100%;
             height: 100%;
+        }
+
+        /* PERSONAJE */
+        .char-container {
+            position: relative;
+            width: 450px;
+            height: 450px;
+            margin-bottom: -80px;
+            z-index: 5;
+            opacity: 0;
+            transform: translateY(100px);
+        }
+        .char-container.active { animation: charIn 0.6s ease-out forwards 0.3s; }
+        @keyframes charIn { to { opacity: 1; transform: translateY(0); } }
+
+        .char-img {
+            width: 100%; height: 100%;
             object-fit: contain;
             filter: drop-shadow(0 0 20px var(--crimson-bright));
         }
 
-        /* BANNER ANGULAR (ESTILO REFERENCIA) */
+        /* BANNER */
         .banner-wrapper {
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 800px;
-            height: 140px;
-            z-index: 10;
+            width: 900px;
+            height: 160px;
         }
 
-        /* Barra Roja Lateral Izquierda */
-        .red-bar-left {
+        .red-bar {
             position: absolute;
-            left: 50px;
-            width: 150px; height: 40px;
+            width: 200px; height: 35px;
             background: linear-gradient(to right, var(--crimson), var(--crimson-bright));
-            transform: skewX(-45deg) scaleX(0);
             z-index: 1;
+            transform: scaleX(0);
         }
+        .bar-l { left: 0; transform: skewX(-45deg) scaleX(0); }
+        .bar-r { right: 0; transform: skewX(45deg) scaleX(0); }
 
-        /* Barra Roja Lateral Derecha */
-        .red-bar-right {
-            position: absolute;
-            right: 50px;
-            width: 150px; height: 40px;
-            background: linear-gradient(to left, var(--crimson), var(--crimson-bright));
-            transform: skewX(45deg) scaleX(0);
-            z-index: 1;
-        }
-
-        /* Cuerpo Principal (Negro Trapezoidal) */
         .banner-main {
             position: relative;
-            width: 500px;
-            height: 90px;
-            background: #111;
-            border-bottom: 3px solid var(--crimson-bright);
-            clip-path: polygon(10% 0%, 90% 0%, 100% 100%, 0% 100%);
+            width: 650px; /* Más ancho para que quepa el nombre */
+            height: 110px;
+            background: #000;
+            border-bottom: 4px solid var(--crimson-bright);
+            clip-path: polygon(8% 0%, 92% 0%, 100% 100%, 0% 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             z-index: 10;
             transform: scaleY(0);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.9);
         }
 
-        /* ANIMACIONES DE BANNER */
-        .banner-main.active { animation: bannerExpand 0.5s ease-out forwards; }
-        .red-bar-left.active { animation: barShootLeft 0.5s ease-out forwards 0.4s; }
-        .red-bar-right.active { animation: barShootRight 0.5s ease-out forwards 0.4s; }
+        .banner-main.active { animation: expandY 0.4s ease-out forwards; }
+        .bar-l.active { animation: shootL 0.4s ease-out forwards 0.4s; }
+        .bar-r.active { animation: shootR 0.4s ease-out forwards 0.4s; }
 
-        @keyframes bannerExpand {
-            to { transform: scaleY(1); }
-        }
-        @keyframes barShootLeft {
-            to { transform: skewX(-45deg) scaleX(1); left: 0; }
-        }
-        @keyframes barShootRight {
-            to { transform: skewX(45deg) scaleX(1); right: 0; }
+        @keyframes expandY { to { transform: scaleY(1); } }
+        @keyframes shootL { to { transform: skewX(-45deg) scaleX(1); } }
+        @keyframes shootR { to { transform: skewX(45deg) scaleX(1); } }
+
+        /* TEXTOS AJUSTADOS */
+        .label-new {
+            color: var(--crimson-bright);
+            font-size: 1.1rem;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            opacity: 0;
+            margin-bottom: 5px;
         }
 
-        /* TEXTOS */
         .player-name {
             color: #fff;
             font-size: 3.5rem;
             margin: 0;
-            letter-spacing: 5px;
-            text-shadow: 0 0 15px var(--crimson-bright);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(255,0,0,0.5);
             opacity: 0;
         }
-        .player-name.active { animation: fadeIn 0.4s forwards 0.7s; }
 
         .player-class {
+            position: absolute;
+            bottom: -25px;
             color: var(--gold);
-            font-size: 1.2rem;
-            letter-spacing: 10px;
-            margin-top: -5px;
+            font-size: 0.9rem;
+            letter-spacing: 5px;
             opacity: 0;
         }
-        .player-class.active { animation: fadeIn 0.4s forwards 0.9s; }
+
+        .label-new.active { animation: fadeIn 0.4s forwards 0.7s; }
+        .player-name.active { animation: fadeIn 0.4s forwards 0.8s; }
+        .player-class.active { animation: fadeIn 0.4s forwards 1s; }
 
         @keyframes fadeIn { to { opacity: 1; } }
 
-        /* EFECTO DE IMPACTO */
-        .shockwave {
-            position: absolute;
-            width: 100px; height: 100px;
-            background: white;
-            border-radius: 50%;
-            opacity: 0;
-            z-index: 0;
-        }
-        .shockwave.active { animation: shockAnim 0.6s ease-out forwards; }
-
-        @keyframes shockAnim {
-            0% { transform: scale(0); opacity: 1; }
-            100% { transform: scale(8); opacity: 0; }
-        }
-
-        /* SALIDA */
-        .exit-alert { animation: alertOut 0.5s ease-in forwards !important; }
-        @keyframes alertOut {
-            to { opacity: 0; transform: translateY(100px) scale(0.8); filter: blur(20px); }
-        }
-
-        /* BOTÓN DE TEST */
+        /* BOTÓN TEST */
         #test-btn {
             position: fixed; bottom: 20px; left: 20px; z-index: 1000;
             background: #000; border: 1px solid var(--crimson); color: #fff;
             padding: 8px 15px; cursor: pointer; font-family: 'Exocet', serif;
-            font-size: 0.7rem; letter-spacing: 2px; opacity: 0.2;
+            font-size: 0.7rem; opacity: 0.2;
         }
-        #test-btn:hover { opacity: 1; border-color: var(--gold); }
+        #test-btn:hover { opacity: 1; }
     </style>
 </head>
 <body>
@@ -185,19 +151,18 @@
     <div id="test-btn" onclick="triggerTest()">Test Alert (T)</div>
 
     <div id="alert-container">
-        <div class="shockwave" id="shock"></div>
-        
         <div class="char-container" id="char-cont">
             <img id="alert-img" src="" class="char-img">
         </div>
 
         <div class="banner-wrapper">
-            <div class="red-bar-left" id="bar-l"></div>
+            <div class="red-bar bar-l" id="bar-l"></div>
             <div class="banner-main" id="b-main">
+                <span class="label-new" id="l-new">NUEVO JUGADOR</span>
                 <h1 id="alert-name" class="player-name">NAME</h1>
                 <div id="alert-class" class="player-class">CLASS</div>
             </div>
-            <div class="red-bar-right" id="bar-r"></div>
+            <div class="red-bar bar-r" id="bar-r"></div>
         </div>
     </div>
 
@@ -237,8 +202,8 @@
                 barR: document.getElementById('bar-r'),
                 name: document.getElementById('alert-name'),
                 class: document.getElementById('alert-class'),
-                img: document.getElementById('alert-img'),
-                shock: document.getElementById('shock')
+                lNew: document.getElementById('l-new'),
+                img: document.getElementById('alert-img')
             };
 
             const info = charData[char.classId] || charData[0];
@@ -250,24 +215,24 @@
             Object.values(els).forEach(el => { if(el.classList) el.classList.remove('active', 'exit-alert'); });
 
             setTimeout(() => {
-                els.shock.classList.add('active');
                 els.main.classList.add('active');
                 els.barL.classList.add('active');
                 els.barR.classList.add('active');
                 els.char.classList.add('active');
+                els.lNew.classList.add('active');
                 els.name.classList.add('active');
                 els.class.classList.add('active');
             }, 50);
 
             setTimeout(() => {
-                els.cont.classList.add('exit-alert');
-                setTimeout(() => { els.cont.style.display = 'none'; isDisplaying = false; }, 600);
+                els.cont.style.opacity = '0';
+                setTimeout(() => { els.cont.style.display = 'none'; els.cont.style.opacity = '1'; isDisplaying = false; }, 600);
             }, 6000);
         }
 
         function triggerTest() {
             if (isDisplaying) return;
-            trigger({ name: 'NUEVO_GUERRERO', classId: 16 });
+            trigger({ name: 'LEONARDO_GIMON', classId: 0 });
         }
 
         window.onkeydown = (e) => { if(e.key.toLowerCase()==='t') triggerTest(); };
