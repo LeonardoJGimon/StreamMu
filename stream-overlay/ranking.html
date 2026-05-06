@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mu Neutro - Hall of Fame (Epic Edition)</title>
+    <title>Mu Neutro - Hall of Fame (Golden Edition)</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @font-face { font-family: 'Exocet'; src: url('../assets/images/font/ExocetImmortal-Medium.otf') format('opentype'); font-weight: 500; }
@@ -12,7 +12,7 @@
             --crimson: #9d0a0e;
             --crimson-bright: #ff2e2e;
             --gold: #c0a375;
-            --row-bg: rgba(15, 10, 10, 0.9);
+            --row-bg: rgba(10, 8, 5, 0.9);
         }
 
         body {
@@ -24,19 +24,21 @@
         }
 
         .outer-box {
-            position: relative; background: rgba(0, 0, 0, 0.75); border: 1px solid rgba(157, 10, 14, 0.4);
+            position: relative; 
+            background: rgba(0, 0, 0, 0.85); 
+            border: 1px solid var(--gold); /* DORADO */
             padding: 20px; width: 100%; max-width: 520px; box-sizing: border-box;
             box-shadow: 0 0 50px rgba(0,0,0,1); backdrop-filter: blur(8px);
         }
 
         .outer-box::before {
             content: ''; position: absolute; top: -6px; left: -6px; width: 40px; height: 40px;
-            border-top: 4px solid var(--crimson-bright); border-left: 4px solid var(--crimson-bright);
+            border-top: 4px solid var(--gold); border-left: 4px solid var(--gold);
         }
 
         .outer-box::after {
             content: ''; position: absolute; bottom: -6px; right: -6px; width: 40px; height: 40px;
-            border-bottom: 4px solid var(--crimson-bright); border-right: 4px solid var(--crimson-bright);
+            border-bottom: 4px solid var(--gold); border-right: 4px solid var(--gold);
         }
 
         .main-title {
@@ -50,13 +52,15 @@
         .hall-card {
             display: grid; grid-template-columns: 80px 1fr 130px; gap: 20px;
             align-items: center; background: var(--row-bg); padding: 20px;
-            position: relative; border: 1px solid rgba(157, 10, 14, 0.2);
-            animation: fadeIn 0.8s ease-out forwards;
+            position: relative; border: 1px solid rgba(192, 163, 117, 0.1);
+            /* ELIMINADA LA ANIMACIÓN DE RECARGA */
         }
 
         .category-label {
-            position: absolute; top: -12px; left: 20px; background: var(--crimson);
-            color: white; font-family: 'Exocet', serif; font-size: 0.7rem;
+            position: absolute; top: -12px; left: 20px; 
+            background: var(--gold); /* DORADO */
+            color: #000; /* Texto negro para contraste */
+            font-family: 'Exocet', serif; font-size: 0.7rem; font-weight: bold;
             padding: 4px 15px; letter-spacing: 2px; box-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
 
@@ -69,12 +73,10 @@
 
         .stat-box { text-align: right; }
         .stat-value { font-family: 'Exocet', serif; font-size: 1.8rem; color: #fff; }
-        .stat-unit { font-size: 0.8rem; color: var(--crimson); display: block; }
+        .stat-unit { font-size: 0.8rem; color: var(--gold); display: block; }
 
         .footer { margin-top: 25px; text-align: center; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 10px; }
         .footer-tag { font-family: 'Exocet', serif; font-size: 0.7rem; color: #444; letter-spacing: 3px; }
-
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
@@ -83,7 +85,7 @@
         <h1 class="main-title">HALL OF FAME</h1>
         
         <div id="hall" class="hall-container">
-            <!-- Bloques cargados vía JS -->
+            <!-- Cargado vía JS -->
         </div>
 
         <div class="footer">
