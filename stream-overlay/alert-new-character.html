@@ -196,10 +196,16 @@
             18: { name: 'Blade Master', folder: 'DK', img: 'dk-icon.png' },
             32: { name: 'Fairy Elf', folder: 'FAIRY ELF', img: 'elf-icon.png' },
             33: { name: 'Muse Elf', folder: 'FAIRY ELF', img: 'elf-icon.png' },
+            34: { name: 'High Elf', folder: 'FAIRY ELF', img: 'elf-icon.png' },
             48: { name: 'Magic Gladiator', folder: 'MG', img: 'mg icon.png' },
+            49: { name: 'Duel Master', folder: 'MG', img: 'mg icon.png' },
             64: { name: 'Dark Lord', folder: 'DL', img: 'dl icon.png' },
+            65: { name: 'Lord Emperor', folder: 'DL', img: 'dl icon.png' },
             80: { name: 'Summoner', folder: 'SUMONNER', img: 'sm icon.png' },
-            96: { name: 'Rage Fighter', folder: 'RAGE', img: 'rf icon.png' }
+            81: { name: 'Bloody Summoner', folder: 'SUMONNER', img: 'sm icon.png' },
+            82: { name: 'Dimension Master', folder: 'SUMONNER', img: 'sm icon.png' },
+            96: { name: 'Rage Fighter', folder: 'RAGE', img: 'rf icon.png' },
+            97: { name: 'Fist Master', folder: 'RAGE', img: 'rf icon.png' }
         };
 
         let lastCharacterName = null;
@@ -239,7 +245,7 @@
             const info = charData[char.classId] || charData[0];
             nameEl.innerText = char.name;
             classEl.innerText = info.name;
-            imgEl.src = `../assets/images/chars/${info.folder}/${info.icon}`;
+            imgEl.src = `../assets/images/chars/${info.folder}/${info.img}`;
 
             container.style.display = 'flex';
             box.classList.remove('exit', 'active');
