@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mu Neutro - Alerta Nuevo Guerrero</title>
+    <title>Mu Neutro - Alerta Legendaria</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @font-face {
@@ -15,7 +15,7 @@
             --crimson: #9d0a0e;
             --crimson-bright: #ff2e2e;
             --gold: #c0a375;
-            --deep-bg: rgba(10, 5, 5, 0.95);
+            --gold-bright: #f1d592;
         }
 
         body, html {
@@ -29,160 +29,191 @@
             font-family: 'Exocet', serif;
         }
 
-        #alert-container {
-            display: none;
-            position: relative;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 800px;
-            height: 600px;
-            perspective: 1000px;
-        }
-
-        /* FONDO DE PARTÍCULAS (Simulado con gradientes y animación) */
-        .particles {
+        /* CAPA DE PARTÍCULAS */
+        #particles-container {
             position: absolute;
             inset: 0;
-            background: radial-gradient(circle, rgba(157, 10, 14, 0.1) 0%, transparent 70%);
+            pointer-events: none;
             z-index: 1;
         }
 
-        /* FLASH DE IMPACTO */
-        .flash-impact {
+        .ember {
             position: absolute;
-            width: 100%; height: 100%;
-            background: white;
+            background: var(--crimson-bright);
             border-radius: 50%;
-            filter: blur(50px);
+            filter: blur(2px);
             opacity: 0;
-            z-index: 100;
-            pointer-events: none;
-        }
-        .flash-impact.active { animation: impactAnim 1s ease-out forwards; }
-
-        @keyframes impactAnim {
-            0% { transform: scale(0.1); opacity: 1; background: #fff; }
-            50% { transform: scale(1.5); opacity: 0.5; background: var(--crimson-bright); }
-            100% { transform: scale(2); opacity: 0; }
         }
 
-        /* CUERPO DE LA ALERTA */
-        .alert-box {
+        /* CONTENEDOR PRINCIPAL */
+        #alert-container {
+            display: none;
             position: relative;
             z-index: 10;
-            display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* PLACA DE NOMBRE (Stone Style) */
+        .stone-plate {
+            position: relative;
+            padding: 20px 60px;
+            margin-top: -50px;
+            background: linear-gradient(rgba(20,20,20,0.9), rgba(40,40,40,0.9));
+            border-top: 2px solid var(--gold);
+            border-bottom: 2px solid var(--gold);
+            text-align: center;
+            box-shadow: 0 0 50px rgba(0,0,0,0.8);
+            transform: scaleX(0);
             opacity: 0;
-            transform: scale(0.8) translateY(50px);
         }
 
-        .alert-box.active {
-            animation: boxIn 0.8s cubic-bezier(0.17, 0.89, 0.32, 1.2) forwards;
+        .stone-plate.active {
+            animation: plateReveal 0.6s cubic-bezier(0.17, 0.89, 0.32, 1.2) forwards 0.4s;
         }
 
-        @keyframes boxIn {
+        @keyframes plateReveal {
+            to { transform: scaleX(1); opacity: 1; }
+        }
+
+        /* IMAGEN DEL PERSONAJE */
+        .avatar-container {
+            position: relative;
+            width: 450px;
+            height: 450px;
+            margin-bottom: -30px;
+            z-index: 5;
+            opacity: 0;
+            transform: scale(1.5) translateY(-100px);
+        }
+
+        .avatar-container.active {
+            animation: charIn 0.8s cubic-bezier(0.17, 0.89, 0.32, 1.4) forwards;
+        }
+
+        @keyframes charIn {
             to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
-        /* MARCO DEL PERSONAJE */
-        .avatar-frame {
-            position: relative;
-            width: 350px; height: 350px;
-            margin-bottom: 30px;
-        }
-
-        .avatar-frame::before {
-            content: ''; position: absolute; inset: -15px;
-            border: 2px solid var(--gold);
-            clip-path: polygon(0 15%, 15% 0, 85% 0, 100% 15%, 100% 85%, 85% 100%, 15% 100%, 0 85%);
-            box-shadow: inset 0 0 30px var(--crimson);
-            animation: borderPulse 2s infinite alternate;
-        }
-
-        @keyframes borderPulse {
-            from { opacity: 0.5; box-shadow: inset 0 0 20px var(--crimson); }
-            to { opacity: 1; box-shadow: inset 0 0 50px var(--crimson-bright); }
-        }
-
-        .char-avatar {
-            width: 100%; height: 100%;
+        .char-img {
+            width: 100%;
+            height: 100%;
             object-fit: contain;
-            filter: drop-shadow(0 0 20px var(--crimson));
-            z-index: 5;
+            filter: drop-shadow(0 0 30px var(--crimson));
+        }
+
+        /* CÍRCULO DE ENERGÍA */
+        .energy-ring {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 300px; height: 300px;
+            border: 2px solid var(--crimson);
+            border-radius: 50%;
+            box-shadow: 0 0 100px var(--crimson);
+            opacity: 0;
+        }
+        .energy-ring.active { animation: ringShock 1s ease-out forwards; }
+
+        @keyframes ringShock {
+            0% { transform: translate(-50%, -50%) scale(0.1); opacity: 1; }
+            100% { transform: translate(-50%, -50%) scale(3); opacity: 0; }
         }
 
         /* TEXTOS */
         .label-top {
             color: #fff;
             font-size: 1.2rem;
-            letter-spacing: 10px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-            opacity: 0.8;
-            text-shadow: 0 0 10px #000;
+            letter-spacing: 15px;
+            margin-bottom: 15px;
+            text-shadow: 0 0 10px var(--crimson-bright);
+            opacity: 0;
         }
+        .label-top.active { animation: fadeInDown 0.5s forwards 0.8s; }
 
         .char-name {
-            font-size: 4.5rem;
-            background: linear-gradient(to bottom, #fff 20%, var(--gold) 50%, #8a6d3b 80%);
+            font-size: 5.5rem;
+            color: var(--gold);
+            margin: 0;
+            letter-spacing: 10px;
+            text-transform: uppercase;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #fff 0%, var(--gold) 50%, #8a6d3b 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            letter-spacing: 12px;
-            text-transform: uppercase;
-            margin: 0;
-            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.8));
-            animation: textGlow 2s infinite alternate;
+            filter: drop-shadow(0 5px 10px #000);
         }
 
-        @keyframes textGlow {
-            from { filter: drop-shadow(0 0 5px rgba(192, 163, 117, 0.3)); }
-            to { filter: drop-shadow(0 0 20px rgba(192, 163, 117, 0.6)); }
+        /* EFECTO DE BRILLO EN EL NOMBRE */
+        .char-name::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transform: skewX(-20deg);
+        }
+        .char-name.active::after { animation: nameShine 3s infinite; }
+
+        @keyframes nameShine {
+            0% { left: -100%; }
+            30% { left: 200%; }
+            100% { left: 200%; }
         }
 
         .char-class {
             color: var(--crimson-bright);
-            font-size: 1.5rem;
-            letter-spacing: 5px;
-            margin-top: 10px;
-            font-weight: bold;
+            font-size: 1.8rem;
+            letter-spacing: 8px;
+            margin-top: 5px;
             text-transform: uppercase;
-            border-top: 1px solid rgba(192, 163, 117, 0.3);
-            padding-top: 10px;
-            width: 100%;
-            text-align: center;
+            opacity: 0;
         }
+        .char-class.active { animation: fadeInUp 0.5s forwards 1s; }
+
+        /* ANIMACIONES GENÉRICAS */
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
         /* SALIDA */
-        .alert-box.exit {
-            animation: boxOut 0.6s ease-in forwards;
+        .exit-anim { animation: alertExit 0.8s ease-in forwards !important; }
+        @keyframes alertExit {
+            to { opacity: 0; transform: scale(1.5); filter: blur(30px); }
         }
 
-        @keyframes boxOut {
-            to { opacity: 0; transform: scale(1.2) translateY(-100px); filter: blur(20px); }
+        /* BOTÓN DE TEST */
+        #test-btn {
+            position: fixed; bottom: 20px; left: 20px; z-index: 1000;
+            background: #000; border: 2px solid var(--crimson); color: #fff;
+            padding: 10px 20px; cursor: pointer; font-family: 'Exocet', serif;
+            font-size: 0.8rem; letter-spacing: 2px; transition: 0.3s; opacity: 0.2;
+            border-radius: 4px; text-transform: uppercase;
         }
+        #test-btn:hover { opacity: 1; border-color: var(--gold); }
     </style>
 </head>
 <body>
 
-    <div id="test-btn" onclick="triggerTest()" style="position: fixed; bottom: 20px; left: 20px; z-index: 1000; background: #000; border: 2px solid var(--crimson); color: #fff; padding: 10px 20px; cursor: pointer; font-family: 'Exocet', serif; font-size: 0.8rem; letter-spacing: 2px; transition: 0.3s; opacity: 0.8; border-radius: 4px; text-transform: uppercase; box-shadow: 0 0 15px rgba(0,0,0,1);" onmouseover="this.style.opacity=1; this.style.borderColor='var(--gold)'" onmouseout="this.style.opacity=0.8; this.style.borderColor='var(--crimson)'">
-        Test Alert (T)
-    </div>
+    <div id="particles-container"></div>
+
+    <div id="test-btn" onclick="triggerTest()">Test Alert (T)</div>
 
     <div id="alert-container">
-        <div class="particles"></div>
-        <div class="flash-impact" id="flash"></div>
+        <div class="energy-ring" id="ring"></div>
         
-        <div id="alert-box" class="alert-box">
-            <span class="label-top">Un nuevo guerrero ha despertado</span>
-            
-            <div class="avatar-frame">
-                <img id="alert-img" src="" class="char-avatar">
-            </div>
+        <span class="label-top" id="l-top">EL GUERRERO HA DESPERTADO</span>
+        
+        <div class="avatar-container" id="avatar-cont">
+            <img id="alert-img" src="" class="char-img">
+        </div>
 
-            <h1 id="alert-name" class="char-name">-</h1>
-            <div id="alert-class" class="char-class">-</div>
+        <div class="stone-plate" id="plate">
+            <h1 id="alert-name" class="char-name">NAME</h1>
+            <div id="alert-class" class="char-class">CLASS</div>
         </div>
     </div>
 
@@ -200,6 +231,28 @@
         let lastCharacterName = null;
         let isDisplaying = false;
 
+        function createEmbers() {
+            const container = document.getElementById('particles-container');
+            for(let i=0; i<30; i++) {
+                const ember = document.createElement('div');
+                ember.className = 'ember';
+                const size = Math.random() * 4 + 2;
+                ember.style.width = size + 'px';
+                ember.style.height = size + 'px';
+                ember.style.left = Math.random() * 100 + 'vw';
+                ember.style.top = Math.random() * 100 + 'vh';
+                
+                const duration = 2000 + Math.random() * 3000;
+                ember.animate([
+                    { opacity: 0, transform: 'translateY(0) rotate(0deg)' },
+                    { opacity: 0.8, transform: `translateY(-100px) translateX(${Math.random()*50-25}px) rotate(360deg)` },
+                    { opacity: 0, transform: 'translateY(-200px) rotate(720deg)' }
+                ], { duration, iterations: Infinity, delay: Math.random() * 5000 });
+                container.appendChild(ember);
+            }
+        }
+        createEmbers();
+
         async function checkAlerts() {
             if (isDisplaying) return;
             try {
@@ -207,14 +260,8 @@
                 if (!res.ok) return;
                 const data = await res.json();
                 if (!data.recentCharacters || data.recentCharacters.length === 0) return;
-                
                 const newest = data.recentCharacters[0];
-
-                if (lastCharacterName === null) {
-                    lastCharacterName = newest.name;
-                    return;
-                }
-
+                if (lastCharacterName === null) { lastCharacterName = newest.name; return; }
                 if (newest.name !== lastCharacterName) {
                     lastCharacterName = newest.name;
                     triggerAlert(newest);
@@ -224,56 +271,54 @@
 
         function triggerAlert(char) {
             isDisplaying = true;
-            const container = document.getElementById('alert-container');
-            const box = document.getElementById('alert-box');
-            const flash = document.getElementById('flash');
-            const nameEl = document.getElementById('alert-name');
-            const classEl = document.getElementById('alert-class');
-            const imgEl = document.getElementById('alert-img');
+            const elements = {
+                container: document.getElementById('alert-container'),
+                ring: document.getElementById('ring'),
+                avatar: document.getElementById('avatar-cont'),
+                plate: document.getElementById('plate'),
+                lTop: document.getElementById('l-top'),
+                name: document.getElementById('alert-name'),
+                class: document.getElementById('alert-class'),
+                img: document.getElementById('alert-img')
+            };
 
             const info = charData[char.classId] || charData[0];
-            nameEl.innerText = char.name;
-            classEl.innerText = info.name;
-            imgEl.src = `../assets/images/chars/${info.folder}/${info.img}`;
+            elements.name.innerText = char.name;
+            elements.class.innerText = info.name;
+            elements.img.src = `../assets/images/chars/${info.folder}/${info.img}`;
 
-            container.style.display = 'flex';
-            box.classList.remove('exit', 'active');
-            
-            // Disparar impacto
-            flash.classList.add('active');
-            
-            setTimeout(() => {
-                box.classList.add('active');
-            }, 100);
+            // Reset animaciones
+            elements.container.style.display = 'flex';
+            Object.values(elements).forEach(el => el.classList.remove('active', 'exit-anim'));
 
-            // Tiempo en pantalla (7 segundos para mayor impacto)
+            // Secuencia de entrada
             setTimeout(() => {
-                box.classList.add('exit');
+                elements.ring.classList.add('active');
+                elements.avatar.classList.add('active');
+                elements.plate.classList.add('active');
+                elements.lTop.classList.add('active');
+                elements.name.classList.add('active');
+                elements.class.classList.add('active');
+            }, 50);
+
+            // Salida
+            setTimeout(() => {
+                elements.container.classList.add('exit-anim');
                 setTimeout(() => {
-                    container.style.display = 'none';
-                    flash.classList.remove('active');
+                    elements.container.style.display = 'none';
                     isDisplaying = false;
-                }, 600);
-            }, 7000);
+                }, 800);
+            }, 8000);
         }
 
-        // Función para disparar un test manual
         function triggerTest() {
             if (isDisplaying) return;
             const classes = Object.keys(charData);
             const randomClass = classes[Math.floor(Math.random() * classes.length)];
-            const dummyChar = {
-                name: 'TEST_WARRIOR',
-                classId: parseInt(randomClass)
-            };
-            triggerAlert(dummyChar);
+            triggerAlert({ name: 'EL_NUEVO_REY', classId: parseInt(randomClass) });
         }
 
-        // Tecla T para test
-        window.addEventListener('keydown', (e) => {
-            if (e.key.toLowerCase() === 't') triggerTest();
-        });
-
+        window.addEventListener('keydown', (e) => { if (e.key.toLowerCase() === 't') triggerTest(); });
         setInterval(checkAlerts, 10000);
         checkAlerts();
     </script>
