@@ -128,16 +128,21 @@
     100% { opacity: 1; transform: translateX(0); filter: blur(0); }
 }
 
-/* TÍTULO DE BIENVENIDA (NUEVO) */
+/* TÍTULO DE BIENVENIDA (GIGANTE E IMPACTANTE) */
 .alert-title {
     font-family: 'Exocet', serif !important;
-    font-size: 0.8rem !important;
-    color: var(--crimson-bright) !important;
-    letter-spacing: 5px !important;
+    font-size: 2.2rem !important; /* MUCHO MÁS GRANDE */
+    color: #fff !important;
+    letter-spacing: 3px !important;
     text-transform: uppercase !important;
-    margin-bottom: -5px !important;
-    opacity: 0.8 !important;
-    text-shadow: 0 0 10px var(--crimson) !important;
+    margin-bottom: 5px !important;
+    text-shadow: 0 0 20px var(--crimson-bright), 0 0 40px var(--crimson) !important;
+    animation: titlePulse 2s infinite ease-in-out !important;
+}
+
+@keyframes titlePulse {
+    0%, 100% { transform: scale(1); filter: brightness(1); }
+    50% { transform: scale(1.05); filter: brightness(1.3); }
 }
 
 /* EL MENSAJE (Elegancia Gótica) */
