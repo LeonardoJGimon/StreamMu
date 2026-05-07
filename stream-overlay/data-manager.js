@@ -1,81 +1,66 @@
 /**
- * Mu Neutro - Shared Data Manager
+ * Mu Neutro - Shared Data Manager (Versión Robusta)
  * Centraliza las peticiones a la API para ahorrar recursos de CPU y Red.
  */
 
-const DATA_CHANNEL = new BroadcastChannel('mu_neutro_stats');
-const FETCH_INTERVAL = 15000; // 15 segundos entre actualizaciones
-let isLeader = false;
+const FETCH_INTERVAL = 15000;
+const DATA_KEY = 'mu_stats_cache';
+const TIME_KEY = 'mu_stats_last_fetch';
 
-// Intentar ser el "Líder" que hace las peticiones
-function tryBecomeLeader() {
-    const lastLeaderHeartbeat = localStorage.getItem('mu_stats_leader_heartbeat');
+async function updateStats() {
     const now = Date.now();
+    const lastFetch = localStorage.getItem(TIME_KEY);
 
-    // Si no hay líder o el líder no ha respondido en 20s, yo tomo el mando
-    if (!lastLeaderHeartbeat || (now - parseInt(lastLeaderHeartbeat)) > 20000) {
-        isLeader = true;
-        localStorage.setItem('mu_stats_leader_heartbeat', now.toString());
-        console.log("DataManager: He tomado el mando del fetch.");
-        startFetching();
+    // Si los datos tienen menos de 10 segundos, no molestamos al servidor
+    // Esto evita que si abres 5 gadgets a la vez, los 5 peguen al servidor al mismo tiempo
+    if (lastFetch && (now - parseInt(lastFetch)) < 10000) {
+        console.log("DataManager: Datos frescos en caché, saltando fetch.");
+        return; 
     }
-}
-
-async function fetchData() {
-    if (!isLeader) return;
 
     try {
-        const res = await fetch('/api/stats?t=' + Date.now());
+        const res = await fetch('/api/stats?t=' + now);
         if (res.ok) {
             const data = await res.json();
-            // Guardar en caché para nuevas pestañas que se abran
-            localStorage.setItem('mu_stats_cache', JSON.stringify(data));
-            // Avisar a todos los gadgets abiertos
-            DATA_CHANNEL.postMessage({ type: 'UPDATE_STATS', data });
-            // Actualizar latido de líder
-            localStorage.setItem('mu_stats_leader_heartbeat', Date.now().toString());
+            localStorage.setItem(DATA_KEY, JSON.stringify(data));
+            localStorage.setItem(TIME_KEY, Date.now().toString());
+            
+            // Avisar a esta pestaña
+            window.dispatchEvent(new CustomEvent('mu-data-updated', { detail: data }));
+            console.log("DataManager: Datos actualizados y notificados.");
         }
     } catch (e) {
         console.error("DataManager Error:", e);
     }
 }
 
-function startFetching() {
-    fetchData();
-    setInterval(() => {
-        if (isLeader) {
-            fetchData();
-            localStorage.setItem('mu_stats_leader_heartbeat', Date.now().toString());
-        }
-    }, FETCH_INTERVAL);
-}
-
-// Escuchar si otro líder aparece (raro, pero posible al recargar)
-DATA_CHANNEL.onmessage = (event) => {
-    if (event.data.type === 'UPDATE_STATS' && isLeader) {
-        // Si ya hay alguien enviando datos y yo creía ser el líder, cedo el puesto
-        console.log("DataManager: Otro líder detectado, cedo el mando.");
-        isLeader = false;
-    }
-};
-
-// Al iniciar
-tryBecomeLeader();
-// Si no soy líder, reviso cada 10s si el líder actual murió
-setInterval(() => {
-    if (!isLeader) tryBecomeLeader();
-}, 10000);
-
 // Función global para que los gadgets se suscriban fácilmente
 window.onMuData = (callback) => {
-    // 1. Enviar datos del caché inmediatamente si existen
-    const cache = localStorage.getItem('mu_stats_cache');
-    if (cache) callback(JSON.parse(cache));
+    // 1. Carga inmediata del caché si existe
+    const cache = localStorage.getItem(DATA_KEY);
+    if (cache) {
+        try { 
+            callback(JSON.parse(cache)); 
+        } catch(e) {
+            console.error("DataManager Cache Error:", e);
+        }
+    }
 
-    // 2. Escuchar futuras actualizaciones
-    DATA_CHANNEL.addEventListener('message', (event) => {
-        if (event.data.type === 'UPDATE_STATS') {
-            callback(event.data.data);
+    // 2. Escuchar actualizaciones locales (mismo proceso/pestaña)
+    window.addEventListener('mu-data-updated', (e) => callback(e.detail));
+
+    // 3. Escuchar actualizaciones de OTRAS pestañas (vía localStorage)
+    window.addEventListener('storage', (e) => {
+        if (e.key === DATA_KEY && e.newValue) {
+            try {
+                callback(JSON.parse(e.newValue));
+            } catch(err) {}
         }
     });
+
+    // 4. Intentar actualizar ahora mismo (la función decidirá si hace fetch o usa caché)
+    updateStats();
 };
+
+// Intervalo de revisión global
+setInterval(updateStats, FETCH_INTERVAL);
