@@ -1,89 +1,124 @@
 /* 
-    GOTHIC STREAM CHAT - FINAL MASTER CLEAN
-    Eliminación garantizada de reloj y nombres
+    GOTHIC STREAM CHAT - COLOSSAL VERSION
 */
 
+@font-face { font-family: 'Exocet'; src: url('../assets/images/font/ExocetImmortal-Medium.otf') format('opentype'); }
 @font-face { font-family: 'Alegreya'; src: url('../assets/images/font/AlegreyaSans-Regular.otf') format('opentype'); }
 
 :root {
     --crimson: #9d0a0e;
     --dark-stone: rgba(12, 7, 7, 0.98);
+    --gold: #c0a375;
 }
 
-/* --- LIENZO --- */
+/* --- ESTABILIZACIÓN DEL LIENZO --- */
 html, body {
     width: 100% !important;
     height: 100% !important;
     background: transparent !important;
     margin: 0; padding: 0;
-    overflow-y: hidden !important;
+    overflow: hidden !important;
 }
 
-#output, #chat, .chat-container {
+/* Forzamos que CUALQUIER contenedor de mensaje sea un bloque sólido */
+#output, #chat, .chat-container, .hl-message-container, [id^="msg-"], .hl-main, .hl-message-body {
     width: 100% !important;
-    height: 100% !important;
-    padding: 30px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 30px !important; /* Espacio entre mensajes */
+    box-sizing: border-box !important;
+    display: block !important;
     background: transparent !important;
+    padding: 0 !important;
 }
 
-/* --- FILA DE MENSAJE (AUTO-AJUSTABLE) --- */
+#chat {
+    padding: 50px !important;
+    gap: 60px !important;
+}
+
+/* --- FILA DE MENSAJE GÓTICA (CONTENEDOR) --- */
 .highlight-chat {
     background: var(--dark-stone) !important;
-    border-left: 12px solid var(--crimson) !important;
-    padding: 30px 50px !important;
-    box-shadow: 0 15px 40px rgba(0,0,0,0.9) !important;
-    display: flex !important;
-    flex-direction: column !important; /* Asegura que el contenido interno no se pise */
-    position: relative !important;
-    width: 100% !important;
+    border-left: none !important;
+    padding: 60px 80px !important;
+    box-shadow: 0 30px 100px rgba(0,0,0,1) !important;
+    width: 100% !important; 
     height: auto !important;
-    min-height: 110px !important;
     box-sizing: border-box !important;
+    margin-bottom: 60px !important;
+    display: block !important;
 }
 
-/* --- TEXTO GIGANTE (60px) --- */
-.hl-message, .bubble, .hl-message-content {
-    font-size: 60px !important;
-    line-height: 1.1 !important;
+/* --- CABECERA (FOTO, NOMBRE E ICONO) --- */
+.hl-header, .hl-leftside {
+    display: flex !important;
+    align-items: center !important;
+    gap: 40px !important;
+    margin-bottom: 40px !important;
+    width: 100% !important;
+    background: transparent !important;
+}
+
+/* Foto de Perfil (200px) */
+.hl-image, .hl-user-avatar, [class*="avatar"], .hl-image-container img {
+    display: block !important;
+    width: 200px !important;
+    height: 200px !important;
+    border-radius: 50% !important;
+    border: 10px solid var(--gold) !important;
+    box-shadow: 0 0 40px rgba(192, 163, 117, 0.7) !important;
+    object-fit: cover !important;
+}
+
+.hl-image-container {
+    display: block !important;
+}
+
+/* Nombre de Usuario (100px) */
+.hl-name {
+    display: inline-block !important;
+    font-family: 'Exocet', serif !important;
+    color: var(--gold) !important;
+    font-size: 100px !important;
+    letter-spacing: 6px !important;
+    text-shadow: 0 5px 15px #000 !important;
+}
+
+/* Icono de Red Social (150px) */
+.service-icon, .icon, .hl-icon {
+    display: inline-block !important;
+    width: 150px !important;
+    height: 150px !important;
+    filter: drop-shadow(0 0 20px rgba(255,255,255,0.5)) !important;
+    margin-left: auto !important;
+}
+
+/* --- TEXTO DEL MENSAJE (90px) --- */
+.hl-message, .bubble, .hl-message-content, .hl-rightside {
+    display: block !important;
+    width: 100% !important;
+    font-size: 90px !important;
+    line-height: 1.3 !important;
     color: #ffffff !important;
-    text-shadow: 0 4px 10px #000 !important;
-    font-weight: 800 !important;
-    text-transform: uppercase !important; 
+    text-shadow: 0 5px 15px #000 !important;
+    font-weight: 500 !important;
+    text-transform: none !important; /* Texto natural para evitar que se vea forzado */
     word-wrap: break-word !important;
     overflow-wrap: anywhere !important;
+    text-align: left !important;
     background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
 }
 
-/* --- EMOTES --- */
+/* --- EMOTES COLOSALES (400px) --- */
 .hl-message img, [class*="emote"] {
-    height: 85px !important;
+    height: 400px !important;
     width: auto !important;
     display: inline-block !important;
     vertical-align: middle !important;
+    margin: 20px !important;
 }
 
-/* --- ELIMINACIÓN TOTAL (RELOJ, NOMBRES, LOGOS) --- */
-.hl-time, 
-.hl-name, 
-.hl-leftside, 
-.hl-badge, 
-.icon, 
-.service-icon,
-.time,
-[class*="time"], 
-[class*="badge"],
-[class*="name"],
-[class*="header"],
-#menu {
+/* --- ELIMINACIÓN DE ELEMENTOS SOBRANTES --- */
+.hl-time, .hl-badge, .time, [class*="time"], [class*="badge"], #menu {
     display: none !important;
-    height: 0 !important;
-    width: 0 !important;
-    overflow: hidden !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
 }
