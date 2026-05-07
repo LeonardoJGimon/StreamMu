@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mu Neutro - BotRix Gothic Preview</title>
+    <!-- Importar fuentes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @font-face { 
+            font-family: 'Exocet'; 
+            src: url('../assets/images/font/ExocetImmortal-Medium.otf') format('opentype'); 
+        }
+        @font-face { 
+            font-family: 'Alegreya'; 
+            src: url('../assets/images/font/AlegreyaSans-Regular.otf') format('opentype'); 
+        }
+
+        body {
+            background-image: url('https://images.unsplash.com/photo-1514539079130-25950c84af65?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80'); /* Paisaje gótico/catillo */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            color: #fff;
+            overflow: hidden;
+            font-family: 'Alegreya', sans-serif;
+        }
+
+        .overlay-mask {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle, transparent 0%, rgba(0,0,0,0.8) 100%);
+            z-index: 0;
+        }
+
+        .instructions {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(10, 10, 10, 0.95);
+            padding: 30px;
+            border: 2px solid #c0a375;
+            width: 80%;
+            max-width: 800px;
+            z-index: 100;
+            box-shadow: 0 20px 50px #000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .step-box { flex: 1; padding: 0 20px; border-right: 1px solid rgba(192, 163, 117, 0.2); }
+        .step-box:last-child { border-right: none; }
+        .step-num { font-family: 'Exocet'; color: #ff2e2e; font-size: 1.5rem; margin-bottom: 10px; }
+
+        button {
+            background: linear-gradient(180deg, #c0a375 0%, #8a6d3b 100%);
+            border: 1px solid #fff;
+            color: #000;
+            padding: 15px 30px;
+            font-family: 'Exocet';
+            font-weight: 900;
+            cursor: pointer;
+            letter-spacing: 2px;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            filter: brightness(1.2);
+            box-shadow: 0 0 30px rgba(192, 163, 117, 0.5);
+        }
+
+        .badge-elite {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #ff2e2e;
+            color: #fff;
+            padding: 5px 20px;
+            font-family: 'Exocet';
+            font-size: 0.8rem;
+            letter-spacing: 5px;
+            box-shadow: 0 0 20px #ff2e2e;
+        }
+    </style>
+    <link rel="stylesheet" href="gothic-botrix-alerts.css">
+</head>
+<body>
+    <div class="overlay-mask"></div>
+
+    <div class="instructions">
+        <div class="badge-elite">LEGENDARY EDITION</div>
+        <div class="step-box">
+            <div class="step-num">01</div>
+            <div>Copia el código de <code>gothic-botrix-alerts.css</code></div>
+        </div>
+        <div class="step-box">
+            <div class="step-num">02</div>
+            <div>Pégalo en BotRix -> Alerts -> Custom Code (CSS)</div>
+        </div>
+        <div class="step-box" style="display: flex; align-items: center; justify-content: center;">
+            <button onclick="triggerDemo()">LANZAR ALERTA LEGENDARIA</button>
+        </div>
+    </div>
+
+    <!-- ESTRUCTURA SIMULADA DE BOTRIX -->
+    <div id="alert-container" style="display: none; z-index: 10;">
+        <div class="container">
+            <img id="alert-image" src="../assets/images/logo/logosimple.png" alt="Logo" class="image">
+            <div class="text-container">
+                <div id="alert-user" class="username">LEONARDO_G</div>
+                <div id="alert-message" class="message">¡SE HA UNIDO A LA LEGIÓN!</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function triggerDemo() {
+            const container = document.getElementById('alert-container');
+            container.style.display = 'flex';
+            
+            // Efecto de sonido (Simulado)
+            console.log("¡BOOM! Alerta Legendaria Activa");
+
+            // Simular cierre después de 9 segundos
+            setTimeout(() => {
+                container.style.opacity = '0';
+                container.style.transition = 'opacity 1.5s ease';
+                setTimeout(() => {
+                    container.style.display = 'none';
+                    container.style.opacity = '1';
+                }, 1500);
+            }, 9000);
+        }
+    </script>
+
+</body>
+</html>
