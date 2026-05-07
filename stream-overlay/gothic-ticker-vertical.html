@@ -82,7 +82,16 @@
 
         .ticker-text i { color: var(--gold); margin: 0 30px; font-size: 2.2rem; }
         .ticker-text b { color: var(--gold); text-transform: uppercase; margin: 0 15px; }
-        .ticker-separator { margin: 0 60px; color: var(--crimson-bright); font-size: 2.5rem; }
+        .ticker-separator {
+            display: inline-block;
+            margin: 0 100px;
+            width: 5px;
+            height: 40px;
+            background: linear-gradient(180deg, transparent 0%, var(--gold) 50%, transparent 100%);
+            box-shadow: 0 0 20px var(--crimson-bright);
+            transform: skewX(-20deg) translateY(8px);
+            opacity: 1;
+        }
 
         @keyframes scroll-vertical {
             0% { transform: translate3d(0, 0, 0); }
@@ -106,11 +115,11 @@
         <div class="ticker-content">
             <div class="ticker-scroll" id="ticker-scroll">
                 <div class="ticker-text" id="news-text">
-                    <i class="fas fa-gift"></i> REGÍSTRATE Y OBTÉN <b>BATTLE PASS PREMIUM</b> <span class="ticker-separator">⚔️</span>
-                    <i class="fas fa-download"></i> ¡DESCÁRGALO YA! EN <b>WWW.MUNEUTRO.COM</b> <span class="ticker-separator">⚔️</span>
-                    <i class="fas fa-shield-halved"></i> BALANCE <b>PVP~PVM ÚNICO</b> <span class="ticker-separator">⚔️</span>
-                    <i class="fas fa-trophy"></i> EVENTOS ESPECIALES POR LA GLORIA <span class="ticker-separator">⚔️</span>
-                    <i class="fab fa-tiktok"></i> SÍGUENOS EN <b>TIKTOK</b> <span class="ticker-separator">⚔️</span>
+                    <i class="fas fa-gift"></i> REGÍSTRATE Y OBTÉN <b>BATTLE PASS PREMIUM</b> <span class="ticker-separator"></span>
+                    <i class="fas fa-download"></i> ¡DESCÁRGALO YA! EN <b>WWW.MUNEUTRO.COM</b> <span class="ticker-separator"></span>
+                    <i class="fas fa-shield-halved"></i> BALANCE <b>PVP~PVM ÚNICO</b> <span class="ticker-separator"></span>
+                    <i class="fas fa-trophy"></i> EVENTOS ESPECIALES POR LA GLORIA <span class="ticker-separator"></span>
+                    <i class="fab fa-tiktok"></i> SÍGUENOS EN <b>TIKTOK</b> <span class="ticker-separator"></span>
                     <i class="fab fa-facebook"></i> GRUPO OFICIAL <b>FACEBOOK</b>
                 </div>
                 <div class="ticker-text" id="news-text-copy"></div>
