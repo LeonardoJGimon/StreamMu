@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mu Neutro - Alertas Limpias</title>
+    <style>
+        @font-face { 
+            font-family: 'Exocet'; 
+            src: url('../assets/images/font/ExocetImmortal-Medium.otf') format('opentype'); 
+        }
+
+        :root {
+            --crimson: #800000;
+            --crimson-bright: #ff0000;
+            --gold: #c0a375;
+        }
+
+        body, html {
+            margin: 0; padding: 0;
+            width: 100vw; height: 100vh;
+            background: transparent;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #alert-container {
+            display: none;
+            position: relative;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* BANNER CENTRAL LIMPIO */
+        .banner-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .banner-main {
+            position: relative;
+            min-width: 700px;
+            height: 180px;
+            background: rgba(0,0,0,0.92);
+            border-bottom: 5px solid var(--crimson-bright);
+            clip-path: polygon(60px 0%, calc(100% - 60px) 0%, 100% 100%, 0% 100%);
+            z-index: 10;
+            transform: scaleY(0);
+            box-shadow: 0 20px 60px rgba(0,0,0,1);
+            overflow: hidden;
+        }
+
+        /* Resplandor interno sutil */
+        .banner-main::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at center, rgba(157, 10, 14, 0.15) 0%, transparent 80%);
+            pointer-events: none;
+        }
+
+        .banner-main.active { animation: expandY 0.5s cubic-bezier(0.17, 0.67, 0.83, 0.67) forwards; }
+
+        /* BARRAS LATERALES (WINGS) */
+        .red-bar {
+            position: absolute;
+            width: 200px; height: 50px;
+            background: linear-gradient(to right, #400, var(--crimson-bright), #400);
+            z-index: 1;
+            transform: scaleX(0);
+            box-shadow: 0 0 30px rgba(255,0,0,0.5);
+        }
+        .bar-l { right: 100%; margin-right: -50px; transform: skewX(-45deg) scaleX(0); transform-origin: right; }
+        .bar-r { left: 100%; margin-left: -50px; transform: skewX(45deg) scaleX(0); transform-origin: left; }
+
+        .bar-l.active { animation: shootL 0.5s ease-out forwards 0.4s; }
+        .bar-r.active { animation: shootR 0.5s ease-out forwards 0.4s; }
+
+        /* ANIMACIONES */
+        @keyframes expandY { to { transform: scaleY(1); } }
+        @keyframes shootL { to { transform: skewX(-45deg) scaleX(1); } }
+        @keyframes shootR { to { transform: skewX(45deg) scaleX(1); } }
+
+        /* BOTÓN DE PRUEBA GÓTICO */
+        #test-btn {
+            position: fixed; bottom: 30px; right: 30px; z-index: 9999;
+            background: #111; border: 2px solid var(--gold); color: var(--gold);
+            padding: 10px 20px; cursor: pointer; font-family: 'Exocet', serif;
+            font-size: 14px; text-transform: uppercase; letter-spacing: 2px;
+            box-shadow: 0 0 10px rgba(192, 163, 117, 0.3);
+            transition: all 0.3s;
+        }
+        #test-btn:hover { 
+            background: var(--crimson); 
+            color: #fff; 
+            border-color: #fff; 
+            box-shadow: 0 0 20px var(--crimson); 
+        }
+    </style>
+</head>
+<body>
+
+    <div id="test-btn" onclick="trigger()">PROBAR ALERTA LIMPIA</div>
+
+    <div id="alert-container">
+        <div class="banner-wrapper">
+            <!-- Ala Izquierda -->
+            <div class="red-bar bar-l" id="bar-l"></div>
+
+            <!-- Box Central Limpio -->
+            <div class="banner-main" id="b-main"></div>
+
+            <!-- Ala Derecha -->
+            <div class="red-bar bar-r" id="bar-r"></div>
+        </div>
+    </div>
+
+    <script>
+        let isDisplaying = false;
+
+        function trigger() {
+            if (isDisplaying) return;
+            isDisplaying = true;
+
+            const cont = document.getElementById('alert-container');
+            const main = document.getElementById('b-main');
+            const barL = document.getElementById('bar-l');
+            const barR = document.getElementById('bar-r');
+
+            // Reset y Mostrar
+            cont.style.display = 'flex';
+            cont.style.opacity = '1';
+            cont.style.transition = 'none';
+            main.classList.remove('active');
+            barL.classList.remove('active');
+            barR.classList.remove('active');
+
+            // Pequeño delay para reiniciar animación
+            setTimeout(() => {
+                main.classList.add('active');
+                barL.classList.add('active');
+                barR.classList.add('active');
+            }, 50);
+
+            // Auto-ocultar después de 8 segundos
+            setTimeout(() => {
+                cont.style.transition = 'opacity 1s ease';
+                cont.style.opacity = '0';
+                setTimeout(() => { 
+                    cont.style.display = 'none'; 
+                    isDisplaying = false; 
+                }, 1000);
+            }, 8000);
+        }
+
+        // Tecla T para probar rápido en el navegador
+        window.onkeydown = (e) => { 
+            if(e.key.toLowerCase()==='t') trigger(); 
+        };
+    </script>
+</body>
+</html>
