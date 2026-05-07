@@ -2,44 +2,142 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mu Neutro - Chat Destacado</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mu Neutro - Chat Destacado Pro</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <link rel="stylesheet" href="gothic-featured-chat.css">
+    <style>
+        /* Animación Especial de Ensamblaje Gótico */
+        @keyframes gothicAssemble {
+            0% {
+                opacity: 0;
+                transform: perspective(1000px) rotateX(-30deg) translateY(50px) scale(0.8);
+                filter: brightness(0) blur(10px);
+            }
+            100% {
+                opacity: 1;
+                transform: perspective(1000px) rotateX(0) translateY(0) scale(1);
+                filter: brightness(1) blur(0);
+            }
+        }
+
+        @keyframes gothicDisassemble {
+            0% { opacity: 1; transform: scale(1); filter: blur(0); }
+            100% { opacity: 0; transform: scale(1.1) translateY(-30px); filter: blur(15px); }
+        }
+
+        .highlight-container.show {
+            animation: gothicAssemble 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        .highlight-container.hide {
+            animation: gothicDisassemble 0.6s ease-in forwards;
+        }
+        
+        #output { width: 100%; display: flex; justify-content: center; }
+        
+        /* Ajustes para badges */
+        .badges { display: inline-flex; gap: 4px; vertical-align: middle; margin-right: 8px; }
+        .badge { height: 20px; filter: drop-shadow(0 0 2px rgba(0,0,0,0.8)); }
+    </style>
 </head>
-<body>
-
-    <div class="highlight-container animate__animated" id="main-box">
-        <div class="corner tl"></div>
-        <div class="corner br"></div>
-
-        <div class="user-seal">
-            <div class="seal-bg"></div>
-            <img src="https://i.imgur.com/HQroNDd.png" class="avatar" id="user-avatar">
-        </div>
-
-        <div class="message-box">
-            <div class="user-name" id="user-name">Bandarock</div>
-            <div class="chat-text">
-                <i class="fas fa-quote-left"></i>
-                <span id="chat-msg">¿A qué nivel se puede entrar a la mazmorra de Lilith? ¡El servidor está increíble!</span>
-            </div>
+<body class="style-gothic">
+    <div id="container">
+        <div id="output">
+            <!-- El mensaje se generará dinámicamente aquí -->
         </div>
     </div>
 
     <script>
-        const params = new URLSearchParams(window.location.search);
-        
-        if (params.has('user')) document.getElementById('user-name').innerText = params.get('user');
-        if (params.has('msg')) document.getElementById('chat-msg').innerText = params.get('msg');
-        if (params.has('avatar')) document.getElementById('user-avatar').src = params.get('avatar');
+        // Configuración desde la URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const roomID = urlParams.get('session') || urlParams.get('room') || 'TESTROOM';
+        const password = urlParams.get('password') || urlParams.get('pw') || "false";
+        const showtime = parseInt(urlParams.get('showtime') || '30000');
 
-        function hideMessage() {
-            const box = document.getElementById('main-box');
-            box.classList.remove('animate__slideInDown');
-            box.classList.add('animate__slideOutUp');
-            setTimeout(() => box.style.display = 'none', 800);
+        let messageTimeout = null;
+        let currentMessage = null;
+
+        function createIframe() {
+            var iframe = document.createElement("iframe");
+            iframe.src = "https://vdo.socialstream.ninja/?ln&password=" + password + "&notmobile&salt=vdo.ninja&label=overlay&exclude=" + roomID + "&scene&novideo&noaudio&cleanoutput&room=" + roomID;
+            iframe.style.width = "0px"; iframe.style.height = "0px"; iframe.style.position = "fixed";
+            iframe.style.left = "-100px"; iframe.style.top = "-100px";
+            document.body.appendChild(iframe);
+
+            window.addEventListener("message", function (e) {
+                if (e.source != iframe.contentWindow) return;
+                if ("dataReceived" in e.data) {
+                    if ("overlayNinja" in e.data.dataReceived) {
+                        processData(e.data.dataReceived.overlayNinja);
+                    }
+                }
+            });
         }
+
+        function processData(data) {
+            if (!data || data === false) { hideMessage(); return; }
+            if (data.contents) showMessage(data.contents);
+            else if (data.chatmessage) showMessage(data);
+        }
+
+        function showMessage(content) {
+            hideMessage(() => {
+                const container = document.createElement('div');
+                container.className = 'highlight-container show';
+                
+                container.innerHTML = `
+                    <div class="corner tl"></div>
+                    <div class="corner br"></div>
+                    <div class="user-seal">
+                        <div class="seal-bg"></div>
+                        <img src="${content.chatimg || '../assets/images/logo/logosimple.png'}" class="avatar">
+                    </div>
+                    <div class="message-box">
+                        <div class="user-name">
+                            <div class="badges" id="badges-cont"></div>
+                            <span style="color: ${content.nameColor || 'var(--gold)'}">${content.chatname}</span>
+                        </div>
+                        <div class="chat-text">
+                            <i class="fas fa-quote-left"></i>
+                            <span>${content.chatmessage}</span>
+                        </div>
+                    </div>
+                `;
+
+                // Agregar badges si existen
+                const badgesCont = container.querySelector('#badges-cont');
+                if (content.chatbadges) {
+                    content.chatbadges.forEach(b => {
+                        const img = document.createElement('img');
+                        img.className = 'badge';
+                        img.src = typeof b === 'string' ? b : b.src;
+                        badgesCont.appendChild(img);
+                    });
+                }
+
+                document.getElementById('output').appendChild(container);
+                currentMessage = container;
+
+                if (messageTimeout) clearTimeout(messageTimeout);
+                messageTimeout = setTimeout(hideMessage, showtime);
+            });
+        }
+
+        function hideMessage(callback) {
+            if (messageTimeout) { clearTimeout(messageTimeout); messageTimeout = null; }
+            if (currentMessage) {
+                currentMessage.classList.remove('show');
+                currentMessage.classList.add('hide');
+                setTimeout(() => {
+                    currentMessage.remove();
+                    currentMessage = null;
+                    if (callback) callback();
+                }, 800);
+            } else if (callback) callback();
+        }
+
+        createIframe();
     </script>
     <script src="auto-refresh.js"></script>
 </body>
