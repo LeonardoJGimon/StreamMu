@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mu Neutro - Stream Ending</title>
+    <title>Mu Neutro - Final de Stream</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @font-face {
@@ -238,8 +238,8 @@
 
     <div class="content">
         <img src="../assets/images/logo/logosimple.png" class="main-logo" alt="Mu Logo">
-        <h1 class="title">STREAM ENDING</h1>
-        <p class="thanks-msg">Thank you for joining the Legion</p>
+        <h1 class="title">FIN DEL STREAM</h1>
+        <p class="thanks-msg">Gracias por unirte a la Legión</p>
 
         <div class="socials-grid">
             <div class="social-item">
@@ -262,7 +262,7 @@
         <div class="cycling-container">
             <div id="gadget-label">NEW HERO</div>
             <div class="mask">
-                <div id="gadget-value">LOADING...</div>
+                <div id="gadget-value">CARGANDO...</div>
             </div>
         </div>
     </div>
@@ -295,8 +295,8 @@
 
         // LÓGICA DE DATOS DINÁMICOS (GADGETS)
         let gadgetItems = [
-            { label: "THANKS FOR", value: "WATCHING" },
-            { label: "VERSION", value: "SEASON 6 EP 3" }
+            { label: "GRACIAS POR", value: "ACOMPAÑARNOS" },
+            { label: "VERSIÓN", value: "SEASON 6 EP 3" }
         ];
         let gadgetIndex = 0;
 
@@ -307,18 +307,18 @@
                 const data = await res.json();
                 
                 const newGadgetItems = [
-                    { label: "THANKS FOR", value: "WATCHING" }
+                    { label: "GRACIAS POR", value: "ACOMPAÑARNOS" }
                 ];
                 if (data.recentCharacters && data.recentCharacters.length) {
-                    newGadgetItems.push({ label: "NEW HERO", value: data.recentCharacters[0].name.toUpperCase() });
+                    newGadgetItems.push({ label: "NUEVO HÉROE", value: data.recentCharacters[0].name.toUpperCase() });
                 }
                 if (data.topStrengthCharacters && data.topStrengthCharacters.length) {
-                    newGadgetItems.push({ label: "TOP PLAYER", value: data.topStrengthCharacters[0].name.toUpperCase() });
+                    newGadgetItems.push({ label: "TOP JUGADOR", value: data.topStrengthCharacters[0].name.toUpperCase() });
                 }
                 if (data.latestUser) {
-                    newGadgetItems.push({ label: "LATEST USER", value: data.latestUser.toUpperCase() });
+                    newGadgetItems.push({ label: "ÚLTIMO USUARIO", value: data.latestUser.toUpperCase() });
                 }
-                newGadgetItems.push({ label: "VERSION", value: "SEASON 6 EP 3" });
+                newGadgetItems.push({ label: "VERSIÓN", value: "SEASON 6 EP 3" });
                 
                 gadgetItems = newGadgetItems;
             } catch (e) { console.error(e); }

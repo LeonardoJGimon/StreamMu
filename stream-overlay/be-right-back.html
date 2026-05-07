@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mu Neutro - Be Right Back</title>
+    <title>Mu Neutro - Ya Volvemos</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @font-face {
@@ -318,8 +318,8 @@
 
     <div class="content">
         <img src="../assets/images/logo/logosimple.png" class="main-logo" alt="Mu Logo">
-        <h1 class="title">BE RIGHT BACK</h1>
-        <div class="subtitle">Intermission</div>
+        <h1 class="title">YA VOLVEMOS</h1>
+        <div class="subtitle">Intermedio</div>
 
         <!-- PANEL DE ESTADO -->
         <div class="server-status-container">
@@ -371,12 +371,12 @@
 
     <div class="clock-footer">
         <div class="clock-item">
-            <span class="label">SERVER TIME</span>
+            <span class="label">HORA SERVIDOR</span>
             <span id="server-time" class="time">00:00:00</span>
         </div>
         <div class="clock-divider"></div>
         <div class="clock-item">
-            <span class="label">LOCAL TIME</span>
+            <span class="label">HORA LOCAL</span>
             <span id="local-time" class="time">00:00:00</span>
         </div>
     </div>
@@ -393,8 +393,8 @@
 
         // LÓGICA DE DATOS DINÁMICOS (GADGETS)
         let gadgetItems = [
-            { label: "BRB", value: "STAY TUNED" },
-            { label: "VERSION", value: "SEASON 6 EP 3" }
+            { label: "YA VOLVEMOS", value: "MANTENTE CERCA" },
+            { label: "VERSIÓN", value: "SEASON 6 EP 3" }
         ];
         let gadgetIndex = 0;
 
@@ -416,18 +416,18 @@
                 ];
 
                 if (data.recentCharacters && data.recentCharacters.length) {
-                    newGadgetItems.push({ label: "NEW HERO", value: data.recentCharacters[0].name.toUpperCase() });
+                    newGadgetItems.push({ label: "NUEVO HÉROE", value: data.recentCharacters[0].name.toUpperCase() });
                 }
                 
                 if (data.topStrengthCharacters && data.topStrengthCharacters.length) {
-                    newGadgetItems.push({ label: "TOP PLAYER", value: data.topStrengthCharacters[0].name.toUpperCase() });
+                    newGadgetItems.push({ label: "TOP JUGADOR", value: data.topStrengthCharacters[0].name.toUpperCase() });
                 }
-
+ 
                 if (data.latestUser) {
-                    newGadgetItems.push({ label: "LATEST USER", value: data.latestUser.toUpperCase() });
+                    newGadgetItems.push({ label: "ÚLTIMO USUARIO", value: data.latestUser.toUpperCase() });
                 }
-
-                newGadgetItems.push({ label: "VERSION", value: "SEASON 6 EP 3" });
+ 
+                newGadgetItems.push({ label: "VERSIÓN", value: "SEASON 6 EP 3" });
                 
                 gadgetItems = newGadgetItems;
             } catch (e) {

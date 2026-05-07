@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Mu Neutro - Starting Soon</title>
+    <title>Mu Neutro - Comenzamos Pronto</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @font-face {
@@ -356,7 +356,7 @@
 
     <div class="content">
         <img src="../assets/images/logo/logosimple.png" class="main-logo" alt="Mu Logo">
-        <h1 class="title">STARTING SOON</h1>
+        <h1 class="title">COMIENZA PRONTO</h1>
         
         <div id="timer" class="timer-container">
             <span id="mins" class="digit-box">00</span>
@@ -544,12 +544,12 @@
     <!-- Generador de partículas de ceniza -->
     <div class="clock-footer">
         <div class="clock-item">
-            <span class="label"><i class="fas fa-server"></i> SERVER TIME</span>
+            <span class="label"><i class="fas fa-server"></i> HORA SERVIDOR</span>
             <span id="server-time" class="time">00:00:00</span>
         </div>
         <div class="clock-divider"></div>
         <div class="clock-item">
-            <span class="label"><i class="fas fa-user-clock"></i> LOCAL TIME</span>
+            <span class="label"><i class="fas fa-user-clock"></i> HORA LOCAL</span>
             <span id="local-time" class="time">00:00:00</span>
         </div>
     </div>
@@ -625,7 +625,7 @@
             let timeLeft = totalTime - elapsed;
 
             if (timeLeft <= 0) {
-                timerContainer.innerHTML = "STARTING NOW!";
+                timerContainer.innerHTML = "¡COMENZAMOS YA!";
                 timerContainer.style.fontSize = "2.5rem";
                 timerContainer.style.color = "#ffffff";
                 timerContainer.style.textShadow = "0 0 20px rgba(255, 255, 255, 0.6)";
@@ -648,8 +648,8 @@
 
         // LÓGICA DE ROTACIÓN DE TEXTO (GADGETS)
         let gadgetItems = [
-            { label: "PREPARE FOR", value: "THE BATTLE" },
-            { label: "VERSION", value: "SEASON 6 EP 3" }
+            { label: "PREPÁRATE PARA", value: "LA BATALLA" },
+            { label: "VERSIÓN", value: "SEASON 6 EP 3" }
         ];
         let gadgetIndex = 0;
 
@@ -673,18 +673,18 @@
                     ];
 
                     if (data.recentCharacters && data.recentCharacters.length) {
-                        newGadgetItems.push({ label: "NEW HERO", value: data.recentCharacters[0].name.toUpperCase() });
+                        newGadgetItems.push({ label: "NUEVO HÉROE", value: data.recentCharacters[0].name.toUpperCase() });
                     }
                     
                     if (data.topStrengthCharacters && data.topStrengthCharacters.length) {
-                        newGadgetItems.push({ label: "TOP PLAYER", value: data.topStrengthCharacters[0].name.toUpperCase() });
+                        newGadgetItems.push({ label: "TOP JUGADOR", value: data.topStrengthCharacters[0].name.toUpperCase() });
                     }
-
+ 
                     if (data.latestUser) {
-                        newGadgetItems.push({ label: "LATEST USER", value: data.latestUser.toUpperCase() });
+                        newGadgetItems.push({ label: "ÚLTIMO USUARIO", value: data.latestUser.toUpperCase() });
                     }
-
-                    newGadgetItems.push({ label: "VERSION", value: "SEASON 6 EP 3" });
+ 
+                    newGadgetItems.push({ label: "VERSIÓN", value: "SEASON 6 EP 3" });
                     
                     gadgetItems = newGadgetItems;
                 }

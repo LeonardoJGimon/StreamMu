@@ -80,7 +80,7 @@
 <body>
 
     <div class="outer-box">
-        <h1 class="main-title">HALL OF FAME</h1>
+        <h1 class="main-title">SALÓN DE LA FAMA</h1>
         
         <div id="hall" class="hall-container">
             <!-- Cargado vía JS -->
@@ -127,12 +127,12 @@
 
                 // 2. CLAN SUPREMO
                 if (data.topGuild) {
-                    html += createCard('CLAN SUPREMO', data.topGuild.G_Name, 'CLAN LÍDER', data.topGuild.G_Score, 'SCORE', null, '../assets/images/characters/GUILD.png');
+                    html += createCard('CLAN SUPREMO', data.topGuild.G_Name, 'CLAN LÍDER', data.topGuild.G_Score, 'PUNTOS', null, '../assets/images/characters/GUILD.png');
                 }
 
                 // 3. ASESINO DE ÉLITE
                 if (data.topPvP) {
-                    html += createCard('ASESINO DE ÉLITE', data.topPvP.Name, 'MÁS PVP KILLS', data.topPvP.PkCount || 0, 'KILLS', data.topPvP.Class);
+                    html += createCard('ASESINO DE ÉLITE', data.topPvP.Name, 'MÁS PVP KILLS', data.topPvP.PkCount || 0, 'MUERTES', data.topPvP.Class);
                 }
 
                 document.getElementById('hall').innerHTML = html;
