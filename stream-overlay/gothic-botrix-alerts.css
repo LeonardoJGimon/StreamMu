@@ -128,6 +128,18 @@
     100% { opacity: 1; transform: translateX(0); filter: blur(0); }
 }
 
+/* TÍTULO DE BIENVENIDA (NUEVO) */
+.alert-title {
+    font-family: 'Exocet', serif !important;
+    font-size: 0.8rem !important;
+    color: var(--crimson-bright) !important;
+    letter-spacing: 5px !important;
+    text-transform: uppercase !important;
+    margin-bottom: -5px !important;
+    opacity: 0.8 !important;
+    text-shadow: 0 0 10px var(--crimson) !important;
+}
+
 /* EL MENSAJE (Elegancia Gótica) */
 #alert-message, .alert-message, .message {
     font-family: 'Exocet', serif !important;
