@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mu Neutro - Master Controller</title>
+    <title>Mu Neutro - Centro de Mando</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @font-face { font-family: 'Exocet'; src: url('../assets/images/font/ExocetImmortal-Medium.otf') format('opentype'); }
@@ -35,7 +35,6 @@
             position: relative;
         }
 
-        /* Esquinas */
         .container::before, .container::after {
             content: ''; position: absolute; width: 40px; height: 40px;
             filter: drop-shadow(0 0 10px var(--crimson-bright));
@@ -135,7 +134,6 @@
             font-weight: bold;
         }
 
-        /* GRID PARA BOTONES DE ALERTA */
         .alert-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -158,11 +156,10 @@
 <body>
 
     <div class="container">
-        <h1>MU NEUTRO - CONTROL CENTER</h1>
+        <h1>MU NEUTRO - CENTRO DE MANDO</h1>
 
-        <!-- NOTICIAS / TICKER -->
         <div class="section">
-            <div class="section-title"><i class="fas fa-bullhorn"></i> BARRA DE NOTICIAS (TICKER)</div>
+            <div class="section-title"><i class="fas fa-bullhorn"></i> BARRA DE NOTICIAS</div>
             <div class="input-group">
                 <label>Texto de las Noticias</label>
                 <textarea id="ticker-text" rows="3">BIENVENIDOS A MU NEUTRO — SIGUENOS EN TIKTOK PARA CLIPS DIARIOS — EVENTOS TODOS LOS SÁBADOS</textarea>
@@ -174,13 +171,12 @@
             </div>
         </div>
 
-        <!-- ALERTAS -->
         <div class="section">
             <div class="section-title"><i class="fas fa-bell"></i> PRUEBA DE ALERTAS LIMPIAS</div>
             <div class="alert-grid">
                 <div class="alert-btn" onclick="testAlert()">
                     <i class="fas fa-heart"></i>
-                    <span>PROBAR FRAME</span>
+                    <span>PROBAR MARCO</span>
                 </div>
                 <div class="alert-btn" style="opacity: 0.5; cursor: not-allowed;">
                     <i class="fas fa-star"></i>
@@ -193,11 +189,10 @@
             </div>
         </div>
 
-        <!-- CHAT -->
         <div class="section">
             <div class="section-title"><i class="fas fa-comments"></i> CONFIGURACIÓN DE CHAT</div>
             <div class="input-group">
-                <label>Tamaño de Fuente (Pixels)</label>
+                <label>Tamaño de Fuente (Píxeles)</label>
                 <input type="text" id="chat-size" value="70">
             </div>
             <p style="font-size: 0.8rem; color: #666;">Nota: Estamos trabajando en un sistema de actualización en tiempo real para el chat.</p>
@@ -214,7 +209,6 @@
             const finalUrl = baseUrl + "gothic-ticker.html?text=" + encodedText;
             document.getElementById('ticker-link-box').innerText = finalUrl;
             
-            // Re-añadir el botón de copiar que se borró al cambiar el texto
             const btn = document.createElement('button');
             btn.className = 'copy-btn';
             btn.innerText = 'COPIAR';
@@ -223,17 +217,15 @@
         }
 
         function testAlert() {
-            // Abrir la alerta en una ventana nueva o simplemente dar el link
             window.open(baseUrl + "live-alerts-clean.html", "AlertPreview", "width=800,height=600");
         }
 
         function copyToClipboard(id) {
             const text = document.getElementById(id).innerText.replace('COPIAR', '');
             navigator.clipboard.writeText(text);
-            alert("¡Link copiado! Pégalo en tu OBS.");
+            alert("¡Enlace copiado! Pégalo en tu OBS.");
         }
         
-        // Generar inicial
         generateTickerLink();
     </script>
 </body>
