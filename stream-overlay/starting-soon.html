@@ -625,10 +625,13 @@
             let timeLeft = totalTime - elapsed;
 
             if (timeLeft <= 0) {
-                timerContainer.innerHTML = "¡COMENZAMOS YA!";
-                timerContainer.style.fontSize = "2.5rem";
-                timerContainer.style.color = "#ffffff";
-                timerContainer.style.textShadow = "0 0 20px rgba(255, 255, 255, 0.6)";
+                const mainTitle = document.querySelector('.title');
+                if (mainTitle) {
+                    mainTitle.innerText = "¡COMENZAMOS YA!";
+                    mainTitle.style.fontSize = "6rem"; // Aún más grande e impactante
+                    mainTitle.style.animation = "shimmerLoop 2s linear infinite, glowPulse 1s infinite ease-in-out";
+                }
+                timerContainer.style.display = 'none';
                 clearInterval(timerInterval);
                 return;
             }
