@@ -138,6 +138,18 @@
         }
 
         createIframe();
+
+        // MENSAJE DE PRUEBA AUTOMÁTICO PARA VERIFICACIÓN
+        setTimeout(() => {
+            if (!currentMessage) {
+                showMessage({
+                    chatname: "SISTEMA MU",
+                    chatmessage: "ESTILO GÓTICO CARGADO. Si ves este mensaje con esquinas de oro, el cambio ha funcionado correctamente.",
+                    chatimg: "../assets/images/logo/logosimple.png",
+                    nameColor: "#c0a375"
+                });
+            }
+        }, 3000);
     </script>
     <script src="auto-refresh.js"></script>
 </body>
