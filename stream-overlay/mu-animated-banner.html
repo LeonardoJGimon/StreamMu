@@ -2,7 +2,8 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>MU NEUTRO - Animated Banner</title>
+    <title>MU NEUTRO - Apocalypse Banner</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @font-face { 
             font-family: 'ExocetReal'; 
@@ -13,188 +14,193 @@
             --gold-light: #f0d7a9;
             --gold-dark: #c0a375;
             --fire: #ff4500;
-            --fire-bright: #ff8c00;
-            --bg-dark: #050505;
+            --fire-bright: #ffcc00;
+            --bg-dark: #020202;
         }
 
         body {
-            margin: 0; padding: 0;
-            background: transparent;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            overflow: hidden;
-            font-family: 'ExocetReal', serif;
+            margin: 0; padding: 0; background: transparent;
+            display: flex; justify-content: center; align-items: center;
+            height: 100vh; overflow: hidden; font-family: 'ExocetReal', serif;
         }
 
+        /* CONTENEDOR CON EFECTO DE FLASH */
         .banner-container {
-            width: 800px;
-            height: 200px;
-            background: radial-gradient(circle at center, #1a0505 0%, var(--bg-dark) 100%);
-            border: 1px solid rgba(192, 163, 117, 0.2);
+            width: 850px; height: 180px;
+            background: var(--bg-dark);
+            border: 2px solid rgba(192, 163, 117, 0.4);
             position: relative;
-            display: flex;
-            align-items: center;
-            padding: 0 50px;
-            box-shadow: 0 0 50px rgba(0,0,0,1);
+            display: flex; align-items: center;
+            padding: 0 60px;
+            box-shadow: 0 0 100px rgba(0,0,0,1);
             overflow: hidden;
+            animation: screenFlash 7s infinite;
         }
 
-        .spark {
-            position: absolute;
-            background: var(--fire-bright);
-            border-radius: 50%;
-            opacity: 0.6;
-            filter: blur(1px);
-            animation: floatUp 4s infinite linear;
+        @keyframes screenFlash {
+            0%, 94%, 100% { filter: brightness(1) contrast(1); }
+            95% { filter: brightness(1.8) contrast(1.5); }
+            97% { filter: brightness(1) contrast(1); }
         }
 
-        @keyframes floatUp {
-            0% { transform: translateY(220px) translateX(0) scale(1); opacity: 0; }
-            50% { opacity: 0.8; }
-            100% { transform: translateY(-50px) translateX(20px) scale(0.5); opacity: 0; }
+        /* FONDO DE VIDEO Y HUMO */
+        .video-bg {
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%; min-height: 100%;
+            opacity: 0.5; z-index: 1; filter: saturate(2) contrast(1.5);
+            pointer-events: none;
         }
 
+        /* CORTES DE FUEGO ULTRA RAPIDOS */
         .fire-slash {
-            position: absolute;
-            width: 300px;
-            height: 2px;
-            background: linear-gradient(to right, transparent, var(--fire), var(--fire-bright), transparent);
-            transform: rotate(-35deg);
-            opacity: 0;
-            z-index: 5;
+            position: absolute; width: 400px; height: 4px;
+            background: linear-gradient(to right, transparent, #fff, var(--fire-bright), var(--fire), transparent);
+            transform: rotate(-25deg); opacity: 0; z-index: 5;
+            filter: blur(1px);
         }
+        .slash-1 { top: 10%; left: -20%; animation: violentSlash 4s infinite; }
+        .slash-2 { top: 70%; left: 30%; animation: violentSlash 4s infinite 2s; }
 
-        .slash-1 { top: 20%; left: -10%; animation: slashMove 3s infinite 1s; }
-        .slash-2 { top: 60%; left: 40%; animation: slashMove 4s infinite 2.5s; }
-
-        @keyframes slashMove {
-            0% { transform: rotate(-35deg) translateX(-500px); opacity: 0; }
-            10% { opacity: 1; }
-            20% { transform: rotate(-35deg) translateX(800px); opacity: 0; }
-            100% { transform: rotate(-35deg) translateX(800px); opacity: 0; }
-        }
-
-        .logo-group {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            z-index: 10;
-        }
-
-        .main-logo {
-            font-size: 4rem;
-            background: linear-gradient(to bottom, 
-                var(--gold-light) 0%, 
-                var(--gold-dark) 45%, 
-                #5d4411 50%, 
-                var(--gold-dark) 55%, 
-                var(--gold-light) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            position: relative;
-            filter: drop-shadow(0 5px 15px rgba(0,0,0,0.8));
-            letter-spacing: 5px;
-            animation: logoBreath 4s infinite ease-in-out;
-        }
-
-        .main-logo::after {
-            content: 'MU NEUTRO';
-            position: absolute;
-            top: 0; left: 0;
-            width: 100%;
-            background: linear-gradient(115deg, 
-                transparent 0%, transparent 40%, 
-                rgba(255,255,255,0.8) 50%, 
-                transparent 60%, transparent 100%);
-            -webkit-background-clip: text;
-            background-size: 200% 100%;
-            animation: glint 5s infinite linear;
-        }
-
-        @keyframes glint {
-            0% { background-position: -150% 0; }
-            25% { background-position: 150% 0; }
-            100% { background-position: 150% 0; }
-        }
-
-        @keyframes logoBreath {
-            0%, 100% { transform: scale(1); filter: brightness(1); }
-            50% { transform: scale(1.03); filter: brightness(1.2); }
-        }
-
-        .stats-panel {
-            margin-left: auto;
-            text-align: right;
-            z-index: 10;
-            min-width: 250px;
-        }
-
-        .stat-item {
-            font-size: 1.5rem;
-            color: #fff;
-            text-shadow: 0 0 10px rgba(255,255,255,0.5);
-            opacity: 0;
-            position: absolute;
-            right: 50px;
-            top: 50%;
-            transform: translateY(-50%);
-            animation: statCycle 12s infinite;
-        }
-
-        .stat-1 { animation-delay: 0s; }
-        .stat-2 { animation-delay: 4s; }
-        .stat-3 { animation-delay: 8s; }
-
-        @keyframes statCycle {
-            0% { opacity: 0; transform: translateY(-40%) scale(0.9); }
-            5% { opacity: 1; transform: translateY(-50%) scale(1); }
-            30% { opacity: 1; transform: translateY(-50%) scale(1); }
-            35% { opacity: 0; transform: translateY(-60%) scale(0.9); }
+        @keyframes violentSlash {
+            0% { transform: rotate(-25deg) translateX(-600px) scaleX(0.5); opacity: 0; }
+            5% { opacity: 1; transform: rotate(-25deg) translateX(0) scaleX(1.5); }
+            15% { transform: rotate(-25deg) translateX(800px) scaleX(0.5); opacity: 0; }
             100% { opacity: 0; }
         }
 
-        .stat-label { color: var(--gold-dark); font-size: 0.8rem; display: block; letter-spacing: 3px; }
+        /* LOGO CON RELIEVE 3D Y CORONA */
+        .logo-group {
+            z-index: 10; position: relative;
+            display: flex; flex-direction: column; align-items: center;
+        }
+
+        .crown-icon {
+            color: var(--gold-light); font-size: 1.5rem;
+            margin-bottom: -15px; opacity: 0.8;
+            filter: drop-shadow(0 0 10px var(--fire));
+            animation: crownFloat 3s infinite ease-in-out;
+        }
+
+        @keyframes crownFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .main-logo {
+            font-size: 4.5rem;
+            background: linear-gradient(to bottom, #fff 0%, var(--gold-light) 20%, var(--gold-dark) 50%, #4a350a 51%, var(--gold-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            /* Profundidad 3D */
+            text-shadow: 
+                0 1px 0 #333, 
+                0 2px 0 #222, 
+                0 3px 0 #111, 
+                0 4px 0 #000,
+                0 10px 20px rgba(0,0,0,0.8);
+            letter-spacing: 8px;
+            position: relative;
+            animation: logoPulse 4s infinite ease-in-out;
+        }
+
+        @keyframes logoPulse {
+            0%, 100% { transform: scale(1); filter: brightness(1); }
+            50% { transform: scale(1.02); filter: brightness(1.1) drop-shadow(0 0 20px rgba(255,69,0,0.3)); }
+        }
+
+        /* BRILLO RECURRENTE */
+        .main-logo::after {
+            content: 'MU NEUTRO';
+            position: absolute; top: 0; left: 0; width: 100%;
+            background: linear-gradient(115deg, transparent 40%, rgba(255,255,255,0.9) 50%, transparent 60%);
+            -webkit-background-clip: text; background-size: 200% 100%;
+            animation: glint 6s infinite linear;
+        }
+
+        @keyframes glint {
+            0% { background-position: -200% 0; }
+            20% { background-position: 200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        /* PANEL DE STATS DINAMICO */
+        .stats-panel { margin-left: auto; text-align: right; z-index: 10; min-width: 250px; position: relative; height: 100px; }
+        .stat-item {
+            font-size: 1.6rem; color: #fff; text-shadow: 0 0 15px var(--fire);
+            opacity: 0; position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+            animation: statCycle 9s infinite;
+        }
+        .stat-1 { animation-delay: 0s; }
+        .stat-2 { animation-delay: 3s; }
+        .stat-3 { animation-delay: 6s; }
+
+        @keyframes statCycle {
+            0% { opacity: 0; transform: translateY(-30%) scale(0.8) skewX(10deg); filter: blur(5px); }
+            5% { opacity: 1; transform: translateY(-50%) scale(1) skewX(0); filter: blur(0); }
+            28% { opacity: 1; transform: translateY(-50%) scale(1) skewX(0); filter: blur(0); }
+            33% { opacity: 0; transform: translateY(-70%) scale(1.2) skewX(-10deg); filter: blur(10px); }
+            100% { opacity: 0; }
+        }
+
+        .stat-label { color: var(--gold-dark); font-size: 0.7rem; display: block; letter-spacing: 4px; margin-bottom: 5px; opacity: 0.7; }
+
+        /* CHISPAS ADICIONALES */
+        .spark { position: absolute; background: #fff; border-radius: 50%; animation: floatUp 3s infinite linear; z-index: 2; box-shadow: 0 0 5px var(--fire-bright); }
+        @keyframes floatUp {
+            0% { transform: translateY(200px) scale(1); opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(-50px) translateX(30px) scale(0); opacity: 0; }
+        }
     </style>
 </head>
 <body>
 
     <div class="banner-container">
+        <!-- Fondo Animado -->
+        <video class="video-bg" autoplay muted loop playsinline>
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-fire-and-embers-in-a-dark-place-3232-large.mp4" type="video/mp4">
+        </video>
+
         <div id="spark-container"></div>
 
+        <!-- Cortes de Fuego -->
         <div class="fire-slash slash-1"></div>
-        <div class="fire-slash slash-2"></div>
+        <div class="fire-slash slash-2)</div>
 
+        <!-- Logo Central -->
         <div class="logo-group">
+            <i class="fas fa-crown crown-icon"></i>
             <div class="main-logo">MU NEUTRO</div>
         </div>
 
+        <!-- Estadisticas -->
         <div class="stats-panel">
             <div class="stat-item stat-1">
-                <span class="stat-label">EXPERIENCIA</span>
+                <span class="stat-label">EXP RATE</span>
                 XP: 300X
             </div>
             <div class="stat-item stat-2">
-                <span class="stat-label">LEVEL CAP</span>
-                MAX: 1750
+                <span class="stat-label">S6 EP3</span>
+                MAX LEVEL
             </div>
             <div class="stat-item stat-3">
-                <span class="stat-label">DROP RATE</span>
-                ITEMS: 40%
+                <span class="stat-label">SERVER STATUS</span>
+                ONLINE
             </div>
         </div>
     </div>
 
     <script>
         const container = document.getElementById('spark-container');
-        for(let i=0; i<20; i++) {
+        for(let i=0; i<25; i++) {
             let spark = document.createElement('div');
             spark.className = 'spark';
             spark.style.left = Math.random() * 100 + '%';
-            spark.style.width = Math.random() * 4 + 'px';
+            spark.style.width = Math.random() * 3 + 'px';
             spark.style.height = spark.style.width;
-            spark.style.animationDelay = Math.random() * 4 + 's';
+            spark.style.animationDelay = Math.random() * 5 + 's';
+            spark.style.animationDuration = (Math.random() * 2 + 2) + 's';
             container.appendChild(spark);
         }
     </script>
