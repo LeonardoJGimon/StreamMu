@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mu Neutro - Últimos Guerreros (Linear Edition)</title>
+    <title>Mu Neutro - Últimos Guerreros (Optimized)</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @font-face { font-family: 'Exocet'; src: url('../assets/images/font/ExocetImmortal-Medium.otf') format('opentype'); font-weight: 500; }
@@ -23,7 +23,7 @@
             overflow: hidden; box-sizing: border-box;
         }
 
-        /* CONTENEDOR PRINCIPAL - FIX DEFINITIVO */
+        /* CONTENEDOR PRINCIPAL */
         .linear-container {
             display: flex;
             flex-direction: row;
@@ -33,19 +33,19 @@
             border: 1px solid rgba(192, 163, 117, 0.3);
             box-shadow: 0 0 50px rgba(0,0,0,1);
             position: relative;
-            margin-left: 80px; /* Espacio para el logo */
-            width: fit-content; /* Se ajusta al contenido */
+            margin-left: 90px;
+            width: fit-content; 
             overflow: visible;
+            will-change: transform;
         }
 
-        /* LOGO QUE SOBRESALE */
         .header-logo {
             position: absolute;
             left: -85px;
             top: 50%;
             transform: translateY(-50%);
-            width: 130px;
-            height: 130px;
+            width: 120px;
+            height: 120px;
             z-index: 100;
             filter: drop-shadow(0 0 20px rgba(0,0,0,1));
         }
@@ -89,7 +89,7 @@
             padding: 0 30px;
             position: relative;
             flex: 1;
-            overflow: visible; /* CRITICO PARA LAS ETIQUETAS */
+            overflow: visible;
         }
 
         .hall-card {
@@ -104,10 +104,10 @@
             position: relative; 
             border: 1px solid rgba(192, 163, 117, 0.15);
             box-sizing: border-box;
-            transition: all 0.5s ease;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            will-change: transform, opacity;
         }
 
-        /* ETIQUETA SUPERIOR */
         .category-label {
             position: absolute; 
             top: -12px; 
@@ -121,16 +121,6 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.5);
             border: 1px solid var(--gold);
             z-index: 20;
-        }
-
-        .hall-card.new-entry {
-            animation: slideInWidth 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-            overflow: hidden;
-        }
-
-        @keyframes slideInWidth {
-            from { width: 0; opacity: 0; transform: scaleX(0); transform-origin: left; }
-            to { width: 330px; opacity: 1; transform: scaleX(1); transform-origin: left; }
         }
 
         .avatar-container { 
@@ -154,22 +144,15 @@
 <body>
 
     <div class="linear-container">
-        <!-- Logo -->
         <img src="../assets/images/logo/logosimple.png" class="header-logo">
         
-        <!-- Header -->
         <div class="widget-header">
             <div class="header-label">NUEVOS</div>
             <div class="header-title">GUERREROS</div>
         </div>
 
-        <!-- Lista de tarjetas -->
         <div class="cards-wrapper" id="list">
-            <!-- Las tarjetas se generan dinámicamente -->
-        </div>
-    </div>
-        <div class="cards-wrapper" id="list">
-            <!-- Tarjetas dinámicas -->
+            <!-- Dinámico -->
         </div>
     </div>
 
@@ -184,7 +167,7 @@
             96: { folder: 'RAGE', icon: 'rf icon.png' }
         };
 
-        const labels = ['NUEVA CREACIÓN', 'GUERRERO RECIENTE', 'ALMA DESPERTADA', 'SANGRE NUEVA'];
+        const labels = ['NUEVA CREACIÓN', 'GUERRERO RECIENTE', 'ALMA DESPERTADA'];
         let serverTime = new Date();
         let lastChars = [];
 
@@ -197,36 +180,32 @@
 
         async function update() {
             try {
-                // Cache buster con timestamp
                 const res = await fetch('/api/stats?t=' + Date.now());
                 if (!res.ok) return;
                 const data = await res.json();
                 serverTime = new Date(data.timestamp);
                 const chars = (data.recentCharacters || []).slice(0, 3);
-
+                
                 if (chars.length === 0) return;
 
-                if (lastChars.length === 0) {
+                if (lastChars.length === 0 || chars[0].name !== lastChars[0].name) {
                     initialRender(chars);
-                } else if (chars[0].name.trim() !== lastChars[0].name.trim()) {
-                    // Si el nombre del primer personaje cambió, activamos el desplazamiento
-                    shiftRender(chars[0]);
                 } else {
-                    // Si solo cambió el nivel o tiempo, refrescamos los datos sin mover nada
-                    refreshData(chars);
+                    updateDataOnly(chars);
                 }
                 lastChars = chars;
-            } catch (e) { console.error("Error en update:", e); }
+            } catch (e) { console.error(e); }
         }
 
-        function createCardHtml(c, index, extraClass = '') {
-            const info = classMap[c.classId] || classMap[0];
-            const iconPath = `../assets/images/chars/${info.folder}/${info.icon}`;
-            return `
-                <div class="hall-card ${extraClass}" data-name="${c.name}">
-                    <span class="category-label">${labels[index] || 'WARRIOR'}</span>
+        function initialRender(chars) {
+            const listEl = document.getElementById('list');
+            listEl.innerHTML = chars.map((c, i) => {
+                const classInfo = classMap[c.classId] || classMap[0];
+                return `
+                <div class="hall-card">
+                    <span class="category-label">${labels[i] || 'WARRIOR'}</span>
                     <div class="avatar-container">
-                        <img src="${iconPath}" class="avatar-img">
+                        <img src="../assets/images/chars/${classInfo.folder}/${classInfo.icon}" class="avatar-img">
                     </div>
                     <div class="info-box">
                         <div class="name">${c.name}</div>
@@ -237,67 +216,31 @@
                         <div class="stat-unit">ANTIGÜEDAD</div>
                     </div>
                 </div>
-            `;
+            `}).join('');
         }
 
-        function initialRender(chars) {
-            const listEl = document.getElementById('list');
-            listEl.innerHTML = chars.map((c, i) => createCardHtml(c, i)).join('');
-        }
-
-        function shiftRender(newChar) {
-            const listEl = document.getElementById('list');
-            const cards = listEl.querySelectorAll('.hall-card');
-            
-            // 1. Crear nueva tarjeta
-            const tempDiv = document.createElement('div');
-            tempDiv.innerHTML = createCardHtml(newChar, 0, 'new-entry');
-            const newCard = tempDiv.firstElementChild;
-            
-            // 2. Insertar al inicio para el efecto "push"
-            listEl.insertBefore(newCard, listEl.firstChild);
-            
-            // 3. Remover el excedente (si hay más de 3)
-            if (cards.length >= 3) {
-                const lastCard = cards[cards.length - 1];
-                lastCard.classList.add('removing');
-                setTimeout(() => lastCard.remove(), 800);
-            }
-
-            // 4. Corregir etiquetas de posición
-            setTimeout(() => {
-                const currentCards = listEl.querySelectorAll('.hall-card:not(.removing)');
-                currentCards.forEach((card, i) => {
-                    const label = card.querySelector('.category-label');
-                    if (label) label.innerText = labels[i] || 'GUERRERO';
-                });
-            }, 100);
-        }
-
-        function refreshData(chars) {
-            const listEl = document.getElementById('list');
-            const cards = listEl.querySelectorAll('.hall-card:not(.removing)');
+        function updateDataOnly(chars) {
+            const cards = document.querySelectorAll('.hall-card');
             chars.forEach((c, i) => {
                 if (cards[i]) {
-                    const timeEl = cards[i].querySelector('.time-ago');
-                    if (timeEl) timeEl.innerText = formatTimeAgo(c.date);
                     const infoEl = cards[i].querySelector('.sub-info');
-                    if (infoEl) infoEl.innerText = `Nivel ${c.level} / ${c.resets} RR`;
-                    // Asegurar que el nombre esté actualizado si hubo micro-cambios
-                    const nameEl = cards[i].querySelector('.name');
-                    if (nameEl && nameEl.innerText !== c.name) nameEl.innerText = c.name;
+                    const newInfo = `Nivel ${c.level} / ${c.resets} RR`;
+                    if (infoEl && infoEl.innerText !== newInfo) infoEl.innerText = newInfo;
+
+                    const timeEl = cards[i].querySelector('.time-ago');
+                    const newTime = formatTimeAgo(c.date);
+                    if (timeEl && timeEl.innerText !== newTime) timeEl.innerText = newTime;
                 }
             });
         }
 
         setInterval(() => {
             serverTime.setSeconds(serverTime.getSeconds() + 1);
-            if (lastChars.length > 0) refreshData(lastChars);
+            if (lastChars.length > 0) updateDataOnly(lastChars);
         }, 1000);
 
-        setInterval(update, 5000); // Revisar cada 5 segundos
+        setInterval(update, 10000); 
         update();
     </script>
-    <script src="auto-refresh.js"></script>
 </body>
 </html>
