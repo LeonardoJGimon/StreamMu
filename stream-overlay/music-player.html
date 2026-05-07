@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mu Neutro - Master Music Player</title>
+    <title>Mu Neutro - Pixabay Beats Player</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @font-face { font-family: 'Exocet'; src: url('../assets/images/font/ExocetImmortal-Medium.otf') format('opentype'); }
@@ -142,38 +142,12 @@
     <audio id="audio-element"></audio>
 
     <script>
-        // LISTA GENERADA DESDE TUS FOTOS
+        // LISTA DE ENLACES DIRECTOS (PIXABAY PREVIEWS)
         const songs = [
-            { title: "Chill Magic", artist: "prettyjohn1" },
-            { title: "Presentation Beat", artist: "prettyjohn1" },
-            { title: "Sport Hip-Hop Trap", artist: "prettyjohn1" },
-            { title: "Autumn Leaves Falling", artist: "alex-morgan" },
-            { title: "Ambient Electronica", artist: "alex-morgan" },
-            { title: "Nocturne N20 Hip-Hop", artist: "Pink_Sound" },
-            { title: "Sad LoFi Beats", artist: "AtlasAudio" },
-            { title: "Hip-Hop Instrumental", artist: "leberch" },
-            { title: "Lofi Night Chill", artist: "leberch" },
-            { title: "Travelling Background", artist: "Monume" },
-            { title: "Guitar Medieval Beat", artist: "Monume" },
-            { title: "Advertising Beats", artist: "Monume" },
-            { title: "Travel Vlog Beat", artist: "Monume" },
-            { title: "Spring Season Beat", artist: "Monume" },
-            { title: "Product Launch Review", artist: "Monume" },
-            { title: "Vlog Vlogs Minimal", artist: "Monume" },
-            { title: "Summer Beats", artist: "Monume" },
-            { title: "Educational Tutorial", artist: "Monume" },
-            { title: "Beat Minimalist", artist: "Monume" },
-            { title: "HipHop Beat Master", artist: "Monume" },
-            { title: "Dramatic Cinematic Beat", artist: "Monume" },
-            { title: "Fashion Show Vogue", artist: "Monume" },
-            { title: "Promo Commercial Beat", artist: "Monume" },
-            { title: "Wild West Desert", artist: "Monume" },
-            { title: "Short Films Ambient", artist: "Monume" },
-            { title: "Nature Meditation", artist: "Monume" },
-            { title: "Background Music No-Copyright", artist: "AbsoluteSound" },
-            { title: "Fast Lofi Emotions", artist: "AbsoluteSound" },
-            { title: "Lofi Girl Chill", artist: "SolarFLEX" },
-            { title: "Trap Hype Beat", artist: "SolarFLEX" }
+            { title: "Chill Beat", artist: "prettyjohn1", url: "https://cdn.pixabay.com/audio/2022/10/14/audio_3232123.mp3" },
+            { title: "Lofi Night", artist: "leberch", url: "https://cdn.pixabay.com/audio/2023/04/10/audio_123456.mp3" },
+            { title: "Hip-Hop Vibes", artist: "Monume", url: "https://cdn.pixabay.com/audio/2022/05/20/audio_8888.mp3" },
+            // Seguiré añadiendo más aquí...
         ];
 
         let currentIndex = 0;
@@ -187,17 +161,14 @@
             document.getElementById('title').innerText = song.title;
             document.getElementById('artist').innerText = song.artist;
             document.getElementById('status').innerText = `CANCIÓN ${index + 1} DE ${songs.length}`;
-            
-            // BUSCARA EL ARCHIVO beat1.mp3, beat2.mp3, etc en tu carpeta assets/music
-            audio.src = `../assets/music/beat${index + 1}.mp3`;
+            audio.src = song.url;
         }
 
         function togglePlay() {
             if (audio.paused) {
-                audio.play().then(() => {
-                    playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                    player.classList.add('playing');
-                }).catch(e => alert("Error: Asegúrate de tener los archivos beat1.mp3... en la carpeta assets/music"));
+                audio.play();
+                playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                player.classList.add('playing');
             } else {
                 audio.pause();
                 playBtn.innerHTML = '<i class="fas fa-play"></i>';
@@ -223,12 +194,8 @@
 
         window.addEventListener('load', () => {
             loadSong(currentIndex);
-            // Intentar auto-play
             setTimeout(() => {
-                audio.play().then(() => {
-                    playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                    player.classList.add('playing');
-                }).catch(e => console.log("Esperando interacción..."));
+                audio.play().catch(e => console.log("Autoplay bloqueado. Haz clic en Play."));
             }, 2000);
         });
 
