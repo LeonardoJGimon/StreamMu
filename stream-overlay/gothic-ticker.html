@@ -73,21 +73,25 @@
             background: radial-gradient(circle, rgba(157, 10, 14, 0.1) 0%, transparent 100%);
         }
 
+        .ticker-scroll {
+            display: flex;
+            white-space: nowrap;
+            animation: scroll-endless 60s linear infinite;
+            will-change: transform;
+        }
+
         .ticker-text {
-            display: inline-block;
+            display: flex;
+            align-items: center;
             white-space: nowrap;
             font-family: 'Alegreya', sans-serif;
             font-size: 1.4rem;
             color: #ddd;
             letter-spacing: 2px;
-            padding-left: 100%;
-            animation: scroll-left 45s linear infinite;
-            will-change: transform;
-            transform: translate3d(0, 0, 0);
-            backface-visibility: hidden; /* Evitar parpadeos */
-            perspective: 1000px; /* Mejorar renderizado 3D */
+            padding-right: 100px; /* Espacio entre repeticiones */
+            backface-visibility: hidden;
+            perspective: 1000px;
             -webkit-font-smoothing: antialiased;
-            text-rendering: optimizeSpeed; /* Priorizar fluidez sobre detalle extremo */
         }
 
         .ticker-text i {
@@ -108,9 +112,9 @@
             opacity: 0.5;
         }
 
-        @keyframes scroll-left {
+        @keyframes scroll-endless {
             0% { transform: translate3d(0, 0, 0); }
-            100% { transform: translate3d(-100%, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); }
         }
 
         /* ESQUINAS ORNAMENTALES */
@@ -128,13 +132,17 @@
     <div class="ticker-wrapper">
         <div class="ticker-label">NOTICIAS</div>
         <div class="ticker-content">
-            <div class="ticker-text" id="news-text">
-                <i class="fab fa-tiktok"></i> SIGUENOS EN TIKTOK PARA CLIPS DIARIOS <span class="ticker-separator">⚔️</span>
-                <b>MU NEUTRO</b> EL SERVIDOR MÁS OSCURO DE LATAM <span class="ticker-separator">⚔️</span>
-                <i class="fab fa-youtube"></i> NUEVO TRAILER DISPONIBLE EN NUESTRO CANAL <span class="ticker-separator">⚔️</span>
-                <b>RANKING</b> LOS MEJORES GUERREROS SE ACTUALIZAN EN TIEMPO REAL <span class="ticker-separator">⚔️</span>
-                <i class="fab fa-facebook"></i> ÚNETE A LA COMUNIDAD EN FACEBOOK <span class="ticker-separator">⚔️</span>
-                <b>CRISTALES</b> COMPRA EN LA TIENDA WEB Y DESPIERTA TU PODER
+            <div class="ticker-scroll" id="ticker-scroll">
+                <div class="ticker-text" id="news-text">
+                    <i class="fab fa-tiktok"></i> SIGUENOS EN TIKTOK PARA CLIPS DIARIOS <span class="ticker-separator">⚔️</span>
+                    <b>MU NEUTRO</b> EL SERVIDOR MÁS OSCURO DE LATAM <span class="ticker-separator">⚔️</span>
+                    <i class="fab fa-youtube"></i> NUEVO TRAILER DISPONIBLE EN NUESTRO CANAL <span class="ticker-separator">⚔️</span>
+                    <b>RANKING</b> LOS MEJORES GUERREROS SE ACTUALIZAN EN TIEMPO REAL <span class="ticker-separator">⚔️</span>
+                    <i class="fab fa-facebook"></i> ÚNETE A LA COMUNIDAD EN FACEBOOK <span class="ticker-separator">⚔️</span>
+                    <b>CRISTALES</b> COMPRA EN LA TIENDA WEB Y DESPIERTA TU PODER
+                </div>
+                <!-- Copia idéntica para el bucle infinito -->
+                <div class="ticker-text" id="news-text-copy"></div>
             </div>
         </div>
     </div>
@@ -142,9 +150,15 @@
     <script>
         const params = new URLSearchParams(window.location.search);
         const customText = params.get('text');
+        const newsTextEl = document.getElementById('news-text');
+        const newsTextCopyEl = document.getElementById('news-text-copy');
+
         if (customText) {
-            document.getElementById('news-text').innerHTML = decodeURIComponent(customText);
+            newsTextEl.innerHTML = decodeURIComponent(customText);
         }
+        
+        // Clonar el contenido para el bucle infinito perfecto
+        newsTextCopyEl.innerHTML = newsTextEl.innerHTML;
     </script>
     <script src="auto-refresh.js"></script>
 </body>
