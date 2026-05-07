@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mu Neutro - Ticker Vertical Pro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @font-face { font-family: 'Exocet'; src: url('../assets/images/font/ExocetImmortal-Medium.otf') format('opentype'); }
+        @font-face { font-family: 'Alegreya'; src: url('../assets/images/font/AlegreyaSans-Regular.otf') format('opentype'); }
+
+        :root {
+            --crimson: #900000;
+            --crimson-bright: #ff1a1a;
+            --gold: #d4af37;
+            --bg: rgba(5, 5, 5, 0.98);
+        }
+
+        body { margin: 0; padding: 0; background: transparent; overflow: hidden; width: 1080px; height: 1920px; }
+
+        /* CONTENEDOR VERTICAL GIGANTE */
+        .ticker-wrapper {
+            position: absolute;
+            bottom: 300px; /* Un poco más arriba para evitar los iconos de TikTok */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 1000px; /* Casi todo el ancho de los 1080px */
+            height: 120px; /* Altura aumentada para visibilidad total */
+            display: flex;
+            align-items: center;
+            background: var(--bg);
+            border: 4px solid var(--gold);
+            box-shadow: 0 0 50px rgba(0,0,0,1), 0 0 20px rgba(144, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        /* CABEZAL VERTICAL */
+        .ticker-label {
+            background: linear-gradient(180deg, var(--crimson) 0%, #1a0000 100%);
+            color: #fff;
+            font-family: 'Exocet', serif;
+            font-size: 2.2rem;
+            padding: 0 50px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            letter-spacing: 5px;
+            border-right: 4px solid var(--gold);
+            text-shadow: 0 0 15px var(--crimson-bright);
+            white-space: nowrap;
+        }
+
+        /* ÁREA DE TEXTO GIGANTE */
+        .ticker-content {
+            flex: 1;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .ticker-scroll {
+            display: flex;
+            white-space: nowrap;
+            animation: scroll-vertical 40s linear infinite;
+            will-change: transform;
+        }
+
+        .ticker-text {
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            font-family: 'Alegreya', sans-serif;
+            font-size: 2.8rem; /* TEXTO MUCHO MÁS GRANDE */
+            color: #fff;
+            letter-spacing: 2px;
+            padding-right: 200px; /* Espacio extra para el bucle */
+            -webkit-font-smoothing: antialiased;
+            text-shadow: 0 4px 8px #000;
+        }
+
+        .ticker-text i { color: var(--gold); margin: 0 30px; font-size: 2.2rem; }
+        .ticker-text b { color: var(--gold); text-transform: uppercase; margin: 0 15px; }
+        .ticker-separator { margin: 0 60px; color: var(--crimson-bright); font-size: 2.5rem; }
+
+        @keyframes scroll-vertical {
+            0% { transform: translate3d(0, 0, 0); }
+            100% { transform: translate3d(-50%, 0, 0); }
+        }
+
+        /* ESQUINAS SUPER-VISIBLES */
+        .ticker-wrapper::before, .ticker-wrapper::after {
+            content: ''; position: absolute; width: 60px; height: 60px;
+            filter: drop-shadow(0 0 15px var(--crimson-bright));
+            z-index: 2000;
+        }
+        .ticker-wrapper::before { top: -10px; left: -10px; border-top: 8px solid var(--crimson-bright); border-left: 8px solid var(--crimson-bright); }
+        .ticker-wrapper::after { bottom: -10px; right: -10px; border-bottom: 8px solid var(--crimson-bright); border-right: 8px solid var(--crimson-bright); }
+    </style>
+</head>
+<body>
+
+    <div class="ticker-wrapper">
+        <div class="ticker-label">AVISOS</div>
+        <div class="ticker-content">
+            <div class="ticker-scroll" id="ticker-scroll">
+                <div class="ticker-text" id="news-text">
+                    <i class="fab fa-tiktok"></i> SIGUENOS EN TIKTOK <span class="ticker-separator">⚔️</span>
+                    <b>MU NEUTRO</b> EL MU MÁS OSCURO <span class="ticker-separator">⚔️</span>
+                    <i class="fab fa-youtube"></i> MIRA EL TRAILER <span class="ticker-separator">⚔️</span>
+                    <b>RANKING</b> ACTUALIZADO <span class="ticker-separator">⚔️</span>
+                    <i class="fab fa-facebook"></i> GRUPO OFICIAL <span class="ticker-separator">⚔️</span>
+                    <b>CRISTALES</b> TIENDA WEB
+                </div>
+                <div class="ticker-text" id="news-text-copy"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const customText = params.get('text');
+        const newsTextEl = document.getElementById('news-text');
+        const newsTextCopyEl = document.getElementById('news-text-copy');
+
+        if (customText) {
+            newsTextEl.innerHTML = decodeURIComponent(customText);
+        }
+        newsTextCopyEl.innerHTML = newsTextEl.innerHTML;
+    </script>
+</body>
+</html>
