@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mu Neutro - Barra de Noticias Gótica</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @font-face { 
+            font-family: 'Exocet'; 
+            src: url('../assets/images/font/ExocetImmortal-Medium.otf') format('opentype'); 
+        }
+        @font-face { 
+            font-family: 'Alegreya'; 
+            src: url('../assets/images/font/AlegreyaSans-Regular.otf') format('opentype'); 
+        }
+
+        :root {
+            --crimson: #800000;
+            --crimson-bright: #ff2e2e;
+            --gold: #c0a375;
+            --stone: #0a0a0a;
+        }
+
+        body { 
+            margin: 0; padding: 0; 
+            background: transparent; 
+            overflow: hidden; 
+        }
+
+        /* CONTENEDOR PRINCIPAL */
+        .ticker-wrapper {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 95vw;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            background: rgba(10, 10, 10, 0.95);
+            border-top: 2px solid var(--gold);
+            border-bottom: 2px solid var(--gold);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            z-index: 100;
+        }
+
+        /* CABEZAL FIJO */
+        .ticker-label {
+            background: linear-gradient(180deg, var(--crimson) 0%, #200 100%);
+            color: #fff;
+            font-family: 'Exocet', serif;
+            font-size: 1.1rem;
+            padding: 0 35px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            letter-spacing: 3px;
+            border-right: 3px solid var(--gold);
+            text-shadow: 0 0 10px var(--crimson-bright);
+            white-space: nowrap;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* ÁREA DE TEXTO MOVIBLE */
+        .ticker-content {
+            flex: 1;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            background: radial-gradient(circle, rgba(157, 10, 14, 0.1) 0%, transparent 100%);
+        }
+
+        .ticker-text {
+            display: inline-block;
+            white-space: nowrap;
+            font-family: 'Alegreya', sans-serif;
+            font-size: 1.4rem;
+            color: #ddd;
+            letter-spacing: 2px;
+            padding-left: 100%;
+            animation: scroll-left 45s linear infinite;
+        }
+
+        .ticker-text i {
+            color: var(--gold);
+            margin: 0 20px;
+            font-size: 1.1rem;
+        }
+
+        .ticker-text b {
+            color: var(--crimson-bright);
+            text-transform: uppercase;
+            margin: 0 10px;
+        }
+
+        .ticker-separator {
+            margin: 0 50px;
+            color: var(--gold);
+            opacity: 0.5;
+        }
+
+        @keyframes scroll-left {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* ESQUINAS ORNAMENTALES */
+        .ticker-wrapper::before, .ticker-wrapper::after {
+            content: ''; position: absolute; width: 25px; height: 25px;
+            filter: drop-shadow(0 0 8px var(--crimson-bright));
+            z-index: 20;
+        }
+        .ticker-wrapper::before { top: -6px; left: -6px; border-top: 4px solid var(--crimson-bright); border-left: 4px solid var(--crimson-bright); }
+        .ticker-wrapper::after { bottom: -6px; right: -6px; border-bottom: 4px solid var(--crimson-bright); border-right: 4px solid var(--crimson-bright); }
+    </style>
+</head>
+<body>
+
+    <div class="ticker-wrapper">
+        <div class="ticker-label">NOTICIAS</div>
+        <div class="ticker-content">
+            <div class="ticker-text" id="news-text">
+                <i class="fab fa-tiktok"></i> SIGUENOS EN TIKTOK PARA CLIPS DIARIOS <span class="ticker-separator">⚔️</span>
+                <b>MU NEUTRO</b> EL SERVIDOR MÁS OSCURO DE LATAM <span class="ticker-separator">⚔️</span>
+                <i class="fab fa-youtube"></i> NUEVO TRAILER DISPONIBLE EN NUESTRO CANAL <span class="ticker-separator">⚔️</span>
+                <b>RANKING</b> LOS MEJORES GUERREROS SE ACTUALIZAN EN TIEMPO REAL <span class="ticker-separator">⚔️</span>
+                <i class="fab fa-facebook"></i> ÚNETE A LA COMUNIDAD EN FACEBOOK <span class="ticker-separator">⚔️</span>
+                <b>CRISTALES</b> COMPRA EN LA TIENDA WEB Y DESPIERTA TU PODER
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const customText = params.get('text');
+        if (customText) {
+            document.getElementById('news-text').innerHTML = decodeURIComponent(customText);
+        }
+    </script>
+    <script src="auto-refresh.js"></script>
+</body>
+</html>
