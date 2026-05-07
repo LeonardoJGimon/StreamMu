@@ -1,6 +1,6 @@
 (function() {
     let currentVersion = null;
-    const checkInterval = 3000;
+    const checkInterval = 15000;
     // Obtenemos el nombre del archivo actual (ej: ranking.html)
     const myName = window.location.pathname.split('/').pop() || 'index.html';
 

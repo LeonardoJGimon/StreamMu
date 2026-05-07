@@ -23,7 +23,6 @@
             overflow: hidden; box-sizing: border-box;
         }
 
-        /* CONTENEDOR PRINCIPAL */
         .linear-container {
             display: flex;
             flex-direction: row;
@@ -156,6 +155,8 @@
         </div>
     </div>
 
+    <!-- CARGA DE SCRIPTS OPTIMIZADA -->
+    <script src="data-manager.js"></script>
     <script>
         const classMap = {
             0: { folder: 'SM', icon: 'dw-icon.png' },
@@ -178,24 +179,19 @@
             return `${Math.floor(diff/3600)} HORAS`;
         }
 
-        async function update() {
-            try {
-                const res = await fetch('/api/stats?t=' + Date.now());
-                if (!res.ok) return;
-                const data = await res.json();
-                serverTime = new Date(data.timestamp);
-                const chars = (data.recentCharacters || []).slice(0, 3);
-                
-                if (chars.length === 0) return;
+        // USANDO EL GESTOR CENTRAL
+        window.onMuData((data) => {
+            serverTime = new Date(data.timestamp);
+            const chars = (data.recentCharacters || []).slice(0, 3);
+            if (chars.length === 0) return;
 
-                if (lastChars.length === 0 || chars[0].name !== lastChars[0].name) {
-                    initialRender(chars);
-                } else {
-                    updateDataOnly(chars);
-                }
-                lastChars = chars;
-            } catch (e) { console.error(e); }
-        }
+            if (lastChars.length === 0 || chars[0].name !== lastChars[0].name) {
+                initialRender(chars);
+            } else {
+                updateDataOnly(chars);
+            }
+            lastChars = chars;
+        });
 
         function initialRender(chars) {
             const listEl = document.getElementById('list');
@@ -234,13 +230,12 @@
             });
         }
 
+        // Timer de segundos local
         setInterval(() => {
             serverTime.setSeconds(serverTime.getSeconds() + 1);
             if (lastChars.length > 0) updateDataOnly(lastChars);
         }, 1000);
-
-        setInterval(update, 10000); 
-        update();
     </script>
+    <script src="auto-refresh.js"></script>
 </body>
 </html>

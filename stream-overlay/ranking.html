@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mu Neutro - Hall of Fame (Golden Edition)</title>
+    <title>Mu Neutro - Hall of Fame (Optimized)</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @font-face { font-family: 'Exocet'; src: url('../assets/images/font/ExocetImmortal-Medium.otf') format('opentype'); font-weight: 500; }
@@ -28,18 +28,23 @@
             padding: 20px; width: 100%; max-width: 520px; box-sizing: border-box;
             box-shadow: 0 0 40px rgba(0,0,0,1), inset 0 0 20px rgba(157, 10, 14, 0.2);
             backdrop-filter: blur(8px);
+            will-change: transform;
         }
 
-        .outer-box::before {
-            content: ''; position: absolute; top: -8px; left: -8px; width: 45px; height: 45px;
-            border-top: 5px solid var(--crimson-bright); border-left: 5px solid var(--crimson-bright);
-            filter: drop-shadow(0 0 10px var(--crimson-bright));
+        /* Esquinas - Optimizadas sin drop-shadow pesado */
+        .outer-box::before, .outer-box::after {
+            content: ''; position: absolute; width: 45px; height: 45px;
+            z-index: 5;
         }
-
-        .outer-box::after {
-            content: ''; position: absolute; bottom: -8px; right: -8px; width: 45px; height: 45px;
-            border-bottom: 5px solid var(--crimson-bright); border-right: 5px solid var(--crimson-bright);
-            filter: drop-shadow(0 0 10px var(--crimson-bright));
+        .outer-box::before { 
+            top: -8px; left: -8px; 
+            border-top: 5px solid var(--crimson-bright); border-left: 5px solid var(--crimson-bright); 
+            box-shadow: -5px -5px 15px rgba(255, 46, 46, 0.4);
+        }
+        .outer-box::after { 
+            bottom: -8px; right: -8px; 
+            border-bottom: 5px solid var(--crimson-bright); border-right: 5px solid var(--crimson-bright); 
+            box-shadow: 5px 5px 15px rgba(255, 46, 46, 0.4);
         }
 
         .main-title {
@@ -54,6 +59,7 @@
             display: grid; grid-template-columns: 80px 1fr 130px; gap: 20px;
             align-items: center; background: var(--row-bg); padding: 20px;
             position: relative; border: 1px solid rgba(157, 10, 14, 0.2);
+            will-change: opacity, transform;
         }
 
         .category-label {
@@ -83,7 +89,7 @@
         <h1 class="main-title">SALÓN DE LA FAMA</h1>
         
         <div id="hall" class="hall-container">
-            <!-- Cargado vía JS -->
+            <!-- Dinámico -->
         </div>
 
         <div class="footer">
@@ -91,55 +97,52 @@
         </div>
     </div>
 
+    <script src="data-manager.js"></script>
     <script>
         const classMap = {
             0: { folder: 'SM', icon: 'dw-icon.png' },
-            1: { folder: 'SM', icon: 'dw-icon.png' },
-            2: { folder: 'SM', icon: 'dw-icon.png' },
             16: { folder: 'DK', icon: 'dk-icon.png' },
-            17: { folder: 'DK', icon: 'dk-icon.png' },
-            18: { folder: 'DK', icon: 'dk-icon.png' },
             32: { folder: 'FAIRY ELF', icon: 'elf-icon.png' },
-            33: { folder: 'FAIRY ELF', icon: 'elf-icon.png' },
             48: { folder: 'MG', icon: 'mg icon.png' },
-            50: { folder: 'MG', icon: 'mg icon.png' },
             64: { folder: 'DL', icon: 'dl icon.png' },
-            66: { folder: 'DL', icon: 'dl icon.png' },
             80: { folder: 'SUMONNER', icon: 'sm icon.png' },
-            81: { folder: 'SUMONNER', icon: 'sm icon.png' },
-            96: { folder: 'RAGE', icon: 'rf icon.png' },
-            98: { folder: 'RAGE', icon: 'rf icon.png' }
+            96: { folder: 'RAGE', icon: 'rf icon.png' }
         };
 
-        async function update() {
-            try {
-                const res = await fetch('/api/stats?t=' + Date.now());
-                if (!res.ok) return;
-                const data = await res.json();
+        let lastData = null;
 
-                let html = '';
+        window.onMuData((data) => {
+            // Solo redibujar si los datos clave cambiaron
+            if (!lastData || JSON.stringify(data) !== JSON.stringify(lastData)) {
+                render(data);
+                lastData = data;
+            }
+        });
 
-                // 1. REY DE RESETS
-                if (data.topStrengthCharacters && data.topStrengthCharacters.length > 0) {
-                    const topRR = data.topStrengthCharacters[0];
-                    html += createCard('REY DE RESETS', topRR.name, `NIVEL ${topRR.level} / ${topRR.resets} RR`, topRR.resets, 'RESETS', topRR.classId);
-                }
+        function render(data) {
+            const hallEl = document.getElementById('hall');
+            let html = '';
 
-                // 2. CLAN SUPREMO
-                if (data.topGuild) {
-                    html += createCard('CLAN SUPREMO', data.topGuild.G_Name, 'CLAN LÍDER', data.topGuild.G_Score, 'PUNTOS', null, '../assets/images/characters/GUILD.png');
-                }
+            // 1. REY DE RESETS
+            if (data.topStrengthCharacters && data.topStrengthCharacters.length > 0) {
+                const c = data.topStrengthCharacters[0];
+                html += createCardHtml('REY DE RESETS', c.name, `NIVEL ${c.level} / ${c.resets} RR`, c.resets, 'RESETS', c.classId);
+            }
 
-                // 3. ASESINO DE ÉLITE
-                if (data.topPvP) {
-                    html += createCard('ASESINO DE ÉLITE', data.topPvP.Name, 'MÁS PVP KILLS', data.topPvP.PkCount || 0, 'MUERTES', data.topPvP.Class);
-                }
+            // 2. CLAN SUPREMO
+            if (data.topGuild) {
+                html += createCardHtml('CLAN SUPREMO', data.topGuild.G_Name, 'CLAN LÍDER', data.topGuild.G_Score, 'PUNTOS', null, '../assets/images/characters/GUILD.png');
+            }
 
-                document.getElementById('hall').innerHTML = html;
-            } catch (e) { console.error(e); }
+            // 3. ASESINO DE ÉLITE
+            if (data.topPvP) {
+                html += createCardHtml('ASESINO DE ÉLITE', data.topPvP.Name, 'MÁS PVP KILLS', data.topPvP.PkCount || 0, 'MUERTES', data.topPvP.Class);
+            }
+
+            hallEl.innerHTML = html;
         }
 
-        function createCard(category, name, sub, val, unit, classId, manualIcon) {
+        function createCardHtml(category, name, sub, val, unit, classId, manualIcon) {
             const info = classMap[classId] || classMap[0];
             const iconPath = manualIcon || `../assets/images/chars/${info.folder}/${info.icon}`;
             return `
@@ -159,9 +162,6 @@
                 </div>
             `;
         }
-
-        setInterval(update, 30000);
-        update();
     </script>
     <script src="auto-refresh.js"></script>
 </body>
