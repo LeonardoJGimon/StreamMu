@@ -82,8 +82,12 @@
             letter-spacing: 2px;
             padding-left: 100%;
             animation: scroll-left 45s linear infinite;
-            will-change: transform; /* Forzar uso de GPU */
-            transform: translate3d(0, 0, 0); /* Evitar tirones */
+            will-change: transform;
+            transform: translate3d(0, 0, 0);
+            backface-visibility: hidden; /* Evitar parpadeos */
+            perspective: 1000px; /* Mejorar renderizado 3D */
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeSpeed; /* Priorizar fluidez sobre detalle extremo */
         }
 
         .ticker-text i {
