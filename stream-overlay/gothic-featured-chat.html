@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Mu Neutro - Chat Destacado</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="gothic-featured-chat.css">
+</head>
+<body>
+
+    <div class="highlight-container animate__animated" id="main-box">
+        <div class="corner tl"></div>
+        <div class="corner br"></div>
+
+        <div class="user-seal">
+            <div class="seal-bg"></div>
+            <img src="https://i.imgur.com/HQroNDd.png" class="avatar" id="user-avatar">
+        </div>
+
+        <div class="message-box">
+            <div class="user-name" id="user-name">Bandarock</div>
+            <div class="chat-text">
+                <i class="fas fa-quote-left"></i>
+                <span id="chat-msg">¿A qué nivel se puede entrar a la mazmorra de Lilith? ¡El servidor está increíble!</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        
+        if (params.has('user')) document.getElementById('user-name').innerText = params.get('user');
+        if (params.has('msg')) document.getElementById('chat-msg').innerText = params.get('msg');
+        if (params.has('avatar')) document.getElementById('user-avatar').src = params.get('avatar');
+
+        function hideMessage() {
+            const box = document.getElementById('main-box');
+            box.classList.remove('animate__slideInDown');
+            box.classList.add('animate__slideOutUp');
+            setTimeout(() => box.style.display = 'none', 800);
+        }
+    </script>
+    <script src="auto-refresh.js"></script>
+</body>
+</html>
