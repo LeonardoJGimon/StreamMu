@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mu Neutro - Music Player</title>
+    <title>Mu Neutro - Master Music Player</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @font-face { font-family: 'Exocet'; src: url('../assets/images/font/ExocetImmortal-Medium.otf') format('opentype'); }
@@ -12,41 +12,37 @@
             --gold: #c0a375;
             --gold-bright: #f0d7a9;
             --crimson: #800000;
-            --bg-dark: rgba(10, 10, 10, 0.9);
+            --bg-dark: rgba(5, 5, 5, 0.95);
         }
 
         body {
             margin: 0; padding: 20px; background: transparent;
             font-family: 'Alegreya', serif; color: #fff;
-            overflow: hidden;
         }
 
-        /* REPRODUCTOR ESTILO GRIMORIO */
         .player-container {
-            width: 350px;
+            width: 380px;
             background: var(--bg-dark);
             border: 2px solid var(--gold);
-            padding: 15px;
+            padding: 20px;
             position: relative;
-            box-shadow: 0 0 30px rgba(0,0,0,1);
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            clip-path: polygon(0 0, 95% 0, 100% 15%, 100% 100%, 5% 100%, 0 85%);
+            box-shadow: 0 0 40px rgba(0,0,0,1);
+            clip-path: polygon(0 0, 92% 0, 100% 15%, 100% 100%, 8% 100%, 0 85%);
         }
 
         .player-header {
             display: flex;
             align-items: center;
             gap: 15px;
-            border-bottom: 1px solid rgba(192, 163, 117, 0.3);
-            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(192, 163, 117, 0.2);
+            padding-bottom: 15px;
+            margin-bottom: 15px;
         }
 
         .disc-icon {
-            font-size: 2rem;
+            font-size: 2.5rem;
             color: var(--gold);
-            animation: rotate 5s infinite linear;
+            animation: rotate 4s infinite linear;
             animation-play-state: paused;
         }
         .playing .disc-icon { animation-play-state: running; }
@@ -56,55 +52,62 @@
         .song-info { flex: 1; overflow: hidden; }
         .song-title {
             font-family: 'Exocet', serif;
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: var(--gold-bright);
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(192, 163, 117, 0.4);
         }
-        .song-artist { font-size: 0.7rem; color: #888; text-transform: uppercase; }
+        .song-artist { font-size: 0.75rem; color: #666; text-transform: uppercase; margin-top: 5px; }
 
-        /* CONTROLES */
         .controls {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 20px;
+            justify-content: space-between;
+            padding: 0 40px;
         }
 
         .btn {
             background: transparent;
             border: none;
             color: var(--gold);
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             cursor: pointer;
-            transition: 0.2s;
+            transition: 0.3s;
         }
-        .btn:hover { color: #fff; transform: scale(1.1); }
-        .btn-play { font-size: 1.8rem; }
+        .btn:hover { color: #fff; transform: scale(1.2); filter: drop-shadow(0 0 10px var(--gold)); }
+        .btn-play { font-size: 2.2rem; }
 
-        /* BARRA DE PROGRESO */
         .progress-container {
             width: 100%;
-            height: 4px;
-            background: #222;
-            cursor: pointer;
-            position: relative;
+            height: 6px;
+            background: #111;
+            margin: 15px 0 5px 0;
+            border: 1px solid rgba(192, 163, 117, 0.1);
         }
         .progress-bar {
             height: 100%;
-            background: var(--crimson);
+            background: linear-gradient(90deg, var(--crimson), #ff4500);
             width: 0%;
-            box-shadow: 0 0 10px var(--crimson);
+            box-shadow: 0 0 15px var(--crimson);
         }
 
         .time-info {
             display: flex;
             justify-content: space-between;
-            font-size: 0.6rem;
+            font-size: 0.7rem;
             color: var(--gold);
-            margin-top: -5px;
+            opacity: 0.7;
+        }
+        
+        .playlist-status {
+            text-align: center;
+            font-size: 0.6rem;
+            color: #444;
+            margin-top: 10px;
+            letter-spacing: 2px;
         }
     </style>
 </head>
@@ -114,12 +117,12 @@
         <div class="player-header">
             <i class="fas fa-compact-disc disc-icon"></i>
             <div class="song-info">
-                <div class="song-title" id="title">Selecciona una canción</div>
-                <div class="song-artist" id="artist">Biblioteca de Beats</div>
+                <div class="song-title" id="title">Cargando Grimorio...</div>
+                <div class="song-artist" id="artist">Biblioteca Mu Neutro</div>
             </div>
         </div>
 
-        <div class="progress-container" id="progress-area">
+        <div class="progress-container">
             <div class="progress-bar" id="progress-bar"></div>
         </div>
         <div class="time-info">
@@ -128,32 +131,49 @@
         </div>
 
         <div class="controls">
-            <button class="btn" onclick="prev()"><i class="fas fa-step-backward"></i></button>
+            <button class="btn" onclick="prev()"><i class="fas fa-backward"></i></button>
             <button class="btn btn-play" id="play-btn" onclick="togglePlay()"><i class="fas fa-play"></i></button>
-            <button class="btn" onclick="next()"><i class="fas fa-step-forward"></i></button>
+            <button class="btn" onclick="next()"><i class="fas fa-forward"></i></button>
         </div>
+
+        <div class="playlist-status" id="status">CANCIÓN 1 DE 30</div>
     </div>
 
     <audio id="audio-element"></audio>
 
     <script>
-        // LISTA DE BEATS (Aquí puedes añadir los tuyos)
-        const playlist = [
-            { 
-                title: "Gothic Beat Ambient", 
-                artist: "Monume", 
-                url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" // Link de ejemplo
-            },
-            { 
-                title: "Lofi Dungeon Chill", 
-                artist: "Pink_Sound", 
-                url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3" 
-            },
-            { 
-                title: "Dark Hip-Hop Mu", 
-                artist: "AbsoluteSound", 
-                url: "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3" 
-            }
+        // LISTA GENERADA DESDE TUS FOTOS
+        const songs = [
+            { title: "Chill Magic", artist: "prettyjohn1" },
+            { title: "Presentation Beat", artist: "prettyjohn1" },
+            { title: "Sport Hip-Hop Trap", artist: "prettyjohn1" },
+            { title: "Autumn Leaves Falling", artist: "alex-morgan" },
+            { title: "Ambient Electronica", artist: "alex-morgan" },
+            { title: "Nocturne N20 Hip-Hop", artist: "Pink_Sound" },
+            { title: "Sad LoFi Beats", artist: "AtlasAudio" },
+            { title: "Hip-Hop Instrumental", artist: "leberch" },
+            { title: "Lofi Night Chill", artist: "leberch" },
+            { title: "Travelling Background", artist: "Monume" },
+            { title: "Guitar Medieval Beat", artist: "Monume" },
+            { title: "Advertising Beats", artist: "Monume" },
+            { title: "Travel Vlog Beat", artist: "Monume" },
+            { title: "Spring Season Beat", artist: "Monume" },
+            { title: "Product Launch Review", artist: "Monume" },
+            { title: "Vlog Vlogs Minimal", artist: "Monume" },
+            { title: "Summer Beats", artist: "Monume" },
+            { title: "Educational Tutorial", artist: "Monume" },
+            { title: "Beat Minimalist", artist: "Monume" },
+            { title: "HipHop Beat Master", artist: "Monume" },
+            { title: "Dramatic Cinematic Beat", artist: "Monume" },
+            { title: "Fashion Show Vogue", artist: "Monume" },
+            { title: "Promo Commercial Beat", artist: "Monume" },
+            { title: "Wild West Desert", artist: "Monume" },
+            { title: "Short Films Ambient", artist: "Monume" },
+            { title: "Nature Meditation", artist: "Monume" },
+            { title: "Background Music No-Copyright", artist: "AbsoluteSound" },
+            { title: "Fast Lofi Emotions", artist: "AbsoluteSound" },
+            { title: "Lofi Girl Chill", artist: "SolarFLEX" },
+            { title: "Trap Hype Beat", artist: "SolarFLEX" }
         ];
 
         let currentIndex = 0;
@@ -163,17 +183,21 @@
         const progressBar = document.getElementById('progress-bar');
 
         function loadSong(index) {
-            const song = playlist[index];
+            const song = songs[index];
             document.getElementById('title').innerText = song.title;
             document.getElementById('artist').innerText = song.artist;
-            audio.src = song.url;
+            document.getElementById('status').innerText = `CANCIÓN ${index + 1} DE ${songs.length}`;
+            
+            // BUSCARA EL ARCHIVO beat1.mp3, beat2.mp3, etc en tu carpeta assets/music
+            audio.src = `../assets/music/beat${index + 1}.mp3`;
         }
 
         function togglePlay() {
             if (audio.paused) {
-                audio.play();
-                playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-                player.classList.add('playing');
+                audio.play().then(() => {
+                    playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                    player.classList.add('playing');
+                }).catch(e => alert("Error: Asegúrate de tener los archivos beat1.mp3... en la carpeta assets/music"));
             } else {
                 audio.pause();
                 playBtn.innerHTML = '<i class="fas fa-play"></i>';
@@ -182,7 +206,7 @@
         }
 
         function next() {
-            currentIndex = (currentIndex + 1) % playlist.length;
+            currentIndex = (currentIndex + 1) % songs.length;
             loadSong(currentIndex);
             audio.play();
             player.classList.add('playing');
@@ -190,28 +214,27 @@
         }
 
         function prev() {
-            currentIndex = (currentIndex - 1 + playlist.length) % playlist.length;
+            currentIndex = (currentIndex - 1 + songs.length) % songs.length;
             loadSong(currentIndex);
             audio.play();
             player.classList.add('playing');
             playBtn.innerHTML = '<i class="fas fa-pause"></i>';
         }
 
-        // Auto-play al cargar (Si el navegador lo permite)
         window.addEventListener('load', () => {
             loadSong(currentIndex);
-            // Nota: Algunos navegadores bloquean el autoplay. 
-            // En OBS funciona si activas "Controlar audio vía OBS".
+            // Intentar auto-play
             setTimeout(() => {
-                audio.play().catch(e => console.log("Autoplay bloqueado. Haz clic en Play."));
-            }, 1000);
+                audio.play().then(() => {
+                    playBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                    player.classList.add('playing');
+                }).catch(e => console.log("Esperando interacción..."));
+            }, 2000);
         });
 
-        // Actualizar barra de progreso
         audio.addEventListener('timeupdate', () => {
             const percent = (audio.currentTime / audio.duration) * 100;
             progressBar.style.width = percent + '%';
-            
             document.getElementById('current').innerText = formatTime(audio.currentTime);
             document.getElementById('duration').innerText = formatTime(audio.duration);
         });
