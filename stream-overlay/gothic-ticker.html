@@ -27,6 +27,25 @@
             overflow: hidden; 
         }
 
+        /* DOT ESTILO STARTING SOON */
+        .online-dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            background: #2ecc71;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #2ecc71;
+            animation: pulse-dot 2s infinite;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+
+        @keyframes pulse-dot {
+            0% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(1.2); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+
         /* CONTENEDOR PRINCIPAL */
         .ticker-wrapper {
             position: fixed;
@@ -139,6 +158,8 @@
         <div class="ticker-content">
             <div class="ticker-scroll" id="ticker-scroll">
                 <div class="ticker-text" id="news-text">
+                    <span class="online-dot"></span> SERVIDOR <b id="server-status">ONLINE</b> <span class="ticker-separator"></span>
+                    <i class="fas fa-users"></i> JUGADORES: <b id="stat-online">0</b> <span class="ticker-separator"></span>
                     <i class="fas fa-gift"></i> REGÍSTRATE Y OBTÉN <b>BATTLE PASS PREMIUM</b> <span class="ticker-separator"></span>
                     <i class="fas fa-download"></i> ¡DESCÁRGALO YA! EN <b>WWW.MUNEUTRO.COM</b> <span class="ticker-separator"></span>
                     <i class="fas fa-shield-halved"></i> DISFRUTÁ DE UN BALANCE <b>PVP~PVM ÚNICO</b> <span class="ticker-separator"></span>
@@ -162,8 +183,25 @@
             newsTextEl.innerHTML = decodeURIComponent(customText);
         }
         
+        async function updateServerStats() {
+            try {
+                const response = await fetch('/api/stats');
+                if (response.ok) {
+                    const data = await response.json();
+                    const onlineEl = document.getElementById('stat-online');
+                    const onlineCopyEl = newsTextCopyEl.querySelector('#stat-online');
+                    
+                    if (onlineEl) onlineEl.innerText = data.onlineCount || 0;
+                    if (onlineCopyEl) onlineCopyEl.innerText = data.onlineCount || 0;
+                }
+            } catch (e) { console.error("Error stats:", e); }
+        }
+
         // Clonar el contenido para el bucle infinito perfecto
         newsTextCopyEl.innerHTML = newsTextEl.innerHTML;
+
+        updateServerStats();
+        setInterval(updateServerStats, 30000); // Cada 30 segundos
     </script>
     <script src="auto-refresh.js"></script>
 </body>
