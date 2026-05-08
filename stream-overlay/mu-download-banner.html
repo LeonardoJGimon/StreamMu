@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>MU NEUTRO - Download Banner</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @font-face { 
+            font-family: 'ExocetReal'; 
+            src: url('../assets/images/font/ExocetImmortal-Medium.otf') format('opentype'); 
+        }
+
+        :root {
+            --gold-light: #f0d7a9;
+            --gold-dark: #c0a375;
+            --fire: #ff4500;
+            --fire-bright: #ffcc00;
+            --bg-dark: #020202;
+        }
+
+        body {
+            margin: 0; padding: 0; background: transparent;
+            display: flex; justify-content: center; align-items: center;
+            height: 100vh; overflow: hidden; font-family: 'ExocetReal', serif;
+        }
+
+        .download-container {
+            width: 800px; height: 160px;
+            background: radial-gradient(circle, #1a0000 0%, var(--bg-dark) 100%);
+            border: 2px solid rgba(192, 163, 117, 0.4);
+            position: relative;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            box-shadow: 0 0 100px rgba(0,0,0,1);
+            overflow: hidden;
+            animation: containerPulse 5s infinite ease-in-out;
+            clip-path: polygon(5% 0%, 95% 0%, 100% 50%, 95% 100%, 5% 100%, 0% 50%);
+        }
+
+        @keyframes containerPulse {
+            0%, 100% { box-shadow: 0 0 50px rgba(0,0,0,1), 0 0 20px var(--fire); border-color: rgba(192, 163, 117, 0.4); }
+            50% { box-shadow: 0 0 80px rgba(0,0,0,1), 0 0 40px var(--fire-bright); border-color: var(--gold-light); }
+        }
+
+        /* EFECTO DE NIEBLA/FUEGO */
+        .fire-bg {
+            position: absolute; width: 200%; height: 200%;
+            background: url('https://www.transparenttextures.com/patterns/asfalt-dark.png');
+            opacity: 0.1; animation: fogMove 20s linear infinite; pointer-events: none;
+        }
+
+        @keyframes fogMove {
+            from { background-position: 0 0; }
+            to { background-position: 1000px 1000px; }
+        }
+
+        .content {
+            z-index: 10; text-align: center;
+        }
+
+        .main-text {
+            font-size: 4rem;
+            background: linear-gradient(to bottom, #fff 0%, var(--gold-light) 20%, var(--gold-dark) 50%, #4a350a 51%, var(--gold-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 10px 20px rgba(0,0,0,0.8);
+            letter-spacing: 6px;
+            margin: 0;
+            animation: textShine 3s infinite linear;
+            background-size: 200% auto;
+        }
+
+        @keyframes textShine {
+            0% { background-position: -200% center; }
+            100% { background-position: 200% center; }
+        }
+
+        .url-text {
+            font-size: 1.5rem;
+            color: #fff;
+            text-shadow: 0 0 15px var(--fire);
+            letter-spacing: 4px;
+            margin-top: -10px;
+            opacity: 0.8;
+            animation: urlPulse 2s infinite ease-in-out;
+        }
+
+        @keyframes urlPulse {
+            0%, 100% { opacity: 0.7; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.05); color: var(--gold-light); }
+        }
+
+        /* CHISPAS */
+        .spark { position: absolute; background: #fff; border-radius: 50%; animation: floatUp 3s infinite linear; z-index: 2; box-shadow: 0 0 5px var(--fire-bright); }
+        @keyframes floatUp {
+            0% { transform: translateY(200px) scale(1); opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(-50px) translateX(30px) scale(0); opacity: 0; }
+        }
+
+        .corner-icon {
+            position: absolute; color: var(--gold-dark); font-size: 1.5rem; opacity: 0.6;
+        }
+        .tl { top: 20px; left: 40px; }
+        .tr { top: 20px; right: 40px; }
+        .bl { bottom: 20px; left: 40px; }
+        .br { bottom: 20px; right: 40px; }
+    </style>
+</head>
+<body>
+
+    <div class="download-container">
+        <div class="fire-bg"></div>
+        <div id="spark-container"></div>
+
+        <i class="fas fa-download corner-icon tl"></i>
+        <i class="fas fa-download corner-icon tr"></i>
+        <i class="fas fa-download corner-icon bl"></i>
+        <i class="fas fa-download corner-icon br"></i>
+
+        <div class="content">
+            <h1 class="main-text">¡DESCARGALO YA!</h1>
+            <div class="url-text">WWW.MU-NEUTRO.COM</div>
+        </div>
+    </div>
+
+    <script>
+        const container = document.getElementById('spark-container');
+        for(let i=0; i<15; i++) {
+            let spark = document.createElement('div');
+            spark.className = 'spark';
+            spark.style.left = Math.random() * 100 + '%';
+            spark.style.width = Math.random() * 3 + 'px';
+            spark.style.height = spark.style.width;
+            spark.style.animationDelay = Math.random() * 5 + 's';
+            spark.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            container.appendChild(spark);
+        }
+    </script>
+</body>
+</html>
