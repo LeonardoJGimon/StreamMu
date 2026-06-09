@@ -191,8 +191,12 @@
                     const onlineEl = document.getElementById('stat-online');
                     const onlineCopyEl = newsTextCopyEl.querySelector('#stat-online');
                     
-                    if (onlineEl) onlineEl.innerText = data.onlineCount || 0;
-                    if (onlineCopyEl) onlineCopyEl.innerText = data.onlineCount || 0;
+                    const baseUsers = 300;
+                    const multiplier = 3;
+                    const displayCount = baseUsers + ((data.onlineCount || 0) * multiplier);
+                    
+                    if (onlineEl) onlineEl.innerText = displayCount;
+                    if (onlineCopyEl) onlineCopyEl.innerText = displayCount;
                 }
             } catch (e) { console.error("Error stats:", e); }
         }
