@@ -187,7 +187,7 @@
             text-shadow: 0 0 10px var(--crimson-bright);
         }
 
-        /* BADGE DEL CONTADOR DE USOS (ej. "USOS: 1 de 50") */
+        /* BADGE DEL CONTADOR DE USOS (ej. "USOS: 0 de 21") */
         .usage-badge-container {
             display: flex;
             align-items: center;
@@ -255,7 +255,7 @@
             <span class="code-text" id="promo-code-display">---</span>
         </div>
 
-        <!-- FILA DE DETALLES (NOMBRE REAL DEL ÍTEM + CANTIDAD DE UNIDADES + USOS) -->
+        <!-- FILA DE DETALLES (RECOMPENSA REAL + CANTIDAD DE UNIDADES + USOS) -->
         <div class="details-row">
             <div class="reward-badge-container" id="reward-container">
                 <i class="fas fa-gift reward-icon-fa" id="reward-icon"></i>
@@ -264,7 +264,7 @@
 
             <div class="usage-badge-container" id="usage-container">
                 <i class="fas fa-users"></i>
-                <span id="usage-text">USOS: <b id="usage-count">0 de 50</b></span>
+                <span id="usage-text">USOS: <b id="usage-count">0 de 21</b></span>
             </div>
         </div>
     </div>
@@ -313,6 +313,52 @@
             }
         }
 
+        function formatRewardDisplay(details) {
+            if (!details) return { text: 'REGALO: <b>RECOMPENSA ESPECIAL</b>', icon: 'fas fa-gift' };
+            
+            let obj = details;
+            if (typeof details === 'string') {
+                try { obj = JSON.parse(details); } catch(e) { obj = {}; }
+            }
+
+            let typeStr = (obj.reward_type || obj.currency || obj.type || obj.rewardType || '').toString().toLowerCase();
+            let amount = obj.amount || obj.qty || obj.count || (obj.details ? obj.details.count : 1) || 1;
+
+            if (typeStr.includes('wcoin') || typeStr.includes('w_coin')) {
+                return { text: `REGALO: <b>${amount} WCOINS</b>`, icon: 'fas fa-gem' };
+            }
+            if (typeStr.includes('goblin') || typeStr.includes('gp')) {
+                return { text: `REGALO: <b>${amount} GOBLIN POINTS</b>`, icon: 'fas fa-flask' };
+            }
+            if (typeStr.includes('zen')) {
+                return { text: `REGALO: <b>${amount.toLocaleString()} ZEN</b>`, icon: 'fas fa-coins' };
+            }
+            if (typeStr.includes('vip')) {
+                return { text: `REGALO: <b>VIP PREMIUM (${amount} ${amount === 1 ? 'DÍA' : 'DÍAS'})</b>`, icon: 'fas fa-crown' };
+            }
+
+            let itemName = obj.itemName || obj.name || (obj.details ? (obj.details.itemName || obj.details.name) : null);
+            if (itemName && (itemName.toLowerCase() === 'item_vault' || itemName.toLowerCase() === 'ítem baúl' || itemName.toLowerCase() === 'item baul')) {
+                itemName = null;
+            }
+
+            let unitStr = amount === 1 ? '1 UNIDAD' : `${amount} UNIDADES`;
+
+            if (itemName) {
+                let nameUpper = itemName.toUpperCase();
+                let iconClass = 'fas fa-box-open';
+                if (nameUpper.includes('RING') || nameUpper.includes('ANILLO')) iconClass = 'fas fa-ring';
+                else if (nameUpper.includes('WING') || nameUpper.includes('ALAS')) iconClass = 'fas fa-feather-pointed';
+                else if (nameUpper.includes('JEWEL') || nameUpper.includes('JOYA')) iconClass = 'fas fa-gem';
+                else if (nameUpper.includes('PET') || nameUpper.includes('PANDA') || nameUpper.includes('SKELETON')) iconClass = 'fas fa-paw';
+                else if (nameUpper.includes('SWORD') || nameUpper.includes('ESPADA')) iconClass = 'fas fa-khanda';
+                else if (nameUpper.includes('SHIELD') || nameUpper.includes('ESCUDO')) iconClass = 'fas fa-shield-halved';
+                return { text: `REGALO: <b>${nameUpper} (${unitStr})</b>`, icon: iconClass };
+            }
+
+            return { text: `REGALO: <b>ÍTEM ESPECIAL (${unitStr})</b>`, icon: 'fas fa-box-open' };
+        }
+
         function renderCurrentPromo() {
             if (!promoList.length) return;
             const promo = promoList[currentIndex % promoList.length];
@@ -325,7 +371,7 @@
                 codeEl.innerText = promo.Code;
             }
 
-            // Mostrar usos consumidos (ej. "1 de 50")
+            // Mostrar usos consumidos (ej. "0 de 21")
             if (usageCountEl) {
                 const max = Number(promo.MaxUses || 0);
                 const current = Number(promo.CurrentUses || 0);
@@ -336,55 +382,11 @@
                 }
             }
 
-            // Formatear Recompensa y Nombre Real del Ítem con su Cantidad Exacta
+            // Formatear Recompensa real (WCoins, GP, Ítems por nombre)
             if (rewardTextEl && rewardIconEl) {
-                try {
-                    let details = promo.RewardDetails;
-                    if (typeof details === 'string') {
-                        try { details = JSON.parse(details); } catch(e) {}
-                    }
-                    
-                    let rawItemName = details ? (details.itemName || details.name || (details.details ? (details.details.itemName || details.details.name) : null)) : null;
-                    if (rawItemName && (rawItemName.toLowerCase() === 'item_vault' || rawItemName.toLowerCase() === 'ítem baúl' || rawItemName.toLowerCase() === 'item baul')) {
-                        rawItemName = null;
-                    }
-
-                    let count = details ? (details.count || details.qty || details.amount || (details.details ? details.details.count : 1) || 1) : 1;
-                    let unitStr = count === 1 ? '1 UNIDAD' : `${count} UNIDADES`;
-
-                    if (rawItemName) {
-                        let nameUpper = rawItemName.toUpperCase();
-                        rewardTextEl.innerHTML = `REGALO: <b>${nameUpper} (${unitStr})</b>`;
-
-                        // Asignar icono según categoría del ítem
-                        if (nameUpper.includes('RING') || nameUpper.includes('ANILLO')) rewardIconEl.className = 'fas fa-ring reward-icon-fa';
-                        else if (nameUpper.includes('WING') || nameUpper.includes('ALAS')) rewardIconEl.className = 'fas fa-feather-pointed reward-icon-fa';
-                        else if (nameUpper.includes('JEWEL') || nameUpper.includes('JOYA')) rewardIconEl.className = 'fas fa-gem reward-icon-fa';
-                        else if (nameUpper.includes('PET') || nameUpper.includes('PANDA') || nameUpper.includes('SKELETON')) rewardIconEl.className = 'fas fa-paw reward-icon-fa';
-                        else if (nameUpper.includes('SWORD') || nameUpper.includes('ESPADA')) rewardIconEl.className = 'fas fa-khanda reward-icon-fa';
-                        else if (nameUpper.includes('SHIELD') || nameUpper.includes('ESCUDO')) rewardIconEl.className = 'fas fa-shield-halved reward-icon-fa';
-                        else rewardIconEl.className = 'fas fa-box-open reward-icon-fa';
-
-                    } else if (details && (details.currency || details.type)) {
-                        let curr = (details.currency || details.type).toUpperCase();
-                        let amt = details.amount || details.qty || count || 1;
-                        let amtStr = (curr.includes('WCOIN') || curr.includes('GP') || curr.includes('ZEN')) ? `${amt} ${curr}` : (amt === 1 ? '1 UNIDAD' : `${amt} UNIDADES`);
-
-                        rewardTextEl.innerHTML = `REGALO: <b>${curr} (${amtStr})</b>`;
-
-                        if (curr.includes('WCOIN')) rewardIconEl.className = 'fas fa-gem reward-icon-fa';
-                        else if (curr.includes('GOBLIN') || curr.includes('GP')) rewardIconEl.className = 'fas fa-flask reward-icon-fa';
-                        else if (curr.includes('VIP')) rewardIconEl.className = 'fas fa-crown reward-icon-fa';
-                        else rewardIconEl.className = 'fas fa-coins reward-icon-fa';
-
-                    } else {
-                        rewardTextEl.innerHTML = `REGALO: <b>RECOMPENSA ESPECIAL (${unitStr})</b>`;
-                        rewardIconEl.className = 'fas fa-gift reward-icon-fa';
-                    }
-                } catch(e) {
-                    rewardTextEl.innerHTML = `REGALO: <b>RECOMPENSA ESPECIAL</b>`;
-                    rewardIconEl.className = 'fas fa-gift reward-icon-fa';
-                }
+                const rewardObj = formatRewardDisplay(promo.RewardDetails);
+                rewardTextEl.innerHTML = rewardObj.text;
+                rewardIconEl.className = `${rewardObj.icon} reward-icon-fa`;
             }
         }
 

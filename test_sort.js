@@ -1,32 +1,55 @@
-﻿function formatRewardInfo(details) {
-    if (!details) return { text: 'REGALO: <b>RECOMPENSA ESPECIAL</b>' };
-    let obj = typeof details === 'string' ? JSON.parse(details) : details;
+﻿function formatRewardDisplay(details) {
+    if (!details) return { text: 'REGALO: <b>RECOMPENSA ESPECIAL</b>', icon: 'fas fa-gift' };
     
-    let rawItemName = obj.itemName || obj.name || (obj.details ? (obj.details.itemName || obj.details.name) : null);
-    if (rawItemName && (rawItemName.toLowerCase() === 'item_vault' || rawItemName.toLowerCase() === 'ítem baúl')) {
-        rawItemName = null;
+    let obj = details;
+    if (typeof details === 'string') {
+        try { obj = JSON.parse(details); } catch(e) { obj = {}; }
     }
-    
-    let count = obj.count || obj.qty || obj.amount || (obj.details ? obj.details.count : 1) || 1;
-    let unitStr = count === 1 ? '1 UNIDAD' : count + ' UNIDADES';
-    
-    if (rawItemName) {
-        let nameUpper = rawItemName.toUpperCase();
-        return { text: 'REGALO: <b>' + nameUpper + ' (' + unitStr + ')</b>' };
+
+    let typeStr = (obj.reward_type || obj.currency || obj.type || obj.rewardType || '').toString().toLowerCase();
+    let amount = obj.amount || obj.qty || obj.count || (obj.details ? obj.details.count : 1) || 1;
+
+    if (typeStr.includes('wcoin') || typeStr.includes('w_coin')) {
+        return { text: 'REGALO: <b>' + amount + ' WCOINS</b>', icon: 'fas fa-gem' };
     }
-    if (obj.currency || obj.type) {
-        let curr = (obj.currency || obj.type).toUpperCase();
-        let amt = obj.amount || obj.qty || count || 1;
-        let amtStr = (curr.includes('WCOIN') || curr.includes('GP') || curr.includes('ZEN')) ? (amt + ' ' + curr) : (amt === 1 ? '1 UNIDAD' : amt + ' UNIDADES');
-        return { text: 'REGALO: <b>' + curr + ' (' + amtStr + ')</b>' };
+    if (typeStr.includes('goblin') || typeStr.includes('gp')) {
+        return { text: 'REGALO: <b>' + amount + ' GOBLIN POINTS</b>', icon: 'fas fa-flask' };
     }
-    return { text: 'REGALO: <b>RECOMPENSA ESPECIAL (' + unitStr + ')</b>' };
+    if (typeStr.includes('zen')) {
+        return { text: 'REGALO: <b>' + amount + ' ZEN</b>', icon: 'fas fa-coins' };
+    }
+    if (typeStr.includes('vip')) {
+        return { text: 'REGALO: <b>VIP PREMIUM (' + amount + ' DÍAS)</b>', icon: 'fas fa-crown' };
+    }
+
+    let itemName = obj.itemName || obj.name || (obj.details ? (obj.details.itemName || obj.details.name) : null);
+    if (itemName && (itemName.toLowerCase() === 'item_vault' || itemName.toLowerCase() === 'ítem baúl')) {
+        itemName = null;
+    }
+
+    let unitStr = amount === 1 ? '1 UNIDAD' : amount + ' UNIDADES';
+
+    if (itemName) {
+        let nameUpper = itemName.toUpperCase();
+        let iconClass = 'fas fa-box-open';
+        if (nameUpper.includes('RING') || nameUpper.includes('ANILLO')) iconClass = 'fas fa-ring';
+        else if (nameUpper.includes('WING') || nameUpper.includes('ALAS')) iconClass = 'fas fa-feather-pointed';
+        else if (nameUpper.includes('JEWEL') || nameUpper.includes('JOYA')) iconClass = 'fas fa-gem';
+        else if (nameUpper.includes('PET') || nameUpper.includes('PANDA')) iconClass = 'fas fa-paw';
+        return { text: 'REGALO: <b>' + nameUpper + ' (' + unitStr + ')</b>', icon: iconClass };
+    }
+
+    return { text: 'REGALO: <b>ÍTEM ESPECIAL (' + unitStr + ')</b>', icon: 'fas fa-box-open' };
 }
 
-const sample1 = '{"type":"item_vault","name":"Panda Ring","itemName":"Panda Ring","details":{"ItemType":13,"ItemIndex":76,"count":1}}';
-const sample2 = '{"type":"item_vault","name":"Jewel of Bless","itemName":"Jewel of Bless","details":{"count":10}}';
-const sample3 = '{"currency":"wcoins","amount":500}';
+const tests = [
+  { code: 'HAPPY', json: '{"reward_type":"wcoins","amount":100}' },
+  { code: 'GAMING', json: '{"reward_type":"wcoins","amount":100}' },
+  { code: 'STREAM-DAR-4OSH0', json: '{"currency":"wcoins","amount":5}' },
+  { code: 'HOLA', json: '{"type":"item_vault","name":"Panda Ring","itemName":"Panda Ring"}' },
+  { code: 'RELAJADO', json: '{"type":"item_vault","name":"","itemName":""}' }
+];
 
-console.log('Sample 1 (Panda Ring):', formatRewardInfo(sample1));
-console.log('Sample 2 (10 Jewels):', formatRewardInfo(sample2));
-console.log('Sample 3 (WCoins):', formatRewardInfo(sample3));
+tests.forEach(t => {
+    console.log(t.code, '->', formatRewardDisplay(t.json));
+});
