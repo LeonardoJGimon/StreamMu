@@ -32,30 +32,33 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            width: 100vw;
             height: 100vh;
             overflow: hidden;
+            padding: 8px;
         }
 
-        /* CONTENEDOR PRINCIPAL GÓTICO ORIGINAL */
+        /* CONTENEDOR AJUSTADO PERFECTAMENTE AL ANCHO DE 486PX DE OBS */
         .promo-card {
             position: relative;
-            width: 780px;
+            width: 100%;
+            max-width: 486px; /* AJUSTE EXACTO AL MEDIDOR DE 486PX DEL USUARIO */
             background: linear-gradient(135deg, rgba(14, 10, 10, 0.97) 0%, rgba(4, 4, 4, 0.99) 100%);
             border: 2px solid var(--gold);
             border-radius: 12px;
-            padding: 20px 28px;
+            padding: 14px 16px;
             display: none; /* Se activa cuando hay códigos activos */
             flex-direction: column;
             align-items: center;
-            gap: 12px;
-            box-shadow: 0 0 45px rgba(0, 0, 0, 0.95), inset 0 0 30px rgba(126, 0, 0, 0.6);
+            gap: 10px;
+            box-shadow: 0 0 35px rgba(0, 0, 0, 0.95), inset 0 0 25px rgba(126, 0, 0, 0.6);
             overflow: hidden;
             animation: cardPulse 4s infinite ease-in-out;
         }
 
         @keyframes cardPulse {
-            0%, 100% { box-shadow: 0 0 40px rgba(0,0,0,0.95), inset 0 0 30px rgba(126, 0, 0, 0.5); }
-            50% { box-shadow: 0 0 60px rgba(255, 46, 46, 0.4), inset 0 0 40px rgba(192, 163, 117, 0.6); }
+            0%, 100% { box-shadow: 0 0 30px rgba(0,0,0,0.95), inset 0 0 25px rgba(126, 0, 0, 0.5); }
+            50% { box-shadow: 0 0 50px rgba(255, 46, 46, 0.4), inset 0 0 35px rgba(192, 163, 117, 0.6); }
         }
 
         /* BRILLO DIAGONAL QUE PASA */
@@ -75,151 +78,161 @@
             100% { left: 200%; }
         }
 
-        /* BANNER SUPERIOR TITILANDO EXACTO */
+        /* BANNER SUPERIOR DISTRIBUIDO PARA 486PX */
         .blinking-banner {
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-size: 1.05rem;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.78rem;
             color: var(--gold-light);
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
             text-align: center;
+            width: 100%;
+            line-height: 1.25;
             animation: blinkGlow 1.2s infinite ease-in-out alternate;
         }
 
         @keyframes blinkGlow {
-            0% { opacity: 1; text-shadow: 0 0 12px var(--crimson-bright), 0 0 20px var(--gold-light); }
-            100% { opacity: 0.55; text-shadow: 0 0 4px var(--crimson), 0 0 8px var(--gold); }
+            0% { opacity: 1; text-shadow: 0 0 10px var(--crimson-bright), 0 0 15px var(--gold-light); }
+            100% { opacity: 0.6; text-shadow: 0 0 4px var(--crimson), 0 0 6px var(--gold); }
         }
 
         .gift-icon {
-            font-size: 1.6rem;
+            font-size: 1.3rem;
             color: var(--gold-bright);
-            filter: drop-shadow(0 0 10px var(--crimson-bright));
+            filter: drop-shadow(0 0 8px var(--crimson-bright));
             animation: bounceGift 2s infinite ease-in-out;
+            min-width: 20px;
         }
 
         @keyframes bounceGift {
             0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
-            25% { transform: translateY(-4px) rotate(-8deg) scale(1.15); }
-            75% { transform: translateY(-4px) rotate(8deg) scale(1.15); }
+            25% { transform: translateY(-3px) rotate(-8deg) scale(1.15); }
+            75% { transform: translateY(-3px) rotate(8deg) scale(1.15); }
         }
 
-        /* CAJA DEL CÓDIGO CENTRAL */
+        /* CAJA DEL CÓDIGO CENTRAL AJUSTADA A 486PX */
         .code-box {
             position: relative;
-            background: linear-gradient(180deg, rgba(140, 0, 0, 0.8) 0%, rgba(10, 5, 5, 0.98) 100%);
+            background: linear-gradient(180deg, rgba(140, 0, 0, 0.85) 0%, rgba(10, 5, 5, 0.98) 100%);
             border: 2px solid var(--gold-light);
-            padding: 8px 36px;
+            padding: 6px 20px;
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 25px rgba(255, 46, 46, 0.45);
+            box-shadow: 0 0 20px rgba(255, 46, 46, 0.45);
             z-index: 10;
+            width: 90%;
         }
 
         .code-text {
-            font-size: 2.5rem;
+            font-size: 1.95rem;
             font-weight: 900;
-            letter-spacing: 5px;
+            letter-spacing: 4px;
             color: #ffffff;
-            text-shadow: 0 0 18px var(--crimson-bright), 0 0 10px #000;
+            text-shadow: 0 0 15px var(--crimson-bright), 0 0 8px #000;
+            text-align: center;
+            word-break: break-all;
             animation: codePulse 2.5s infinite alternate;
         }
 
         @keyframes codePulse {
-            0% { transform: scale(1); filter: drop-shadow(0 0 10px var(--gold)); }
-            100% { transform: scale(1.04); filter: drop-shadow(0 0 22px var(--crimson-bright)); }
+            0% { transform: scale(1); filter: drop-shadow(0 0 8px var(--gold)); }
+            100% { transform: scale(1.04); filter: drop-shadow(0 0 18px var(--crimson-bright)); }
         }
 
-        /* CONTENEDOR DEL ÍTEM Y SUS DETALLES (ORGANIZADO LIMPIO SIN CUADRO AMARILLO FEO) */
+        /* CONTENEDOR DEL ÍTEM Y SUS DETALLES (DISTRIBUIDO EN 486PX) */
         .item-details-card {
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 20px;
+            justify-content: flex-start;
+            gap: 14px;
             width: 100%;
             background: rgba(10, 8, 8, 0.85);
             border: 1px solid var(--gold);
-            border-radius: 10px;
-            padding: 12px 20px;
-            box-shadow: inset 0 0 18px rgba(0, 0, 0, 0.9);
+            border-radius: 8px;
+            padding: 8px 12px;
+            box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.9);
             z-index: 10;
         }
 
-        /* CONTENEDOR DEL ICONO PNG REAL (LIMPIO, SIN CUADRO AMARILLO SOBREPUESTO) */
+        /* ICONO DEL ÍTEM SIN MARCOS FEOS SOBREPUESTOS */
         .item-icon-wrapper {
             position: relative;
-            width: 80px;
-            height: 80px;
-            min-width: 80px;
+            width: 65px;
+            height: 65px;
+            min-width: 65px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: radial-gradient(circle, rgba(255, 46, 46, 0.25) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(255, 46, 46, 0.3) 0%, transparent 75%);
         }
 
-        /* IMAGEN DEL ÍTEM CON FLOTACIÓN Y RESPLANDOR NATURAL */
         .item-icon-png {
-            max-width: 75px;
-            max-height: 75px;
+            max-width: 60px;
+            max-height: 60px;
             width: auto;
             height: auto;
             object-fit: contain;
-            filter: drop-shadow(0 0 12px var(--gold-bright));
+            filter: drop-shadow(0 0 10px var(--gold-bright));
             animation: floatIcon 3s infinite ease-in-out;
         }
 
         @keyframes floatIcon {
-            0%, 100% { transform: translateY(0) scale(1); filter: drop-shadow(0 0 10px var(--gold-bright)); }
-            50% { transform: translateY(-4px) scale(1.06); filter: drop-shadow(0 0 20px var(--crimson-bright)); }
+            0%, 100% { transform: translateY(0) scale(1); filter: drop-shadow(0 0 8px var(--gold-bright)); }
+            50% { transform: translateY(-3px) scale(1.06); filter: drop-shadow(0 0 16px var(--crimson-bright)); }
         }
 
-        /* INFORMACIÓN DEL ÍTEM */
+        /* GRUPO DE TEXTO E INFORMACIÓN DEL ÍTEM */
         .item-text-group {
             display: flex;
             flex-direction: column;
             gap: 4px;
+            flex-grow: 1;
+            overflow: hidden;
         }
 
         .item-name-heading {
-            font-size: 1.45rem;
+            font-size: 1.15rem;
             color: var(--gold-light);
-            letter-spacing: 1.5px;
-            text-shadow: 0 0 10px var(--crimson-bright);
+            letter-spacing: 1px;
+            text-shadow: 0 0 8px var(--crimson-bright);
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 8px;
+            flex-wrap: wrap;
         }
 
         .item-qty-pill {
             font-family: 'Alegreya', sans-serif;
-            font-size: 1.05rem;
+            font-size: 0.9rem;
             font-weight: bold;
             color: #ffffff;
             background: linear-gradient(135deg, rgba(140, 0, 0, 0.9) 0%, rgba(30, 5, 5, 0.95) 100%);
             border: 1px solid var(--crimson-bright);
-            padding: 2px 12px;
-            border-radius: 14px;
-            letter-spacing: 1px;
+            padding: 1px 8px;
+            border-radius: 12px;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
         }
 
         .item-tags-container {
             display: flex;
             align-items: center;
-            gap: 6px;
+            gap: 4px;
             flex-wrap: wrap;
         }
 
         .item-tag {
             font-family: 'Alegreya', sans-serif;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             font-weight: bold;
             text-transform: uppercase;
-            padding: 2px 8px;
+            padding: 1px 6px;
             border-radius: 4px;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
         .tag-lvl {
@@ -245,24 +258,26 @@
             border: 1px solid var(--gold);
         }
 
-        /* FILA INFERIOR DE ESTADO DE USOS (¿CUÁNTO ESTÁ Y CUÁNTOS QUEDAN?) */
+        /* BARRA INFERIOR DE ESTADO DE USOS (AJUSTADA A 486PX) */
         .usage-bar {
             display: flex;
             align-items: center;
             justify-content: space-between;
             width: 100%;
-            padding-top: 4px;
+            padding-top: 2px;
             z-index: 10;
             font-family: 'Alegreya', sans-serif;
+            flex-wrap: wrap;
+            gap: 6px;
         }
 
         .usage-text {
-            font-size: 1.2rem;
+            font-size: 1.05rem;
             color: #dddddd;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
         }
 
         .usage-text i {
@@ -271,20 +286,21 @@
 
         .usage-text b {
             color: var(--gold-bright);
-            font-size: 1.3rem;
-            text-shadow: 0 0 8px var(--crimson-bright);
+            font-size: 1.15rem;
+            text-shadow: 0 0 6px var(--crimson-bright);
         }
 
         .remaining-badge {
-            font-size: 1.1rem;
+            font-size: 0.95rem;
             font-weight: bold;
             color: #ffffff;
             background: linear-gradient(135deg, rgba(128, 0, 0, 0.9) 0%, rgba(20, 5, 5, 0.95) 100%);
             border: 1px solid var(--crimson-bright);
-            padding: 4px 16px;
-            border-radius: 20px;
-            box-shadow: 0 0 12px rgba(255, 46, 46, 0.4);
-            letter-spacing: 1px;
+            padding: 3px 12px;
+            border-radius: 16px;
+            box-shadow: 0 0 10px rgba(255, 46, 46, 0.4);
+            letter-spacing: 0.5px;
+            white-space: nowrap;
         }
 
         /* CHISPAS Y PARTICULAS FLOTANTES GÓTICAS */
@@ -304,9 +320,9 @@
         }
 
         @keyframes floatUp {
-            0% { transform: translateY(80px) scale(1); opacity: 0; }
+            0% { transform: translateY(70px) scale(1); opacity: 0; }
             30% { opacity: 0.85; }
-            100% { transform: translateY(-80px) translateX(25px) scale(0); opacity: 0; }
+            100% { transform: translateY(-70px) translateX(20px) scale(0); opacity: 0; }
         }
     </style>
 </head>
@@ -315,7 +331,7 @@
     <div class="promo-card" id="promo-card">
         <div id="spark-container"></div>
 
-        <!-- BANNER SUPERIOR TITILANDO EXACTO (SIN CARACTERES EXTRAÑOS) -->
+        <!-- BANNER SUPERIOR TITILANDO -->
         <div class="blinking-banner">
             <i class="fas fa-gift gift-icon"></i>
             <span>USA ESTE CÓDIGO EN TU LAUNCHER PARA QUE OBTENGAS UN REGALO</span>
@@ -327,7 +343,7 @@
             <span class="code-text" id="promo-code-display">---</span>
         </div>
 
-        <!-- DETALLES DEL ÍTEM REGALADO (LIMPIO, SIN CUADROS AMARILLOS SOBREPUESTOS) -->
+        <!-- DETALLES DEL ÍTEM REGALADO -->
         <div class="item-details-card">
             <div class="item-icon-wrapper">
                 <img src="../assets/icon/items/box.png" class="item-icon-png" id="item-icon-png" alt="Item">
@@ -348,7 +364,7 @@
             </div>
         </div>
 
-        <!-- BARRA INFERIOR DE ESTADO DE USOS (¿CUÁNTO ESTÁ Y CUÁNTOS QUEDAN?) -->
+        <!-- BARRA INFERIOR DE ESTADO DE USOS -->
         <div class="usage-bar">
             <div class="usage-text">
                 <i class="fas fa-users"></i>
@@ -363,11 +379,11 @@
     <script>
         // Generar partículas de chispas góticas
         const container = document.getElementById('spark-container');
-        for (let i = 0; i < 15; i++) {
+        for (let i = 0; i < 14; i++) {
             let spark = document.createElement('div');
             spark.className = 'spark';
             spark.style.left = Math.random() * 100 + '%';
-            spark.style.width = (Math.random() * 3.5 + 2) + 'px';
+            spark.style.width = (Math.random() * 3 + 2) + 'px';
             spark.style.height = spark.style.width;
             spark.style.animationDelay = (Math.random() * 4) + 's';
             container.appendChild(spark);
@@ -424,7 +440,6 @@
             const tagCat = document.getElementById('tag-cat');
 
             if (codeEl) {
-                // Prevenir caracteres extraños limpiando texto
                 codeEl.innerText = (promo.Code || '').replace(/[^\x00-\x7F]/g, "").trim() || promo.Code;
             }
 
