@@ -2,30 +2,33 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>MU ONLINE - Promo Alert Widget</title>
-    <!-- GOOGLE FONTS PRO -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@600;700;900&family=Montserrat:wght@500;700;900&display=swap" rel="stylesheet">
+    <title>MU OLIMPO - Código Promocional Alert</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
+        @font-face {
+            font-family: 'Exocet';
+            src: url('../assets/images/font/ExocetImmortal-Medium.otf') format('opentype');
+        }
+        @font-face {
+            font-family: 'Alegreya';
+            src: url('../assets/images/font/AlegreyaSans-Regular.otf') format('opentype');
+        }
+
         :root {
-            --gold-primary: #ffd700;
-            --gold-accent: #e6b800;
-            --gold-dark: #997a00;
-            --crimson-glow: #ff1a40;
-            --crimson-dark: #800014;
-            --bg-glass: rgba(10, 8, 12, 0.94);
-            --exc-green: #00ff77;
-            --anc-blue: #00e1ff;
+            --crimson: #800000;
+            --crimson-bright: #ff2e2e;
+            --gold: #c0a375;
+            --gold-bright: #ffd700;
+            --gold-light: #f0d7a9;
+            --exc-green: #00ff66;
+            --anc-blue: #00ccff;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             background: transparent;
-            font-family: 'Cinzel', serif;
+            font-family: 'Exocet', serif;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -33,336 +36,343 @@
             overflow: hidden;
         }
 
-        /* CARD PRINCIPAL ULTRA-PRO SLIM (SIN CLIP-PATH QUE CORTABA EL TEXTO) */
-        .promo-widget {
+        /* CONTENEDOR PRINCIPAL GÓTICO ORIGINAL */
+        .promo-card {
             position: relative;
-            width: 720px;
-            background: linear-gradient(135deg, rgba(16, 12, 16, 0.96) 0%, rgba(6, 4, 8, 0.98) 100%);
-            border: 2px solid var(--gold-primary);
-            border-radius: 16px;
-            padding: 16px 24px;
-            display: none; /* Se activa dinámicamente */
+            width: 780px;
+            background: linear-gradient(135deg, rgba(14, 10, 10, 0.97) 0%, rgba(4, 4, 4, 0.99) 100%);
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            padding: 20px 28px;
+            display: none; /* Se activa cuando hay códigos activos */
             flex-direction: column;
+            align-items: center;
             gap: 12px;
-            box-shadow: 
-                0 0 35px rgba(0, 0, 0, 0.95),
-                0 0 25px rgba(255, 215, 0, 0.2),
-                inset 0 0 25px rgba(128, 0, 20, 0.5);
-            backdrop-filter: blur(16px);
-            animation: cardGlowPulse 4s infinite ease-in-out;
+            box-shadow: 0 0 45px rgba(0, 0, 0, 0.95), inset 0 0 30px rgba(126, 0, 0, 0.6);
+            overflow: hidden;
+            animation: cardPulse 4s infinite ease-in-out;
         }
 
-        @keyframes cardGlowPulse {
-            0%, 100% {
-                border-color: rgba(255, 215, 0, 0.85);
-                box-shadow: 0 0 35px rgba(0, 0, 0, 0.95), 0 0 20px rgba(255, 215, 0, 0.25), inset 0 0 25px rgba(128, 0, 20, 0.5);
-            }
-            50% {
-                border-color: rgba(255, 40, 60, 0.95);
-                box-shadow: 0 0 50px rgba(255, 26, 64, 0.4), 0 0 30px rgba(255, 215, 0, 0.4), inset 0 0 35px rgba(255, 215, 0, 0.3);
-            }
+        @keyframes cardPulse {
+            0%, 100% { box-shadow: 0 0 40px rgba(0,0,0,0.95), inset 0 0 30px rgba(126, 0, 0, 0.5); }
+            50% { box-shadow: 0 0 60px rgba(255, 46, 46, 0.4), inset 0 0 40px rgba(192, 163, 117, 0.6); }
         }
 
-        /* LÍNEA SUPERIOR DE ADORNO GÓTICO */
-        .widget-header-line {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            width: 100%;
-        }
-
-        .header-glow-text {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.88rem;
-            font-weight: 800;
-            color: var(--gold-primary);
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 26, 64, 0.6);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            animation: textBlink 1.5s infinite ease-in-out alternate;
-        }
-
-        @keyframes textBlink {
-            0% { opacity: 1; transform: scale(1); }
-            100% { opacity: 0.7; transform: scale(0.99); }
-        }
-
-        .gift-sparkle-icon {
-            font-size: 1.1rem;
-            color: var(--gold-primary);
-            filter: drop-shadow(0 0 8px var(--crimson-glow));
-            animation: iconSpin 3s infinite ease-in-out;
-        }
-
-        @keyframes iconSpin {
-            0%, 100% { transform: scale(1) rotate(0deg); }
-            50% { transform: scale(1.2) rotate(10deg); }
-        }
-
-        /* ESTRUCTURA DE CONTENIDO INTERNO: IZQUIERDA MOSTRADOR ÍTEM / DERECHA DETALLES */
-        .widget-content-body {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            width: 100%;
-        }
-
-        /* MOSTRADOR HOLOGRÁFICO DEL ÍTEM (HERO ICON) */
-        .item-showcase-box {
-            position: relative;
-            width: 115px;
-            height: 115px;
-            min-width: 115px;
-            background: radial-gradient(circle, rgba(120, 0, 20, 0.7) 0%, rgba(15, 10, 15, 0.95) 80%);
-            border: 2px solid var(--gold-primary);
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 25px rgba(255, 215, 0, 0.35), inset 0 0 20px rgba(255, 26, 64, 0.5);
-            overflow: visible;
-        }
-
-        /* ANILLO DE LUZ GIRATORIO */
-        .item-showcase-box::before {
+        /* BRILLO DIAGONAL QUE PASA */
+        .promo-card::after {
             content: "";
             position: absolute;
-            width: 130px; height: 130px;
-            border-radius: 50%;
-            border: 2px dashed rgba(255, 215, 0, 0.6);
-            animation: ringRotate 8s linear infinite;
+            top: 0; left: -100%;
+            width: 60%; height: 100%;
+            background: linear-gradient(to right, transparent, rgba(240, 215, 169, 0.25), transparent);
+            transform: skewX(-25deg);
+            animation: glint 4.5s infinite;
         }
 
-        @keyframes ringRotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        @keyframes glint {
+            0% { left: -100%; }
+            22% { left: 200%; }
+            100% { left: 200%; }
         }
 
-        /* IMAGEN 3D DEL ÍTEM */
-        .item-real-png {
-            max-width: 90px;
-            max-height: 90px;
+        /* BANNER SUPERIOR TITILANDO EXACTO */
+        .blinking-banner {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.05rem;
+            color: var(--gold-light);
+            letter-spacing: 1.5px;
+            text-align: center;
+            animation: blinkGlow 1.2s infinite ease-in-out alternate;
+        }
+
+        @keyframes blinkGlow {
+            0% { opacity: 1; text-shadow: 0 0 12px var(--crimson-bright), 0 0 20px var(--gold-light); }
+            100% { opacity: 0.55; text-shadow: 0 0 4px var(--crimson), 0 0 8px var(--gold); }
+        }
+
+        .gift-icon {
+            font-size: 1.6rem;
+            color: var(--gold-bright);
+            filter: drop-shadow(0 0 10px var(--crimson-bright));
+            animation: bounceGift 2s infinite ease-in-out;
+        }
+
+        @keyframes bounceGift {
+            0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+            25% { transform: translateY(-4px) rotate(-8deg) scale(1.15); }
+            75% { transform: translateY(-4px) rotate(8deg) scale(1.15); }
+        }
+
+        /* CAJA DEL CÓDIGO CENTRAL */
+        .code-box {
+            position: relative;
+            background: linear-gradient(180deg, rgba(140, 0, 0, 0.8) 0%, rgba(10, 5, 5, 0.98) 100%);
+            border: 2px solid var(--gold-light);
+            padding: 8px 36px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 25px rgba(255, 46, 46, 0.45);
+            z-index: 10;
+        }
+
+        .code-text {
+            font-size: 2.5rem;
+            font-weight: 900;
+            letter-spacing: 5px;
+            color: #ffffff;
+            text-shadow: 0 0 18px var(--crimson-bright), 0 0 10px #000;
+            animation: codePulse 2.5s infinite alternate;
+        }
+
+        @keyframes codePulse {
+            0% { transform: scale(1); filter: drop-shadow(0 0 10px var(--gold)); }
+            100% { transform: scale(1.04); filter: drop-shadow(0 0 22px var(--crimson-bright)); }
+        }
+
+        /* CONTENEDOR DEL ÍTEM Y SUS DETALLES (ORGANIZADO LIMPIO SIN CUADRO AMARILLO FEO) */
+        .item-details-card {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            width: 100%;
+            background: rgba(10, 8, 8, 0.85);
+            border: 1px solid var(--gold);
+            border-radius: 10px;
+            padding: 12px 20px;
+            box-shadow: inset 0 0 18px rgba(0, 0, 0, 0.9);
+            z-index: 10;
+        }
+
+        /* CONTENEDOR DEL ICONO PNG REAL (LIMPIO, SIN CUADRO AMARILLO SOBREPUESTO) */
+        .item-icon-wrapper {
+            position: relative;
+            width: 80px;
+            height: 80px;
+            min-width: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: radial-gradient(circle, rgba(255, 46, 46, 0.25) 0%, transparent 70%);
+        }
+
+        /* IMAGEN DEL ÍTEM CON FLOTACIÓN Y RESPLANDOR NATURAL */
+        .item-icon-png {
+            max-width: 75px;
+            max-height: 75px;
             width: auto;
             height: auto;
             object-fit: contain;
-            filter: drop-shadow(0 0 14px rgba(255, 215, 0, 0.9));
-            animation: itemFloat 3s infinite ease-in-out;
-            z-index: 5;
+            filter: drop-shadow(0 0 12px var(--gold-bright));
+            animation: floatIcon 3s infinite ease-in-out;
         }
 
-        @keyframes itemFloat {
-            0%, 100% { transform: translateY(0) scale(1); filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.8)); }
-            50% { transform: translateY(-5px) scale(1.08); filter: drop-shadow(0 0 24px rgba(255, 26, 64, 1)); }
+        @keyframes floatIcon {
+            0%, 100% { transform: translateY(0) scale(1); filter: drop-shadow(0 0 10px var(--gold-bright)); }
+            50% { transform: translateY(-4px) scale(1.06); filter: drop-shadow(0 0 20px var(--crimson-bright)); }
         }
 
-        /* COLUMNA DERECHA DE DETALLES Y CÓDIGO */
-        .item-info-column {
+        /* INFORMACIÓN DEL ÍTEM */
+        .item-text-group {
             display: flex;
             flex-direction: column;
-            gap: 8px;
-            flex-grow: 1;
+            gap: 4px;
         }
 
-        /* CAJA DEL CÓDIGO PROMOCIONAL ESTILO BADGE DE LUJO */
-        .code-badge-box {
-            display: inline-flex;
-            align-items: center;
-            justify-content: space-between;
-            background: linear-gradient(135deg, rgba(140, 0, 20, 0.9) 0%, rgba(30, 5, 10, 0.95) 100%);
-            border: 2px solid var(--gold-primary);
-            border-radius: 10px;
-            padding: 6px 20px;
-            box-shadow: 0 0 20px rgba(255, 26, 64, 0.4), inset 0 0 12px rgba(255, 215, 0, 0.3);
-            width: fit-content;
-        }
-
-        .code-title-text {
-            font-family: 'Cinzel Decorative', serif;
-            font-size: 1.85rem;
-            font-weight: 900;
-            color: #ffffff;
-            letter-spacing: 4px;
-            text-shadow: 0 0 14px var(--gold-primary), 0 0 25px var(--crimson-glow);
-        }
-
-        /* FILA DEL NOMBRE DEL ÍTEM Y CANTIDAD */
-        .item-name-row {
+        .item-name-heading {
+            font-size: 1.45rem;
+            color: var(--gold-light);
+            letter-spacing: 1.5px;
+            text-shadow: 0 0 10px var(--crimson-bright);
             display: flex;
             align-items: center;
             gap: 12px;
-            flex-wrap: wrap;
         }
 
-        .item-display-name {
-            font-family: 'Cinzel', serif;
-            font-size: 1.4rem;
-            font-weight: 900;
-            color: var(--gold-primary);
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
-        }
-
-        .item-qty-badge {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 800;
+        .item-qty-pill {
+            font-family: 'Alegreya', sans-serif;
+            font-size: 1.05rem;
+            font-weight: bold;
             color: #ffffff;
-            background: linear-gradient(135deg, rgba(255, 26, 64, 0.9) 0%, rgba(120, 0, 20, 0.95) 100%);
-            border: 1px solid var(--gold-primary);
-            padding: 3px 12px;
-            border-radius: 20px;
+            background: linear-gradient(135deg, rgba(140, 0, 0, 0.9) 0%, rgba(30, 5, 5, 0.95) 100%);
+            border: 1px solid var(--crimson-bright);
+            padding: 2px 12px;
+            border-radius: 14px;
             letter-spacing: 1px;
-            box-shadow: 0 0 10px rgba(255, 26, 64, 0.5);
         }
 
-        /* ETIQUETAS DE ATRIBUTOS (+15, EXCELLENT, LUCK, SKILL) */
-        .item-tags-row {
+        .item-tags-container {
             display: flex;
             align-items: center;
             gap: 6px;
             flex-wrap: wrap;
         }
 
-        .attr-tag {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem;
-            font-weight: 800;
+        .item-tag {
+            font-family: 'Alegreya', sans-serif;
+            font-size: 0.9rem;
+            font-weight: bold;
             text-transform: uppercase;
-            padding: 3px 9px;
-            border-radius: 6px;
-            letter-spacing: 0.8px;
+            padding: 2px 8px;
+            border-radius: 4px;
+            letter-spacing: 1px;
         }
 
         .tag-lvl {
-            background: linear-gradient(135deg, #ffd700 0%, #b8860b 100%);
+            background: var(--gold-bright);
             color: #000000;
-            font-weight: 900;
-            box-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
         }
 
         .tag-exc {
-            background: rgba(0, 30, 10, 0.95);
+            background: rgba(0, 40, 10, 0.9);
             color: var(--exc-green);
             border: 1px solid var(--exc-green);
-            box-shadow: 0 0 8px rgba(0, 255, 119, 0.4);
         }
 
         .tag-luck {
-            background: rgba(0, 25, 50, 0.95);
+            background: rgba(0, 30, 60, 0.9);
             color: var(--anc-blue);
             border: 1px solid var(--anc-blue);
-            box-shadow: 0 0 8px rgba(0, 225, 255, 0.4);
         }
 
-        .tag-type {
-            background: rgba(40, 15, 25, 0.9);
-            color: #ffb3c1;
-            border: 1px solid rgba(255, 179, 193, 0.4);
+        .tag-category {
+            background: rgba(40, 10, 15, 0.9);
+            color: var(--gold-light);
+            border: 1px solid var(--gold);
         }
 
-        /* BARRA INFERIOR DE USOS Y DISPONIBILIDAD */
-        .widget-footer-bar {
+        /* FILA INFERIOR DE ESTADO DE USOS (¿CUÁNTO ESTÁ Y CUÁNTOS QUEDAN?) */
+        .usage-bar {
             display: flex;
             align-items: center;
             justify-content: space-between;
             width: 100%;
-            background: rgba(8, 6, 10, 0.8);
-            border-top: 1px solid rgba(255, 215, 0, 0.3);
-            padding-top: 8px;
-            margin-top: 2px;
+            padding-top: 4px;
+            z-index: 10;
+            font-family: 'Alegreya', sans-serif;
         }
 
-        .usage-counter-text {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: #e0e0e0;
+        .usage-text {
+            font-size: 1.2rem;
+            color: #dddddd;
+            letter-spacing: 1px;
             display: flex;
             align-items: center;
             gap: 8px;
         }
 
-        .usage-counter-text i {
-            color: var(--gold-primary);
+        .usage-text i {
+            color: var(--gold-bright);
         }
 
-        .usage-counter-text b {
-            color: var(--gold-primary);
-            font-size: 1.05rem;
+        .usage-text b {
+            color: var(--gold-bright);
+            font-size: 1.3rem;
+            text-shadow: 0 0 8px var(--crimson-bright);
         }
 
-        .remaining-pill {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 800;
+        .remaining-badge {
+            font-size: 1.1rem;
+            font-weight: bold;
             color: #ffffff;
-            background: linear-gradient(135deg, rgba(160, 0, 30, 0.95) 0%, rgba(60, 0, 10, 0.95) 100%);
-            border: 1px solid var(--crimson-glow);
-            padding: 3px 14px;
-            border-radius: 14px;
-            letter-spacing: 0.8px;
-            box-shadow: 0 0 10px rgba(255, 26, 64, 0.5);
+            background: linear-gradient(135deg, rgba(128, 0, 0, 0.9) 0%, rgba(20, 5, 5, 0.95) 100%);
+            border: 1px solid var(--crimson-bright);
+            padding: 4px 16px;
+            border-radius: 20px;
+            box-shadow: 0 0 12px rgba(255, 46, 46, 0.4);
+            letter-spacing: 1px;
+        }
+
+        /* CHISPAS Y PARTICULAS FLOTANTES GÓTICAS */
+        #spark-container {
+            position: absolute;
+            width: 100%; height: 100%;
+            top: 0; left: 0;
+            pointer-events: none;
+        }
+
+        .spark {
+            position: absolute;
+            background: var(--gold-bright);
+            border-radius: 50%;
+            animation: floatUp 3.5s infinite linear;
+            opacity: 0;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(80px) scale(1); opacity: 0; }
+            30% { opacity: 0.85; }
+            100% { transform: translateY(-80px) translateX(25px) scale(0); opacity: 0; }
         }
     </style>
 </head>
 <body>
 
-    <div class="promo-widget" id="promo-widget">
-        <!-- HEADER LINE -->
-        <div class="widget-header-line">
-            <i class="fas fa-gift gift-sparkle-icon"></i>
-            <span class="header-glow-text">USA ESTE CÓDIGO EN TU LAUNCHER PARA QUE OBTENGAS UN REGALO</span>
-            <i class="fas fa-gift gift-sparkle-icon"></i>
+    <div class="promo-card" id="promo-card">
+        <div id="spark-container"></div>
+
+        <!-- BANNER SUPERIOR TITILANDO EXACTO (SIN CARACTERES EXTRAÑOS) -->
+        <div class="blinking-banner">
+            <i class="fas fa-gift gift-icon"></i>
+            <span>USA ESTE CÓDIGO EN TU LAUNCHER PARA QUE OBTENGAS UN REGALO</span>
+            <i class="fas fa-gift gift-icon"></i>
         </div>
 
-        <!-- CONTENIDO PRINCIPAL -->
-        <div class="widget-content-body">
-            <!-- MOSTRADOR 3D HERO ICON -->
-            <div class="item-showcase-box">
-                <img src="../assets/icon/items/box.png" class="item-real-png" id="item-real-png" alt="Item Preview">
+        <!-- CAJA DEL CÓDIGO PROMOCIONAL CENTRAL -->
+        <div class="code-box">
+            <span class="code-text" id="promo-code-display">---</span>
+        </div>
+
+        <!-- DETALLES DEL ÍTEM REGALADO (LIMPIO, SIN CUADROS AMARILLOS SOBREPUESTOS) -->
+        <div class="item-details-card">
+            <div class="item-icon-wrapper">
+                <img src="../assets/icon/items/box.png" class="item-icon-png" id="item-icon-png" alt="Item">
             </div>
 
-            <!-- DETALLES Y CÓDIGO -->
-            <div class="item-info-column">
-                <!-- CAJA CÓDIGO -->
-                <div class="code-badge-box">
-                    <span class="code-title-text" id="code-title-text">---</span>
+            <div class="item-text-group">
+                <div class="item-name-heading">
+                    <span id="item-name-display">ÍTEM DE REGALO</span>
+                    <span class="item-qty-pill" id="item-qty-display">x1 UNIDAD</span>
                 </div>
 
-                <!-- NOMBRE Y CANTIDAD -->
-                <div class="item-name-row">
-                    <span class="item-display-name" id="item-display-name">ÍTEM DE REGALO</span>
-                    <span class="item-qty-badge" id="item-qty-badge">x1 UNIDAD</span>
-                </div>
-
-                <!-- TAGS ATRIBUTOS -->
-                <div class="item-tags-row">
-                    <span class="attr-tag tag-lvl" id="tag-lvl" style="display:none;">+15</span>
-                    <span class="attr-tag tag-exc" id="tag-exc" style="display:none;">EXCELLENT</span>
-                    <span class="attr-tag tag-luck" id="tag-luck" style="display:none;">LUCK</span>
-                    <span class="attr-tag tag-type" id="tag-type">RECOMPENSA EXCLUSIVA</span>
+                <div class="item-tags-container">
+                    <span class="item-tag tag-lvl" id="tag-lvl" style="display:none;">+15</span>
+                    <span class="item-tag tag-exc" id="tag-exc" style="display:none;">EXCELLENT</span>
+                    <span class="item-tag tag-luck" id="tag-luck" style="display:none;">LUCK</span>
+                    <span class="item-tag tag-category" id="tag-cat">RECOMPENSA</span>
                 </div>
             </div>
         </div>
 
-        <!-- FOOTER BAR -->
-        <div class="widget-footer-bar">
-            <div class="usage-counter-text">
+        <!-- BARRA INFERIOR DE ESTADO DE USOS (¿CUÁNTO ESTÁ Y CUÁNTOS QUEDAN?) -->
+        <div class="usage-bar">
+            <div class="usage-text">
                 <i class="fas fa-users"></i>
-                <span>USOS: <b id="usage-val">0 DE 50</b></span>
+                <span>USOS: <b id="usage-val">0 de 50</b></span>
             </div>
-            <div class="remaining-pill" id="remaining-pill">
+            <div class="remaining-badge" id="remaining-val">
                 ¡QUEDAN 50 DISPONIBLES!
             </div>
         </div>
     </div>
 
     <script>
+        // Generar partículas de chispas góticas
+        const container = document.getElementById('spark-container');
+        for (let i = 0; i < 15; i++) {
+            let spark = document.createElement('div');
+            spark.className = 'spark';
+            spark.style.left = Math.random() * 100 + '%';
+            spark.style.width = (Math.random() * 3.5 + 2) + 'px';
+            spark.style.height = spark.style.width;
+            spark.style.animationDelay = (Math.random() * 4) + 's';
+            container.appendChild(spark);
+        }
+
         let promoList = [];
         let currentIndex = 0;
         let itemDb = {};
@@ -382,11 +392,11 @@
                             return max === 0 || current < max;
                         });
 
-                        const widget = document.getElementById('promo-widget');
+                        const promoCard = document.getElementById('promo-card');
                         if (!promoList.length) {
-                            widget.style.display = 'none';
+                            promoCard.style.display = 'none';
                         } else {
-                            widget.style.display = 'flex';
+                            promoCard.style.display = 'flex';
                             renderCurrentPromo();
                         }
                         return;
@@ -401,34 +411,35 @@
             if (!promoList.length) return;
             const promo = promoList[currentIndex % promoList.length];
 
-            const codeTextEl = document.getElementById('code-title-text');
-            const itemImgEl = document.getElementById('item-real-png');
-            const itemNameEl = document.getElementById('item-display-name');
-            const itemQtyEl = document.getElementById('item-qty-badge');
+            const codeEl = document.getElementById('promo-code-display');
+            const itemImgEl = document.getElementById('item-icon-png');
+            const itemNameEl = document.getElementById('item-name-display');
+            const itemQtyEl = document.getElementById('item-qty-display');
             const usageValEl = document.getElementById('usage-val');
-            const remainingPillEl = document.getElementById('remaining-pill');
+            const remainingValEl = document.getElementById('remaining-val');
 
             const tagLvl = document.getElementById('tag-lvl');
             const tagExc = document.getElementById('tag-exc');
             const tagLuck = document.getElementById('tag-luck');
-            const tagType = document.getElementById('tag-type');
+            const tagCat = document.getElementById('tag-cat');
 
-            if (codeTextEl) {
-                codeTextEl.innerText = promo.Code;
+            if (codeEl) {
+                // Prevenir caracteres extraños limpiando texto
+                codeEl.innerText = (promo.Code || '').replace(/[^\x00-\x7F]/g, "").trim() || promo.Code;
             }
 
-            // Usos
+            // Usos y Disponibles
             const max = Number(promo.MaxUses || 0);
             const current = Number(promo.CurrentUses || 0);
             if (usageValEl) {
-                usageValEl.innerText = max > 0 ? `${current} DE ${max}` : `${current} (ILIMITADO)`;
+                usageValEl.innerText = max > 0 ? `${current} de ${max}` : `${current} (ILIMITADO)`;
             }
-            if (remainingPillEl) {
+            if (remainingValEl) {
                 if (max > 0) {
                     const remaining = max - current;
-                    remainingPillEl.innerText = remaining === 1 ? `¡QUEDA 1 DISPONIBLE!` : `¡QUEDAN ${remaining} DISPONIBLES!`;
+                    remainingValEl.innerText = remaining === 1 ? `¡QUEDA 1 DISPONIBLE!` : `¡QUEDAN ${remaining} DISPONIBLES!`;
                 } else {
-                    remainingPillEl.innerText = `¡USO ILIMITADO!`;
+                    remainingValEl.innerText = `¡CÓDIGO ILIMITADO!`;
                 }
             }
 
@@ -436,7 +447,7 @@
             tagLvl.style.display = 'none';
             tagExc.style.display = 'none';
             tagLuck.style.display = 'none';
-            tagType.innerText = 'RECOMPENSA EXCLUSIVA';
+            tagCat.innerText = 'RECOMPENSA';
 
             let details = promo.RewardDetails;
             if (typeof details === 'string') {
@@ -452,32 +463,32 @@
                 itemQtyEl.innerText = `${amount} MONEDAS`;
                 itemImgEl.src = '../assets/icon/items/wcoin.png';
                 itemImgEl.onerror = () => { itemImgEl.src = '../assets/icon/items/box.png'; };
-                tagType.innerText = 'MONEDA VIRTUAL';
+                tagCat.innerText = 'MONEDA VIRTUAL';
                 return;
             }
             if (typeStr.includes('goblin') || typeStr.includes('gp')) {
                 itemNameEl.innerText = 'GOBLIN POINTS';
                 itemQtyEl.innerText = `${amount} PTS`;
                 itemImgEl.src = '../assets/icon/items/wcoin.png';
-                tagType.innerText = 'PUNTOS GOBLIN';
+                tagCat.innerText = 'PUNTOS GOBLIN';
                 return;
             }
             if (typeStr.includes('zen')) {
                 itemNameEl.innerText = 'ZEN';
                 itemQtyEl.innerText = `${amount.toLocaleString()} ZEN`;
                 itemImgEl.src = '../assets/icon/items/box.png';
-                tagType.innerText = 'MONEDA ORO';
+                tagCat.innerText = 'MONEDA ORO';
                 return;
             }
             if (typeStr.includes('vip')) {
                 itemNameEl.innerText = 'VIP PREMIUM';
                 itemQtyEl.innerText = `${amount} ${amount === 1 ? 'DÍA' : 'DÍAS'}`;
                 itemImgEl.src = '../assets/icon/items/vip.png';
-                tagType.innerText = 'MEMBRESÍA VIP';
+                tagCat.innerText = 'MEMBRESÍA VIP';
                 return;
             }
 
-            // 2. Ítems por ItemType e ItemIndex o Nombre
+            // 2. Ítems por ItemType y ItemIndex o Nombre
             let cat = details.ItemType !== undefined ? details.ItemType : (details.details ? details.details.ItemType : null);
             let idx = details.ItemIndex !== undefined ? details.ItemIndex : (details.details ? details.details.ItemIndex : null);
             let itemName = details.itemName || details.name || (details.details ? (details.details.itemName || details.details.name) : null);
@@ -512,7 +523,7 @@
                 itemNameEl.innerText = itemName ? itemName.toUpperCase() : `ÍTEM [${cat}-${idx}]`;
                 itemImgEl.src = `../assets/icon/items/${cat}/${idx}.png`;
                 itemImgEl.onerror = () => { itemImgEl.src = '../assets/icon/items/box.png'; };
-                tagType.innerText = isExc ? 'EXCELLENT ITEM' : 'ÍTEM DE JUEGO';
+                tagCat.innerText = isExc ? 'EXCELLENT ITEM' : 'ÍTEM DE JUEGO';
             } else if (itemName) {
                 itemNameEl.innerText = itemName.toUpperCase();
                 let clean = itemName.toLowerCase().replace(/[^a-z0-9]/g, '');
@@ -523,11 +534,11 @@
                     itemImgEl.src = '../assets/icon/items/box.png';
                 }
                 itemImgEl.onerror = () => { itemImgEl.src = '../assets/icon/items/box.png'; };
-                tagType.innerText = 'ÍTEM ESPECIAL';
+                tagCat.innerText = 'ÍTEM ESPECIAL';
             } else {
                 itemNameEl.innerText = 'ÍTEM REGALO';
                 itemImgEl.src = '../assets/icon/items/box.png';
-                tagType.innerText = 'RECOMPENSA MISTERIOSA';
+                tagCat.innerText = 'RECOMPENSA MISTERIOSA';
             }
         }
 
