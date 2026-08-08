@@ -12,3 +12,4 @@ thumbs.db
 latest-stats.json
 
 .vercel
+.env*

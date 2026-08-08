@@ -185,7 +185,7 @@
 
         async function updateServerStats() {
             try {
-                const response = await fetch('/api/stats');
+                const response = await fetch('/api/stats?t=' + Date.now());
                 if (response.ok) {
                     const data = await response.json();
                     const count = data.onlineCount || 0;

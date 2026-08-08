@@ -1,37 +1,27 @@
-﻿
+﻿const path = require('path');
+module.paths.push('C:/Users/LeonardoGimon/Downloads/AnyServer/Node/node_modules');
 const mssql = require('mssql');
 const fs = require('fs');
-const path = require('path');
 
-async function check() {
-    // Correcting path to database.json which is in ../../database.json from public/
-    const dbConfig = JSON.parse(fs.readFileSync(path.join(__dirname, '..', '..', 'database.json'), 'utf8')).dbConfig.server1;
+async function test() {
+    const configPath = 'C:/Users/LeonardoGimon/Downloads/AnyServer/database.json';
+    const dbConfig = JSON.parse(fs.readFileSync(configPath, 'utf8')).dbConfig.server1;
     const config = {
         user: dbConfig.user,
         password: dbConfig.password,
         server: dbConfig.server,
         database: 'MuOnline',
         port: Number(dbConfig.port),
-        options: {
-            encrypt: false,
-            trustServerCertificate: true
-        }
+        options: { encrypt: false, trustServerCertificate: true }
     };
-
     try {
         await mssql.connect(config);
-        console.log('Connected');
+        const r1 = await mssql.query('SELECT ConnectStat, COUNT(*) as qty FROM MEMB_STAT GROUP BY ConnectStat');
+        console.log('MEMB_STAT breakdown:', r1.recordset);
         
-        const resCols = await mssql.query`SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'Character'`;
-        console.log('Columns in Character:', resCols.recordset.map(c => c.COLUMN_NAME));
-
-        const resColsUser = await mssql.query`SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'MEMB_INFO'`;
-        console.log('Columns in MEMB_INFO:', resColsUser.recordset.map(c => c.COLUMN_NAME));
-
-    } catch (err) {
-        console.error(err);
-    } finally {
-        await mssql.close();
-    }
+        const r2 = await mssql.query('SELECT TOP 5 memb___id, ConnectStat, ServerName, ConnectTM, DisConnectTM FROM MEMB_STAT ORDER BY ConnectTM DESC');
+        console.log('Latest connected accounts:', r2.recordset);
+    } catch(e) { console.error('Error:', e.message); }
+    finally { await mssql.close(); }
 }
-check();
+test();

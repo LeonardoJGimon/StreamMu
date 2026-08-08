@@ -6,6 +6,8 @@ module.exports = async (req, res) => {
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+
 
     if (req.method === 'OPTIONS') {
         res.status(200).end();
@@ -14,7 +16,7 @@ module.exports = async (req, res) => {
 
     const config = {
         user: process.env.DB_USER || 'sa',
-        password: process.env.DB_PASSWORD,
+        password: process.env.DB_PASSWORD || 'X120513678@',
         server: process.env.DB_SERVER || 'vps-6eed550e.vps.ovh.ca',
         database: process.env.DB_NAME || 'MuOnline',
         port: parseInt(process.env.DB_PORT) || 1433,
