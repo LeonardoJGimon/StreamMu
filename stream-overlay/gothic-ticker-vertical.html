@@ -146,7 +146,7 @@
         </div>
     </div>
 
-    <script>
+        <script>
         const params = new URLSearchParams(window.location.search);
         const customText = params.get('text');
         const newsTextEl = document.getElementById('news-text');
@@ -161,19 +161,20 @@
                 const response = await fetch('/api/stats');
                 if (response.ok) {
                     const data = await response.json();
-                    const onlineEl = document.getElementById('stat-online');
-                    const onlineCopyEl = newsTextCopyEl.querySelector('#stat-online');
-                    
-                    if (onlineEl) onlineEl.innerText = data.onlineCount || 0;
-                    if (onlineCopyEl) onlineCopyEl.innerText = data.onlineCount || 0;
+                    const count = data.onlineCount || 0;
+                    const onlineEls = document.querySelectorAll('#stat-online');
+                    onlineEls.forEach(el => el.innerText = count);
                 }
             } catch (e) { console.error("Error stats:", e); }
         }
 
-        newsTextCopyEl.innerHTML = newsTextEl.innerHTML;
+        updateServerStats().then(() => {
+            if (newsTextCopyEl && newsTextEl) {
+                newsTextCopyEl.innerHTML = newsTextEl.innerHTML;
+            }
+        });
 
-        updateServerStats();
-        setInterval(updateServerStats, 30000);
+        setInterval(updateServerStats, 10000);
     </script>
 </body>
 </html>

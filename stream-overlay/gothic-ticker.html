@@ -173,7 +173,7 @@
         </div>
     </div>
 
-    <script>
+        <script>
         const params = new URLSearchParams(window.location.search);
         const customText = params.get('text');
         const newsTextEl = document.getElementById('news-text');
@@ -182,28 +182,26 @@
         if (customText) {
             newsTextEl.innerHTML = decodeURIComponent(customText);
         }
-        
+
         async function updateServerStats() {
             try {
                 const response = await fetch('/api/stats');
                 if (response.ok) {
                     const data = await response.json();
-                    const onlineEl = document.getElementById('stat-online');
-                    const onlineCopyEl = newsTextCopyEl.querySelector('#stat-online');
-                    
-                    const displayCount = data.onlineCount || 0;
-                    
-                    if (onlineEl) onlineEl.innerText = displayCount;
-                    if (onlineCopyEl) onlineCopyEl.innerText = displayCount;
+                    const count = data.onlineCount || 0;
+                    const onlineEls = document.querySelectorAll('#stat-online');
+                    onlineEls.forEach(el => el.innerText = count);
                 }
             } catch (e) { console.error("Error stats:", e); }
         }
 
-        // Clonar el contenido para el bucle infinito perfecto
-        newsTextCopyEl.innerHTML = newsTextEl.innerHTML;
+        updateServerStats().then(() => {
+            if (newsTextCopyEl && newsTextEl) {
+                newsTextCopyEl.innerHTML = newsTextEl.innerHTML;
+            }
+        });
 
-        updateServerStats();
-        setInterval(updateServerStats, 30000); // Cada 30 segundos
+        setInterval(updateServerStats, 10000);
     </script>
     <script src="auto-refresh.js"></script>
 </body>
