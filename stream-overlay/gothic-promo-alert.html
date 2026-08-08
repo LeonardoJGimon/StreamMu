@@ -38,12 +38,12 @@
         /* CONTENEDOR PRINCIPAL GÓTICO - OCULTO POR DEFECTO HASTA QUE HAYA CÓDIGO ACTIVO */
         .promo-card {
             position: relative;
-            width: 780px;
+            width: 800px;
             background: linear-gradient(135deg, rgba(12, 12, 12, 0.96) 0%, rgba(4, 4, 4, 0.98) 100%);
             border: 2px solid var(--gold);
             border-radius: 10px;
             padding: 24px 35px;
-            display: none; /* Se activa automáticamente cuando hay códigos */
+            display: none; /* Se activa automáticamente cuando hay códigos activos */
             flex-direction: column;
             align-items: center;
             box-shadow: 0 0 40px rgba(0, 0, 0, 0.95), inset 0 0 30px rgba(126, 0, 0, 0.5);
@@ -145,7 +145,7 @@
             100% { transform: scale(1.05); filter: drop-shadow(0 0 25px var(--crimson-bright)); }
         }
 
-        /* FILA INFERIOR DE DETALLES (RECOMPENSA + CONTADOR DE USOS) */
+        /* FILA INFERIOR DE DETALLES (RECOMPENSA CON NOMBRE REAL + UNIDADES + CONTADOR DE USOS) */
         .details-row {
             display: flex;
             align-items: center;
@@ -162,7 +162,7 @@
             gap: 10px;
             background: rgba(10, 10, 10, 0.85);
             border: 1px solid var(--gold);
-            padding: 8px 20px;
+            padding: 8px 22px;
             border-radius: 30px;
             box-shadow: 0 0 15px rgba(192, 163, 117, 0.3);
         }
@@ -243,7 +243,7 @@
     <div class="promo-card" id="promo-card">
         <div id="spark-container"></div>
 
-        <!-- TEXTO TITILANDO EXACTO -->
+        <!-- TEXTO TITILANDO EXACTO SOLICITADO -->
         <div class="blinking-banner">
             <i class="fas fa-gift gift-icon"></i>
             <span>USA ESTE CÓDIGO EN TU LAUNCHER PARA QUE OBTENGAS UN REGALO</span>
@@ -255,10 +255,10 @@
             <span class="code-text" id="promo-code-display">---</span>
         </div>
 
-        <!-- FILA DE DETALLES (RECOMPENSA Y USOS CONSUMIDOS) -->
+        <!-- FILA DE DETALLES (NOMBRE REAL DEL ÍTEM + CANTIDAD DE UNIDADES + USOS) -->
         <div class="details-row">
             <div class="reward-badge-container" id="reward-container">
-                <i class="fas fa-gem reward-icon-fa" id="reward-icon"></i>
+                <i class="fas fa-gift reward-icon-fa" id="reward-icon"></i>
                 <span class="reward-info-text" id="reward-text">REGALO: <b>--</b></span>
             </div>
 
@@ -300,11 +300,9 @@
 
                         const promoCard = document.getElementById('promo-card');
                         if (!promoList.length) {
-                            // Si no hay ningún código activo u operativo, ocultar completamente el gadget
-                            promoCard.style.display = 'none';
+                            promoCard.style.display = 'none'; // Ocultar automáticamente si no hay códigos operativos
                         } else {
-                            // Si hay al menos 1 código activo, mostrar automáticamente el gadget
-                            promoCard.style.display = 'flex';
+                            promoCard.style.display = 'flex'; // Mostrar automáticamente al crear un código
                             renderCurrentPromo();
                         }
                         return;
@@ -327,7 +325,7 @@
                 codeEl.innerText = promo.Code;
             }
 
-            // Mostrar usos consumidos (ej. "1 de 50" o "ILIMITADO")
+            // Mostrar usos consumidos (ej. "1 de 50")
             if (usageCountEl) {
                 const max = Number(promo.MaxUses || 0);
                 const current = Number(promo.CurrentUses || 0);
@@ -338,30 +336,49 @@
                 }
             }
 
-            // Mostrar recompensa/regalo
+            // Formatear Recompensa y Nombre Real del Ítem con su Cantidad Exacta
             if (rewardTextEl && rewardIconEl) {
                 try {
-                    const details = typeof promo.RewardDetails === 'string' ? JSON.parse(promo.RewardDetails) : promo.RewardDetails;
+                    let details = promo.RewardDetails;
+                    if (typeof details === 'string') {
+                        try { details = JSON.parse(details); } catch(e) {}
+                    }
                     
-                    if (details && (details.name || details.itemName)) {
-                        const name = details.name || details.itemName;
-                        const count = details.count || (details.details ? details.details.count : 1);
-                        const countStr = count > 1 ? ` (x${count})` : '';
-                        
-                        rewardTextEl.innerHTML = `REGALO: <b>${name.toUpperCase()}${countStr}</b>`;
-                        rewardIconEl.className = 'fas fa-box-open reward-icon-fa';
+                    let rawItemName = details ? (details.itemName || details.name || (details.details ? (details.details.itemName || details.details.name) : null)) : null;
+                    if (rawItemName && (rawItemName.toLowerCase() === 'item_vault' || rawItemName.toLowerCase() === 'ítem baúl' || rawItemName.toLowerCase() === 'item baul')) {
+                        rawItemName = null;
+                    }
+
+                    let count = details ? (details.count || details.qty || details.amount || (details.details ? details.details.count : 1) || 1) : 1;
+                    let unitStr = count === 1 ? '1 UNIDAD' : `${count} UNIDADES`;
+
+                    if (rawItemName) {
+                        let nameUpper = rawItemName.toUpperCase();
+                        rewardTextEl.innerHTML = `REGALO: <b>${nameUpper} (${unitStr})</b>`;
+
+                        // Asignar icono según categoría del ítem
+                        if (nameUpper.includes('RING') || nameUpper.includes('ANILLO')) rewardIconEl.className = 'fas fa-ring reward-icon-fa';
+                        else if (nameUpper.includes('WING') || nameUpper.includes('ALAS')) rewardIconEl.className = 'fas fa-feather-pointed reward-icon-fa';
+                        else if (nameUpper.includes('JEWEL') || nameUpper.includes('JOYA')) rewardIconEl.className = 'fas fa-gem reward-icon-fa';
+                        else if (nameUpper.includes('PET') || nameUpper.includes('PANDA') || nameUpper.includes('SKELETON')) rewardIconEl.className = 'fas fa-paw reward-icon-fa';
+                        else if (nameUpper.includes('SWORD') || nameUpper.includes('ESPADA')) rewardIconEl.className = 'fas fa-khanda reward-icon-fa';
+                        else if (nameUpper.includes('SHIELD') || nameUpper.includes('ESCUDO')) rewardIconEl.className = 'fas fa-shield-halved reward-icon-fa';
+                        else rewardIconEl.className = 'fas fa-box-open reward-icon-fa';
+
                     } else if (details && (details.currency || details.type)) {
-                        const curr = (details.currency || details.type).toUpperCase();
-                        const amt = details.amount || details.qty || 1;
-                        
-                        rewardTextEl.innerHTML = `REGALO: <b>${amt} ${curr}</b>`;
-                        
+                        let curr = (details.currency || details.type).toUpperCase();
+                        let amt = details.amount || details.qty || count || 1;
+                        let amtStr = (curr.includes('WCOIN') || curr.includes('GP') || curr.includes('ZEN')) ? `${amt} ${curr}` : (amt === 1 ? '1 UNIDAD' : `${amt} UNIDADES`);
+
+                        rewardTextEl.innerHTML = `REGALO: <b>${curr} (${amtStr})</b>`;
+
                         if (curr.includes('WCOIN')) rewardIconEl.className = 'fas fa-gem reward-icon-fa';
                         else if (curr.includes('GOBLIN') || curr.includes('GP')) rewardIconEl.className = 'fas fa-flask reward-icon-fa';
                         else if (curr.includes('VIP')) rewardIconEl.className = 'fas fa-crown reward-icon-fa';
                         else rewardIconEl.className = 'fas fa-coins reward-icon-fa';
+
                     } else {
-                        rewardTextEl.innerHTML = `REGALO: <b>RECOMPENSA ESPECIAL</b>`;
+                        rewardTextEl.innerHTML = `REGALO: <b>RECOMPENSA ESPECIAL (${unitStr})</b>`;
                         rewardIconEl.className = 'fas fa-gift reward-icon-fa';
                     }
                 } catch(e) {
@@ -379,8 +396,8 @@
         }
 
         fetchPromoCodes();
-        setInterval(fetchPromoCodes, 5000); // Consultar DB cada 5 segundos para actualizar el contador "X de Y" en tiempo real
-        setInterval(rotatePromos, 8000);      // Rotar códigos activos cada 8 segundos
+        setInterval(fetchPromoCodes, 5000); // Consultar DB cada 5 segundos para actualización en vivo
+        setInterval(rotatePromos, 8000);      // Rotar entre promociones cada 8 segundos
     </script>
 </body>
 </html>
