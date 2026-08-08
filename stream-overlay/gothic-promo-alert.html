@@ -35,7 +35,7 @@
             overflow: hidden;
         }
 
-        /* CONTENEDOR PRINCIPAL GÓTICO */
+        /* CONTENEDOR PRINCIPAL GÓTICO - OCULTO POR DEFECTO HASTA QUE HAYA CÓDIGO ACTIVO */
         .promo-card {
             position: relative;
             width: 780px;
@@ -43,13 +43,14 @@
             border: 2px solid var(--gold);
             border-radius: 10px;
             padding: 24px 35px;
-            display: flex;
+            display: none; /* Se activa automáticamente cuando hay códigos */
             flex-direction: column;
             align-items: center;
             box-shadow: 0 0 40px rgba(0, 0, 0, 0.95), inset 0 0 30px rgba(126, 0, 0, 0.5);
             overflow: hidden;
             clip-path: polygon(3% 0%, 97% 0%, 100% 12%, 100% 88%, 97% 100%, 3% 100%, 0% 88%, 0% 12%);
             animation: cardPulse 4s infinite ease-in-out;
+            transition: opacity 0.5s ease-in-out;
         }
 
         @keyframes cardPulse {
@@ -144,45 +145,73 @@
             100% { transform: scale(1.05); filter: drop-shadow(0 0 25px var(--crimson-bright)); }
         }
 
-        /* CAJA DESTACADA DE RECOMPENSA / ÍTEM */
-        .reward-badge-container {
-            margin-top: 14px;
+        /* FILA INFERIOR DE DETALLES (RECOMPENSA + CONTADOR DE USOS) */
+        .details-row {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
-            background: rgba(10, 10, 10, 0.85);
-            border: 1px solid var(--gold);
-            padding: 10px 25px;
-            border-radius: 30px;
-            box-shadow: 0 0 15px rgba(192, 163, 117, 0.3);
+            gap: 15px;
+            margin-top: 14px;
             z-index: 10;
+            flex-wrap: wrap;
         }
 
-        .reward-icon-img {
-            width: 38px;
-            height: 38px;
-            object-fit: contain;
-            filter: drop-shadow(0 0 8px var(--gold-light));
+        .reward-badge-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(10, 10, 10, 0.85);
+            border: 1px solid var(--gold);
+            padding: 8px 20px;
+            border-radius: 30px;
+            box-shadow: 0 0 15px rgba(192, 163, 117, 0.3);
         }
 
         .reward-icon-fa {
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             color: var(--gold-light);
             filter: drop-shadow(0 0 8px var(--crimson-bright));
         }
 
         .reward-info-text {
             font-family: 'Alegreya', sans-serif;
-            font-size: 1.4rem;
+            font-size: 1.35rem;
             color: #eeeeee;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             text-transform: uppercase;
         }
 
         .reward-info-text b {
             color: var(--gold-light);
-            font-size: 1.5rem;
+            font-size: 1.45rem;
+            text-shadow: 0 0 10px var(--crimson-bright);
+        }
+
+        /* BADGE DEL CONTADOR DE USOS (ej. "USOS: 1 de 50") */
+        .usage-badge-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(180deg, rgba(128, 0, 0, 0.8) 0%, rgba(20, 5, 5, 0.95) 100%);
+            border: 1px solid var(--crimson-bright);
+            padding: 8px 20px;
+            border-radius: 30px;
+            box-shadow: 0 0 15px rgba(255, 46, 46, 0.4);
+            font-family: 'Alegreya', sans-serif;
+            font-size: 1.35rem;
+            color: #ffffff;
+            letter-spacing: 1.5px;
+        }
+
+        .usage-badge-container i {
+            color: var(--gold-light);
+            font-size: 1.3rem;
+            filter: drop-shadow(0 0 6px var(--gold));
+        }
+
+        .usage-badge-container b {
+            color: #ffffff;
+            font-size: 1.45rem;
             text-shadow: 0 0 10px var(--crimson-bright);
         }
 
@@ -211,10 +240,10 @@
 </head>
 <body>
 
-    <div class="promo-card">
+    <div class="promo-card" id="promo-card">
         <div id="spark-container"></div>
 
-        <!-- TEXTO TITILANDO EXACTO SOLICITADO -->
+        <!-- TEXTO TITILANDO EXACTO -->
         <div class="blinking-banner">
             <i class="fas fa-gift gift-icon"></i>
             <span>USA ESTE CÓDIGO EN TU LAUNCHER PARA QUE OBTENGAS UN REGALO</span>
@@ -223,13 +252,20 @@
 
         <!-- CAJA DEL CÓDIGO PROMOCIONAL -->
         <div class="code-box">
-            <span class="code-text" id="promo-code-display">CARGANDO...</span>
+            <span class="code-text" id="promo-code-display">---</span>
         </div>
 
-        <!-- CAJA DE LA RECOMPENSA / ÍTEM EN REGALO -->
-        <div class="reward-badge-container" id="reward-container">
-            <i class="fas fa-gem reward-icon-fa" id="reward-icon"></i>
-            <span class="reward-info-text" id="reward-text">RECOMPENSA: <b>500 WCOINS</b></span>
+        <!-- FILA DE DETALLES (RECOMPENSA Y USOS CONSUMIDOS) -->
+        <div class="details-row">
+            <div class="reward-badge-container" id="reward-container">
+                <i class="fas fa-gem reward-icon-fa" id="reward-icon"></i>
+                <span class="reward-info-text" id="reward-text">REGALO: <b>--</b></span>
+            </div>
+
+            <div class="usage-badge-container" id="usage-container">
+                <i class="fas fa-users"></i>
+                <span id="usage-text">USOS: <b id="usage-count">0 de 50</b></span>
+            </div>
         </div>
     </div>
 
@@ -254,21 +290,29 @@
                 const res = await fetch('/api/promos?t=' + Date.now());
                 if (res.ok) {
                     const data = await res.json();
-                    if (data.success && Array.isArray(data.promos) && data.promos.length > 0) {
-                        promoList = data.promos;
-                        renderCurrentPromo();
+                    if (data.success && Array.isArray(data.promos)) {
+                        // Filtrar únicamente códigos que estén activos y tengan usos disponibles
+                        promoList = data.promos.filter(p => {
+                            const max = Number(p.MaxUses || 0);
+                            const current = Number(p.CurrentUses || 0);
+                            return max === 0 || current < max;
+                        });
+
+                        const promoCard = document.getElementById('promo-card');
+                        if (!promoList.length) {
+                            // Si no hay ningún código activo u operativo, ocultar completamente el gadget
+                            promoCard.style.display = 'none';
+                        } else {
+                            // Si hay al menos 1 código activo, mostrar automáticamente el gadget
+                            promoCard.style.display = 'flex';
+                            renderCurrentPromo();
+                        }
                         return;
                     }
                 }
             } catch (e) {
                 console.error("Error fetching promos:", e);
             }
-            // Fallback si no hay códigos creados en la DB
-            promoList = [{
-                Code: 'STREAM-DAR-9DMJ1',
-                RewardDetails: '{"currency":"wcoins","amount":5}'
-            }];
-            renderCurrentPromo();
         }
 
         function renderCurrentPromo() {
@@ -277,16 +321,28 @@
             const codeEl = document.getElementById('promo-code-display');
             const rewardTextEl = document.getElementById('reward-text');
             const rewardIconEl = document.getElementById('reward-icon');
+            const usageCountEl = document.getElementById('usage-count');
 
             if (codeEl) {
                 codeEl.innerText = promo.Code;
             }
 
+            // Mostrar usos consumidos (ej. "1 de 50" o "ILIMITADO")
+            if (usageCountEl) {
+                const max = Number(promo.MaxUses || 0);
+                const current = Number(promo.CurrentUses || 0);
+                if (max > 0) {
+                    usageCountEl.innerText = `${current} de ${max}`;
+                } else {
+                    usageCountEl.innerText = `${current} (ILIMITADO)`;
+                }
+            }
+
+            // Mostrar recompensa/regalo
             if (rewardTextEl && rewardIconEl) {
                 try {
                     const details = typeof promo.RewardDetails === 'string' ? JSON.parse(promo.RewardDetails) : promo.RewardDetails;
                     
-                    // Ítem de Vault o Ítem Especial
                     if (details && (details.name || details.itemName)) {
                         const name = details.name || details.itemName;
                         const count = details.count || (details.details ? details.details.count : 1);
@@ -294,9 +350,7 @@
                         
                         rewardTextEl.innerHTML = `REGALO: <b>${name.toUpperCase()}${countStr}</b>`;
                         rewardIconEl.className = 'fas fa-box-open reward-icon-fa';
-                    }
-                    // Monedas (WCoins, GoblinPoints, Zen, Cash, VIP)
-                    else if (details && (details.currency || details.type)) {
+                    } else if (details && (details.currency || details.type)) {
                         const curr = (details.currency || details.type).toUpperCase();
                         const amt = details.amount || details.qty || 1;
                         
@@ -325,8 +379,8 @@
         }
 
         fetchPromoCodes();
-        setInterval(fetchPromoCodes, 15000); // Consultar DB cada 15 segundos
-        setInterval(rotatePromos, 8000);       // Rotar promociones cada 8 segundos
+        setInterval(fetchPromoCodes, 5000); // Consultar DB cada 5 segundos para actualizar el contador "X de Y" en tiempo real
+        setInterval(rotatePromos, 8000);      // Rotar códigos activos cada 8 segundos
     </script>
 </body>
 </html>
