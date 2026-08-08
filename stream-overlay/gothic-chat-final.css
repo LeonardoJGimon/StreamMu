@@ -14,9 +14,8 @@
 /* --- VARIABLES PRINCIPALES --- */
 :root {
     --gothic-gold: #c0a375;
-    --gothic-red: #9d0a0e;
-    --gothic-red-bright: #ff2e2e;
-    --gothic-bg: radial-gradient(circle at center, #1a0a0a 0%, #050505 100%);
+    --gothic-red: #ff2e2e;
+    --gothic-bg: rgba(12, 7, 7, 0.88);
 
     /* Tamaños */
     --gothic-name-size: 52px;
@@ -66,7 +65,8 @@ body,
     width: 100% !important;
     max-width: 100% !important;
     background: var(--gothic-bg) !important;
-    border: 1px solid rgba(157, 10, 14, 0.4) !important;
+    background-color: var(--gothic-bg) !important;
+    border: 1px solid rgba(255, 46, 46, 0.35) !important;
     padding-top: var(--gothic-box-padding-top) !important;
     padding-right: var(--gothic-box-padding-right) !important;
     padding-bottom: var(--gothic-box-padding-bottom) !important;
@@ -78,8 +78,7 @@ body,
     min-height: unset !important;
     height: auto !important;
     cursor: default !important;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.8), inset 0 0 20px rgba(157, 10, 14, 0.1) !important;
-    animation: gothicMessageIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) both !important;
+    animation: gothicMessageIn 0.28s ease-out both !important;
 }
 
 /* --- QUITAR HOVER DE SOCIAL STREAM --- */
@@ -94,13 +93,13 @@ body,
 .highlight-chat::before {
     content: '' !important;
     position: absolute !important;
-    top: -6px !important;
-    left: -6px !important;
-    width: 45px !important;
-    height: 45px !important;
-    border-top: 4px solid var(--gothic-gold) !important;
-    border-left: 4px solid var(--gothic-gold) !important;
-    filter: drop-shadow(0 0 15px rgba(192, 163, 117, 0.4)) !important;
+    top: -4px !important;
+    left: -4px !important;
+    width: 40px !important;
+    height: 40px !important;
+    border-top: 5px solid var(--gothic-red) !important;
+    border-left: 5px solid var(--gothic-red) !important;
+    filter: drop-shadow(0 0 10px var(--gothic-red)) !important;
     pointer-events: none !important;
     z-index: 5 !important;
 }
@@ -108,13 +107,13 @@ body,
 .highlight-chat::after {
     content: '' !important;
     position: absolute !important;
-    right: -6px !important;
-    bottom: -6px !important;
-    width: 45px !important;
-    height: 45px !important;
-    border-right: 4px solid var(--gothic-gold) !important;
-    border-bottom: 4px solid var(--gothic-gold) !important;
-    filter: drop-shadow(0 0 15px rgba(192, 163, 117, 0.4)) !important;
+    right: -4px !important;
+    bottom: -4px !important;
+    width: 40px !important;
+    height: 40px !important;
+    border-right: 5px solid var(--gothic-red) !important;
+    border-bottom: 5px solid var(--gothic-red) !important;
+    filter: drop-shadow(0 0 10px var(--gothic-red)) !important;
     pointer-events: none !important;
     z-index: 5 !important;
 }
@@ -188,15 +187,14 @@ body,
     font-family: 'ExocetCustom', serif !important;
     color: var(--gothic-gold) !important;
     font-size: var(--gothic-name-size) !important;
-    line-height: 1.1 !important;
+    line-height: 1.08 !important;
     font-weight: 700 !important;
-    text-shadow: 0 4px 10px #000 !important;
+    text-shadow: 0 5px 12px #000 !important;
     margin: 0 !important;
     padding: 0 !important;
-    text-transform: uppercase !important;
-    letter-spacing: 3px !important;
+    text-transform: lowercase !important;
     width: auto !important;
-    max-width: calc(100% - 80px) !important;
+    max-width: calc(100% - 76px) !important;
     white-space: nowrap !important;
     overflow: hidden !important;
     text-overflow: ellipsis !important;
@@ -211,14 +209,14 @@ body,
 .hl-message-content,
 .hl-content {
     font-family: 'Montserrat', sans-serif !important;
-    color: #e0e0e0 !important;
+    color: #ffffff !important;
     font-size: var(--gothic-message-size) !important;
     line-height: var(--gothic-message-line-height) !important;
     font-weight: 600 !important;
-    text-shadow: 0 2px 10px #000 !important;
+    text-shadow: 0 5px 12px #000 !important;
     margin: 0 !important;
     padding: 0 !important;
-    text-transform: none !important;
+    text-transform: lowercase !important;
     width: 100% !important;
     max-width: 100% !important;
     overflow-wrap: anywhere !important;

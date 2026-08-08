@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mu Neutro - Últimos Guerreros (Optimized)</title>
+    <title>MU OLIMPO - Últimos Guerreros (Optimized)</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @font-face { font-family: 'Exocet'; src: url('../assets/images/font/ExocetImmortal-Medium.otf') format('opentype'); font-weight: 500; }
@@ -143,6 +143,8 @@
 <body>
 
     <div class="linear-container">
+        <div class="corner tl"></div>
+        <div class="corner br"></div>
         <img src="../assets/images/logo/logosimple.png" class="header-logo">
         
         <div class="widget-header">
@@ -154,6 +156,20 @@
             <!-- Dinámico -->
         </div>
     </div>
+
+    <style>
+        /* Esquinas góticas unificadas */
+        .corner {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            border: 4px solid var(--gold);
+            z-index: 100;
+            filter: drop-shadow(0 0 10px rgba(0,0,0,0.8));
+        }
+        .tl { top: -8px; left: -8px; border-right: none; border-bottom: none; }
+        .br { bottom: -8px; right: -8px; border-left: none; border-top: none; }
+    </style>
 
     <!-- CARGA DE SCRIPTS OPTIMIZADA -->
     <script src="data-manager.js"></script>
@@ -239,3 +255,4 @@
     <script src="auto-refresh.js"></script>
 </body>
 </html>
+

@@ -1,8 +1,8 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Mu Neutro - Hall of Fame (Optimized)</title>
+    <title>MU OLIMPO - Hall of Fame (Optimized)</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         @font-face { font-family: 'Exocet'; src: url('../assets/images/font/ExocetImmortal-Medium.otf') format('opentype'); font-weight: 500; }
@@ -92,7 +92,7 @@
         </div>
 
         <div class="footer">
-            <span class="footer-tag">Mu Neutro Season 6</span>
+            <span class="footer-tag">MU OLIMPO Season 6</span>
         </div>
     </div>
 
@@ -117,6 +117,35 @@
             98: { folder: 'RAGE', icon: 'rf icon.png' }
         };
 
+        function guildMarkHexToDataUrl(hex, size = 80) {
+            const raw = (hex || '').toString().trim();
+            if (!raw || !/^[0-9a-fA-F]+$/.test(raw)) return '';
+            try {
+                const bytes = new Uint8Array(raw.length / 2);
+                for (let i = 0; i < raw.length; i += 2) bytes[i / 2] = parseInt(raw.slice(i, i + 2), 16);
+                const nibbles = [];
+                for (const b of bytes) { nibbles.push((b >> 4) & 0xF); nibbles.push(b & 0xF); }
+                if (nibbles.length < 64) return '';
+                const palette = [[0,0,0,0],[0,0,0,255],[255,255,255,255],[255,0,0,255],[0,255,0,255],[0,0,255,255],[255,255,0,255],[255,0,255,255],[0,255,255,255],[160,160,160,255],[128,64,0,255],[255,128,0,255],[0,128,128,255],[128,0,128,255],[0,128,0,255],[128,0,0,255]];
+                const canvas = document.createElement('canvas');
+                canvas.width = 8; canvas.height = 8;
+                const ctx = canvas.getContext('2d');
+                const img = ctx.createImageData(8, 8);
+                for (let i = 0; i < 64; i++) {
+                    const [r, g, b, a] = palette[nibbles[i] & 0xF] || palette[0];
+                    const off = i * 4;
+                    img.data[off] = r; img.data[off + 1] = g; img.data[off + 2] = b; img.data[off + 3] = a;
+                }
+                ctx.putImageData(img, 0, 0);
+                const out = document.createElement('canvas');
+                out.width = size; out.height = size;
+                const octx = out.getContext('2d');
+                octx.imageSmoothingEnabled = false;
+                octx.drawImage(canvas, 0, 0, size, size);
+                return out.toDataURL('image/png');
+            } catch (e) { return ''; }
+        }
+
         let lastDataStr = "";
 
         window.onMuData((data) => {
@@ -137,11 +166,14 @@
             }
 
             if (data.topGuild) {
-                html += createCardHtml('CLAN SUPREMO', data.topGuild.G_Name, 'CLAN LÍDER', data.topGuild.G_Score, 'PUNTOS', null, '../assets/images/characters/GUILD.png');
+                const g = data.topGuild;
+                const logo = guildMarkHexToDataUrl(g.G_Mark, 80) || '../assets/images/logo/logosimple.png';
+                html += createCardHtml('CLAN SUPREMO', g.G_Name, `LÍDER: ${g.G_Master || '-'}`, g.G_Score ?? 0, 'PUNTOS', null, logo);
             }
 
             if (data.topPvP) {
-                html += createCardHtml('ASESINO DE ÉLITE', data.topPvP.Name, 'MÁS PVP KILLS', data.topPvP.PkCount || 0, 'MUERTES', data.topPvP.Class);
+                const p = data.topPvP;
+                html += createCardHtml('ASESINO DE ÉLITE', p.Name, 'MÁS PVP KILLS', p.PkCount ?? 0, 'MUERTES', p.Class || 0);
             }
 
             hallEl.innerHTML = html;
@@ -171,3 +203,4 @@
     <script src="auto-refresh.js"></script>
 </body>
 </html>
+

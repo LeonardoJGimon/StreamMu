@@ -1,0 +1,156 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>MU OLIMPO - Gothic Social Rotator</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @font-face {
+            font-family: 'Exocet';
+            src: url('https://stream-mu-sand.vercel.app/assets/images/font/ExocetImmortal-Medium.otf') format('opentype');
+        }
+
+        :root {
+            --gothic-gold: #c0a375;
+            --gothic-red: #ff2e2e;
+            --gothic-bg: rgba(12, 7, 7, 0.92);
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            background: transparent;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            font-family: 'Exocet', serif;
+        }
+
+        /* --- CONTENEDOR DEL ROTADOR --- */
+        .rotator-frame {
+            position: relative;
+            background: var(--gothic-bg);
+            border: 1px solid rgba(255, 46, 46, 0.3);
+            padding: 15px 40px;
+            min-width: 400px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            overflow: visible;
+        }
+
+        /* ESQUINAS ROJAS GÓTICAS */
+        .rotator-frame::before {
+            content: '';
+            position: absolute;
+            top: -4px; left: -4px;
+            width: 25px; height: 25px;
+            border-top: 4px solid var(--gothic-red);
+            border-left: 4px solid var(--gothic-red);
+            filter: drop-shadow(0 0 8px var(--gothic-red));
+        }
+
+        .rotator-frame::after {
+            content: '';
+            position: absolute;
+            bottom: -4px; right: -4px;
+            width: 25px; height: 25px;
+            border-bottom: 4px solid var(--gothic-red);
+            border-right: 4px solid var(--gothic-red);
+            filter: drop-shadow(0 0 8px var(--gothic-red));
+        }
+
+        /* CONTENIDO DINÁMICO */
+        .social-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            animation: fadeInOut 5s infinite;
+        }
+
+        .social-icon {
+            font-size: 35px;
+            color: #ffffff;
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
+        }
+
+        .social-name {
+            font-size: 38px;
+            color: var(--gothic-gold);
+            letter-spacing: 3px;
+            text-transform: lowercase;
+            text-shadow: 0 0 15px rgba(192, 163, 117, 0.4);
+            white-space: nowrap;
+        }
+
+        /* ANIMACIONES */
+        @keyframes fadeInOut {
+            0%, 10% { opacity: 0; transform: translateY(10px); }
+            20%, 80% { opacity: 1; transform: translateY(0); }
+            90%, 100% { opacity: 0; transform: translateY(-10px); }
+        }
+
+        /* EFECTO DE BRILLO METÁLICO */
+        .shine {
+            position: absolute;
+            top: 0; left: -100%;
+            width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: skewX(-20deg);
+            animation: shineMove 8s infinite;
+        }
+
+        @keyframes shineMove {
+            0% { left: -100%; }
+            20%, 100% { left: 200%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="rotator-frame">
+        <div class="shine"></div>
+        <div id="social-display" class="social-content">
+            <i id="icon" class="fab fa-tiktok social-icon"></i>
+            <span id="name" class="social-name">@StreamMu</span>
+        </div>
+    </div>
+
+    <script>
+        const socials = [
+            { name: "StreamMu", icon: "fab fa-tiktok" },
+            { name: "mu-olimpoOficial", icon: "fab fa-youtube" },
+            { name: "discord.gg/mu-olimpo", icon: "fab fa-discord" },
+            { name: "mu-olimpo.com", icon: "fas fa-globe" },
+            { name: "LeonardoJGimon", icon: "fab fa-twitch" }
+        ];
+
+        let currentIndex = 0;
+        const display = document.getElementById('social-display');
+        const icon = document.getElementById('icon');
+        const name = document.getElementById('name');
+
+        function updateSocial() {
+            // Reiniciar animación para que coincida con el cambio de texto
+            display.style.animation = 'none';
+            display.offsetHeight; // Trigger reflow
+            display.style.animation = 'fadeInOut 5s infinite';
+
+            const item = socials[currentIndex];
+            icon.className = item.icon + " social-icon";
+            name.textContent = item.name;
+
+            currentIndex = (currentIndex + 1) % socials.length;
+        }
+
+        // Cambiar cada 5 segundos (coincidiendo con la animación CSS)
+        setInterval(updateSocial, 5000);
+        updateSocial(); // Carga inicial
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,276 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>MU OLIMPO - TheGiwoN Status</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @font-face {
+            font-family: 'Exocet';
+            src: url('../assets/images/font/ExocetImmortal-Medium.otf') format('opentype');
+            font-weight: 500;
+        }
+
+        @font-face {
+            font-family: 'Alegreya';
+            src: url('../assets/images/font/AlegreyaSans-Regular.otf') format('opentype');
+            font-weight: 400;
+        }
+
+        :root {
+            --crimson: #9d0a0e;
+            --crimson-glow: rgba(157, 10, 14, 0.8);
+            --gold: #c0a375;
+            --stone-dark: #0f0a0a;
+        }
+
+        body {
+            margin: 0;
+            padding: 20px;
+            background: transparent;
+            font-family: 'Alegreya', serif;
+            overflow: hidden;
+            color: white;
+        }
+
+        /* CONTENEDOR PRINCIPAL */
+        .info-widget {
+            display: flex;
+            align-items: center;
+            background: radial-gradient(circle at center, #1a0a0a 0%, #050505 100%);
+            border: 2px solid rgba(192, 163, 117, 0.3);
+            padding: 15px 30px;
+            position: relative;
+            width: fit-content;
+            gap: 25px;
+            box-shadow: 0 15px 40px rgba(0,0,0,1);
+        }
+
+        /* DOBLE BORDE GÓTICO */
+        .info-widget::before {
+            content: '';
+            position: absolute;
+            inset: -5px;
+            border: 1px solid var(--crimson);
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        /* ESQUINAS DORADAS */
+        .corner {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            border: 3px solid var(--gold);
+            filter: drop-shadow(0 0 8px rgba(192, 163, 117, 0.4));
+        }
+        .tl { top: -8px; left: -8px; border-right: none; border-bottom: none; }
+        .br { bottom: -8px; right: -8px; border-left: none; border-top: none; }
+
+        /* BLOQUE NOMBRE Y CLAN */
+        .identity-box {
+            display: flex;
+            flex-direction: column;
+            border-right: 1px solid rgba(192, 163, 117, 0.2);
+            padding-right: 25px;
+        }
+
+        .char-name {
+            font-family: 'Exocet', serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            line-height: 1;
+            text-shadow: 0 0 15px rgba(192, 163, 117, 0.5);
+        }
+
+        .guild-name {
+            font-size: 0.8rem;
+            color: var(--crimson);
+            letter-spacing: 2px;
+            font-weight: 900;
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .guild-mark {
+            width: 24px;
+            height: 24px;
+            image-rendering: pixelated;
+            border: 1px solid rgba(192, 163, 117, 0.4);
+            background: rgba(0,0,0,0.5);
+        }
+
+        /* BLOQUE ESTADÍSTICAS */
+        .stats-box {
+            display: flex;
+            gap: 20px;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 80px;
+        }
+
+        .stat-label {
+            font-size: 0.6rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2px;
+        }
+
+        .stat-value {
+            font-family: 'Exocet', serif;
+            font-size: 1.2rem;
+            color: #fff;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .stat-value i {
+            color: var(--crimson);
+            font-size: 0.9rem;
+            filter: drop-shadow(0 0 5px var(--crimson));
+        }
+
+        /* ANIMACIÓN DE ENTRADA */
+        .info-widget {
+            animation: slideIn 0.6s cubic-bezier(0.23, 1, 0.32, 1) both;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="info-widget">
+        <div class="corner tl"></div>
+        <div class="corner br"></div>
+
+        <div class="identity-box">
+            <div id="char-name" class="char-name">TheGiwoN</div>
+            <div class="guild-name">
+                <img id="guild-mark" class="guild-mark" style="display:none">
+                <span id="guild-name">---</span>
+            </div>
+        </div>
+
+        <div class="stats-box">
+            <div class="stat-item">
+                <span class="stat-label">NIVEL</span>
+                <div class="stat-value">
+                    <i class="fas fa-angle-double-up"></i>
+                    <span id="char-level">0</span>
+                </div>
+            </div>
+            
+            <div class="stat-item">
+                <span class="stat-label">RESETS</span>
+                <div class="stat-value">
+                    <i class="fas fa-sync-alt"></i>
+                    <span id="char-resets">0</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // CONFIGURACIÓN: Nombre fijo del streamer
+        const FIXED_NAME = 'TheGiwoN';
+        
+        // Permite override por URL si es necesario, pero usa el fijo por defecto
+        const urlParams = new URLSearchParams(window.location.search);
+        const STREAMER_NAME = urlParams.get('name') || FIXED_NAME; 
+
+        async function updateCharacterInfo() {
+            try {
+                const response = await fetch(`/api/player?name=${encodeURIComponent(STREAMER_NAME)}`);
+                if (response.ok) {
+                    const data = await response.json();
+                    
+                    document.getElementById('char-name').innerText = data.name;
+                    document.getElementById('guild-name').innerText = data.guildName || 'SIN CLAN';
+                    document.getElementById('char-level').innerText = data.level;
+                    document.getElementById('char-resets').innerText = data.resets;
+
+                    // Renderizar el logo del clan
+                    if (data.guildMark) {
+                        const markUrl = guildMarkHexToDataUrl(data.guildMark);
+                        const markImg = document.getElementById('guild-mark');
+                        markImg.src = markUrl;
+                        markImg.style.display = 'block';
+                    } else {
+                        document.getElementById('guild-mark').style.display = 'none';
+                    }
+                }
+            } catch (error) {
+                console.error("Error fetching player data:", error);
+            }
+        }
+
+        function guildMarkHexToDataUrl(hex, size = 32) {
+            const raw = (hex || '').toString().trim();
+            if (!raw || !/^[0-9a-fA-F]+$/.test(raw)) return '';
+
+            try {
+                const bytes = new Uint8Array(raw.length / 2);
+                for (let i = 0; i < raw.length; i += 2) {
+                    bytes[i / 2] = parseInt(raw.slice(i, i + 2), 16);
+                }
+
+                const nibbles = [];
+                for (const b of bytes) {
+                    nibbles.push((b >> 4) & 0xF);
+                    nibbles.push(b & 0xF);
+                }
+                
+                const palette = [
+                    [0, 0, 0, 0], [0, 0, 0, 255], [255, 255, 255, 255], [255, 0, 0, 255],
+                    [0, 255, 0, 255], [0, 0, 255, 255], [255, 255, 0, 255], [255, 0, 255, 255],
+                    [0, 255, 255, 255], [160, 160, 160, 255], [128, 64, 0, 255], [255, 128, 0, 255],
+                    [0, 128, 128, 255], [128, 0, 128, 255], [0, 128, 0, 255], [128, 0, 0, 255]
+                ];
+
+                const canvas = document.createElement('canvas');
+                canvas.width = 8; canvas.height = 8;
+                const ctx = canvas.getContext('2d');
+                const img = ctx.createImageData(8, 8);
+                
+                for (let i = 0; i < 64; i++) {
+                    const idx = nibbles[i] & 0xF;
+                    const [r, g, b, a] = palette[idx] || palette[0];
+                    const off = i * 4;
+                    img.data[off] = r; img.data[off+1] = g; img.data[off+2] = b; img.data[off+3] = a;
+                }
+                ctx.putImageData(img, 0, 0);
+
+                const out = document.createElement('canvas');
+                out.width = size; out.height = size;
+                const octx = out.getContext('2d');
+                octx.imageSmoothingEnabled = false;
+                octx.drawImage(canvas, 0, 0, size, size);
+                return out.toDataURL('image/png');
+            } catch (e) { return ''; }
+        }
+
+        // Actualizar cada 30 segundos
+        setInterval(updateCharacterInfo, 30000);
+        updateCharacterInfo();
+    </script>
+    
+    <script src="auto-refresh.js"></script>
+</body>
+</html>
+

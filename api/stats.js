@@ -60,13 +60,28 @@ module.exports = async (req, res) => {
             date: c.MDate
         }));
 
-        // Top 1 Guild
-        const resGuild = await mssql.query`SELECT TOP 1 G_Name, G_Score FROM Guild ORDER BY G_Score DESC`;
-        const topGuild = resGuild.recordset[0] || { G_Name: 'Ninguno', G_Score: 0 };
+        // Top 1 Guild (Basado en Resets de sus miembros)
+        const resGuild = await mssql.query`
+            SELECT TOP 1 g.G_Name, g.G_Master, g.G_Mark, SUM(c.ResetCount) as G_Score
+            FROM Guild g
+            JOIN GuildMember gm ON g.G_Name = gm.G_Name
+            JOIN Character c ON gm.Name = c.Name
+            GROUP BY g.G_Name, g.G_Master, g.G_Mark
+            ORDER BY G_Score DESC
+        `;
+        const rawGuild = resGuild.recordset[0] || { G_Name: 'Ninguno', G_Master: '-', G_Score: 0, G_Mark: null };
+        
+        // Convertir G_Mark (Binary) a Hex string para el frontend
+        const topGuild = {
+            G_Name: rawGuild.G_Name,
+            G_Master: rawGuild.G_Master,
+            G_Score: rawGuild.G_Score,
+            G_Mark: rawGuild.G_Mark ? rawGuild.G_Mark.toString('hex') : null
+        };
 
         // Top 1 PvP
-        const resPvP = await mssql.query`SELECT TOP 1 Name, PkCount FROM Character ORDER BY PkCount DESC`;
-        const topPvP = resPvP.recordset[0] || { Name: 'Ninguno', PkCount: 0 };
+        const resPvP = await mssql.query`SELECT TOP 1 Name, Class, PkCount FROM Character WHERE CtlCode = 0 ORDER BY PkCount DESC`;
+        const topPvP = resPvP.recordset[0] || { Name: 'Ninguno', Class: 0, PkCount: 0 };
 
         const stats = {
             onlineCount: onlineCount,

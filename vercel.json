@@ -13,6 +13,7 @@
     { "source": "/end", "destination": "/stream-overlay/stream-ending.html" },
     { "source": "/banner", "destination": "/stream-overlay/mu-animated-banner.html" },
     { "source": "/music", "destination": "/stream-overlay/music-player.html" },
-    { "source": "/descarga", "destination": "/stream-overlay/mu-download-banner.html" }
+    { "source": "/descarga", "destination": "/stream-overlay/mu-download-banner.html" },
+    { "source": "/player", "destination": "/stream-overlay/player-stats.html" }
   ]
 }

@@ -1,0 +1,96 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>MU OLIMPO - Gothic Chat Preview</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="gothic-chat.css">
+    <style>
+        body {
+            background: #111 url('https://i.imgur.com/HQroNDd.png') no-repeat center;
+            background-size: cover;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Simulación de Social Stream */
+        #output {
+            width: 800px;
+            height: 600px;
+            background: rgba(0,0,0,0.4);
+            border: 1px dashed #444;
+            position: relative;
+            overflow: hidden;
+            padding: 20px;
+        }
+
+        .controls {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 100;
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background: #c0a375;
+            border: none;
+            cursor: pointer;
+            font-family: 'Alegreya', serif;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="controls">
+        <button onclick="addMessage('Leonardo', '¡Bienvenidos al servidor de MU OLIMPO! ⚔️', 'youtube')">Test Youtube</button>
+        <button onclick="addMessage('Gimon', '¿Cuándo es el próximo Castle Siege? 🔥', 'twitch')">Test Twitch</button>
+        <button onclick="addMessage('Admin', 'El evento comienza en 5 minutos.', 'tiktok')">Test TikTok</button>
+    </div>
+
+    <div id="output">
+        <!-- Los mensajes se inyectarán aquí -->
+    </div>
+
+    <script>
+        function addMessage(user, text, platform) {
+            const output = document.getElementById('output');
+            
+            const messageId = 'msg-' + Date.now();
+            const html = `
+                <div class="highlight-chat" id="${messageId}">
+                    <div class="corner tl"></div>
+                    <div class="corner br"></div>
+                    <div class="hl-main">
+                        <div class="hl-name">${user.toUpperCase()}</div>
+                        <div class="hl-message">
+                            <span class="hl-message-content">${text}</span>
+                        </div>
+                        <img src="https://i.imgur.com/8Qp4l4z.png" class="platform-icon" alt="${platform}">
+                    </div>
+                </div>
+            `;
+            
+            output.insertAdjacentHTML('afterbegin', html);
+            
+            // Auto remove after 20s to simulate stream
+            setTimeout(() => {
+                const el = document.getElementById(messageId);
+                if (el) el.style.opacity = '0';
+                setTimeout(() => el?.remove(), 1000);
+            }, 20000);
+        }
+
+        // Initial message
+        addMessage('MU OLIMPO', 'GOTHIC CHAT SYSTEM READY...', 'youtube');
+    </script>
+</body>
+</html>
+

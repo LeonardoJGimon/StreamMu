@@ -10,3 +10,5 @@ thumbs.db
 # Ignorar archivos de logs o temporales
 *.log
 latest-stats.json
+
+.vercel
