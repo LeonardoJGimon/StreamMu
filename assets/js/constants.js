@@ -1,4 +1,4 @@
-const IGCN_CHARACTER_CLASSES = {
+﻿const IGCN_CHARACTER_CLASSES = {
     0: ["Dark Wizard", "DW", "DW.png", "dw_icon.png", "DW.png", "dw", 1],
     1: ["Soul Master", "SM", "DW.png", "dw_icon.png", "DW.png", "dw", 2],
     3: ["Grand Master", "GM", "DW.png", "dw_icon.png", "DW.png", "dw", 3],

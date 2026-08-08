@@ -1,4 +1,4 @@
-(function () {
+﻿(function () {
     const TERMS_JSON_PATH = 'assets/json/terms-data.json';
 
     const getSelectedLangSafe = () => {

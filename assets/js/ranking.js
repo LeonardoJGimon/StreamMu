@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+﻿document.addEventListener('DOMContentLoaded', () => {
   const tbody = document.getElementById('ranking-body');
   if (!tbody) return;
 

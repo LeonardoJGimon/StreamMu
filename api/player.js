@@ -1,4 +1,4 @@
-const mssql = require('mssql');
+﻿const mssql = require('mssql');
 
 module.exports = async (req, res) => {
     res.setHeader('Access-Control-Allow-Credentials', true);

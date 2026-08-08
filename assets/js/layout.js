@@ -1,4 +1,4 @@
-async function loadLayout() {
+﻿async function loadLayout() {
     const headerHost = document.getElementById('header-placeholder');
     const footerHost = document.getElementById('footer-placeholder');
     const modalsHost = document.getElementById('auth-modals-placeholder');

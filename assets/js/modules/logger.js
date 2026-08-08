@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Logger Module
  * Centralized error logging for production environments
  */

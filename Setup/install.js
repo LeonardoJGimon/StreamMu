@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+﻿document.addEventListener('DOMContentLoaded', () => {
     const steps = document.querySelectorAll('.step');
     const navItems = document.querySelectorAll('.step-nav__item');
     const alertBoxContainer = document.getElementById('alertBox-container');

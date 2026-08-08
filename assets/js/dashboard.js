@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+﻿document.addEventListener('DOMContentLoaded', () => {
   let currentMinWithdrawal = 25;
   const params = new URLSearchParams(window.location.search);
   const token = params.get('token');

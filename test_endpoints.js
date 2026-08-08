@@ -1,4 +1,4 @@
-
+﻿
 async function testEndpoints() {
     const endpoints = [
         '/latest-registrations',

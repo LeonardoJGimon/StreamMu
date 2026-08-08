@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Service Worker
  * Cacheo de assets, offline support, y background sync
  */

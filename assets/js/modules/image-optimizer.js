@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Image Optimization Module
  * Optimiza carga y rendering de imágenes
  */

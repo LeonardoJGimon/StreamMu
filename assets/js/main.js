@@ -1,4 +1,4 @@
-// Forzar recarga de FontAwesome si no está presente
+﻿// Forzar recarga de FontAwesome si no está presente
 function ensureFontAwesome() {
     const faId = 'forced-fontawesome';
     if (!document.getElementById(faId)) {
@@ -372,7 +372,7 @@ function renderLauncherFeatureCards(servers, selectedServer) {
                 <div class="news-modal__panel" role="dialog" aria-modal="true" aria-label="Info">
                     <div class="news-modal__top">
                         <div class="news-modal__tag">INFO</div>
-                        <div class="news-modal__date">MU NEUTRO</div>
+                        <div class="news-modal__date">Mu Olimpo</div>
                     </div>
                     <h3 class="news-modal__title" id="feature-info-title">-</h3>
                     <div class="news-modal__content">
@@ -765,7 +765,7 @@ async function handleDownloadMega(event) {
     }
 
     showNotification('info', 'Preparing your download...');
-    window.location.href = '/downloads/MuNeutroInstall.exe';
+    window.location.href = '/downloads/MU-OLIMPOInstall.exe';
 }
 
 function initDownloadButton() {
@@ -873,7 +873,7 @@ async function populateDownloadsMeta() {
     const releaseMegaEl = document.getElementById('dl-meta-release-mega');
 
     if (sizeMegaEl || updatedMegaEl || versionMegaEl || releaseMegaEl) {
-        const urlMega = '/downloads/MuNeutroInstall.exe';
+        const urlMega = '/downloads/MU-OLIMPOInstall.exe';
         if (versionMegaEl) versionMegaEl.textContent = extractVersion(urlMega);
         
         try {

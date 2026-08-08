@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Web Vitals & Performance Monitoring
  * Tracking LCP, FID, CLS, FCP metrics
  */

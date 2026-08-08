@@ -1,12 +1,12 @@
-{
+﻿{
   "featureCard": {
     "custom1": {
       "title": "Gear Up for Glory",
-      "desc": "Don’t start from scratch—start as a true warrior. We’ve prepared an exclusive Welcome Pack so nothing stops you on your road to Reset. Enter Mu Neutro, claim your kit, and show who rules the ranking."
+      "desc": "Don’t start from scratch—start as a true warrior. We’ve prepared an exclusive Welcome Pack so nothing stops you on your road to Reset. Enter Mu Olimpo, claim your kit, and show who rules the ranking."
     },
     "custom2": {
       "title": "We Forge Legends",
-      "desc": "In Mu Neutro, you never walk alone. Join our active community, participate in daily events, and count on support ready to help you at every step. Here, every warrior matters."
+      "desc": "In Mu Olimpo, you never walk alone. Join our active community, participate in daily events, and count on support ready to help you at every step. Here, every warrior matters."
     },
     "custom3": {
       "title": "Your Progress is Safe",
@@ -14,17 +14,17 @@
     }
   },
   "brand": {
-    "logo": "Mu Neutro"
+    "logo": "Mu Olimpo"
   },
   "page": {
     "index": {
-      "title": "Mu Neutro - Hardcore Server"
+      "title": "Mu Olimpo - Hardcore Server"
     },
     "server_info": {
-      "title": "Server Info - Mu Neutro"
+      "title": "Server Info - Mu Olimpo"
     },
     "terms": {
-      "title": "Terms & Policies - Mu Neutro"
+      "title": "Terms & Policies - Mu Olimpo"
     }
   },
   "nav": {
@@ -36,10 +36,10 @@
     "dashboard": "Dashboard"
   },
   "footer": {
-    "copyright": "&copy; 2025 - 2026 Mu Neutro Server. All rights reserved.",
+    "copyright": "&copy; 2025 - 2026 Mu Olimpo Server. All rights reserved.",
     "terms": "Terms & Policies",
     "follow_us": "Follow Us",
-    "forged_by": "FORGED BY <span class=\"footer-min__accent\">Mu Neutro</span>"
+    "forged_by": "FORGED BY <span class=\"footer-min__accent\">Mu Olimpo</span>"
   },
   "common": {
     "or": "OR",
@@ -217,7 +217,7 @@
   },
   "playtime": {
     "title": "PLAYER TIME <span class=\"title-gold\">REWARD</span>",
-    "subtitle": "Stay online in Mu Neutro and unlock exclusive powerful equipment automatically"
+    "subtitle": "Stay online in Mu Olimpo and unlock exclusive powerful equipment automatically"
   },
   "champions": {
     "castle_siege": "KING OF RESETS",
@@ -277,7 +277,7 @@
   },
   "faq": {
     "title": "FREQUENTLY ASKED QUESTIONS",
-    "subtitle": "Everything you need to know about Mu Neutro.",
+    "subtitle": "Everything you need to know about Mu Olimpo.",
     "q1": "I created an account on the website, but the game says \"Invalid Account.\"",
     "a1": "The web account is for website and account management only. Create a sub-account in your dashboard to log into the game.",
     "q2": "Can I open more than one game client?",

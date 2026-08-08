@@ -1,4 +1,4 @@
-
+﻿
 async function testSort() {
     const ep = '/top-ranking-characters';
     const params = [

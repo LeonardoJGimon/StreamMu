@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Streaming Widget Module
  * Manages Twitch, YouTube, Kick, and TikTok streaming displays
  */

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Performance Utilities Module
  * Debouncing, throttling, and request optimization
  */

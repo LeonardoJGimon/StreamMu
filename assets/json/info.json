@@ -1,5 +1,5 @@
-{
-  "serverName": "Mu Neutro Season 6",
+﻿{
+  "serverName": "Mu Olimpo Season 6",
   "season": "6 Ep 3",
   "discordGuildId": "1423328846509506592",
   "discordInviteUrl": "https://discord.gg/WMvfF8TZr4",
@@ -63,7 +63,7 @@
       "enabled": true,
       "icon": "fas fa-gift",
       "title": "Equípate para la gloria",
-      "desc": "No empieces desde cero, empieza como un guerrero de verdad. Hemos preparado un Pack de Bienvenida exclusivo para que nada te detenga en tu camino al Reset. Entra a Mu Neutro, reclama tu kit y demuestra quién manda en el ranking.",
+      "desc": "No empieces desde cero, empieza como un guerrero de verdad. Hemos preparado un Pack de Bienvenida exclusivo para que nada te detenga en tu camino al Reset. Entra a Mu Olimpo, reclama tu kit y demuestra quién manda en el ranking.",
       "backgroundImage": "/assets/images/home/wallpaper.jpg"
     },
     {
@@ -71,7 +71,7 @@
       "enabled": true,
       "icon": "fas fa-users",
       "title": "Formamos Leyendas",
-      "desc": "En Mu Neutro no caminas solo. Únete a nuestra comunidad activa, participa en eventos diarios y cuenta con un soporte dispuesto a ayudarte en cada paso de tu evolución. Aquí, cada guerrero cuenta.",
+      "desc": "En Mu Olimpo no caminas solo. Únete a nuestra comunidad activa, participa en eventos diarios y cuenta con un soporte dispuesto a ayudarte en cada paso de tu evolución. Aquí, cada guerrero cuenta.",
       "backgroundImage": "/assets/images/home/wallpaper.jpg"
     },
     {

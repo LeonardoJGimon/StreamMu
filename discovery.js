@@ -1,4 +1,4 @@
-
+﻿
 async function discovery() {
     const endpoints = [
         '/top-ranking-characters',

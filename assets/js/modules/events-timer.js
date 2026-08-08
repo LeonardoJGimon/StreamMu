@@ -1,4 +1,4 @@
-// ====== UPCOMING EVENTS ======
+﻿// ====== UPCOMING EVENTS ======
 
 // Timezone offset for America/Bogota (UTC-5)
 const SERVER_TIMEZONE_OFFSET = -5 * 60; // minutes

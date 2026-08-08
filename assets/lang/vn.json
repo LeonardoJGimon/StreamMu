@@ -1,12 +1,12 @@
-{
+﻿{
     "featureCard": {
         "custom1": {
             "title": "Trang bị cho vinh quang",
-            "desc": "Đừng bắt đầu từ con số 0—hãy bắt đầu như một chiến binh thực thụ. Chúng tôi đã chuẩn bị một Gói Chào Mừng độc quyền để bạn không bị cản trở trên hành trình Reset. Vào Mu Neutro, nhận kit và chứng minh ai là người thống trị BXH."
+            "desc": "Đừng bắt đầu từ con số 0—hãy bắt đầu như một chiến binh thực thụ. Chúng tôi đã chuẩn bị một Gói Chào Mừng độc quyền để bạn không bị cản trở trên hành trình Reset. Vào Mu Olimpo, nhận kit và chứng minh ai là người thống trị BXH."
         },
         "custom2": {
             "title": "Chúng tôi tạo nên huyền thoại",
-            "desc": "Ở Mu Neutro, bạn không đơn độc. Tham gia cộng đồng sôi động, tham dự sự kiện hàng ngày và nhận hỗ trợ tận tình ở mọi bước tiến. Ở đây, mỗi chiến binh đều quan trọng."
+            "desc": "Ở Mu Olimpo, bạn không đơn độc. Tham gia cộng đồng sôi động, tham dự sự kiện hàng ngày và nhận hỗ trợ tận tình ở mọi bước tiến. Ở đây, mỗi chiến binh đều quan trọng."
         },
         "custom3": {
             "title": "Tiến trình của bạn an toàn",
@@ -14,17 +14,17 @@
         }
     },
     "brand":  {
-                  "logo":  "Mu Neutro"
+                  "logo":  "Mu Olimpo"
               },
     "page":  {
                  "index":  {
-                               "title":  "Mu Neutro - Hardcore Server"
+                               "title":  "Mu Olimpo - Hardcore Server"
                            },
                  "server_info":  {
-                                     "title":  "Thông tin máy chủ - Mu Neutro"
+                                     "title":  "Thông tin máy chủ - Mu Olimpo"
                                  },
                  "terms":  {
-                               "title":  "Điều khoản \u0026 Chính sách - Mu Neutro"
+                               "title":  "Điều khoản \u0026 Chính sách - Mu Olimpo"
                            }
              },
     "nav":  {
@@ -36,10 +36,10 @@
                 "dashboard":  "Bảng điều khiển"
             },
     "footer":  {
-                   "copyright":  "\u0026copy; 2025 - 2026 Mu Neutro Server. Đã đăng ký bản quyền.",
+                   "copyright":  "\u0026copy; 2025 - 2026 Mu Olimpo Server. Đã đăng ký bản quyền.",
                    "terms":  "Điều khoản \u0026 Chính sách",
                    "follow_us":  "Theo dõi",
-                   "forged_by":  "FORGED BY \u003cspan class=\"footer-min__accent\"\u003eMu Neutro\u003c/span\u003e"
+                   "forged_by":  "FORGED BY \u003cspan class=\"footer-min__accent\"\u003eMu Olimpo\u003c/span\u003e"
                },
     "common":  {
                    "or":  "HOẶC",
@@ -216,7 +216,7 @@
                },
     "playtime":  {
                      "title":  "PHẦN THƯỞNG \u003cspan class=\"title-gold\"\u003eTHỜI GIAN ONLINE\u003c/span\u003e",
-                     "subtitle":  "Ở online trong Mu Neutro và tự động mở khóa trang bị độc quyền, mạnh mẽ"
+                     "subtitle":  "Ở online trong Mu Olimpo và tự động mở khóa trang bị độc quyền, mạnh mẽ"
                  },
     "champions":  {
                       "castle_siege":  "Castle Siege",
@@ -276,7 +276,7 @@
                 },
     "faq":  {
                 "title":  "CÂU HỎI THƯỜNG GẶP",
-                "subtitle":  "Mọi thứ bạn cần biết về Mu Neutro.",
+                "subtitle":  "Mọi thứ bạn cần biết về Mu Olimpo.",
                 "q1":  "Tôi đã tạo tài khoản trên website nhưng game báo \"Invalid Account\".",
                 "a1":  "Tài khoản web chỉ dùng cho website và quản lý tài khoản. Hãy tạo tài khoản phụ trong dashboard để đăng nhập game.",
                 "q2":  "Tôi có thể mở nhiều hơn một client game không?",

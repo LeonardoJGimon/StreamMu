@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Promos Module
  * Manages promotional popups and events in the UI.
  */

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Discord Widget Module
  * Handles Discord integration and member display
  */

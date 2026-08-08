@@ -1,7 +1,7 @@
-{
-  "name": "mu-neutro-overlay",
+﻿{
+  "name": "MU-OLIMPO-overlay",
   "version": "1.0.0",
-  "description": "Stream Overlay for Mu Neutro",
+  "description": "Stream Overlay for Mu Olimpo",
   "main": "api/stats.js",
   "scripts": {
     "start": "node public/update-latest-stats.js",

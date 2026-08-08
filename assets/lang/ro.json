@@ -1,12 +1,12 @@
-{
+﻿{
     "featureCard": {
         "custom1": {
             "title": "Echipează-te pentru glorie",
-            "desc": "Nu începe de la zero, începe ca un adevărat războinic. Am pregătit un Pachet de Bun Venit exclusiv ca nimic să nu te oprească pe drumul spre Reset. Intră pe Mu Neutro, revendică-ți kitul și arată cine conduce clasamentul."
+            "desc": "Nu începe de la zero, începe ca un adevărat războinic. Am pregătit un Pachet de Bun Venit exclusiv ca nimic să nu te oprească pe drumul spre Reset. Intră pe Mu Olimpo, revendică-ți kitul și arată cine conduce clasamentul."
         },
         "custom2": {
             "title": "Formăm Legende",
-            "desc": "Pe Mu Neutro nu ești niciodată singur. Alătură-te comunității noastre active, participă la evenimente zilnice și contează pe suportul nostru la fiecare pas. Aici, fiecare războinic contează."
+            "desc": "Pe Mu Olimpo nu ești niciodată singur. Alătură-te comunității noastre active, participă la evenimente zilnice și contează pe suportul nostru la fiecare pas. Aici, fiecare războinic contează."
         },
         "custom3": {
             "title": "Progresul tău e în siguranță",
@@ -14,17 +14,17 @@
         }
     },
     "brand":  {
-                  "logo":  "Mu Neutro"
+                  "logo":  "Mu Olimpo"
               },
     "page":  {
                  "index":  {
-                               "title":  "Mu Neutro - Server Hardcore"
+                               "title":  "Mu Olimpo - Server Hardcore"
                            },
                  "server_info":  {
-                                     "title":  "Info Server - Mu Neutro"
+                                     "title":  "Info Server - Mu Olimpo"
                                  },
                  "terms":  {
-                               "title":  "Termeni \u0026 Politici - Mu Neutro"
+                               "title":  "Termeni \u0026 Politici - Mu Olimpo"
                            }
              },
     "nav":  {
@@ -36,10 +36,10 @@
                 "dashboard":  "Panou"
             },
     "footer":  {
-                   "copyright":  "\u0026copy; 2025 - 2026 Mu Neutro Server. Toate drepturile rezervate.",
+                   "copyright":  "\u0026copy; 2025 - 2026 Mu Olimpo Server. Toate drepturile rezervate.",
                    "terms":  "Termeni \u0026 Politici",
                    "follow_us":  "Urmărește-ne",
-                   "forged_by":  "REALIZAT DE \u003cspan class=\"footer-min__accent\"\u003eMu Neutro\u003c/span\u003e"
+                   "forged_by":  "REALIZAT DE \u003cspan class=\"footer-min__accent\"\u003eMu Olimpo\u003c/span\u003e"
                },
     "common":  {
                    "or":  "SAU",
@@ -216,7 +216,7 @@
                },
     "playtime":  {
                      "title":  "RECOMPENSĂ \u003cspan class=\"title-gold\"\u003eTIMP ONLINE\u003c/span\u003e",
-                     "subtitle":  "Stai online în Mu Neutro și deblochează automat echipamente exclusive și puternice"
+                     "subtitle":  "Stai online în Mu Olimpo și deblochează automat echipamente exclusive și puternice"
                  },
     "champions":  {
                       "castle_siege":  "Castle Siege",
@@ -276,7 +276,7 @@
                 },
     "faq":  {
                 "title":  "ÎNTREBĂRI FRECVENTE",
-                "subtitle":  "Tot ce trebuie să știi despre Mu Neutro.",
+                "subtitle":  "Tot ce trebuie să știi despre Mu Olimpo.",
                 "q1":  "Am creat cont pe site, dar jocul spune \"Cont invalid\".",
                 "a1":  "Contul web este doar pentru site și gestionarea contului. Creează un sub-cont în panou pentru a te conecta în joc.",
                 "q2":  "Pot deschide mai mult de un client de joc?",

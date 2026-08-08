@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Advanced Caching Module
  * IndexedDB + LocalStorage + sessionStorage strategy
  */

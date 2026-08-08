@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Events & Timers Module
  * Handles event countdowns and active event timers
  */

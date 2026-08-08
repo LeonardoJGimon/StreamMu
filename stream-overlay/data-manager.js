@@ -1,5 +1,5 @@
-/**
- * Mu Neutro - Shared Data Manager (Versión Robusta)
+﻿/**
+ * Mu Olimpo - Shared Data Manager (Versión Robusta)
  * Centraliza las peticiones a la API para ahorrar recursos de CPU y Red.
  */
 

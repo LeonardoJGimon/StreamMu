@@ -1,12 +1,12 @@
-{
+﻿{
     "featureCard": {
         "custom1": {
             "title": "Equipe-se para a Glória",
-            "desc": "Não comece do zero, comece como um verdadeiro guerreiro. Preparamos um Pacote de Boas-Vindas exclusivo para que nada te impeça no caminho do Reset. Entre no Mu Neutro, pegue seu kit e mostre quem manda no ranking."
+            "desc": "Não comece do zero, comece como um verdadeiro guerreiro. Preparamos um Pacote de Boas-Vindas exclusivo para que nada te impeça no caminho do Reset. Entre no Mu Olimpo, pegue seu kit e mostre quem manda no ranking."
         },
         "custom2": {
             "title": "Formamos Lendas",
-            "desc": "No Mu Neutro você não está sozinho. Junte-se à nossa comunidade ativa, participe de eventos diários e conte com suporte pronto para te ajudar em cada passo da evolução. Aqui, cada guerreiro conta."
+            "desc": "No Mu Olimpo você não está sozinho. Junte-se à nossa comunidade ativa, participe de eventos diários e conte com suporte pronto para te ajudar em cada passo da evolução. Aqui, cada guerreiro conta."
         },
         "custom3": {
             "title": "Seu Progresso Está Seguro",
@@ -14,17 +14,17 @@
         }
     },
     "brand":  {
-                  "logo":  "Mu Neutro"
+                  "logo":  "Mu Olimpo"
               },
     "page":  {
                  "index":  {
-                               "title":  "Mu Neutro - Hardcore Server"
+                               "title":  "Mu Olimpo - Hardcore Server"
                            },
                  "server_info":  {
-                                     "title":  "Informações do Servidor - Mu Neutro"
+                                     "title":  "Informações do Servidor - Mu Olimpo"
                                  },
                  "terms":  {
-                               "title":  "Termos e Políticas - Mu Neutro"
+                               "title":  "Termos e Políticas - Mu Olimpo"
                            }
              },
     "nav":  {
@@ -36,10 +36,10 @@
                 "dashboard":  "Painel"
             },
     "footer":  {
-                   "copyright":  "\u0026copy; 2025 - 2026 Mu Neutro Server. Todos os direitos reservados.",
+                   "copyright":  "\u0026copy; 2025 - 2026 Mu Olimpo Server. Todos os direitos reservados.",
                    "terms":  "Termos e Políticas",
                    "follow_us":  "Siga-nos",
-                   "forged_by":  "FORGED BY \u003cspan class=\"footer-min__accent\"\u003eMu Neutro\u003c/span\u003e"
+                   "forged_by":  "FORGED BY \u003cspan class=\"footer-min__accent\"\u003eMu Olimpo\u003c/span\u003e"
                },
     "common":  {
                    "or":  "OU",
@@ -69,7 +69,7 @@
                  "subtitle":  "Pessoas por trás do projeto."
              },
     "hero":  {
-                 "description":  "Junte-se ao servidor Mu Neutro mais estável.\nSem Pay-to-Win. Apenas estratégia, grind e glória.",
+                 "description":  "Junte-se ao servidor Mu Olimpo mais estável.\nSem Pay-to-Win. Apenas estratégia, grind e glória.",
                  "start_adventure":  "COMEÇAR",
                  "server_info":  "INFO DO SERVIDOR",
                  "download_launcher":  "BAIXAR LAUNCHER"
@@ -216,7 +216,7 @@
                },
     "playtime":  {
                      "title":  "RECOMPENSA \u003cspan class=\"title-gold\"\u003eTEMPO ONLINE\u003c/span\u003e",
-                     "subtitle":  "Fique online no Mu Neutro e desbloqueie automaticamente equipamentos exclusivos e poderosos"
+                     "subtitle":  "Fique online no Mu Olimpo e desbloqueie automaticamente equipamentos exclusivos e poderosos"
                  },
     "champions":  {
                       "castle_siege":  "Castle Siege",
@@ -276,7 +276,7 @@
                 },
     "faq":  {
                 "title":  "PERGUNTAS FREQUENTES",
-                "subtitle":  "Tudo o que você precisa saber sobre Mu Neutro.",
+                "subtitle":  "Tudo o que você precisa saber sobre Mu Olimpo.",
                 "q1":  "Criei uma conta no site, mas o jogo diz \"Conta inválida\".",
                 "a1":  "A conta do site é apenas para o website e gerenciamento da conta. Crie uma subconta no painel para entrar no jogo.",
                 "q2":  "Posso abrir mais de um cliente do jogo?",

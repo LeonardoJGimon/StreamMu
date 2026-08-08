@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Lazy CSS Loader Module
  * Carga CSS no-crítico de forma asincrónica después de que page es interactive
  */

@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Service Worker Registration Module
  */
 

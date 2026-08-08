@@ -1,12 +1,12 @@
-{
+﻿{
     "featureCard": {
         "custom1": {
             "title": "Equípate para la gloria",
-            "desc": "No empieces desde cero, empieza como un guerrero de verdad. Hemos preparado un Pack de Bienvenida exclusivo para que nada te detenga en tu camino al Reset. Entra a Mu Neutro, reclama tu kit y demuestra quién manda en el ranking."
+            "desc": "No empieces desde cero, empieza como un guerrero de verdad. Hemos preparado un Pack de Bienvenida exclusivo para que nada te detenga en tu camino al Reset. Entra a Mu Olimpo, reclama tu kit y demuestra quién manda en el ranking."
         },
         "custom2": {
             "title": "Formamos Leyendas",
-            "desc": "En Mu Neutro no caminas solo. Únete a nuestra comunidad activa, participa en eventos diarios y cuenta con un soporte dispuesto a ayudarte en cada paso de tu evolución. Aquí, cada guerrero cuenta."
+            "desc": "En Mu Olimpo no caminas solo. Únete a nuestra comunidad activa, participa en eventos diarios y cuenta con un soporte dispuesto a ayudarte en cada paso de tu evolución. Aquí, cada guerrero cuenta."
         },
         "custom3": {
             "title": "Tu Progreso está Seguro",
@@ -18,13 +18,13 @@
     },
     "page": {
         "index": {
-            "title": "Mu Neutro - Servidor Hardcore"
+            "title": "Mu Olimpo - Servidor Hardcore"
         },
         "server_info": {
-            "title": "Info del Servidor - Mu Neutro"
+            "title": "Info del Servidor - Mu Olimpo"
         },
         "terms": {
-            "title": "Términos y Políticas - Mu Neutro"
+            "title": "Términos y Políticas - Mu Olimpo"
         }
     },
     "nav": {
@@ -36,10 +36,10 @@
         "dashboard": "Panel"
     },
     "footer": {
-        "copyright": "\u0026copy; 2025 - 2026 Mu Neutro Server. Todos los derechos reservados.",
+        "copyright": "\u0026copy; 2025 - 2026 Mu Olimpo Server. Todos los derechos reservados.",
         "terms": "Términos y Políticas",
         "follow_us": "Síguenos",
-        "forged_by": "FORJADO POR \u003cspan class=\"footer-min__accent\"\u003eMu Neutro\u003c/span\u003e"
+        "forged_by": "FORJADO POR \u003cspan class=\"footer-min__accent\"\u003eMu Olimpo\u003c/span\u003e"
     },
     "common": {
         "or": "O",
@@ -218,7 +218,7 @@
     },
     "playtime": {
         "title": "RECOMPENSA \u003cspan class=\"title-gold\"\u003eTIEMPO ONLINE\u003c/span\u003e",
-        "subtitle": "Mantente en línea en Mu Neutro y desbloquea automáticamente equipo exclusivo y poderoso"
+        "subtitle": "Mantente en línea en Mu Olimpo y desbloquea automáticamente equipo exclusivo y poderoso"
     },
     "champions": {
         "castle_siege": "EL REY DEL RESET",
@@ -278,7 +278,7 @@
     },
     "faq": {
         "title": "PREGUNTAS FRECUENTES",
-        "subtitle": "Todo lo que necesitas saber sobre Mu Neutro.",
+        "subtitle": "Todo lo que necesitas saber sobre Mu Olimpo.",
         "q1": "Creé una cuenta en la web, pero el juego dice \"Cuenta inválida\".",
         "a1": "La cuenta web es solo para el sitio y la gestión de cuenta. Crea una subcuenta en tu panel para iniciar sesión en el juego.",
         "q2": "¿Puedo abrir más de un cliente del juego?",

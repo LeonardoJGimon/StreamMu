@@ -1,4 +1,4 @@
-/* Boss Rewards page-only styles */
+﻿/* Boss Rewards page-only styles */
 .si-stat-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
