@@ -1,0 +1,1040 @@
+{
+  "0_0": "Kris",
+  "name_kris": {
+    "category": 0,
+    "index": 0,
+    "name": "Kris"
+  },
+  "0_1": "Short Sword",
+  "name_shortsword": {
+    "category": 0,
+    "index": 1,
+    "name": "Short Sword"
+  },
+  "0_2": "Rapier",
+  "name_rapier": {
+    "category": 0,
+    "index": 2,
+    "name": "Rapier"
+  },
+  "0_3": "Katana",
+  "name_katana": {
+    "category": 0,
+    "index": 3,
+    "name": "Katana"
+  },
+  "0_4": "Sword of Assassin",
+  "name_swordofassassin": {
+    "category": 0,
+    "index": 4,
+    "name": "Sword of Assassin"
+  },
+  "0_5": "Blade",
+  "name_blade": {
+    "category": 0,
+    "index": 5,
+    "name": "Blade"
+  },
+  "0_6": "Gladius",
+  "name_gladius": {
+    "category": 0,
+    "index": 6,
+    "name": "Gladius"
+  },
+  "0_7": "Falchion",
+  "name_falchion": {
+    "category": 0,
+    "index": 7,
+    "name": "Falchion"
+  },
+  "0_8": "Serpent Sword",
+  "name_serpentsword": {
+    "category": 0,
+    "index": 8,
+    "name": "Serpent Sword"
+  },
+  "0_9": "Sword of Salamander",
+  "name_swordofsalamander": {
+    "category": 0,
+    "index": 9,
+    "name": "Sword of Salamander"
+  },
+  "0_10": "Light Saber",
+  "name_lightsaber": {
+    "category": 0,
+    "index": 10,
+    "name": "Light Saber"
+  },
+  "0_11": "Legendary Sword",
+  "name_legendarysword": {
+    "category": 0,
+    "index": 11,
+    "name": "Legendary Sword"
+  },
+  "0_12": "Heliacal Sword",
+  "name_heliacalsword": {
+    "category": 0,
+    "index": 12,
+    "name": "Heliacal Sword"
+  },
+  "0_13": "Double Blade",
+  "name_doubleblade": {
+    "category": 0,
+    "index": 13,
+    "name": "Double Blade"
+  },
+  "0_14": "Lighting Sword",
+  "name_lightingsword": {
+    "category": 0,
+    "index": 14,
+    "name": "Lighting Sword"
+  },
+  "0_15": "Giant Sword",
+  "name_giantsword": {
+    "category": 0,
+    "index": 15,
+    "name": "Giant Sword"
+  },
+  "0_16": "Sword of Destruction",
+  "name_swordofdestruction": {
+    "category": 0,
+    "index": 16,
+    "name": "Sword of Destruction"
+  },
+  "0_17": "Dark Breaker",
+  "name_darkbreaker": {
+    "category": 0,
+    "index": 17,
+    "name": "Dark Breaker"
+  },
+  "0_18": "Thunder Blade",
+  "name_thunderblade": {
+    "category": 0,
+    "index": 18,
+    "name": "Thunder Blade"
+  },
+  "0_19": "Divine Sword of Archangel",
+  "name_divineswordofarchangel": {
+    "category": 0,
+    "index": 19,
+    "name": "Divine Sword of Archangel"
+  },
+  "0_20": "Knight Blade",
+  "name_knightblade": {
+    "category": 0,
+    "index": 20,
+    "name": "Knight Blade"
+  },
+  "0_21": "Dark Reign Blade",
+  "name_darkreignblade": {
+    "category": 0,
+    "index": 21,
+    "name": "Dark Reign Blade"
+  },
+  "0_22": "Bone Blade",
+  "name_boneblade": {
+    "category": 0,
+    "index": 22,
+    "name": "Bone Blade"
+  },
+  "0_23": "Explosion Blade",
+  "name_explosionblade": {
+    "category": 0,
+    "index": 23,
+    "name": "Explosion Blade"
+  },
+  "0_24": "Daybreak",
+  "name_daybreak": {
+    "category": 0,
+    "index": 24,
+    "name": "Daybreak"
+  },
+  "0_25": "Sword Dancer",
+  "name_sworddancer": {
+    "category": 0,
+    "index": 25,
+    "name": "Sword Dancer"
+  },
+  "0_26": "Flameberge",
+  "name_flameberge": {
+    "category": 0,
+    "index": 26,
+    "name": "Flameberge"
+  },
+  "0_27": "Sword Breaker",
+  "name_swordbreaker": {
+    "category": 0,
+    "index": 27,
+    "name": "Sword Breaker"
+  },
+  "0_28": "Rune Bastard Sword",
+  "name_runebastardsword": {
+    "category": 0,
+    "index": 28,
+    "name": "Rune Bastard Sword"
+  },
+  "0_31": "Rune Blade",
+  "name_runeblade": {
+    "category": 0,
+    "index": 31,
+    "name": "Rune Blade"
+  },
+  "1_0": "Small Axe",
+  "name_smallaxe": {
+    "category": 1,
+    "index": 0,
+    "name": "Small Axe"
+  },
+  "1_1": "Hand Axe",
+  "name_handaxe": {
+    "category": 1,
+    "index": 1,
+    "name": "Hand Axe"
+  },
+  "1_2": "Double Axe",
+  "name_doubleaxe": {
+    "category": 1,
+    "index": 2,
+    "name": "Double Axe"
+  },
+  "1_3": "Tomahawk",
+  "name_tomahawk": {
+    "category": 1,
+    "index": 3,
+    "name": "Tomahawk"
+  },
+  "1_4": "Elven Axe",
+  "name_elvenaxe": {
+    "category": 1,
+    "index": 4,
+    "name": "Elven Axe"
+  },
+  "1_5": "Battle Axe",
+  "name_battleaxe": {
+    "category": 1,
+    "index": 5,
+    "name": "Battle Axe"
+  },
+  "1_6": "Nikea Axe",
+  "name_nikeaaxe": {
+    "category": 1,
+    "index": 6,
+    "name": "Nikea Axe"
+  },
+  "1_7": "Larkan Axe",
+  "name_larkanaxe": {
+    "category": 1,
+    "index": 7,
+    "name": "Larkan Axe"
+  },
+  "1_8": "Crescent Axe",
+  "name_crescentaxe": {
+    "category": 1,
+    "index": 8,
+    "name": "Crescent Axe"
+  },
+  "2_0": "Mace",
+  "name_mace": {
+    "category": 2,
+    "index": 0,
+    "name": "Mace"
+  },
+  "2_1": "Morning Star",
+  "name_morningstar": {
+    "category": 2,
+    "index": 1,
+    "name": "Morning Star"
+  },
+  "2_2": "Flail",
+  "name_flail": {
+    "category": 2,
+    "index": 2,
+    "name": "Flail"
+  },
+  "2_3": "Great Hammer",
+  "name_greathammer": {
+    "category": 2,
+    "index": 3,
+    "name": "Great Hammer"
+  },
+  "2_4": "Crystal Morning Star",
+  "name_crystalmorningstar": {
+    "category": 2,
+    "index": 4,
+    "name": "Crystal Morning Star"
+  },
+  "2_5": "Crystal Sword",
+  "name_crystalsword": {
+    "category": 2,
+    "index": 5,
+    "name": "Crystal Sword"
+  },
+  "2_6": "Chaos Dragon Axe",
+  "name_chaosdragonaxe": {
+    "category": 2,
+    "index": 6,
+    "name": "Chaos Dragon Axe"
+  },
+  "2_7": "Elemental Mace",
+  "name_elementalmace": {
+    "category": 2,
+    "index": 7,
+    "name": "Elemental Mace"
+  },
+  "2_8": "Battle Scepter",
+  "name_battlescepter": {
+    "category": 2,
+    "index": 8,
+    "name": "Battle Scepter"
+  },
+  "2_9": "Master Scepter",
+  "name_masterscepter": {
+    "category": 2,
+    "index": 9,
+    "name": "Master Scepter"
+  },
+  "2_10": "Great Scepter",
+  "name_greatscepter": {
+    "category": 2,
+    "index": 10,
+    "name": "Great Scepter"
+  },
+  "2_11": "Lord Scepter",
+  "name_lordscepter": {
+    "category": 2,
+    "index": 11,
+    "name": "Lord Scepter"
+  },
+  "2_12": "Great Lord Scepter",
+  "name_greatlordscepter": {
+    "category": 2,
+    "index": 12,
+    "name": "Great Lord Scepter"
+  },
+  "2_13": "Divine Scepter of Archangel",
+  "name_divinescepterofarchangel": {
+    "category": 2,
+    "index": 13,
+    "name": "Divine Scepter of Archangel"
+  },
+  "2_14": "Soleil Scepter",
+  "name_soleilscepter": {
+    "category": 2,
+    "index": 14,
+    "name": "Soleil Scepter"
+  },
+  "2_15": "Shining Scepter",
+  "name_shiningscepter": {
+    "category": 2,
+    "index": 15,
+    "name": "Shining Scepter"
+  },
+  "2_16": "Frost Mace",
+  "name_frostmace": {
+    "category": 2,
+    "index": 16,
+    "name": "Frost Mace"
+  },
+  "3_0": "Light Spear",
+  "name_lightspear": {
+    "category": 3,
+    "index": 0,
+    "name": "Light Spear"
+  },
+  "3_1": "Spear",
+  "name_spear": {
+    "category": 3,
+    "index": 1,
+    "name": "Spear"
+  },
+  "3_2": "Dragon Lance",
+  "name_dragonlance": {
+    "category": 3,
+    "index": 2,
+    "name": "Dragon Lance"
+  },
+  "3_3": "Giant Trident",
+  "name_gianttrident": {
+    "category": 3,
+    "index": 3,
+    "name": "Giant Trident"
+  },
+  "3_4": "Serpent Spear",
+  "name_serpentspear": {
+    "category": 3,
+    "index": 4,
+    "name": "Serpent Spear"
+  },
+  "3_5": "Double Poleaxe",
+  "name_doublepoleaxe": {
+    "category": 3,
+    "index": 5,
+    "name": "Double Poleaxe"
+  },
+  "3_6": "Halberd",
+  "name_halberd": {
+    "category": 3,
+    "index": 6,
+    "name": "Halberd"
+  },
+  "3_7": "Berdysh",
+  "name_berdysh": {
+    "category": 3,
+    "index": 7,
+    "name": "Berdysh"
+  },
+  "3_8": "Great Scythe",
+  "name_greatscythe": {
+    "category": 3,
+    "index": 8,
+    "name": "Great Scythe"
+  },
+  "3_9": "Bill of Balrog",
+  "name_billofbalrog": {
+    "category": 3,
+    "index": 9,
+    "name": "Bill of Balrog"
+  },
+  "3_10": "Dragon Spear",
+  "name_dragonspear": {
+    "category": 3,
+    "index": 10,
+    "name": "Dragon Spear"
+  },
+  "3_11": "Brova",
+  "name_brova": {
+    "category": 3,
+    "index": 11,
+    "name": "Brova"
+  },
+  "4_0": "Short Bow",
+  "name_shortbow": {
+    "category": 4,
+    "index": 0,
+    "name": "Short Bow"
+  },
+  "4_1": "Bow",
+  "name_bow": {
+    "category": 4,
+    "index": 1,
+    "name": "Bow"
+  },
+  "4_2": "Elven Bow",
+  "name_elvenbow": {
+    "category": 4,
+    "index": 2,
+    "name": "Elven Bow"
+  },
+  "4_3": "Battle Bow",
+  "name_battlebow": {
+    "category": 4,
+    "index": 3,
+    "name": "Battle Bow"
+  },
+  "4_4": "Tiger Bow",
+  "name_tigerbow": {
+    "category": 4,
+    "index": 4,
+    "name": "Tiger Bow"
+  },
+  "4_5": "Silver Bow",
+  "name_silverbow": {
+    "category": 4,
+    "index": 5,
+    "name": "Silver Bow"
+  },
+  "4_6": "Chaos Nature Bow",
+  "name_chaosnaturebow": {
+    "category": 4,
+    "index": 6,
+    "name": "Chaos Nature Bow"
+  },
+  "4_8": "Crossbow",
+  "name_crossbow": {
+    "category": 4,
+    "index": 8,
+    "name": "Crossbow"
+  },
+  "4_9": "Golden Crossbow",
+  "name_goldencrossbow": {
+    "category": 4,
+    "index": 9,
+    "name": "Golden Crossbow"
+  },
+  "4_10": "Arquebus",
+  "name_arquebus": {
+    "category": 4,
+    "index": 10,
+    "name": "Arquebus"
+  },
+  "4_11": "Light Crossbow",
+  "name_lightcrossbow": {
+    "category": 4,
+    "index": 11,
+    "name": "Light Crossbow"
+  },
+  "4_12": "Serpent Crossbow",
+  "name_serpentcrossbow": {
+    "category": 4,
+    "index": 12,
+    "name": "Serpent Crossbow"
+  },
+  "4_13": "Bluewing Crossbow",
+  "name_bluewingcrossbow": {
+    "category": 4,
+    "index": 13,
+    "name": "Bluewing Crossbow"
+  },
+  "4_14": "Aquagold Crossbow",
+  "name_aquagoldcrossbow": {
+    "category": 4,
+    "index": 14,
+    "name": "Aquagold Crossbow"
+  },
+  "4_16": "Saint Crossbow",
+  "name_saintcrossbow": {
+    "category": 4,
+    "index": 16,
+    "name": "Saint Crossbow"
+  },
+  "4_17": "Celestial Bow",
+  "name_celestialbow": {
+    "category": 4,
+    "index": 17,
+    "name": "Celestial Bow"
+  },
+  "4_18": "Divine Crossbow of Archangel",
+  "name_divinecrossbowofarchangel": {
+    "category": 4,
+    "index": 18,
+    "name": "Divine Crossbow of Archangel"
+  },
+  "4_19": "Great Reign Crossbow",
+  "name_greatreigncrossbow": {
+    "category": 4,
+    "index": 19,
+    "name": "Great Reign Crossbow"
+  },
+  "4_20": "Arrow Viper Bow",
+  "name_arrowviperbow": {
+    "category": 4,
+    "index": 20,
+    "name": "Arrow Viper Bow"
+  },
+  "4_21": "Sylph Wind Bow",
+  "name_sylphwindbow": {
+    "category": 4,
+    "index": 21,
+    "name": "Sylph Wind Bow"
+  },
+  "4_22": "Albatross Bow",
+  "name_albatrossbow": {
+    "category": 4,
+    "index": 22,
+    "name": "Albatross Bow"
+  },
+  "4_23": "Dark Stinger",
+  "name_darkstinger": {
+    "category": 4,
+    "index": 23,
+    "name": "Dark Stinger"
+  },
+  "4_24": "Aileen Bow",
+  "name_aileenbow": {
+    "category": 4,
+    "index": 24,
+    "name": "Aileen Bow"
+  },
+  "5_0": "Skull Staff",
+  "name_skullstaff": {
+    "category": 5,
+    "index": 0,
+    "name": "Skull Staff"
+  },
+  "5_1": "Angelic Staff",
+  "name_angelicstaff": {
+    "category": 5,
+    "index": 1,
+    "name": "Angelic Staff"
+  },
+  "5_2": "Serpent Staff",
+  "name_serpentstaff": {
+    "category": 5,
+    "index": 2,
+    "name": "Serpent Staff"
+  },
+  "5_3": "Thunder Staff",
+  "name_thunderstaff": {
+    "category": 5,
+    "index": 3,
+    "name": "Thunder Staff"
+  },
+  "5_4": "Gorgon Staff",
+  "name_gorgonstaff": {
+    "category": 5,
+    "index": 4,
+    "name": "Gorgon Staff"
+  },
+  "5_5": "Legendary Staff",
+  "name_legendarystaff": {
+    "category": 5,
+    "index": 5,
+    "name": "Legendary Staff"
+  },
+  "5_6": "Staff of Resurrection",
+  "name_staffofresurrection": {
+    "category": 5,
+    "index": 6,
+    "name": "Staff of Resurrection"
+  },
+  "5_7": "Chaos Lighting Staff",
+  "name_chaoslightingstaff": {
+    "category": 5,
+    "index": 7,
+    "name": "Chaos Lighting Staff"
+  },
+  "5_8": "Staff of Destruction",
+  "name_staffofdestruction": {
+    "category": 5,
+    "index": 8,
+    "name": "Staff of Destruction"
+  },
+  "5_9": "Dragon Soul Staff",
+  "name_dragonsoulstaff": {
+    "category": 5,
+    "index": 9,
+    "name": "Dragon Soul Staff"
+  },
+  "5_10": "Divine Staff of Archangel",
+  "name_divinestaffofarchangel": {
+    "category": 5,
+    "index": 10,
+    "name": "Divine Staff of Archangel"
+  },
+  "5_11": "Staff of Kundun",
+  "name_staffofkundun": {
+    "category": 5,
+    "index": 11,
+    "name": "Staff of Kundun"
+  },
+  "5_12": "Grand Viper Staff",
+  "name_grandviperstaff": {
+    "category": 5,
+    "index": 12,
+    "name": "Grand Viper Staff"
+  },
+  "5_13": "Platina Staff",
+  "name_platinastaff": {
+    "category": 5,
+    "index": 13,
+    "name": "Platina Staff"
+  },
+  "5_14": "Mystery Stick",
+  "name_mysterystick": {
+    "category": 5,
+    "index": 14,
+    "name": "Mystery Stick"
+  },
+  "5_15": "Violent Wind Stick",
+  "name_violentwindstick": {
+    "category": 5,
+    "index": 15,
+    "name": "Violent Wind Stick"
+  },
+  "5_16": "Red Wing Stick",
+  "name_redwingstick": {
+    "category": 5,
+    "index": 16,
+    "name": "Red Wing Stick"
+  },
+  "5_17": "Ancient Stick",
+  "name_ancientstick": {
+    "category": 5,
+    "index": 17,
+    "name": "Ancient Stick"
+  },
+  "5_18": "Demonic Stick",
+  "name_demonicstick": {
+    "category": 5,
+    "index": 18,
+    "name": "Demonic Stick"
+  },
+  "5_19": "Storm Blitz Stick",
+  "name_stormblitzstick": {
+    "category": 5,
+    "index": 19,
+    "name": "Storm Blitz Stick"
+  },
+  "5_20": "Eternal Wing Stick",
+  "name_eternalwingstick": {
+    "category": 5,
+    "index": 20,
+    "name": "Eternal Wing Stick"
+  },
+  "6_0": "Small Shield",
+  "name_smallshield": {
+    "category": 6,
+    "index": 0,
+    "name": "Small Shield"
+  },
+  "6_1": "Horn Shield",
+  "name_hornshield": {
+    "category": 6,
+    "index": 1,
+    "name": "Horn Shield"
+  },
+  "6_2": "Kite Shield",
+  "name_kiteshield": {
+    "category": 6,
+    "index": 2,
+    "name": "Kite Shield"
+  },
+  "6_3": "Elven Shield",
+  "name_elvenshield": {
+    "category": 6,
+    "index": 3,
+    "name": "Elven Shield"
+  },
+  "6_4": "Buckler",
+  "name_buckler": {
+    "category": 6,
+    "index": 4,
+    "name": "Buckler"
+  },
+  "6_5": "Dragon Slayer Shield",
+  "name_dragonslayershield": {
+    "category": 6,
+    "index": 5,
+    "name": "Dragon Slayer Shield"
+  },
+  "6_6": "Skull Shield",
+  "name_skullshield": {
+    "category": 6,
+    "index": 6,
+    "name": "Skull Shield"
+  },
+  "6_7": "Spiked Shield",
+  "name_spikedshield": {
+    "category": 6,
+    "index": 7,
+    "name": "Spiked Shield"
+  },
+  "6_8": "Tower Shield",
+  "name_towershield": {
+    "category": 6,
+    "index": 8,
+    "name": "Tower Shield"
+  },
+  "6_9": "Plate Shield",
+  "name_plateshield": {
+    "category": 6,
+    "index": 9,
+    "name": "Plate Shield"
+  },
+  "6_10": "Large Round Shield",
+  "name_largeroundshield": {
+    "category": 6,
+    "index": 10,
+    "name": "Large Round Shield"
+  },
+  "6_11": "Serpent Shield",
+  "name_serpentshield": {
+    "category": 6,
+    "index": 11,
+    "name": "Serpent Shield"
+  },
+  "6_12": "Bronze Shield",
+  "name_bronzeshield": {
+    "category": 6,
+    "index": 12,
+    "name": "Bronze Shield"
+  },
+  "6_13": "Dragon Shield",
+  "name_dragonshield": {
+    "category": 6,
+    "index": 13,
+    "name": "Dragon Shield"
+  },
+  "6_14": "Legendary Shield",
+  "name_legendaryshield": {
+    "category": 6,
+    "index": 14,
+    "name": "Legendary Shield"
+  },
+  "6_15": "Grand Soul Shield",
+  "name_grandsoulshield": {
+    "category": 6,
+    "index": 15,
+    "name": "Grand Soul Shield"
+  },
+  "12_0": "Wings of Elf",
+  "name_wingsofelf": {
+    "category": 12,
+    "index": 0,
+    "name": "Wings of Elf"
+  },
+  "12_1": "Wings of Heaven",
+  "name_wingsofheaven": {
+    "category": 12,
+    "index": 1,
+    "name": "Wings of Heaven"
+  },
+  "12_2": "Wings of Satan",
+  "name_wingsofsatan": {
+    "category": 12,
+    "index": 2,
+    "name": "Wings of Satan"
+  },
+  "12_3": "Wings of Spirit",
+  "name_wingsofspirit": {
+    "category": 12,
+    "index": 3,
+    "name": "Wings of Spirit"
+  },
+  "12_4": "Wings of Soul",
+  "name_wingsofsoul": {
+    "category": 12,
+    "index": 4,
+    "name": "Wings of Soul"
+  },
+  "12_5": "Wings of Dragon",
+  "name_wingsofdragon": {
+    "category": 12,
+    "index": 5,
+    "name": "Wings of Dragon"
+  },
+  "12_6": "Wings of Darkness",
+  "name_wingsofdarkness": {
+    "category": 12,
+    "index": 6,
+    "name": "Wings of Darkness"
+  },
+  "12_15": "Jewel of Chaos",
+  "name_jewelofchaos": {
+    "category": 12,
+    "index": 15,
+    "name": "Jewel of Chaos"
+  },
+  "12_30": "Bundle of Jewel of Bless",
+  "name_bundleofjewelofbless": {
+    "category": 12,
+    "index": 30,
+    "name": "Bundle of Jewel of Bless"
+  },
+  "12_31": "Bundle of Jewel of Soul",
+  "name_bundleofjewelofsoul": {
+    "category": 12,
+    "index": 31,
+    "name": "Bundle of Jewel of Soul"
+  },
+  "12_36": "Wings of Storm",
+  "name_wingsofstorm": {
+    "category": 12,
+    "index": 36,
+    "name": "Wings of Storm"
+  },
+  "12_37": "Wings of Eternal",
+  "name_wingsofeternal": {
+    "category": 12,
+    "index": 37,
+    "name": "Wings of Eternal"
+  },
+  "12_38": "Wings of Illusion",
+  "name_wingsofillusion": {
+    "category": 12,
+    "index": 38,
+    "name": "Wings of Illusion"
+  },
+  "12_39": "Wings of Ruin",
+  "name_wingsofruin": {
+    "category": 12,
+    "index": 39,
+    "name": "Wings of Ruin"
+  },
+  "12_40": "Cape of Emperor",
+  "name_capeofemperor": {
+    "category": 12,
+    "index": 40,
+    "name": "Cape of Emperor"
+  },
+  "12_41": "Wings of Curse",
+  "name_wingsofcurse": {
+    "category": 12,
+    "index": 41,
+    "name": "Wings of Curse"
+  },
+  "12_42": "Wings of Despair",
+  "name_wingsofdespair": {
+    "category": 12,
+    "index": 42,
+    "name": "Wings of Despair"
+  },
+  "12_43": "Wings of Dimension",
+  "name_wingsofdimension": {
+    "category": 12,
+    "index": 43,
+    "name": "Wings of Dimension"
+  },
+  "13_0": "Guardian Angel",
+  "name_guardianangel": {
+    "category": 13,
+    "index": 0,
+    "name": "Guardian Angel"
+  },
+  "13_1": "Imp",
+  "name_imp": {
+    "category": 13,
+    "index": 1,
+    "name": "Imp"
+  },
+  "13_2": "Horn of Uniria",
+  "name_hornofuniria": {
+    "category": 13,
+    "index": 2,
+    "name": "Horn of Uniria"
+  },
+  "13_3": "Horn of Dinorant",
+  "name_hornofdinorant": {
+    "category": 13,
+    "index": 3,
+    "name": "Horn of Dinorant"
+  },
+  "13_8": "Ring of Ice",
+  "name_ringofice": {
+    "category": 13,
+    "index": 8,
+    "name": "Ring of Ice"
+  },
+  "13_9": "Ring of Poison",
+  "name_ringofpoison": {
+    "category": 13,
+    "index": 9,
+    "name": "Ring of Poison"
+  },
+  "13_10": "Transformation Ring",
+  "name_transformationring": {
+    "category": 13,
+    "index": 10,
+    "name": "Transformation Ring"
+  },
+  "13_12": "Pendant of Lighting",
+  "name_pendantoflighting": {
+    "category": 13,
+    "index": 12,
+    "name": "Pendant of Lighting"
+  },
+  "13_13": "Pendant of Fire",
+  "name_pendantoffire": {
+    "category": 13,
+    "index": 13,
+    "name": "Pendant of Fire"
+  },
+  "13_21": "Ring of Fire",
+  "name_ringoffire": {
+    "category": 13,
+    "index": 21,
+    "name": "Ring of Fire"
+  },
+  "13_22": "Ring of Earth",
+  "name_ringofearth": {
+    "category": 13,
+    "index": 22,
+    "name": "Ring of Earth"
+  },
+  "13_23": "Ring of Wind",
+  "name_ringofwind": {
+    "category": 13,
+    "index": 23,
+    "name": "Ring of Wind"
+  },
+  "13_25": "Pendant of Ice",
+  "name_pendantofice": {
+    "category": 13,
+    "index": 25,
+    "name": "Pendant of Ice"
+  },
+  "13_26": "Pendant of Wind",
+  "name_pendantofwind": {
+    "category": 13,
+    "index": 26,
+    "name": "Pendant of Wind"
+  },
+  "13_27": "Pendant of Water",
+  "name_pendantofwater": {
+    "category": 13,
+    "index": 27,
+    "name": "Pendant of Water"
+  },
+  "13_37": "Horn of Fenrir",
+  "name_hornoffenrir": {
+    "category": 13,
+    "index": 37,
+    "name": "Horn of Fenrir"
+  },
+  "13_76": "Panda Ring",
+  "name_pandaring": {
+    "category": 13,
+    "index": 76,
+    "name": "Panda Ring"
+  },
+  "13_80": "Pet Panda",
+  "name_petpanda": {
+    "category": 13,
+    "index": 80,
+    "name": "Pet Panda"
+  },
+  "13_122": "Skeleton Transformation Ring",
+  "name_skeletontransformationring": {
+    "category": 13,
+    "index": 122,
+    "name": "Skeleton Transformation Ring"
+  },
+  "13_123": "Pet Skeleton",
+  "name_petskeleton": {
+    "category": 13,
+    "index": 123,
+    "name": "Pet Skeleton"
+  },
+  "14_13": "Jewel of Bless",
+  "name_jewelofbless": {
+    "category": 14,
+    "index": 13,
+    "name": "Jewel of Bless"
+  },
+  "14_14": "Jewel of Soul",
+  "name_jewelofsoul": {
+    "category": 14,
+    "index": 14,
+    "name": "Jewel of Soul"
+  },
+  "14_16": "Jewel of Life",
+  "name_jeweloflife": {
+    "category": 14,
+    "index": 16,
+    "name": "Jewel of Life"
+  },
+  "14_22": "Jewel of Creation",
+  "name_jewelofcreation": {
+    "category": 14,
+    "index": 22,
+    "name": "Jewel of Creation"
+  },
+  "14_31": "Jewel of Guardian",
+  "name_jewelofguardian": {
+    "category": 14,
+    "index": 31,
+    "name": "Jewel of Guardian"
+  },
+  "14_41": "Gemstone",
+  "name_gemstone": {
+    "category": 14,
+    "index": 41,
+    "name": "Gemstone"
+  },
+  "14_42": "Jewel of Harmony",
+  "name_jewelofharmony": {
+    "category": 14,
+    "index": 42,
+    "name": "Jewel of Harmony"
+  }
+}
