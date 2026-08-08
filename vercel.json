@@ -1,4 +1,4 @@
-﻿{
+{
   "cleanUrls": true,
   "rewrites": [
     { "source": "/soon", "destination": "/stream-overlay/starting-soon.html" },
