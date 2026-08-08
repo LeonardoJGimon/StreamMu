@@ -38,23 +38,23 @@
         /* CONTENEDOR PRINCIPAL GÓTICO */
         .promo-card {
             position: relative;
-            width: 720px;
-            background: linear-gradient(135deg, rgba(12, 12, 12, 0.95) 0%, rgba(5, 5, 5, 0.98) 100%);
+            width: 780px;
+            background: linear-gradient(135deg, rgba(12, 12, 12, 0.96) 0%, rgba(4, 4, 4, 0.98) 100%);
             border: 2px solid var(--gold);
-            border-radius: 8px;
-            padding: 22px 30px;
+            border-radius: 10px;
+            padding: 24px 35px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            box-shadow: 0 0 35px rgba(0, 0, 0, 0.95), inset 0 0 25px rgba(126, 0, 0, 0.45);
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.95), inset 0 0 30px rgba(126, 0, 0, 0.5);
             overflow: hidden;
             clip-path: polygon(3% 0%, 97% 0%, 100% 12%, 100% 88%, 97% 100%, 3% 100%, 0% 88%, 0% 12%);
             animation: cardPulse 4s infinite ease-in-out;
         }
 
         @keyframes cardPulse {
-            0%, 100% { box-shadow: 0 0 35px rgba(0,0,0,0.95), inset 0 0 25px rgba(126, 0, 0, 0.45); }
-            50% { box-shadow: 0 0 50px rgba(255, 46, 46, 0.3), inset 0 0 35px rgba(192, 163, 117, 0.5); }
+            0%, 100% { box-shadow: 0 0 40px rgba(0,0,0,0.95), inset 0 0 30px rgba(126, 0, 0, 0.5); }
+            50% { box-shadow: 0 0 60px rgba(255, 46, 46, 0.35), inset 0 0 40px rgba(192, 163, 117, 0.6); }
         }
 
         /* BRILLO DIAGONAL QUE PASA */
@@ -63,7 +63,7 @@
             position: absolute;
             top: 0; left: -100%;
             width: 60%; height: 100%;
-            background: linear-gradient(to right, transparent, rgba(240, 215, 169, 0.25), transparent);
+            background: linear-gradient(to right, transparent, rgba(240, 215, 169, 0.3), transparent);
             transform: skewX(-25deg);
             animation: glint 4s infinite;
         }
@@ -78,31 +78,32 @@
         .blinking-banner {
             display: flex;
             align-items: center;
-            gap: 12px;
-            font-size: 1.15rem;
+            gap: 14px;
+            font-size: 1.18rem;
             color: var(--gold-light);
             letter-spacing: 2px;
             text-transform: uppercase;
-            margin-bottom: 12px;
+            text-align: center;
+            margin-bottom: 14px;
             animation: blinkGlow 1.2s infinite ease-in-out alternate;
         }
 
         @keyframes blinkGlow {
             0% {
                 opacity: 1;
-                text-shadow: 0 0 10px var(--crimson-bright), 0 0 20px var(--gold-light);
+                text-shadow: 0 0 12px var(--crimson-bright), 0 0 25px var(--gold-light);
                 transform: scale(1);
             }
             100% {
                 opacity: 0.45;
-                text-shadow: 0 0 3px var(--crimson), 0 0 8px var(--gold);
+                text-shadow: 0 0 4px var(--crimson), 0 0 10px var(--gold);
                 transform: scale(0.98);
             }
         }
 
         /* ICONO DE REGALO ANIMADO */
         .gift-icon {
-            font-size: 1.8rem;
+            font-size: 1.9rem;
             color: var(--gold-light);
             filter: drop-shadow(0 0 12px var(--crimson-bright));
             animation: bounceGift 2s infinite ease-in-out;
@@ -110,55 +111,79 @@
 
         @keyframes bounceGift {
             0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
-            25% { transform: translateY(-4px) rotate(-6deg) scale(1.1); }
-            75% { transform: translateY(-4px) rotate(6deg) scale(1.1); }
+            25% { transform: translateY(-5px) rotate(-8deg) scale(1.15); }
+            75% { transform: translateY(-5px) rotate(8deg) scale(1.15); }
         }
 
-        /* CONTENEDOR DEL CÓDIGO CENTRAL */
+        /* CAJA DEL CÓDIGO CENTRAL */
         .code-box {
             position: relative;
-            background: linear-gradient(180deg, rgba(128, 0, 0, 0.6) 0%, rgba(10, 10, 10, 0.9) 100%);
+            background: linear-gradient(180deg, rgba(140, 0, 0, 0.7) 0%, rgba(8, 8, 8, 0.95) 100%);
             border: 2px solid var(--gold-light);
-            padding: 10px 40px;
-            border-radius: 6px;
-            margin-top: 6px;
+            padding: 12px 45px;
+            border-radius: 8px;
+            margin-top: 4px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 0 20px rgba(255, 46, 46, 0.4);
+            box-shadow: 0 0 25px rgba(255, 46, 46, 0.45);
             z-index: 10;
         }
 
         .code-text {
-            font-size: 2.6rem;
+            font-size: 2.8rem;
             font-weight: 900;
-            letter-spacing: 5px;
+            letter-spacing: 6px;
             color: #ffffff;
-            text-shadow: 0 0 15px var(--crimson-bright), 0 0 8px #000;
+            text-shadow: 0 0 18px var(--crimson-bright), 0 0 10px #000;
             animation: codePulse 2.5s infinite alternate;
         }
 
         @keyframes codePulse {
             0% { transform: scale(1); filter: drop-shadow(0 0 10px var(--gold)); }
-            100% { transform: scale(1.04); filter: drop-shadow(0 0 20px var(--crimson-bright)); }
+            100% { transform: scale(1.05); filter: drop-shadow(0 0 25px var(--crimson-bright)); }
         }
 
-        /* RECOMPENSA / PIE DE PÁGINA */
-        .reward-info {
-            font-family: 'Alegreya', sans-serif;
-            font-size: 1.25rem;
-            color: #dddddd;
-            letter-spacing: 1.5px;
-            margin-top: 10px;
+        /* CAJA DESTACADA DE RECOMPENSA / ÍTEM */
+        .reward-badge-container {
+            margin-top: 14px;
             display: flex;
             align-items: center;
-            gap: 10px;
-            text-shadow: 0 0 6px rgba(0,0,0,0.9);
+            justify-content: center;
+            gap: 12px;
+            background: rgba(10, 10, 10, 0.85);
+            border: 1px solid var(--gold);
+            padding: 10px 25px;
+            border-radius: 30px;
+            box-shadow: 0 0 15px rgba(192, 163, 117, 0.3);
+            z-index: 10;
         }
 
-        .reward-info b {
+        .reward-icon-img {
+            width: 38px;
+            height: 38px;
+            object-fit: contain;
+            filter: drop-shadow(0 0 8px var(--gold-light));
+        }
+
+        .reward-icon-fa {
+            font-size: 1.6rem;
             color: var(--gold-light);
-            text-shadow: 0 0 8px var(--crimson-bright);
+            filter: drop-shadow(0 0 8px var(--crimson-bright));
+        }
+
+        .reward-info-text {
+            font-family: 'Alegreya', sans-serif;
+            font-size: 1.4rem;
+            color: #eeeeee;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .reward-info-text b {
+            color: var(--gold-light);
+            font-size: 1.5rem;
+            text-shadow: 0 0 10px var(--crimson-bright);
         }
 
         /* CHISPAS Y PARTICULAS FLOTANTES */
@@ -189,10 +214,10 @@
     <div class="promo-card">
         <div id="spark-container"></div>
 
-        <!-- TEXTO TITILANDO DE REGALO -->
+        <!-- TEXTO TITILANDO EXACTO SOLICITADO -->
         <div class="blinking-banner">
             <i class="fas fa-gift gift-icon"></i>
-            <span>¡USA ESTE CÓDIGO EN TU LAUNCHER / DASH PARA UN REGALO!</span>
+            <span>USA ESTE CÓDIGO EN TU LAUNCHER PARA QUE OBTENGAS UN REGALO</span>
             <i class="fas fa-gift gift-icon"></i>
         </div>
 
@@ -201,17 +226,17 @@
             <span class="code-text" id="promo-code-display">CARGANDO...</span>
         </div>
 
-        <!-- DETALLE DE LA RECOMPENSA -->
-        <div class="reward-info" id="reward-info">
-            <i class="fas fa-sparkles"></i>
-            <span id="reward-text">CANJÉALO GRATIS HOY MISMO</span>
+        <!-- CAJA DE LA RECOMPENSA / ÍTEM EN REGALO -->
+        <div class="reward-badge-container" id="reward-container">
+            <i class="fas fa-gem reward-icon-fa" id="reward-icon"></i>
+            <span class="reward-info-text" id="reward-text">RECOMPENSA: <b>500 WCOINS</b></span>
         </div>
     </div>
 
     <script>
         // Generar partículas de chispas góticas
         const container = document.getElementById('spark-container');
-        for (let i = 0; i < 14; i++) {
+        for (let i = 0; i < 15; i++) {
             let spark = document.createElement('div');
             spark.className = 'spark';
             spark.style.left = Math.random() * 100 + '%';
@@ -238,8 +263,11 @@
             } catch (e) {
                 console.error("Error fetching promos:", e);
             }
-            // Fallback por defecto si no hay códigos creados en la DB
-            promoList = [{ Code: 'OLIMPO2026', RewardDetails: '{"currency":"wcoins","amount":"GRATIS"}' }];
+            // Fallback si no hay códigos creados en la DB
+            promoList = [{
+                Code: 'STREAM-DAR-9DMJ1',
+                RewardDetails: '{"currency":"wcoins","amount":5}'
+            }];
             renderCurrentPromo();
         }
 
@@ -247,24 +275,44 @@
             if (!promoList.length) return;
             const promo = promoList[currentIndex % promoList.length];
             const codeEl = document.getElementById('promo-code-display');
-            const rewardEl = document.getElementById('reward-text');
+            const rewardTextEl = document.getElementById('reward-text');
+            const rewardIconEl = document.getElementById('reward-icon');
 
             if (codeEl) {
                 codeEl.innerText = promo.Code;
             }
 
-            if (rewardEl) {
+            if (rewardTextEl && rewardIconEl) {
                 try {
                     const details = typeof promo.RewardDetails === 'string' ? JSON.parse(promo.RewardDetails) : promo.RewardDetails;
-                    if (details && details.currency && details.amount) {
-                        rewardEl.innerHTML = `RECOMPENSA: <b>${details.amount} ${details.currency.toUpperCase()}</b>`;
-                    } else if (details && details.name) {
-                        rewardEl.innerHTML = `RECOMPENSA: <b>${details.name}</b>`;
+                    
+                    // Ítem de Vault o Ítem Especial
+                    if (details && (details.name || details.itemName)) {
+                        const name = details.name || details.itemName;
+                        const count = details.count || (details.details ? details.details.count : 1);
+                        const countStr = count > 1 ? ` (x${count})` : '';
+                        
+                        rewardTextEl.innerHTML = `REGALO: <b>${name.toUpperCase()}${countStr}</b>`;
+                        rewardIconEl.className = 'fas fa-box-open reward-icon-fa';
+                    }
+                    // Monedas (WCoins, GoblinPoints, Zen, Cash, VIP)
+                    else if (details && (details.currency || details.type)) {
+                        const curr = (details.currency || details.type).toUpperCase();
+                        const amt = details.amount || details.qty || 1;
+                        
+                        rewardTextEl.innerHTML = `REGALO: <b>${amt} ${curr}</b>`;
+                        
+                        if (curr.includes('WCOIN')) rewardIconEl.className = 'fas fa-gem reward-icon-fa';
+                        else if (curr.includes('GOBLIN') || curr.includes('GP')) rewardIconEl.className = 'fas fa-flask reward-icon-fa';
+                        else if (curr.includes('VIP')) rewardIconEl.className = 'fas fa-crown reward-icon-fa';
+                        else rewardIconEl.className = 'fas fa-coins reward-icon-fa';
                     } else {
-                        rewardEl.innerHTML = `CANJÉALO GRATIS EN TU <b>LAUNCHER O DASH</b>`;
+                        rewardTextEl.innerHTML = `REGALO: <b>RECOMPENSA ESPECIAL</b>`;
+                        rewardIconEl.className = 'fas fa-gift reward-icon-fa';
                     }
                 } catch(e) {
-                    rewardEl.innerHTML = `CANJÉALO GRATIS EN TU <b>LAUNCHER O DASH</b>`;
+                    rewardTextEl.innerHTML = `REGALO: <b>RECOMPENSA ESPECIAL</b>`;
+                    rewardIconEl.className = 'fas fa-gift reward-icon-fa';
                 }
             }
         }
@@ -277,8 +325,8 @@
         }
 
         fetchPromoCodes();
-        setInterval(fetchPromoCodes, 15000); // Consultar base de datos cada 15 segundos
-        setInterval(rotatePromos, 8000);       // Rotar códigos en pantalla cada 8 segundos si hay varios
+        setInterval(fetchPromoCodes, 15000); // Consultar DB cada 15 segundos
+        setInterval(rotatePromos, 8000);       // Rotar promociones cada 8 segundos
     </script>
 </body>
 </html>
