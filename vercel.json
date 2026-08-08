@@ -1,5 +1,15 @@
 {
   "cleanUrls": true,
+  "headers": [
+    {
+      "source": "/stream-overlay/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-cache, no-store, must-revalidate" },
+        { "key": "Pragma", "value": "no-cache" },
+        { "key": "Expires", "value": "0" }
+      ]
+    }
+  ],
   "rewrites": [
     { "source": "/soon", "destination": "/stream-overlay/starting-soon.html" },
     { "source": "/now", "destination": "/stream-overlay/starting-now.html" },
